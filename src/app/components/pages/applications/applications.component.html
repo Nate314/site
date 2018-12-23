@@ -1,0 +1,49 @@
+<!--Applications-->
+<div *ngIf="!webAppURL && apps.length == 0" class="container">
+  <div *ngFor="let page of subpages" class="border border-top-0 border-left-0 border-right-0">
+    <h1>{{ page.name }}</h1>
+    <span [innerHTML]="page.description"></span>
+    <a class="hyperlink w3-hover-text-purple" [routerLink]="[page.link]">here</a>.
+    <br />
+    <span *ngFor="let app of page.apps; let i = index">
+      <a *ngIf="page.name.toUpperCase().startsWith('JAVA')" (click)="openJavaApp(app)"
+      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+      <a *ngIf="page.name.toUpperCase().startsWith('WEB')" (click)="openWebApp(app, true)"
+      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+      <a *ngIf="page.name.toUpperCase().startsWith('ANDROID')" (click)="openAndroidApp(app)"
+      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+      <span *ngIf="i !== page.apps.length - 1 && i != page.apps.length - 2">, </span>
+      <span *ngIf="i === page.apps.length - 2">, and </span>
+      <span *ngIf="i === page.apps.length - 1">. </span>
+    </span>
+  </div>
+</div>
+<!--/Applications-->
+
+<!--Applications/Subpage-->
+<div *ngIf="!webAppOpen && pageName != null">
+  <h1 class="border border-top-0 border-left-0 border-right-0">{{ pageName }}</h1>
+  <div *ngFor="let app of apps" class="border border-top-0 border-left-0 border-right-0">
+    <h3>{{ app.name }}</h3>
+    <span [innerHtml]="app.description"></span>
+    <br />
+    <span *ngIf="pageName.toUpperCase().startsWith('JAVA')">
+      <b>Download</b>&nbsp;
+      <a class="hyperlink w3-hover-text-purple" (click)="openJavaApp(app)">{{ app.name }}</a>
+    </span>
+    <span *ngIf="pageName.toUpperCase().startsWith('WEB')">
+      <b>Go to</b>&nbsp;
+      <a class="hyperlink w3-hover-text-purple" (click)="openWebApp(app, true)">{{ app.name }}</a>
+    </span>
+    <span *ngIf="pageName.toUpperCase().startsWith('ANDROID')">
+      <b>Download</b>&nbsp;
+      <a class="hyperlink w3-hover-text-purple" (click)="openAndroidApp(app)">{{ app.name }}</a>
+    </span>
+  </div>
+</div>
+<!--/Applications/Subpage-->
+
+<!--Applications/Subpage/App-->
+<div id="appContent"></div>
+<div id="appDescription"></div>
+<!--Applications/Subpage/App-->

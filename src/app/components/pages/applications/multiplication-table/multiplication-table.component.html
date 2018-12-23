@@ -1,0 +1,27 @@
+<span>Size of Table: </span>
+<input type="text" (keyup)="loadTable()" [(ngModel)]="size" />
+<span> (max: 120)</span>
+<br />
+<span>Traditional: </span>
+<input type="checkbox" [(ngModel)]="traditionalOption" (change)="loadTable()" />
+
+<div *ngIf="loading">
+  Loading . . .
+</div>
+<div *ngIf="!loading">
+  <div style="display:block; width:100%; height:400px; overflow-x:scroll; overflow-y:scroll;">
+    <table>
+      <tr *ngFor="let row of multTable; let i = index;" style="white-space:nowrap; padding:0;">
+        <span *ngFor="let num of row; let j = index;" style="width:100px; padding:0;">
+            <td *ngIf="num != 'asdf'" style="width:50px; padding:0;" class="border border-secondary"
+              [ngClass]="getClass(i, j)">
+              {{ num }}
+            </td>
+            <td *ngIf="num == 'asdf'" style="width:50px; padding:0;" class="border border-secondary">
+              &nbsp;
+            </td>
+        </span>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<br />
+<div class="row">
+  <div class="col-6">
+    Current Grade:
+  </div>
+  <div class="col-6">
+    <input type="text" [(ngModel)]="currentGrade" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    Percentage Final is Worth:
+  </div>
+  <div class="col-6">
+    <input type="text" [(ngModel)]="finalPercentage" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    Percentage you want in the Class:
+  </div>
+  <div class="col-6">
+    <input type="text" [(ngModel)]="goal" />
+  </div>
+</div>
+<div style="height:10px;"></div>
+<div class="row">
+  <div class="col-7">
+    &nbsp;
+  </div>
+  <div class="col-5">
+    <button type="button" class="btn" (click)="calculate()">Submit</button>
+  </div>
+</div>
+<p [innerHtml]="label"></p>
+<p [innerHtml]="error" class="w3-text-red"></p>

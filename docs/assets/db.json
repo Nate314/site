@@ -1,0 +1,306 @@
+{
+    "nate314": {
+        "home": {
+            "title": "Nathan Gawith",
+            "subtitle": "my github website",
+            "name": "Home",
+            "link": "index.html",
+            "sections": ["Site Map", "Other Websites"],
+            "otherwebsites": "Check out my friend's websites. They have also have lots of cool software that you can download.<ul><li>Hanavan's <a href=\"http://thekuhnbros.com/hanavan/\">website</a></li><li>Cody's <a href=\"https://codymoose.github.io\">website</a></li><li>Alex's <a href=\"http://alexwebber.org/\">website</a></li></ul>>",
+            "pages": [{
+                    "title": "Applications",
+                    "name": "Applications",
+                    "link": "applications/index.html",
+                    "link2": "index.html",
+                    "subpages": [{
+                            "name": "JavaApplications",
+                            "link": "applications/javaApplications/index.html",
+                            "link2": "javaApplications/index.html",
+                            "link3": "index.html",
+                            "description": "You can download any of these java applications or read about what they are by clicking on the name of each application, or you can view a list of all of the applications and descriptions <a href=\"javaApplications/index.html\">here</a>.",
+                            "apps": [{
+                                    "name": "CircleSpawner",
+                                    "file": "CircleSpawner0.1.jar",
+                                    "link": "applications/javaApplications/index.html#CircleSpawner",
+                                    "link2": "javaApplications/index.html#CircleSpawner",
+                                    "link3": "index.html#CircleSpawner",
+                                    "description": "This is my Circle Spawner prgram written in Java. This is an application that simply spawns a circle with the desired diameter in pixels. Be careful though! The program creates the circle using many many boarderless windows, which could be hard to close without a restart if you type in too large of a number."
+                                },
+                                {
+                                    "name": "Clock",
+                                    "file": "Clock.jar",
+                                    "link": "applications/javaApplications/index.html#Clock",
+                                    "link2": "javaApplications/index.html#Clock",
+                                    "link3": "index.html#Clock",
+                                    "description": "This is a Clock prgram written in Java. This application is pretty self explanitory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital."
+                                },
+                                {
+                                    "name": "DinoGame1920x1080",
+                                    "file": "DinoGame1920x1080.jar",
+                                    "link": "applications/javaApplications/index.html#DinoGame1920x1080",
+                                    "link2": "javaApplications/index.html#DinoGame1920x1080",
+                                    "link3": "index.html#DinoGame1920x1080",
+                                    "description": "This is a game playing bot written in Java. This program jumps over *most* cacti in the Dinosaur Game that can be played in Google Chrome when you don't have an internet connection. Sadly, it only currently works on a screen resolution of 1920x1080 when Chrome is maximized in windows. It doesn't yet duck under the pterodactyls yet, so you will have to take care of that part of the game yourself."
+                                },
+                                {
+                                    "name": "Clock",
+                                    "file": "Clock.jar",
+                                    "link": "applications/javaApplications/index.html#Clock",
+                                    "link2": "javaApplications/index.html#Clock",
+                                    "link3": "index.html#Clock",
+                                    "description": "This is a Clock prgram written in Java. This application is pretty self explanitory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital."
+                                },
+                                {
+                                    "name": "FlappyBird",
+                                    "file": "FlappyBird1.1.zip",
+                                    "link": "applications/javaApplications/index.html#FlappyBird",
+                                    "link2": "javaApplications/index.html#FlappyBird",
+                                    "link3": "index.html#FlappyBird",
+                                    "description": "This is my verion of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right arrow keys: slow down/speed up game<br>"
+                                },
+                                {
+                                    "name": "ImageManipulator",
+                                    "file": "ImageManipulator1.1.jar",
+                                    "link": "applications/javaApplications/index.html#ImageManipulator",
+                                    "link2": "javaApplications/index.html#ImageManipulator",
+                                    "link3": "index.html#ImageManipulator",
+                                    "description": "If for some odd reason you want to do something like this <img src=\"http://puu.sh/qm6ng/6f0c7cf90c.jpg\"><img src=\"http://puu.sh/qm6zY/78e5734985.jpg\"> to an image, this is the program to download."
+                                },
+                                {
+                                    "name": "Minesweeper",
+                                    "file": "Minesweeper1.2.jar",
+                                    "link": "applications/javaApplications/index.html#Minesweeper",
+                                    "link2": "javaApplications/index.html#Minesweeper",
+                                    "link3": "index.html#Minesweeper",
+                                    "description": "This is my verion of Microsoft's Minesweeper written in Java. You can flag a square by right clicking, or attack by left clicking."
+                                },
+                                {
+                                    "name": "NathaNOS",
+                                    "file": "NathaNOS1.1.zip",
+                                    "link": "applications/javaApplications/index.html#NathaNOS",
+                                    "link2": "javaApplications/index.html#NathaNOS",
+                                    "link3": "index.html#NathaNOS",
+                                    "description": "This is my OS written in Java. When you open it, the easiest way to close it is to use the Shut Down button found by clicking on the menu in the bottom right hand corner. This OS was written to run Java applications inside of it. The only application that I have included with this version of NathaNOS is my clock application. To run a java program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should be ready to go!</p> <p>Note: if you want to add one of your own java programs to NathaNOS, then you will have to make the main class extend a JFrame, and you will have to make the constructor of your main class have one parameter that is a Boolean for visibility. You can see an example below:<br><pre><code>package clock;\n\nimport javax.swing.JFrame;\n\npublic class Main extends JFrame\n{\npublic Main(Boolean visibility)\t{\n\t\tthis.setVisible(visibility.booleanValue());\n\t}\n}\n</code></pre>"
+                                },
+                                {
+                                    "name": "RubiksCube2D",
+                                    "file": "RubiksCube2D_3.jar",
+                                    "link": "applications/javaApplications/index.html#RubiksCube2D",
+                                    "link2": "javaApplications/index.html#RubiksCube2D",
+                                    "link3": "index.html#RubiksCube2D",
+                                    "description": "This is a 2D Rubik's Cube written in Java. It isn't yet perfect, but it is pretty close!"
+                                },
+                                {
+                                    "name": "ScreenSaver",
+                                    "file": "ScreenSaver0.1.jar",
+                                    "link": "applications/javaApplications/index.html#ScreenSaver",
+                                    "link2": "javaApplications/index.html#ScreenSaver",
+                                    "link3": "index.html#ScreenSaver",
+                                    "description": "This is a Screen Saver written in Java. It should close if you move your mouse."
+                                },
+                                {
+                                    "name": "SpriteFloatyStars",
+                                    "file": "SpriteFloatyStars1.0.jar",
+                                    "link": "applications/javaApplications/index.html#SpriteFloatyStars",
+                                    "link2": "javaApplications/index.html#SpriteFloatyStars",
+                                    "link3": "index.html#SpriteFloatyStars",
+                                    "description": "This is a background program written in Java. Check out each of the cool modes. My personal favorite is Mode 3."
+                                },
+                                {
+                                    "name": "StockChecker",
+                                    "file": "StockChecker1.2.2.zip",
+                                    "link": "applications/javaApplications/index.html#StockChecker",
+                                    "link2": "javaApplications/index.html#StockChecker",
+                                    "link3": "index.html#StockChecker",
+                                    "description": "This is my Stock Checker written in Java. You can add stocks by pressing the \"Add Stock\" button, or subtract rows by pressing the \"Delete Stock\" button. When pressing refresh, the application will check the price of all of the stocks and update the prices on the right. If you want the program to come to start up with different stock by default, edit the myStocks.txt to look something like this: <code>crm,lmt,tsn,nflx,swk</code>"
+                                },
+                                {
+                                    "name": "SynthesizerKeyboard",
+                                    "file": "SynthesizerKeyboard.jar",
+                                    "link": "applications/javaApplications/index.html#SynthesizerKeyboard",
+                                    "link2": "javaApplications/index.html#SynthesizerKeyboard",
+                                    "link3": "index.html#SynthesizerKeyboard",
+                                    "description": "This is a Synthesizer/Keyboard written in Java. Other than programming, I also enjoy playing the piano. You can play this keyboard by using the bottom row of your keyboard (zxcvbnm,) for the white keys, and (sdghj) for the black keys. The left and right arrow keys adjust the octave that you are playing, and the up and down arrow keys change the instrument. At this point, the only way to close the keyboard if you accidentally click on a key is by killing the process in TaskManager. Sorry for the bug!"
+                                },
+                                {
+                                    "name": "UltimateTicTacToe",
+                                    "file": "UltimateTicTacToe1.1.jar",
+                                    "link": "applications/javaApplications/index.html#UltimateTicTacToe",
+                                    "link2": "javaApplications/index.html#UltimateTicTacToe",
+                                    "link3": "index.html#UltimateTicTacToe",
+                                    "description": "This is an UltimateTicTacToe game written in Java. If you don't know how to play, you can check out the rules <a href=\"https://www.youtube.com/watch?v=37PC0bGMiTI\">here</a>"
+                                },
+                                {
+                                    "name": "Windows",
+                                    "file": "Windows.jar",
+                                    "link": "applications/javaApplications/index.html#Windows",
+                                    "link2": "javaApplications/index.html#Windows",
+                                    "link3": "index.html#Windows",
+                                    "description": "This is a Windows bot written in Java. All it does is opens the start menu for you when you launch the application."
+                                },
+                                {
+                                    "name": "WindowsE",
+                                    "file": "WindowsE.jar",
+                                    "link": "applications/javaApplications/index.html#WindowsE",
+                                    "link2": "javaApplications/index.html#WindowsE",
+                                    "link3": "index.html#WindowsE",
+                                    "description": "This is great application that you can use to troll your friends. All it does is opens however many file explorer windows as you want. All you have to do is type in the number of desired file explorer windows to create, and then press the \"DO IT!!!\" button. Warning: this application has crashed at least one computer in the past."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "WebApplications",
+                            "link": "applications/webApplications/index.html",
+                            "link2": "webApplications/index.html",
+                            "link3": "index.html",
+                            "description": "You can download any of these web applications or read about what they are by clicking on the name of each application, or you can view a list of all of the applications and descriptions <a href=\"webApplications/index.html\">here</a>.",
+                            "apps": [{
+                                    "name": "BettingCalc",
+                                    "file": "bettingCalc.html",
+                                    "link": "applications/webApplications/index.html#BettingCalc",
+                                    "link2": "webApplications/index.html#BettingCalc",
+                                    "link3": "index.html#BettingCalc",
+                                    "description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math."
+                                },
+                                {
+                                    "name": "ColorFlux",
+                                    "file": "colorFlux.html",
+                                    "link": "applications/webApplications/index.html#ColorFlux",
+                                    "link2": "webApplications/index.html#ColorFlux",
+                                    "link3": "index.html#ColorFlux",
+                                    "description": "Color Flux is an application that you could possibly use as a live background written in javascript."
+                                },
+                                {
+                                    "name": "FinalGradeCalc",
+                                    "file": "finalGradeCalc.html",
+                                    "link": "applications/webApplications/index.html#FinalGradeCalc",
+                                    "link2": "webApplications/index.html#FinalGradeCalc",
+                                    "link3": "index.html#FinalGradeCalc",
+                                    "description": "Final Grade Caclculator is a useful tool for when you are in a crunch and want to prioritize study time."
+                                },
+                                {
+                                    "name": "FlappyFinch",
+                                    "file": "flappyFinch.html",
+                                    "link": "applications/webApplications/index.html#FlappyFinch",
+                                    "link2": "webApplications/index.html#FlappyFinch",
+                                    "link3": "index.html#FlappyFinch",
+                                    "description": "Flappy Finch is a spin off of Flappy Bird created using javascipt. Click to flap. <b>Note: </b> Flappy Finch is currently in beta."
+                                },
+                                {
+                                    "name": "FloatyStars",
+                                    "file": "floatyStars.html",
+                                    "link": "applications/webApplications/index.html#FloatyStars",
+                                    "link2": "webApplications/index.html#FloatyStars",
+                                    "link3": "index.html#FloatyStars",
+                                    "description": "Floaty Stars is a simple application that I built to learn how to do 2D animations in javascript."
+                                },
+                                {
+                                    "name": "GroupCreator",
+                                    "file": "groupCreator.html",
+                                    "link": "applications/webApplications/index.html#GroupCreator",
+                                    "link2": "webApplications/index.html#GroupCreator",
+                                    "link3": "index.html#GroupCreator",
+                                    "description": "Group Creator is a great application to use if you want to create random groups of people and want to do it in an efficient way using pure computer randomness."
+                                },
+                                {
+                                    "name": "HTMLSandbox",
+                                    "file": "htmlSandbox.html",
+                                    "link": "applications/webApplications/index.html#HTMLSandbox",
+                                    "link2": "webApplications/index.html#HTMLSandbox",
+                                    "link3": "index.html#HTMLSandbox",
+                                    "description": "HTML Sandbox is a great application to use if you want to learn how to code in HTML but don't have a way of editing code on your computer."
+                                },
+                                {
+                                    "name": "MultiplicaionTable",
+                                    "file": "multiplicationTable.html",
+                                    "link": "applications/webApplications/index.html#MultiplicaionTable",
+                                    "link2": "webApplications/index.html#MultiplicaionTable",
+                                    "link3": "index.html#MultiplicaionTable",
+                                    "description": "Multiplication Table is pretty much self explanitory. This is a multiplication table that you can use to check up on your multiplication facts if needed."
+                                },
+                                {
+                                    "name": "Say2",
+                                    "file": "say2.html",
+                                    "link": "applications/webApplications/index.html#Say2",
+                                    "link2": "webApplications/index.html#Say2",
+                                    "link3": "index.html#Say2",
+                                    "description": "Say2 is a simple program that takes a number as input and outputs the english text for that number. For example: if you type in \"123\", the program will output \"one hundred twenty three\". Say2 was originally a challenge that many of the programmers on my robotics team completed as part of java training. Say2 is the first web application that I have written in JavaScript, which even though JavaScript sounds like Java, the two languages are almost just as similar to each other as a car is to carpet."
+                                }
+                            ]
+                        },
+                        {
+                            "name": "AndroidApplications",
+                            "link": "applications/androidApplications/index.html",
+                            "link2": "androidApplications/index.html",
+                            "link3": "index.html",
+                            "description": "You can download any of these android applications or read about what they are by clicking on the name of each application, or you can view a list of all of the applications and descriptions <a href=\"androidApplications/index.html\">here</a>.",
+                            "apps": [{
+                                "name": "LiveWallpaper",
+                                "file": "LiveWallpaper.apk",
+                                "link": "applications/androidApplications/index.html#LiveWallpaper",
+                                "link2": "androidApplications/index.html#LiveWallpaper",
+                                "link3": "index.html#LiveWallpaper",
+                                "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azmuth). You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet. Currently, this only works on android phones :(."
+                            }]
+                        }
+                    ]
+                },
+                {
+                    "name": "OtherPages",
+                    "link": "otherpages/index.html",
+                    "link2": "index.html",
+                    "subpages": [{
+                        "name": "FunnyPages",
+                        "link": "otherpages/funnypages.html",
+                        "link2": "funnypages.html",
+                        "description": "Here you can see funny and interesting pictures.",
+                        "pictures": [{
+                                "src": "http://puu.sh/oJKfM/c274f15d90.png",
+                                "alt": "Alt_Code_List"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtgP/3f371eed01.jpg",
+                                "alt": "Really Amazon? You bibble packed my bubble wrap"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtii/849b959a1d.jpg",
+                                "alt": "Mythical Creatures"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtke/385d02c07a.jpg",
+                                "alt": "Airplane Propeller"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtmF/653a598269.jpgg",
+                                "alt": "Computer Science"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtnz/a0dc28c084.jpg",
+                                "alt": "Sudo make me a sandwich"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtpK/b303f83b37.jpg",
+                                "alt": "'High Def' 1080p"
+                            },
+                            {
+                                "src": "http://puu.sh/oVtqW/49561cfb6e.jpg",
+                                "alt": "Skype close"
+                            },
+                            {
+                                "src": "http://puu.sh/oVttw/d82705ea63.jpg",
+                                "alt": "When I use IE"
+                            }
+                        ],
+                        "extra": "Don't click <a href=\"redirect/index.html\">here</a>! You will be thrown into a never ending loop of redirects!"
+                    }]
+                },
+                {
+                    "name": "How I Created This Website",
+                    "link": "otherpages/howThisWasMade.html",
+                    "link2": "howThisWasMade.html",
+                    "description": "Here you learn how I created this website."
+                }
+            ]
+        }
+    }
+}

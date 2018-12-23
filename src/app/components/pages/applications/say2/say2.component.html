@@ -1,0 +1,11 @@
+<div class="container" style="margin:0;">
+  <div class="row">
+    Please enter a number between -999,999,999,999,999 and 999,999,999,999,999:
+  </div>
+  <div class="row">
+    <input type="number" [(ngModel)]="input" (change)="calculate()" (keyup)="calculate()">
+  </div>
+  <div class="row">
+      {{ numberLabel }}
+  </div>
+</div>

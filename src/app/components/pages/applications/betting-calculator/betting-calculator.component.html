@@ -1,0 +1,60 @@
+<br />
+<div class="row">
+  <div class="col-2">
+    There&nbsp;are
+  </div>
+  <div class="col-5">
+    <input type="number" [(ngModel)]="players" style="width:100%;"
+      (keyup)="setUpTable()" (change)="setUpTable()" value="2" />
+  </div>
+  <div class="col-4">
+    <input type="text" [(ngModel)]="playerName" style="width:100%;"
+      (keyup)="setUpTable()" (change)="setUpTable()" value="Horse" />
+  </div>
+  <div class="col-1">
+    s
+  </div>
+</div>
+<div class="row">
+  <div class="col-2">
+    There&nbsp;are
+  </div>
+  <div class="col-5">
+    <input type="number" [(ngModel)]="humans" style="width:100%;"
+      (keyup)="setUpTable()" (change)="setUpTable()" value="2" />
+  </div>
+  <div class="col-5">
+    Humans
+  </div>
+</div>
+<br />
+<!-- Top row (Horse Labels) -->
+<div class="row">
+  <div class="col-2">
+    &nbsp;
+  </div>
+  <div class="col-2" *ngFor="let i of playerIndecies">
+    {{ playerName + "&nbsp;" + i }}
+  </div>
+</div>
+<!-- Middle rows (Human Labels and textboxes) -->
+<div class="row border border-secondary" *ngFor="let i of humanIndecies">
+  <div class="col-2">
+    {{ "Human&nbsp;" + i }}
+  </div>
+  <div class="col-2" *ngFor="let j of playerIndecies">
+    <input type="number" style="width:100%;" [(ngModel)]="grid[i - 1][j - 1]"/>
+  </div>
+</div>
+<!-- Bottom row (Buttons) -->
+<div class="row">
+  <div class="col-2">
+    &nbsp;
+  </div>
+  <div class="col-2" *ngFor="let i of playerIndecies">
+    <button class="btn" (click)="playerWon(i)">
+      {{ playerName + "&nbsp;" + i + "&nbsp;" + "won" }}
+    </button>
+  </div>
+</div>
+<p [innerHtml]="output"></p>
