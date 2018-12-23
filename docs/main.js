@@ -656,7 +656,7 @@ var ApplicationsComponent = /** @class */ (function () {
                 // set url
                 var iFrameURL = app.file;
                 if (!iFrameURL.includes("https://nate314.github.io/"))
-                    iFrameURL = "https://nate314.github.io/" + app.file;
+                    iFrameURL = "https://nate314.github.io/docs/" + app.file;
                 // // send to app
                 // if (Helper.equalsNull(this.webApp.name))
                 //   Helper.navigateTo(this.router, this.location, ["/applications"],
