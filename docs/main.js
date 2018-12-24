@@ -2293,7 +2293,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var routes = [
-    { path: "/", redirectTo: "/home", pathMatch: "full" },
+    { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "home", component: _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
     { path: "videos", component: _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_2__["VideosComponent"] },
     { path: "applications", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ApplicationsComponent"] },
