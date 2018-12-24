@@ -630,8 +630,7 @@ var ApplicationsComponent = /** @class */ (function () {
                 // set url
                 var iFrameURL = app.file;
                 if (!iFrameURL.includes("https://nate314.github.io/"))
-                    iFrameURL = "http://localhost:4200/" + app.file;
-                // iFrameURL = "https://nate314.github.io/site/" + app.file;
+                    iFrameURL = "https://nate314.github.io/site/" + app.file;
                 // // send to app
                 // if (Helper.equalsNull(this.webApp.name))
                 //   Helper.navigateTo(this.router, this.location, ["/applications"],
