@@ -15,28 +15,7 @@ export class FooterComponent implements OnInit {
   }
 
   url(url?: string): string {
-    if (url === undefined) url = this.router.url;
-    if (url.includes("?")) url = url.split("?")[0];
-    if (url.includes("#")) url = url.split("#")[0];
-    else url = url;
-    if (this.router.url.includes("?")) {
-      return url = url + this.subpage();
-    }
-    return url;
+    return this.router.url;
   }
 
-  subpage() {
-    const url = this.router.url;
-    let result = "";
-    if (url.includes("subpage=")) {
-      const subpage = url.split("subpage=")[1].split("&")[0];
-      if (subpage.toUpperCase().includes("APPLICATIONS"))
-        result += `/${subpage.toUpperCase().replace("APPLICATIONS", "").toLowerCase()}`;
-      else result += `/${subpage.toLowerCase()}`;
-      if (url.includes("appName=")) {
-        result += `/${url.split("appName=")[1].split("&")[0].toLowerCase()}`;
-      }
-    }
-    return result;
-  }
 }

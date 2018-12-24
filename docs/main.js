@@ -190,17 +190,17 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(router, location) {
         this.router = router;
         this.location = location;
-        this.leavePage = false;
         this.webapplication = false;
-        this.history = [];
-        this.sent = false;
     }
     AppComponent.prototype.ngOnInit = function () {
-        /*
-        this.router.events.subscribe(event => {
-          if (event instanceof NavigationEnd) console.log(event);
+        var _this = this;
+        this.router.events.subscribe(function (event) {
+            if (event instanceof _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
+                if (event.url.toLocaleLowerCase().includes("webapplications")
+                    && !event.url.toLocaleLowerCase().includes("nathangawithwebsite"))
+                    _this.webapplication = true;
+            }
         });
-        */
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -272,33 +272,7 @@ var FooterComponent = /** @class */ (function () {
     FooterComponent.prototype.ngOnInit = function () {
     };
     FooterComponent.prototype.url = function (url) {
-        if (url === undefined)
-            url = this.router.url;
-        if (url.includes("?"))
-            url = url.split("?")[0];
-        if (url.includes("#"))
-            url = url.split("#")[0];
-        else
-            url = url;
-        if (this.router.url.includes("?")) {
-            return url = url + this.subpage();
-        }
-        return url;
-    };
-    FooterComponent.prototype.subpage = function () {
-        var url = this.router.url;
-        var result = "";
-        if (url.includes("subpage=")) {
-            var subpage = url.split("subpage=")[1].split("&")[0];
-            if (subpage.toUpperCase().includes("APPLICATIONS"))
-                result += "/" + subpage.toUpperCase().replace("APPLICATIONS", "").toLowerCase();
-            else
-                result += "/" + subpage.toLowerCase();
-            if (url.includes("appName=")) {
-                result += "/" + url.split("appName=")[1].split("&")[0].toLowerCase();
-            }
-        }
-        return result;
+        return this.router.url;
     };
     FooterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -452,7 +426,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loaded\">\n    404 NOT FOUND\n</div>\n"
+module.exports = "<div *ngIf=\"loaded\">\n  ¯\\_(ツ)_/¯ NOT FOUND\n</div>\n"
 
 /***/ }),
 
@@ -656,7 +630,8 @@ var ApplicationsComponent = /** @class */ (function () {
                 // set url
                 var iFrameURL = app.file;
                 if (!iFrameURL.includes("https://nate314.github.io/"))
-                    iFrameURL = "https://nate314.github.io/docs/" + app.file;
+                    iFrameURL = "http://localhost:4200/" + app.file;
+                // iFrameURL = "https://nate314.github.io/site/" + app.file;
                 // // send to app
                 // if (Helper.equalsNull(this.webApp.name))
                 //   Helper.navigateTo(this.router, this.location, ["/applications"],
