@@ -211,7 +211,12 @@ const db = {
                                     + " my robotics team completed as part of java training. Say2 is the first web application"
                                     + " that I have written in JavaScript, which even though JavaScript sounds like Java, the"
                                     + " two languages are almost just as similar to each other as a car is to carpet."
-                                }
+                                },
+                                {
+                                    name: "TypingTest",
+                                    file: "webapplications/typingtest",
+                                    description: "Test how many words per minute you can type"
+                                },
                             ]
                         },
                         {

@@ -1,0 +1,23 @@
+
+<p *ngIf="paragraph === ''">
+  Paste Text to use for typing test below:
+  <textarea [(ngModel)]="customparagraph" style="width:100%;" rows="10" [placeholder]="dummyparagraph"></textarea>
+  <br />
+  <button class="btn btn-black" (click)="submit()">Submit</button>
+</p>
+
+<div *ngIf="paragraph !== ''">
+  <p>
+    <span style="color:green;"><b>{{typedText}}</b></span>
+    <span style="color:red;"><u>{{wrongtypedText}}</u></span>
+    <span><u>{{cursorText}}</u></span>
+    <span>{{untypedText}}</span>
+  </p>
+  <textarea [disabled]="disableTextBox" onpaste="return false;" style="width:100%;" rows="10" [(ngModel)]="typingparagraph" id="asdf" (keyup)="typingparagraphchanged()"></textarea>
+  <p>{{timerMinutes}}:{{pad(timerSeconds)}}</p>
+  <p *ngIf="outputText !== ''">
+    {{outputText}}
+    <br />
+    <button class="btn btn-black" (click)="restart()">Restart</button>
+  </p>
+</div>

@@ -10,6 +10,13 @@ export class Constants {
 
 export class Helper {
 
+    public static replaceAll(str: string, replace: string, replacement: string): string {
+      if (str.indexOf(replace) !== -1) {
+        return this.replaceAll(str.replace(replace, replacement), replace, replacement);
+      }
+      return str;
+    }
+
     public static equalsNull(obj) {
         if (obj === null || obj === undefined || obj === "") return true;
         else return false;

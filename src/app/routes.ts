@@ -5,7 +5,7 @@ import { VideosComponent } from "./components/pages/videos/videos.component";
 import { BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent,
   FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
-  Say2Component, ApplicationsComponent } from "./components/pages/applications/index";
+  Say2Component, TypingTestComponent, ApplicationsComponent } from "./components/pages/applications/index";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -27,5 +27,6 @@ export const routes: Routes = [
   { path: "webapplications/multiplicationtable", component: MultiplicationTableComponent },
   { path: "webapplications/nathangawithwebsite", component: HomeComponent },
   { path: "webapplications/say2", component: Say2Component },
+  { path: "webapplications/typingtest", component: TypingTestComponent },
   { path: "**", component: NotFoundComponent }
 ];

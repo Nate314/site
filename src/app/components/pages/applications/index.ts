@@ -8,4 +8,5 @@ export * from "./group-creator/group-creator.component";
 export * from "./html-sandbox/html-sandbox.component";
 export * from "./multiplication-table/multiplication-table.component";
 export * from "./say2/say2.component";
+export * from "./typing-test/typing-test.component";
 export * from "./applications.component";

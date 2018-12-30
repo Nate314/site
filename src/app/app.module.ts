@@ -12,6 +12,7 @@ import { BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorCom
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
   Say2Component, ApplicationsComponent } from "./components/pages/applications/index";
 import { RouterModule } from "@angular/router";
+import { TypingTestComponent } from "./components/pages/applications/typing-test/typing-test.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RouterModule } from "@angular/router";
     ColorFluxComponent,
     FlappyFinchComponent,
     FloatyStarsComponent,
-    GradeCalculatorComponent
+    GradeCalculatorComponent,
+    TypingTestComponent
   ],
   imports: [
     BrowserModule,
