@@ -81,12 +81,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/application-structure/index */ "./src/app/components/application-structure/index.ts");
 /* harmony import */ var _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/applications/index */ "./src/app/components/pages/applications/index.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/applications/typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -119,7 +121,8 @@ var AppModule = /** @class */ (function () {
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["ColorFluxComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FlappyFinchComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FloatyStarsComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GradeCalculatorComponent"]
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GradeCalculatorComponent"],
+                _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -631,6 +634,7 @@ var ApplicationsComponent = /** @class */ (function () {
                 var iFrameURL = app.file;
                 if (!iFrameURL.includes("https://nate314.github.io/"))
                     iFrameURL = "https://nate314.github.io/site/" + app.file;
+                // iFrameURL = "http://localhost:4200/" + app.file;
                 // // send to app
                 // if (Helper.equalsNull(this.webApp.name))
                 //   Helper.navigateTo(this.router, this.location, ["/applications"],
@@ -1375,7 +1379,7 @@ var HtmlSandboxComponent = /** @class */ (function () {
 /*!********************************************************!*\
   !*** ./src/app/components/pages/applications/index.ts ***!
   \********************************************************/
-/*! exports provided: BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent, FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, ApplicationsComponent */
+/*! exports provided: BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent, FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1410,8 +1414,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_9__["Say2Component"]; });
 
-/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_10__["ApplicationsComponent"]; });
+/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"]; });
+
+/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_11__["ApplicationsComponent"]; });
+
 
 
 
@@ -1687,6 +1695,166 @@ var Say2Component = /** @class */ (function () {
         __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _node_modules_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], Say2Component);
     return Say2Component;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/typing-test/typing-test.component.css":
+/*!*************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/typing-test/typing-test.component.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/typing-test/typing-test.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/typing-test/typing-test.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n<p *ngIf=\"paragraph === ''\">\n  Paste Text to use for typing test below:\n  <textarea [(ngModel)]=\"customparagraph\" style=\"width:100%;\" rows=\"10\" [placeholder]=\"dummyparagraph\"></textarea>\n  <br />\n  <button class=\"btn btn-black\" (click)=\"submit()\">Submit</button>\n</p>\n\n<div *ngIf=\"paragraph !== ''\">\n  <p>\n    <span style=\"color:green;\"><b>{{typedText}}</b></span>\n    <span style=\"color:red;\"><u>{{wrongtypedText}}</u></span>\n    <span><u>{{cursorText}}</u></span>\n    <span>{{untypedText}}</span>\n  </p>\n  <textarea [disabled]=\"disableTextBox\" onpaste=\"return false;\" style=\"width:100%;\" rows=\"10\" [(ngModel)]=\"typingparagraph\" id=\"asdf\" (keyup)=\"typingparagraphchanged()\"></textarea>\n  <p>{{timerMinutes}}:{{pad(timerSeconds)}}</p>\n  <p *ngIf=\"outputText !== ''\">\n    {{outputText}}\n    <br />\n    <button class=\"btn btn-black\" (click)=\"restart()\">Restart</button>\n  </p>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/typing-test/typing-test.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/typing-test/typing-test.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: TypingTestComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return TypingTestComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modules/Helper */ "./src/app/modules/Helper.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var TypingTestComponent = /** @class */ (function () {
+    function TypingTestComponent() {
+        this.dummyparagraph = "Lorem ipsum dolor sit amet, consectetur adipiscing"
+            + " elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            + " Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi"
+            + " ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit"
+            + " in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur"
+            + " sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt"
+            + " mollit anim id est laborum.";
+        this.customparagraph = "";
+        this.paragraph = "";
+        this.timerMinutes = 1;
+        this.timerSeconds = 0;
+        this.typingparagraph = "";
+        this.disableTextBox = false;
+        this.outputText = "";
+        this.timerStarted = false;
+        this.typedText = "";
+        this.wrongtypedText = "";
+        this.cursorText = "";
+        this.untypedText = "";
+    }
+    TypingTestComponent.prototype.ngOnInit = function () {
+    };
+    TypingTestComponent.prototype.replaceSpaces = function (str) {
+        var typescript_non_breaking_space = String.fromCharCode(160);
+        return src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(str, "  ", " ");
+    };
+    TypingTestComponent.prototype.clockTick = function () {
+        if (this.timerMinutes > 0 && this.timerSeconds === 0) {
+            this.timerMinutes--;
+            this.timerSeconds = 59;
+        }
+        else if (this.timerSeconds > 0) {
+            this.timerSeconds--;
+        }
+        if (this.timerMinutes === 0 && this.timerSeconds === 0) {
+            this.disableTextBox = true;
+            var wpm = this.typedText.split(" ").length;
+            if (this.cursorText !== " ")
+                wpm -= 1;
+            this.outputText = "You typed at " + wpm + " words per minute";
+        }
+    };
+    TypingTestComponent.prototype.pad = function (num) {
+        if (num < 10) {
+            return "0" + num;
+        }
+        else
+            return "" + num;
+    };
+    TypingTestComponent.prototype.correctPart = function () {
+        var temp_typingparagraph = "";
+        var temp_typedText = "";
+        var temp_wrongtypedText = "";
+        var wrongTextHit = false;
+        this.typingparagraph = this.replaceSpaces(this.typingparagraph);
+        for (var i = 0; i < this.typingparagraph.length; i++) {
+            temp_typingparagraph += this.typingparagraph[i];
+            if (!wrongTextHit && this.paragraph.startsWith(temp_typedText + this.typingparagraph[i])) {
+                temp_typedText += this.typingparagraph[i];
+            }
+            else {
+                wrongTextHit = true;
+                temp_wrongtypedText += this.typingparagraph[i];
+            }
+        }
+        this.typedText = temp_typedText;
+        this.wrongtypedText = temp_wrongtypedText;
+        this.untypedText = this.paragraph.substr(this.typedText.length + 1, this.paragraph.length);
+        this.cursorText = this.paragraph[this.typedText.length];
+    };
+    TypingTestComponent.prototype.typingparagraphchanged = function () {
+        var _this = this;
+        if (!this.timerStarted) {
+            this.timerStarted = true;
+            setInterval(function () {
+                if (_this.timerStarted) {
+                    _this.clockTick();
+                }
+            }, 150);
+        }
+        this.correctPart();
+    };
+    TypingTestComponent.prototype.submit = function () {
+        this.paragraph = this.customparagraph + " ";
+        this.untypedText = this.paragraph;
+    };
+    TypingTestComponent.prototype.restart = function () {
+        this.typingparagraph = "";
+        this.timerMinutes = 1;
+        this.timerSeconds = 0;
+        this.outputText = "";
+        this.cursorText = "";
+        this.typedText = "";
+        this.wrongtypedText = "";
+        this.untypedText = this.paragraph;
+        this.timerStarted = false;
+        this.disableTextBox = false;
+    };
+    TypingTestComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-typing-test",
+            template: __webpack_require__(/*! ./typing-test.component.html */ "./src/app/components/pages/applications/typing-test/typing-test.component.html"),
+            styles: [__webpack_require__(/*! ./typing-test.component.css */ "./src/app/components/pages/applications/typing-test/typing-test.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TypingTestComponent);
+    return TypingTestComponent;
 }());
 
 
@@ -2099,7 +2267,12 @@ var db = {
                                         + " my robotics team completed as part of java training. Say2 is the first web application"
                                         + " that I have written in JavaScript, which even though JavaScript sounds like Java, the"
                                         + " two languages are almost just as similar to each other as a car is to carpet."
-                                }
+                                },
+                                {
+                                    name: "TypingTest",
+                                    file: "webapplications/typingtest",
+                                    description: "Test how many words per minute you can type"
+                                },
                             ]
                         },
                         {
@@ -2217,6 +2390,12 @@ var Constants = /** @class */ (function () {
 var Helper = /** @class */ (function () {
     function Helper() {
     }
+    Helper.replaceAll = function (str, replace, replacement) {
+        if (str.indexOf(replace) !== -1) {
+            return this.replaceAll(str.replace(replace, replacement), replace, replacement);
+        }
+        return str;
+    };
     Helper.equalsNull = function (obj) {
         if (obj === null || obj === undefined || obj === "")
             return true;
@@ -2312,6 +2491,7 @@ var routes = [
     { path: "webapplications/multiplicationtable", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["MultiplicationTableComponent"] },
     { path: "webapplications/nathangawithwebsite", component: _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"] },
     { path: "webapplications/say2", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["Say2Component"] },
+    { path: "webapplications/typingtest", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["TypingTestComponent"] },
     { path: "**", component: _components_application_structure_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"] }
 ];
 
