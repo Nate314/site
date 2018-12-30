@@ -1826,7 +1826,7 @@ var TypingTestComponent = /** @class */ (function () {
                 if (_this.timerStarted) {
                     _this.clockTick();
                 }
-            }, 150);
+            }, 1000);
         }
         this.correctPart();
     };
