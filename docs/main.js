@@ -122,7 +122,8 @@ var AppModule = /** @class */ (function () {
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FlappyFinchComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FloatyStarsComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GradeCalculatorComponent"],
-                _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"]
+                _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["DtoConvertComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -632,9 +633,12 @@ var ApplicationsComponent = /** @class */ (function () {
             if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(app)) {
                 // set url
                 var iFrameURL = app.file;
-                if (!iFrameURL.includes("https://nate314.github.io/"))
-                    iFrameURL = "https://nate314.github.io/site/" + app.file;
-                // iFrameURL = "http://localhost:4200/" + app.file;
+                if (!iFrameURL.includes("https://nate314.github.io/")) {
+                    if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].dev)
+                        iFrameURL = "https://nate314.github.io/site/" + app.file;
+                    else
+                        iFrameURL = "http://localhost:4200/" + app.file;
+                }
                 // // send to app
                 // if (Helper.equalsNull(this.webApp.name))
                 //   Helper.navigateTo(this.router, this.location, ["/applications"],
@@ -861,6 +865,126 @@ var ColorFluxComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], ColorFluxComponent);
     return ColorFluxComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/dto-convert/dto-convert.component.css":
+/*!*************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/dto-convert/dto-convert.component.css ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/dto-convert/dto-convert.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/dto-convert/dto-convert.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n  <div class=\"row\">\n    <div class=\"col-1\">\n        Please enter text in the format shown in the placeholder text.\n    </div>\n    <div class=\"col-5\">\n      <div class=\"row\">C#</div>\n      <div class=\"row\">\n        <textarea [placeholder]=\"dto_csharp\" [(ngModel)]=\"csharp_text\"\n          style=\"width: 100%\" rows=\"15\"></textarea>\n      </div>\n    </div>\n    <div class=\"col-1\">\n      <div class=\"row\">&nbsp;</div>\n      <div class=\"row\">\n        <button class=\"btn btn-white\" style=\"width:100%;\"\n          (click)=\"csharp_to_typescript()\">\n          &gt;\n        </button>\n      </div>\n      <br />\n      <div class=\"row\">\n        <button class=\"btn btn-white\" style=\"width:100%;\"\n          (click)=\"typescript_to_csharp()\">\n          &lt;\n        </button>\n      </div>\n    </div>\n    <div class=\"col-5\">\n      <div class=\"row\">Typescript</div>\n      <div class=\"row\">\n        <textarea [placeholder]=\"dto_typescript\" [(ngModel)]=\"typescript_text\"\n          style=\"width: 100%\" rows=\"15\"></textarea>\n      </div>\n    </div>\n  </div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/dto-convert/dto-convert.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: DtoConvertComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return DtoConvertComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modules/Helper */ "./src/app/modules/Helper.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DtoConvertComponent = /** @class */ (function () {
+    function DtoConvertComponent() {
+        this.dto_csharp = "class User {\n"
+            + "\tpublic string username { get; set; }\n"
+            + "\tpublic string password { get; set; }\n"
+            + "}";
+        this.dto_typescript = "class User {\n"
+            + "\tusername: string;\n"
+            + "\tpassword: string;\n"
+            + "}";
+    }
+    DtoConvertComponent.prototype.ngOnInit = function () {
+    };
+    DtoConvertComponent.prototype.csharp_to_typescript = function () {
+        var result = this.csharp_text;
+        result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
+        var getset_list = ["{get;set;}", "{ get;set;}", "{ get; set;}", "{ get; set; }",
+            "{get;set; }", "{get; set; }", "{get; set;}"];
+        for (var _i = 0, getset_list_1 = getset_list; _i < getset_list_1.length; _i++) {
+            var getset = getset_list_1[_i];
+            result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, getset, "");
+        }
+        var result_lines = result.split("\n");
+        result = "";
+        for (var _a = 0, result_lines_1 = result_lines; _a < result_lines_1.length; _a++) {
+            var line = result_lines_1[_a];
+            if (!src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
+                if (line.indexOf("{") !== -1 || line.indexOf("}") !== -1) {
+                    result += line + "\n";
+                }
+                else {
+                    var variable = line.split(" ")[2];
+                    var type = line.split(" ")[1];
+                    result += "\t" + variable + ": " + type + ";\n";
+                }
+            }
+        }
+        this.typescript_text = result;
+    };
+    DtoConvertComponent.prototype.typescript_to_csharp = function () {
+        var result = this.typescript_text;
+        result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
+        var result_lines = result.split("\n");
+        result = "";
+        for (var _i = 0, result_lines_2 = result_lines; _i < result_lines_2.length; _i++) {
+            var line = result_lines_2[_i];
+            if (!src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
+                if (line.indexOf("{") !== -1 || line.indexOf("}") !== -1) {
+                    result += line + "\n";
+                }
+                else {
+                    var scope = "public";
+                    var type = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, " ", "").split(":")[1].split(";")[0];
+                    var variable = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, "\t", "").split(":")[0];
+                    result += "\t" + scope + " " + type + " " + variable + " { get; set; }\n";
+                }
+            }
+        }
+        this.csharp_text = result;
+    };
+    DtoConvertComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-dto-convert",
+            template: __webpack_require__(/*! ./dto-convert.component.html */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.html"),
+            styles: [__webpack_require__(/*! ./dto-convert.component.css */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DtoConvertComponent);
+    return DtoConvertComponent;
 }());
 
 
@@ -1379,7 +1503,7 @@ var HtmlSandboxComponent = /** @class */ (function () {
 /*!********************************************************!*\
   !*** ./src/app/components/pages/applications/index.ts ***!
   \********************************************************/
-/*! exports provided: BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent, FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, ApplicationsComponent */
+/*! exports provided: BettingCalculatorComponent, ColorFluxComponent, DtoConvertComponent, FinalGradeCalculatorComponent, FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1390,35 +1514,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _color_flux_color_flux_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color-flux/color-flux.component */ "./src/app/components/pages/applications/color-flux/color-flux.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorFluxComponent", function() { return _color_flux_color_flux_component__WEBPACK_IMPORTED_MODULE_1__["ColorFluxComponent"]; });
 
-/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__["FinalGradeCalculatorComponent"]; });
+/* harmony import */ var _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dto-convert/dto-convert.component */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__["DtoConvertComponent"]; });
 
-/* harmony import */ var _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./flappy-finch/flappy-finch.component */ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FlappyFinchComponent", function() { return _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_3__["FlappyFinchComponent"]; });
+/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"]; });
 
-/* harmony import */ var _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./floaty-stars/floaty-stars.component */ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FloatyStarsComponent", function() { return _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_4__["FloatyStarsComponent"]; });
+/* harmony import */ var _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./flappy-finch/flappy-finch.component */ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FlappyFinchComponent", function() { return _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_4__["FlappyFinchComponent"]; });
 
-/* harmony import */ var _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./grade-calculator/grade-calculator.component */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_5__["GradeCalculatorComponent"]; });
+/* harmony import */ var _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./floaty-stars/floaty-stars.component */ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FloatyStarsComponent", function() { return _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_5__["FloatyStarsComponent"]; });
 
-/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_6__["GroupCreatorComponent"]; });
+/* harmony import */ var _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./grade-calculator/grade-calculator.component */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_6__["GradeCalculatorComponent"]; });
 
-/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_7__["HtmlSandboxComponent"]; });
+/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_7__["GroupCreatorComponent"]; });
 
-/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_8__["MultiplicationTableComponent"]; });
+/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_8__["HtmlSandboxComponent"]; });
 
-/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_9__["Say2Component"]; });
+/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_9__["MultiplicationTableComponent"]; });
 
-/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"]; });
+/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_10__["Say2Component"]; });
 
-/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_11__["ApplicationsComponent"]; });
+/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_11__["TypingTestComponent"]; });
+
+/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_12__["ApplicationsComponent"]; });
+
 
 
 
@@ -1826,7 +1954,7 @@ var TypingTestComponent = /** @class */ (function () {
                 if (_this.timerStarted) {
                     _this.clockTick();
                 }
-            }, 1000);
+            }, 150);
         }
         this.correctPart();
     };
@@ -2207,6 +2335,11 @@ var db = {
                                         + " written in javascript. It just pulses between different colors continuously."
                                 },
                                 {
+                                    name: "DtoConvert",
+                                    file: "webapplications/dtoconvert",
+                                    description: "Converts dtos from C# to typescript and from typescript to C#"
+                                },
+                                {
                                     name: "FinalGradeCalculator",
                                     file: "webapplications/finalgradecalculator",
                                     description: "Final Grade Caclculator is a useful tool for when you are in a crunch and want"
@@ -2384,6 +2517,7 @@ var Constants = /** @class */ (function () {
     Constants.currentPageURL = "";
     Constants.currentPage = "";
     Constants.appToOpen = "";
+    Constants.dev = false;
     return Constants;
 }());
 
@@ -2482,6 +2616,7 @@ var routes = [
     { path: "applications/:subpage", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ApplicationsComponent"] },
     { path: "webapplications/bettingcalculator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["BettingCalculatorComponent"] },
     { path: "webapplications/colorflux", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ColorFluxComponent"] },
+    { path: "webapplications/dtoconvert", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["DtoConvertComponent"] },
     { path: "webapplications/finalgradecalculator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"] },
     { path: "webapplications/flappyfinch", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FlappyFinchComponent"] },
     { path: "webapplications/floatystars", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FloatyStarsComponent"] },
