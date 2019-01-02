@@ -112,15 +112,13 @@ var AppModule = /** @class */ (function () {
                 _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["ApplicationsComponent"],
                 _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_6__["VideosComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["IFrameAppComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["MultiplicationTableComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FinalGradeCalculatorComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["BettingCalculatorComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["Say2Component"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GroupCreatorComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["HtmlSandboxComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["ColorFluxComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FlappyFinchComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FloatyStarsComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GradeCalculatorComponent"],
                 _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"],
                 _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["DtoConvertComponent"]
@@ -502,7 +500,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--Applications-->\n<div *ngIf=\"!webAppURL && apps.length == 0\" class=\"container\">\n  <div *ngFor=\"let page of subpages\" class=\"border border-top-0 border-left-0 border-right-0\">\n    <h1>{{ page.name }}</h1>\n    <span [innerHTML]=\"page.description\"></span>\n    <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n    <br />\n    <span *ngFor=\"let app of page.apps; let i = index\">\n      <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n      <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n      <span *ngIf=\"i === page.apps.length - 1\">. </span>\n    </span>\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <h1 class=\"border border-top-0 border-left-0 border-right-0\">{{ pageName }}</h1>\n  <div *ngFor=\"let app of apps\" class=\"border border-top-0 border-left-0 border-right-0\">\n    <h3>{{ app.name }}</h3>\n    <span [innerHtml]=\"app.description\"></span>\n    <br />\n    <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n      <b>Download</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n    </span>\n    <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n      <b>Go to</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n    </span>\n    <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n      <b>Download</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n    </span>\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div id=\"appContent\"></div>\n<div id=\"appDescription\"></div>\n<!--Applications/Subpage/App-->\n"
+module.exports = "<!--Applications-->\n<div *ngIf=\"!webAppURL && apps.length == 0\" class=\"container\">\n  <div *ngFor=\"let page of subpages\" class=\"border border-top-0 border-left-0 border-right-0\">\n    <h1>{{ page.name }}</h1>\n    <span [innerHTML]=\"page.description\"></span>\n    <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n    <br />\n    <span *ngFor=\"let app of page.apps; let i = index\">\n      <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n      class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n      <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n      <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n      <span *ngIf=\"i === page.apps.length - 1\">. </span>\n    </span>\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <h1 class=\"border border-top-0 border-left-0 border-right-0\">{{ pageName }}</h1>\n  <div *ngFor=\"let app of apps\" class=\"border border-top-0 border-left-0 border-right-0\">\n    <h3>{{ app.name }}</h3>\n    <span [innerHtml]=\"app.description\"></span>\n    <br />\n    <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n      <b>Download</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n    </span>\n    <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n      <b>Go to</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n    </span>\n    <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n      <b>Download</b>&nbsp;\n      <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n    </span>\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div class=\"border border-secondary border-top-0 border-left-0 border-right-0\">\n  <app-iframe-app *ngIf=\"webApp && webApp.file.includes('nate314')\" [src]=\"webApp.file\"></app-iframe-app>\n  <app-betting-calculator *ngIf=\"webApp && webApp.selector === 'app-betting-calculator'\"></app-betting-calculator>\n  <app-dto-convert *ngIf=\"webApp && webApp.selector === 'app-dto-convert'\"></app-dto-convert>\n  <app-final-grade-calculator *ngIf=\"webApp && webApp.selector === 'app-final-grade-calculator'\"></app-final-grade-calculator>\n  <app-group-creator *ngIf=\"webApp && webApp.selector === 'app-group-creator'\"></app-group-creator>\n  <app-html-sandbox *ngIf=\"webApp && webApp.selector === 'app-html-sandbox'\"></app-html-sandbox>\n  <app-multiplication-table *ngIf=\"webApp && webApp.selector === 'app-multiplication-table'\"></app-multiplication-table>\n  <app-root *ngIf=\"webApp && webApp.selector === 'app-root'\"></app-root>\n  <app-say2 *ngIf=\"webApp && webApp.selector === 'app-say2'\"></app-say2>\n  <app-typing-test *ngIf=\"webApp && webApp.selector === 'app-typing-test'\"></app-typing-test>\n  <br *ngIf=\"webApp\"/>\n</div>\n<div id=\"appDescription\"></div>\n<!--Applications/Subpage/App-->\n"
 
 /***/ }),
 
@@ -553,6 +551,7 @@ var ApplicationsComponent = /** @class */ (function () {
         this.router = router;
         this.location = location;
         this.activatedRoute = activatedRoute;
+        this.appSelector = "<app-dto-convert></app-dto-convert>";
         // Applications
         this.subpages = [];
         this.apps = [];
@@ -627,27 +626,10 @@ var ApplicationsComponent = /** @class */ (function () {
     ApplicationsComponent.prototype.openWebApp = function (app, href) {
         if (href) {
             _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, "/applications/web/" + app.name);
-            // location.href = "/applications/web/" + app.name;
         }
         else {
             if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(app)) {
-                // set url
-                var iFrameURL = app.file;
-                if (!iFrameURL.includes("https://nate314.github.io/")) {
-                    if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].dev)
-                        iFrameURL = "https://nate314.github.io/site/" + app.file;
-                    else
-                        iFrameURL = "http://localhost:4200/" + app.file;
-                }
-                // // send to app
-                // if (Helper.equalsNull(this.webApp.name))
-                //   Helper.navigateTo(this.router, this.location, ["/applications"],
-                //     { queryParams: { subpage: "web", appName: app.name }});
-                // open app
-                this.webApp.file = iFrameURL;
                 this.webAppOpen = true;
-                var iframe = "<iframe src=\"" + iFrameURL + "\" frameborder=\"0\" style=\"width:100%; height:60vh;\"></iframe>";
-                document.getElementById("appContent").innerHTML = iframe;
                 document.getElementById("appDescription").innerHTML = app.description;
             }
         }
@@ -802,69 +784,6 @@ var BettingCalculatorComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], BettingCalculatorComponent);
     return BettingCalculatorComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/color-flux/color-flux.component.css":
-/*!***********************************************************************************!*\
-  !*** ./src/app/components/pages/applications/color-flux/color-flux.component.css ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/color-flux/color-flux.component.html":
-/*!************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/color-flux/color-flux.component.html ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  color-flux works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/color-flux/color-flux.component.ts":
-/*!**********************************************************************************!*\
-  !*** ./src/app/components/pages/applications/color-flux/color-flux.component.ts ***!
-  \**********************************************************************************/
-/*! exports provided: ColorFluxComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorFluxComponent", function() { return ColorFluxComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ColorFluxComponent = /** @class */ (function () {
-    function ColorFluxComponent() {
-    }
-    ColorFluxComponent.prototype.ngOnInit = function () {
-    };
-    ColorFluxComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: "app-color-flux",
-            template: __webpack_require__(/*! ./color-flux.component.html */ "./src/app/components/pages/applications/color-flux/color-flux.component.html"),
-            styles: [__webpack_require__(/*! ./color-flux.component.css */ "./src/app/components/pages/applications/color-flux/color-flux.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], ColorFluxComponent);
-    return ColorFluxComponent;
 }());
 
 
@@ -1073,132 +992,6 @@ var FinalGradeCalculatorComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], FinalGradeCalculatorComponent);
     return FinalGradeCalculatorComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.css":
-/*!***************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/flappy-finch/flappy-finch.component.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.html":
-/*!****************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/flappy-finch/flappy-finch.component.html ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  flappy-finch works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.ts":
-/*!**************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/flappy-finch/flappy-finch.component.ts ***!
-  \**************************************************************************************/
-/*! exports provided: FlappyFinchComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlappyFinchComponent", function() { return FlappyFinchComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var FlappyFinchComponent = /** @class */ (function () {
-    function FlappyFinchComponent() {
-    }
-    FlappyFinchComponent.prototype.ngOnInit = function () {
-    };
-    FlappyFinchComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: "app-flappy-finch",
-            template: __webpack_require__(/*! ./flappy-finch.component.html */ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.html"),
-            styles: [__webpack_require__(/*! ./flappy-finch.component.css */ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], FlappyFinchComponent);
-    return FlappyFinchComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.css":
-/*!***************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/floaty-stars/floaty-stars.component.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.html":
-/*!****************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/floaty-stars/floaty-stars.component.html ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  floaty-stars works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.ts":
-/*!**************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/floaty-stars/floaty-stars.component.ts ***!
-  \**************************************************************************************/
-/*! exports provided: FloatyStarsComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FloatyStarsComponent", function() { return FloatyStarsComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var FloatyStarsComponent = /** @class */ (function () {
-    function FloatyStarsComponent() {
-    }
-    FloatyStarsComponent.prototype.ngOnInit = function () {
-    };
-    FloatyStarsComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: "app-floaty-stars",
-            template: __webpack_require__(/*! ./floaty-stars.component.html */ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.html"),
-            styles: [__webpack_require__(/*! ./floaty-stars.component.css */ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], FloatyStarsComponent);
-    return FloatyStarsComponent;
 }());
 
 
@@ -1499,11 +1292,56 @@ var HtmlSandboxComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/pages/applications/iframe-app.component.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/pages/applications/iframe-app.component.ts ***!
+  \***********************************************************************/
+/*! exports provided: IFrameAppComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return IFrameAppComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var IFrameAppComponent = /** @class */ (function () {
+    function IFrameAppComponent() {
+    }
+    IFrameAppComponent.prototype.ngOnInit = function () {
+        document.getElementById("iframediv").innerHTML = "<iframe src=\"" + this.src + "\"\n    frameborder=\"0\" style=\"width:100%; height:60vh;\"></iframe>";
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], IFrameAppComponent.prototype, "src", void 0);
+    IFrameAppComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-iframe-app",
+            template: "<div id=\"iframediv\"></div>"
+        }),
+        __metadata("design:paramtypes", [])
+    ], IFrameAppComponent);
+    return IFrameAppComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/pages/applications/index.ts":
 /*!********************************************************!*\
   !*** ./src/app/components/pages/applications/index.ts ***!
   \********************************************************/
-/*! exports provided: BettingCalculatorComponent, ColorFluxComponent, DtoConvertComponent, FinalGradeCalculatorComponent, FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, ApplicationsComponent */
+/*! exports provided: BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1511,43 +1349,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _betting_calculator_betting_calculator_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./betting-calculator/betting-calculator.component */ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BettingCalculatorComponent", function() { return _betting_calculator_betting_calculator_component__WEBPACK_IMPORTED_MODULE_0__["BettingCalculatorComponent"]; });
 
-/* harmony import */ var _color_flux_color_flux_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./color-flux/color-flux.component */ "./src/app/components/pages/applications/color-flux/color-flux.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ColorFluxComponent", function() { return _color_flux_color_flux_component__WEBPACK_IMPORTED_MODULE_1__["ColorFluxComponent"]; });
+/* harmony import */ var _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dto-convert/dto-convert.component */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_1__["DtoConvertComponent"]; });
 
-/* harmony import */ var _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dto-convert/dto-convert.component */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__["DtoConvertComponent"]; });
+/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__["FinalGradeCalculatorComponent"]; });
 
-/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"]; });
+/* harmony import */ var _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grade-calculator/grade-calculator.component */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__["GradeCalculatorComponent"]; });
 
-/* harmony import */ var _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./flappy-finch/flappy-finch.component */ "./src/app/components/pages/applications/flappy-finch/flappy-finch.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FlappyFinchComponent", function() { return _flappy_finch_flappy_finch_component__WEBPACK_IMPORTED_MODULE_4__["FlappyFinchComponent"]; });
+/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__["GroupCreatorComponent"]; });
 
-/* harmony import */ var _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./floaty-stars/floaty-stars.component */ "./src/app/components/pages/applications/floaty-stars/floaty-stars.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FloatyStarsComponent", function() { return _floaty_stars_floaty_stars_component__WEBPACK_IMPORTED_MODULE_5__["FloatyStarsComponent"]; });
+/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__["HtmlSandboxComponent"]; });
 
-/* harmony import */ var _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./grade-calculator/grade-calculator.component */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_6__["GradeCalculatorComponent"]; });
+/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__["MultiplicationTableComponent"]; });
 
-/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_7__["GroupCreatorComponent"]; });
+/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__["Say2Component"]; });
 
-/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_8__["HtmlSandboxComponent"]; });
+/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__["TypingTestComponent"]; });
 
-/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_9__["MultiplicationTableComponent"]; });
+/* harmony import */ var _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./iframe-app.component */ "./src/app/components/pages/applications/iframe-app.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__["IFrameAppComponent"]; });
 
-/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_10__["Say2Component"]; });
-
-/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_11__["TypingTestComponent"]; });
-
-/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_12__["ApplicationsComponent"]; });
-
-
+/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_10__["ApplicationsComponent"]; });
 
 
 
@@ -1895,6 +1725,7 @@ var TypingTestComponent = /** @class */ (function () {
         this.wrongtypedText = "";
         this.cursorText = "";
         this.untypedText = "";
+        this.firstTry = true;
     }
     TypingTestComponent.prototype.ngOnInit = function () {
     };
@@ -1950,16 +1781,19 @@ var TypingTestComponent = /** @class */ (function () {
         var _this = this;
         if (!this.timerStarted) {
             this.timerStarted = true;
-            setInterval(function () {
-                if (_this.timerStarted) {
-                    _this.clockTick();
-                }
-            }, 150);
+            if (this.firstTry) {
+                this.firstTry = false;
+                setInterval(function () {
+                    if (_this.timerStarted) {
+                        _this.clockTick();
+                    }
+                }, 1000);
+            }
         }
         this.correctPart();
     };
     TypingTestComponent.prototype.submit = function () {
-        this.paragraph = this.customparagraph + " ";
+        this.paragraph = this.replaceSpaces(this.customparagraph + " ");
         this.untypedText = this.paragraph;
     };
     TypingTestComponent.prototype.restart = function () {
@@ -2007,7 +1841,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container border border-top-0 border-left-0 border-right-0\">\n  <h1 class=\"border border-top-0 border-left-0 border-right-0\">\n    Welcome!\n  </h1>\n  <p class=\"border border-top-0 border-left-0 border-right-0\">\n    This is a website I put together to feature work I have done on\n    various applications including\n    <a (mouseup)=\"openPage($event, 'applications/java')\"\n      class=\"hyperlink w3-hover-text-purple\">Java Applications</a>,\n    <a (mouseup)=\"openPage($event, 'applications/web')\"\n      class=\"hyperlink w3-hover-text-purple\">Web Applications</a>, and\n    <a (mouseup)=\"openPage($event, 'applications/android')\"\n      class=\"hyperlink w3-hover-text-purple\">Android Applications</a>.\n    I also have a few videos that I made that are featured\n    <a (mouseup)=\"openPage($event, 'videos')\"\n      class=\"hyperlink w3-hover-text-purple\">here</a>.\n  </p>\n  <h3>An introduction to me:</h3>\n  <p>\n    I am currently a Computer Science student at the\n    <a (mouseup)=\"openLink($event, 'https://sce.umkc.edu/')\"\n      class=\"hyperlink w3-hover-text-purple\">School of Computing and Engineering</a>\n    at\n    <a (mouseup)=\"openLink($event, 'https://www.umkc.edu/')\"\n      class=\"hyperlink w3-hover-text-purple\">UMKC</a>\n    and a software development intern at\n    <a (mouseup)=\"openLink($event, 'https://wellsky.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">WellSky</a>.\n  </p>\n  <p>\n    I love coding becuase I love learning, and I am a logical thinker.\n    The first programming language I learned was Java through\n    <a (mouseup)=\"openLink($event, 'https://www.firstinspires.org/robotics/frc')\"\n      class=\"hyperlink w3-hover-text-purple\">FRC</a>\n    in high school. This experience in robotics was great, and made me\n    realize that Computer Science could be a possible career path that I\n    could enjoy.\n  </p>\n  <p>\n    I have experience coding in many different languages including\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Angular_(application_platform)')\"\n      class=\"hyperlink w3-hover-text-purple\">Angular</a> (\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/HTML')\"\n      class=\"hyperlink w3-hover-text-purple\">HTML</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets')\"\n      class=\"hyperlink w3-hover-text-purple\">CSS</a>, and\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/TypeScript')\"\n      class=\"hyperlink w3-hover-text-purple\">TypeScript</a> ),\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/C%2B%2B')\"\n      class=\"hyperlink w3-hover-text-purple\">C++</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)')\"\n      class=\"hyperlink w3-hover-text-purple\">C#</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Java')\"\n      class=\"hyperlink w3-hover-text-purple\">Java</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Python_(programming_language)')\"\n      class=\"hyperlink w3-hover-text-purple\">Python</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/SQL')\"\n      class=\"hyperlink w3-hover-text-purple\">SQL</a>, and\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Visual_Basic_.NET')\"\n      class=\"hyperlink w3-hover-text-purple\">VB.net</a>.\n    Some of the resources I use most often to learn coding on my own are\n    <a (mouseup)=\"openLink($event, 'https://stackoverflow.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">Stack Overflow</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.w3schools.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">W3 Schools</a>, and\n    <a (mouseup)=\"openLink($event, 'https://developers.google.com/web/tools/chrome-devtools/console/')\"\n      class=\"hyperlink w3-hover-text-purple\">F12</a>.\n  </p>\n  <p class=\"border border-top-0 border-left-0 border-right-0\">\n    Some of my favorite youtube channels include\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g')\"\n      class=\"hyperlink w3-hover-text-purple\">Gus Johnson</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/user/HelloInternetPodcast')\"\n      class=\"hyperlink w3-hover-text-purple\">Hello Internet</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg')\"\n      class=\"hyperlink w3-hover-text-purple\">Julian Smith</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q')\"\n      class=\"hyperlink w3-hover-text-purple\">Kurzgesagt – In a Nutshell</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A')\"\n      class=\"hyperlink w3-hover-text-purple\">standupmaths</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A')\"\n      class=\"hyperlink w3-hover-text-purple\">Steve Mould</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg')\"\n      class=\"hyperlink w3-hover-text-purple\">Taran Van Hemert</a>, and\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/user/Vsauce')\"\n      class=\"hyperlink w3-hover-text-purple\">Vsauce</a>.\n  </p>\n  <h3>Check out Some of my Friend's websites:</h3>\n  <a (mouseup)=\"openLink($event, 'https://alexwebberfrc.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Alex</a>,\n  <a (mouseup)=\"openLink($event, 'https://codymoose.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Cody</a>,\n  <a (mouseup)=\"openLink($event, 'http://thekuhnbros.com/hanavan/')\"\n    class=\"hyperlink w3-hover-text-purple\">Hanavan</a>,\n  <a (mouseup)=\"openLink($event, 'https://xyzen.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Tyler</a>, and\n  <a (mouseup)=\"openLink($event, 'https://zachdeibert.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Zach</a>\n  all have websites where you can download or use software as well!\n</div>\n"
+module.exports = "<div class=\"container border border-secondary border-top-0 border-left-0 border-right-0\">\n  <h1 class=\"border border-top-0 border-left-0 border-right-0\">\n    Welcome!\n  </h1>\n  <p class=\"border border-top-0 border-left-0 border-right-0\">\n    This is a website I put together to feature work I have done on\n    various applications including\n    <a (mouseup)=\"openPage($event, 'applications/java')\"\n      class=\"hyperlink w3-hover-text-purple\">Java Applications</a>,\n    <a (mouseup)=\"openPage($event, 'applications/web')\"\n      class=\"hyperlink w3-hover-text-purple\">Web Applications</a>, and\n    <a (mouseup)=\"openPage($event, 'applications/android')\"\n      class=\"hyperlink w3-hover-text-purple\">Android Applications</a>.\n    I also have a few videos that I made that are featured\n    <a (mouseup)=\"openPage($event, 'videos')\"\n      class=\"hyperlink w3-hover-text-purple\">here</a>.\n  </p>\n  <h3>An introduction to me:</h3>\n  <p>\n    I am currently a Computer Science student at the\n    <a (mouseup)=\"openLink($event, 'https://sce.umkc.edu/')\"\n      class=\"hyperlink w3-hover-text-purple\">School of Computing and Engineering</a>\n    at\n    <a (mouseup)=\"openLink($event, 'https://www.umkc.edu/')\"\n      class=\"hyperlink w3-hover-text-purple\">UMKC</a>\n    and a software development intern at\n    <a (mouseup)=\"openLink($event, 'https://wellsky.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">WellSky</a>.\n  </p>\n  <p>\n    I love coding becuase I love learning, and I am a logical thinker.\n    The first programming language I learned was Java through\n    <a (mouseup)=\"openLink($event, 'https://www.firstinspires.org/robotics/frc')\"\n      class=\"hyperlink w3-hover-text-purple\">FRC</a>\n    in high school. This experience in robotics was great, and made me\n    realize that Computer Science could be a possible career path that I\n    could enjoy.\n  </p>\n  <p>\n    I have experience coding in many different languages including\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Angular_(application_platform)')\"\n      class=\"hyperlink w3-hover-text-purple\">Angular</a> (\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/HTML')\"\n      class=\"hyperlink w3-hover-text-purple\">HTML</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets')\"\n      class=\"hyperlink w3-hover-text-purple\">CSS</a>, and\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/TypeScript')\"\n      class=\"hyperlink w3-hover-text-purple\">TypeScript</a> ),\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/C%2B%2B')\"\n      class=\"hyperlink w3-hover-text-purple\">C++</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)')\"\n      class=\"hyperlink w3-hover-text-purple\">C#</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Java')\"\n      class=\"hyperlink w3-hover-text-purple\">Java</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Python_(programming_language)')\"\n      class=\"hyperlink w3-hover-text-purple\">Python</a>,\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/SQL')\"\n      class=\"hyperlink w3-hover-text-purple\">SQL</a>, and\n    <a (mouseup)=\"openLink($event, 'https://en.wikipedia.org/wiki/Visual_Basic_.NET')\"\n      class=\"hyperlink w3-hover-text-purple\">VB.net</a>.\n    Some of the resources I use most often to learn coding on my own are\n    <a (mouseup)=\"openLink($event, 'https://stackoverflow.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">Stack Overflow</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.w3schools.com/')\"\n      class=\"hyperlink w3-hover-text-purple\">W3 Schools</a>, and\n    <a (mouseup)=\"openLink($event, 'https://developers.google.com/web/tools/chrome-devtools/console/')\"\n      class=\"hyperlink w3-hover-text-purple\">F12</a>.\n  </p>\n  <p class=\"border border-top-0 border-left-0 border-right-0\">\n    Some of my favorite youtube channels include\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g')\"\n      class=\"hyperlink w3-hover-text-purple\">Gus Johnson</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/user/HelloInternetPodcast')\"\n      class=\"hyperlink w3-hover-text-purple\">Hello Internet</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg')\"\n      class=\"hyperlink w3-hover-text-purple\">Julian Smith</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q')\"\n      class=\"hyperlink w3-hover-text-purple\">Kurzgesagt – In a Nutshell</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A')\"\n      class=\"hyperlink w3-hover-text-purple\">standupmaths</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A')\"\n      class=\"hyperlink w3-hover-text-purple\">Steve Mould</a>,\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg')\"\n      class=\"hyperlink w3-hover-text-purple\">Taran Van Hemert</a>, and\n    <a (mouseup)=\"openLink($event, 'https://www.youtube.com/user/Vsauce')\"\n      class=\"hyperlink w3-hover-text-purple\">Vsauce</a>.\n  </p>\n  <h3>Check out Some of my Friend's websites:</h3>\n  <a (mouseup)=\"openLink($event, 'https://alexwebberfrc.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Alex</a>,\n  <a (mouseup)=\"openLink($event, 'https://codymoose.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Cody</a>,\n  <a (mouseup)=\"openLink($event, 'http://thekuhnbros.com/hanavan/')\"\n    class=\"hyperlink w3-hover-text-purple\">Hanavan</a>,\n  <a (mouseup)=\"openLink($event, 'https://xyzen.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Tyler</a>, and\n  <a (mouseup)=\"openLink($event, 'https://zachdeibert.github.io/')\"\n    class=\"hyperlink w3-hover-text-purple\">Zach</a>\n  all have websites where you can download or use software as well!\n</div>\n"
 
 /***/ }),
 
@@ -2100,7 +1934,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1 class=\"border border-top-0 border-left-0 border-right-0\">Videos</h1>\n<div *ngFor=\"let video of videos\">\n  <h3>{{ video.title }}</h3>\n  <iframe [src]=\"video.link\" frameborder=\"1\"\n    allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\" allowfullscreen></iframe>\n  <p class=\"border border-top-0 border-left-0 border-right-0\">\n    {{ video.description }}\n  </p>\n</div>\n"
+module.exports = "<div class=\"container border border-secondary border-top-0 border-left-0 border-right-0\">\n  <h1 class=\"border border-top-0 border-left-0 border-right-0\">Videos</h1>\n  <div *ngFor=\"let video of videos\">\n    <h3>{{ video.title }}</h3>\n    <iframe [src]=\"video.link\" frameborder=\"1\"\n      allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\" allowfullscreen></iframe>\n    <p class=\"border border-top-0 border-left-0 border-right-0\">\n      {{ video.description }}\n    </p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2323,6 +2157,7 @@ var db = {
                             apps: [{
                                     name: "BettingCalculator",
                                     file: "webapplications/bettingcalculator",
+                                    selector: "app-betting-calculator",
                                     description: "Betting Calculator can be used if you want to place bets on things and don't want"
                                         + " to have to worry about the math. You can set up the number of things you are btting on and"
                                         + " the number of humans that are placing bets, and then the winnings will be split"
@@ -2331,17 +2166,20 @@ var db = {
                                 {
                                     name: "ColorFlux",
                                     file: "https://nate314.github.io/nathangawith/applications/webApplications/colorFlux.html",
+                                    selector: "app-color-flux",
                                     description: "Color Flux is an application that you could possibly use as a live background"
                                         + " written in javascript. It just pulses between different colors continuously."
                                 },
                                 {
                                     name: "DtoConvert",
                                     file: "webapplications/dtoconvert",
+                                    selector: "app-dto-convert",
                                     description: "Converts dtos from C# to typescript and from typescript to C#"
                                 },
                                 {
                                     name: "FinalGradeCalculator",
                                     file: "webapplications/finalgradecalculator",
+                                    selector: "app-final-grade-calculator",
                                     description: "Final Grade Caclculator is a useful tool for when you are in a crunch and want"
                                         + " to prioritize study time. Enter your current grade in the class, the percentage of your"
                                         + " grade the final is worth, and the percentage you want to finish the class with. Once"
@@ -2349,14 +2187,15 @@ var db = {
                                         + " your goal."
                                 },
                                 // {
-                                //     name: "GradeCalculator",
-                                //     file: "webapplications/gradecalculator",
-                                //     description: "Currently, this calculator is hard coded to work for Jacob Pursley's Physics"
-                                //     + " 240 class, but I plan on de-hardcoding it in the future."
+                                // name: "GradeCalculator",
+                                // file: "webapplications/gradecalculator",
+                                // description: "Currently, this calculator is hard coded to work for Jacob Pursley's Physics"
+                                // + " 240 class, but I plan on de-hardcoding it in the future."
                                 // },
                                 {
                                     name: "FlappyFinch",
                                     file: "https://nate314.github.io/nathangawith/applications/webApplications/flappyFinch.html",
+                                    selector: "app-flappy-finch",
                                     description: "Flappy Finch is a spin off of Flappy Bird created using javascipt. There is"
                                         + " currently no collision code in place, so there is no way for the game to end. I wrote"
                                         + " this to learn how to do an animation using a javscript canvas."
@@ -2364,18 +2203,21 @@ var db = {
                                 {
                                     name: "FloatyStars",
                                     file: "https://nate314.github.io/nathangawith/applications/webApplications/floatyStars.html",
+                                    selector: "app-floaty-stars",
                                     description: "Floaty Stars is a simple application that I built to learn how to do 2D"
                                         + " animations in javascript."
                                 },
                                 {
                                     name: "GroupCreator",
                                     file: "webapplications/groupcreator",
+                                    selector: "app-group-creator",
                                     description: "Group Creator is a great application to use if you want to create random"
                                         + " groups of people and want to do it in an efficient way using pure computer randomness."
                                 },
                                 {
                                     name: "HTMLSandbox",
                                     file: "webapplications/htmlsandbox",
+                                    selector: "app-html-sandbox",
                                     description: "HTML Sandbox is a great application to use if you want to learn how to code"
                                         + " in HTML but don't have a way of editing code on your computer or just want to try"
                                         + " something out real quick in your browser."
@@ -2383,17 +2225,20 @@ var db = {
                                 {
                                     name: "MultiplicationTable",
                                     file: "webapplications/multiplicationtable",
+                                    selector: "app-multiplication-table",
                                     description: "Multiplication Table is pretty much self explanitory. Enter a number between"
                                         + " 0 and 120 and a multiplication table will be generated with that size."
                                 },
                                 {
                                     name: "NathanGawithWebsite",
-                                    file: "webapplications/nathangawithwebsite",
+                                    file: "https://nate314.github.io/",
+                                    selector: "",
                                     description: "This website is technically a web application, so I included it in this list."
                                 },
                                 {
                                     name: "Say2",
                                     file: "webapplications/say2",
+                                    selector: "app-say2",
                                     description: "Say2 is a simple program that takes a number as input and outputs the english"
                                         + " text for that number. For example: if you type in \"123\", the program will output \"one"
                                         + " hundred twenty three\". Say2 was originally a challenge that many of the programmers on"
@@ -2404,7 +2249,9 @@ var db = {
                                 {
                                     name: "TypingTest",
                                     file: "webapplications/typingtest",
-                                    description: "Test how many words per minute you can type"
+                                    selector: "app-typing-test",
+                                    description: "Test how many words per minute you can type in one minute with any sample text"
+                                        + " you want to use."
                                 },
                             ]
                         },
@@ -2615,11 +2462,11 @@ var routes = [
     { path: "applications/android/:application", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ApplicationsComponent"] },
     { path: "applications/:subpage", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ApplicationsComponent"] },
     { path: "webapplications/bettingcalculator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["BettingCalculatorComponent"] },
-    { path: "webapplications/colorflux", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["ColorFluxComponent"] },
+    { path: "webapplications/colorflux", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["IFrameAppComponent"] },
     { path: "webapplications/dtoconvert", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["DtoConvertComponent"] },
     { path: "webapplications/finalgradecalculator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"] },
-    { path: "webapplications/flappyfinch", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FlappyFinchComponent"] },
-    { path: "webapplications/floatystars", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FloatyStarsComponent"] },
+    { path: "webapplications/flappyfinch", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["IFrameAppComponent"] },
+    { path: "webapplications/floatystars", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["IFrameAppComponent"] },
     // { path: "webapplications/gradecalculator", component: GradeCalculatorComponent },
     { path: "webapplications/groupcreator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["GroupCreatorComponent"] },
     { path: "webapplications/htmlsandbox", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["HtmlSandboxComponent"] },
