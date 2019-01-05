@@ -2,10 +2,10 @@ import { Routes } from "@angular/router";
 import { NotFoundComponent } from "./components/application-structure/not-found/not-found.component";
 import { HomeComponent } from "./components/pages/home/home.component";
 import { VideosComponent } from "./components/pages/videos/videos.component";
-import { BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent,
-  FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent,
-  GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
-  Say2Component, TypingTestComponent, ApplicationsComponent } from "./components/pages/applications/index";
+import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
+  GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
+  Say2Component, TypingTestComponent, ApplicationsComponent,
+  IFrameAppComponent } from "./components/pages/applications/index";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -17,10 +17,11 @@ export const routes: Routes = [
   { path: "applications/android/:application", component: ApplicationsComponent },
   { path: "applications/:subpage", component: ApplicationsComponent },
   { path: "webapplications/bettingcalculator", component: BettingCalculatorComponent },
-  { path: "webapplications/colorflux", component: ColorFluxComponent },
+  { path: "webapplications/colorflux", component: IFrameAppComponent },
+  { path: "webapplications/dtoconvert", component: DtoConvertComponent },
   { path: "webapplications/finalgradecalculator", component: FinalGradeCalculatorComponent },
-  { path: "webapplications/flappyfinch", component: FlappyFinchComponent },
-  { path: "webapplications/floatystars", component: FloatyStarsComponent },
+  { path: "webapplications/flappyfinch", component: IFrameAppComponent },
+  { path: "webapplications/floatystars", component: IFrameAppComponent },
   // { path: "webapplications/gradecalculator", component: GradeCalculatorComponent },
   { path: "webapplications/groupcreator", component: GroupCreatorComponent },
   { path: "webapplications/htmlsandbox", component: HtmlSandboxComponent },

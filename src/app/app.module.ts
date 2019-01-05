@@ -7,10 +7,9 @@ import { HomeComponent } from "./components/pages/home/home.component";
 import { VideosComponent } from "./components/pages/videos/videos.component";
 import { AppComponent, NavbarComponent, FooterComponent,
   NotFoundComponent } from "./components/application-structure/index";
-import { BettingCalculatorComponent, ColorFluxComponent, FinalGradeCalculatorComponent,
-  FlappyFinchComponent, FloatyStarsComponent, GradeCalculatorComponent,
-  GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
-  Say2Component, ApplicationsComponent } from "./components/pages/applications/index";
+import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
+  GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
+  Say2Component, IFrameAppComponent, ApplicationsComponent } from "./components/pages/applications/index";
 import { RouterModule } from "@angular/router";
 import { TypingTestComponent } from "./components/pages/applications/typing-test/typing-test.component";
 
@@ -23,17 +22,16 @@ import { TypingTestComponent } from "./components/pages/applications/typing-test
     FooterComponent,
     ApplicationsComponent,
     VideosComponent,
+    IFrameAppComponent,
     MultiplicationTableComponent,
     FinalGradeCalculatorComponent,
     BettingCalculatorComponent,
     Say2Component,
     GroupCreatorComponent,
     HtmlSandboxComponent,
-    ColorFluxComponent,
-    FlappyFinchComponent,
-    FloatyStarsComponent,
     GradeCalculatorComponent,
-    TypingTestComponent
+    TypingTestComponent,
+    DtoConvertComponent
   ],
   imports: [
     BrowserModule,

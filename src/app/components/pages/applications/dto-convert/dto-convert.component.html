@@ -1,0 +1,36 @@
+
+  <div class="row">
+    <div class="col-1">
+        Please enter text in the format shown in the placeholder text.
+    </div>
+    <div class="col-5">
+      <div class="row">C#</div>
+      <div class="row">
+        <textarea [placeholder]="dto_csharp" [(ngModel)]="csharp_text"
+          style="width: 100%" rows="15"></textarea>
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="row">&nbsp;</div>
+      <div class="row">
+        <button class="btn btn-white" style="width:100%;"
+          (click)="csharp_to_typescript()">
+          &gt;
+        </button>
+      </div>
+      <br />
+      <div class="row">
+        <button class="btn btn-white" style="width:100%;"
+          (click)="typescript_to_csharp()">
+          &lt;
+        </button>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="row">Typescript</div>
+      <div class="row">
+        <textarea [placeholder]="dto_typescript" [(ngModel)]="typescript_text"
+          style="width: 100%" rows="15"></textarea>
+      </div>
+    </div>
+  </div>

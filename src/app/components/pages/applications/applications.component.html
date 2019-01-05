@@ -44,6 +44,18 @@
 <!--/Applications/Subpage-->
 
 <!--Applications/Subpage/App-->
-<div id="appContent"></div>
+<div class="border border-secondary border-top-0 border-left-0 border-right-0">
+  <app-iframe-app *ngIf="webApp && webApp.file.includes('nate314')" [src]="webApp.file"></app-iframe-app>
+  <app-betting-calculator *ngIf="webApp && webApp.selector === 'app-betting-calculator'"></app-betting-calculator>
+  <app-dto-convert *ngIf="webApp && webApp.selector === 'app-dto-convert'"></app-dto-convert>
+  <app-final-grade-calculator *ngIf="webApp && webApp.selector === 'app-final-grade-calculator'"></app-final-grade-calculator>
+  <app-group-creator *ngIf="webApp && webApp.selector === 'app-group-creator'"></app-group-creator>
+  <app-html-sandbox *ngIf="webApp && webApp.selector === 'app-html-sandbox'"></app-html-sandbox>
+  <app-multiplication-table *ngIf="webApp && webApp.selector === 'app-multiplication-table'"></app-multiplication-table>
+  <app-root *ngIf="webApp && webApp.selector === 'app-root'"></app-root>
+  <app-say2 *ngIf="webApp && webApp.selector === 'app-say2'"></app-say2>
+  <app-typing-test *ngIf="webApp && webApp.selector === 'app-typing-test'"></app-typing-test>
+  <br *ngIf="webApp"/>
+</div>
 <div id="appDescription"></div>
 <!--Applications/Subpage/App-->

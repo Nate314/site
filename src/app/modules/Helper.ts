@@ -6,6 +6,7 @@ export class Constants {
     public static currentPageURL: string = "";
     public static currentPage: string = "";
     public static appToOpen: string = "";
+    public static dev: boolean = false;
 }
 
 export class Helper {

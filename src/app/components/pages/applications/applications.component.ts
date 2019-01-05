@@ -1,7 +1,8 @@
+
 import { Component, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
-import { Helper, PageNames } from "../../../modules/Helper";
+import { Helper, PageNames, Constants } from "../../../modules/Helper";
 import { DB } from "../../../modules/DB";
 import { filter } from "rxjs/operators";
 import * as _ from "lodash";
@@ -17,6 +18,7 @@ class App {
   name: string;
   file: string;
   description: string;
+  selector: string;
 }
 
 @Component({
@@ -25,6 +27,8 @@ class App {
   styleUrls: ["./applications.component.css"]
 })
 export class ApplicationsComponent implements OnInit {
+
+  appSelector: string = "<app-dto-convert></app-dto-convert>";
 
   // Applications
   subpages: Page[] = [];
@@ -118,24 +122,10 @@ export class ApplicationsComponent implements OnInit {
   openWebApp(app: App, href: boolean) {
     if (href) {
       Helper.navigate(this.router, this.location, "/applications/web/" + app.name);
-      // location.href = "/applications/web/" + app.name;
     }
     else {
       if (!Helper.equalsNull(app)) {
-        // set url
-        let iFrameURL = app.file;
-        if (!iFrameURL.includes("https://nate314.github.io/"))
-          iFrameURL = "https://nate314.github.io/site/" + app.file;
-          // iFrameURL = "http://localhost:4200/" + app.file;
-        // // send to app
-        // if (Helper.equalsNull(this.webApp.name))
-        //   Helper.navigateTo(this.router, this.location, ["/applications"],
-        //     { queryParams: { subpage: "web", appName: app.name }});
-        // open app
-        this.webApp.file = iFrameURL;
         this.webAppOpen = true;
-        const iframe = `<iframe src="${iFrameURL}" frameborder="0" style="width:100%; height:60vh;"></iframe>`;
-        document.getElementById("appContent").innerHTML = iframe;
         document.getElementById("appDescription").innerHTML = app.description;
       }
     }

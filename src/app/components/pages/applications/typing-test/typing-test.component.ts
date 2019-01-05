@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import * as _ from "lodash";
 import { Helper } from "src/app/modules/Helper";
+import * as _ from "lodash";
 
 @Component({
   selector: "app-typing-test",
@@ -30,6 +30,8 @@ export class TypingTestComponent implements OnInit {
   wrongtypedText: string = "";
   cursorText: string = "";
   untypedText: string = "";
+
+  firstTry: boolean = true;
 
   constructor() { }
 
@@ -89,17 +91,20 @@ export class TypingTestComponent implements OnInit {
   typingparagraphchanged() {
     if (!this.timerStarted) {
       this.timerStarted = true;
-      setInterval(() => {
-        if (this.timerStarted) {
-          this.clockTick();
-        }
-      }, 150);
+      if (this.firstTry) {
+        this.firstTry = false;
+        setInterval(() => {
+          if (this.timerStarted) {
+            this.clockTick();
+          }
+        }, 1000);
+      }
     }
     this.correctPart();
   }
 
   submit() {
-    this.paragraph = this.customparagraph + " ";
+    this.paragraph = this.replaceSpaces(this.customparagraph + " ");
     this.untypedText = this.paragraph;
   }
 
