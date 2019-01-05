@@ -4,8 +4,7 @@ import * as _ from "lodash";
 
 @Component({
   selector: "app-typing-test",
-  templateUrl: "./typing-test.component.html",
-  styleUrls: ["./typing-test.component.css"]
+  templateUrl: "./typing-test.component.html"
 })
 export class TypingTestComponent implements OnInit {
 

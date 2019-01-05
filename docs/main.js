@@ -75,13 +75,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
-/* harmony import */ var _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/videos/videos.component */ "./src/app/components/pages/videos/videos.component.ts");
-/* harmony import */ var _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/application-structure/index */ "./src/app/components/application-structure/index.ts");
-/* harmony import */ var _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/applications/index */ "./src/app/components/pages/applications/index.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/applications/typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
+/* harmony import */ var _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/videos/videos.component */ "./src/app/components/pages/videos/videos.component.ts");
+/* harmony import */ var _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/application-structure/index */ "./src/app/components/application-structure/index.ts");
+/* harmony import */ var _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/applications/index */ "./src/app/components/pages/applications/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -98,57 +97,44 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["NavbarComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["NotFoundComponent"],
-                _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_5__["HomeComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["FooterComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["ApplicationsComponent"],
-                _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_6__["VideosComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["IFrameAppComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["MultiplicationTableComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["FinalGradeCalculatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["BettingCalculatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["Say2Component"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GroupCreatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["HtmlSandboxComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["GradeCalculatorComponent"],
-                _components_pages_applications_typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_10__["TypingTestComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_8__["DtoConvertComponent"]
+                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
+                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
+                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"],
+                _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
+                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["ApplicationsComponent"],
+                _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_7__["VideosComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["IFrameAppComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["MultiplicationTableComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["FinalGradeCalculatorComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["BettingCalculatorComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["Say2Component"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["GroupCreatorComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["HtmlSandboxComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["TypingTestComponent"],
+                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["DtoConvertComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]
             ],
-            providers: [_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]],
-            bootstrap: [_components_application_structure_index__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
+            providers: [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]],
+            bootstrap: [_components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/application-structure/app-component/app.component.css":
-/*!**********************************************************************************!*\
-  !*** ./src/app/components/application-structure/app-component/app.component.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -207,8 +193,7 @@ var AppComponent = /** @class */ (function () {
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-root",
-            template: __webpack_require__(/*! ./app.component.html */ "./src/app/components/application-structure/app-component/app.component.html"),
-            styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/components/application-structure/app-component/app.component.css")]
+            template: __webpack_require__(/*! ./app.component.html */ "./src/app/components/application-structure/app-component/app.component.html")
         }),
         __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _node_modules_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], AppComponent);
@@ -216,17 +201,6 @@ var AppComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/application-structure/footer/footer.component.css":
-/*!******************************************************************************!*\
-  !*** ./src/app/components/application-structure/footer/footer.component.css ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -279,8 +253,7 @@ var FooterComponent = /** @class */ (function () {
     FooterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-footer",
-            template: __webpack_require__(/*! ./footer.component.html */ "./src/app/components/application-structure/footer/footer.component.html"),
-            styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/components/application-structure/footer/footer.component.css")]
+            template: __webpack_require__(/*! ./footer.component.html */ "./src/app/components/application-structure/footer/footer.component.html")
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], FooterComponent);
@@ -317,17 +290,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/application-structure/navbar/navbar.component.css":
-/*!******************************************************************************!*\
-  !*** ./src/app/components/application-structure/navbar/navbar.component.css ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -398,8 +360,7 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-navbar",
-            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/components/application-structure/navbar/navbar.component.html"),
-            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/components/application-structure/navbar/navbar.component.css")]
+            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/components/application-structure/navbar/navbar.component.html")
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], NavbarComponent);
@@ -407,17 +368,6 @@ var NavbarComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/application-structure/not-found/not-found.component.css":
-/*!************************************************************************************!*\
-  !*** ./src/app/components/application-structure/not-found/not-found.component.css ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -470,8 +420,7 @@ var NotFoundComponent = /** @class */ (function () {
     NotFoundComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-not-found",
-            template: __webpack_require__(/*! ./not-found.component.html */ "./src/app/components/application-structure/not-found/not-found.component.html"),
-            styles: [__webpack_require__(/*! ./not-found.component.css */ "./src/app/components/application-structure/not-found/not-found.component.css")]
+            template: __webpack_require__(/*! ./not-found.component.html */ "./src/app/components/application-structure/not-found/not-found.component.html")
         }),
         __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _node_modules_angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]])
     ], NotFoundComponent);
@@ -479,17 +428,6 @@ var NotFoundComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/applications.component.css":
-/*!**************************************************************************!*\
-  !*** ./src/app/components/pages/applications/applications.component.css ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -649,8 +587,7 @@ var ApplicationsComponent = /** @class */ (function () {
     ApplicationsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-applications",
-            template: __webpack_require__(/*! ./applications.component.html */ "./src/app/components/pages/applications/applications.component.html"),
-            styles: [__webpack_require__(/*! ./applications.component.css */ "./src/app/components/pages/applications/applications.component.css")]
+            template: __webpack_require__(/*! ./applications.component.html */ "./src/app/components/pages/applications/applications.component.html")
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], ApplicationsComponent);
@@ -658,17 +595,6 @@ var ApplicationsComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.css":
-/*!***************************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/betting-calculator/betting-calculator.component.css ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -778,8 +704,7 @@ var BettingCalculatorComponent = /** @class */ (function () {
     BettingCalculatorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-betting-calculator",
-            template: __webpack_require__(/*! ./betting-calculator.component.html */ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.html"),
-            styles: [__webpack_require__(/*! ./betting-calculator.component.css */ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.css")]
+            template: __webpack_require__(/*! ./betting-calculator.component.html */ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], BettingCalculatorComponent);
@@ -787,17 +712,6 @@ var BettingCalculatorComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/dto-convert/dto-convert.component.css":
-/*!*************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/dto-convert/dto-convert.component.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -898,8 +812,7 @@ var DtoConvertComponent = /** @class */ (function () {
     DtoConvertComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-dto-convert",
-            template: __webpack_require__(/*! ./dto-convert.component.html */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.html"),
-            styles: [__webpack_require__(/*! ./dto-convert.component.css */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.css")]
+            template: __webpack_require__(/*! ./dto-convert.component.html */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], DtoConvertComponent);
@@ -907,17 +820,6 @@ var DtoConvertComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.css":
-/*!***********************************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.css ***!
-  \***********************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -986,8 +888,7 @@ var FinalGradeCalculatorComponent = /** @class */ (function () {
     FinalGradeCalculatorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-final-grade-calculator",
-            template: __webpack_require__(/*! ./final-grade-calculator.component.html */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.html"),
-            styles: [__webpack_require__(/*! ./final-grade-calculator.component.css */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.css")]
+            template: __webpack_require__(/*! ./final-grade-calculator.component.html */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], FinalGradeCalculatorComponent);
@@ -995,125 +896,6 @@ var FinalGradeCalculatorComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.css":
-/*!***********************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/grade-calculator/grade-calculator.component.css ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.html":
-/*!************************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/grade-calculator/grade-calculator.component.html ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<br />\n<div class=\"row\">\n  <div class=\"col-6\">\n    Attendance:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"attendanceGrade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Homework:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"homeworkGrade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Lab:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"labGrade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Exam1:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"exam1Grade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Exam2:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"exam2Grade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Exam3:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"exam3Grade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Exam4:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"exam4Grade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Exam5:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"exam5Grade\" />\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-6\">\n    Percentage you want in the Class:\n  </div>\n  <div class=\"col-6\">\n    <input type=\"text\" [(ngModel)]=\"goal\" />\n  </div>\n</div>\n<div style=\"height:10px;\"></div>\n<div class=\"row\">\n  <div class=\"col-7\">\n    &nbsp;\n  </div>\n  <div class=\"col-5\">\n    <button type=\"button\" class=\"btn\" (click)=\"calculate()\">Submit</button>\n  </div>\n</div>\n<p [innerHtml]=\"label\"></p>\n<p [innerHtml]=\"error\" class=\"w3-text-red\"></p>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts":
-/*!**********************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts ***!
-  \**********************************************************************************************/
-/*! exports provided: GradeCalculatorComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return GradeCalculatorComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../modules/Helper */ "./src/app/modules/Helper.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var GradeCalculatorComponent = /** @class */ (function () {
-    function GradeCalculatorComponent() {
-        this.attendanceGrade = 100;
-        this.homeworkGrade = 86.4;
-        this.labGrade = 90;
-        this.exam1Grade = 106;
-        this.exam2Grade = 84.5;
-        this.exam3Grade = 77.25;
-        this.exam4Grade = 81;
-        this.exam5Grade = 55;
-        this.goal = 80;
-    }
-    GradeCalculatorComponent.prototype.ngOnInit = function () {
-        this.calculate();
-    };
-    GradeCalculatorComponent.prototype.calculate = function () {
-        this.label = "";
-        this.error = "";
-        if (_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.attendanceGrade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.homeworkGrade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.labGrade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.exam1Grade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.exam2Grade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.exam3Grade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.exam4Grade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.exam5Grade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.goal))
-            this.error = "Please fill out all three textboxes before pressing the Submit button.";
-        else {
-            var currentGrade = (0.05 * this.attendanceGrade)
-                + (0.1 * this.homeworkGrade) + (0.2 * this.labGrade)
-                + (0.1 * this.exam1Grade)
-                + (0.1 * this.exam2Grade)
-                + (0.1 * this.exam3Grade)
-                + (0.1 * this.exam4Grade)
-                + (0.1 * this.exam5Grade);
-            var requiredFinalGrade = (this.goal - currentGrade) / 0.15;
-            var toGetGrade = (currentGrade + (requiredFinalGrade * 0.15));
-            if ((requiredFinalGrade + "") === "NaN" || (toGetGrade + "") === "NaN")
-                this.error = "Please enter only numbers.";
-            else
-                this.label = "You need a " + this.round(requiredFinalGrade) / 100 + "% on the final"
-                    + (" to get a grade of " + this.round(toGetGrade) / 100 + "% in the class");
-        }
-    };
-    GradeCalculatorComponent.prototype.round = function (num) {
-        return Math.round(10000 * num) / 100;
-    };
-    GradeCalculatorComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: "app-grade-calculator",
-            template: __webpack_require__(/*! ./grade-calculator.component.html */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.html"),
-            styles: [__webpack_require__(/*! ./grade-calculator.component.css */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.css")]
-        }),
-        __metadata("design:paramtypes", [])
-    ], GradeCalculatorComponent);
-    return GradeCalculatorComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/group-creator/group-creator.component.css":
-/*!*****************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/group-creator/group-creator.component.css ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1213,8 +995,7 @@ var GroupCreatorComponent = /** @class */ (function () {
     GroupCreatorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-group-creator",
-            template: __webpack_require__(/*! ./group-creator.component.html */ "./src/app/components/pages/applications/group-creator/group-creator.component.html"),
-            styles: [__webpack_require__(/*! ./group-creator.component.css */ "./src/app/components/pages/applications/group-creator/group-creator.component.css")]
+            template: __webpack_require__(/*! ./group-creator.component.html */ "./src/app/components/pages/applications/group-creator/group-creator.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], GroupCreatorComponent);
@@ -1222,17 +1003,6 @@ var GroupCreatorComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.css":
-/*!***************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/html-sandbox/html-sandbox.component.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1280,8 +1050,7 @@ var HtmlSandboxComponent = /** @class */ (function () {
     HtmlSandboxComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-html-sandbox",
-            template: __webpack_require__(/*! ./html-sandbox.component.html */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.html"),
-            styles: [__webpack_require__(/*! ./html-sandbox.component.css */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.css")]
+            template: __webpack_require__(/*! ./html-sandbox.component.html */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], HtmlSandboxComponent);
@@ -1341,7 +1110,7 @@ var IFrameAppComponent = /** @class */ (function () {
 /*!********************************************************!*\
   !*** ./src/app/components/pages/applications/index.ts ***!
   \********************************************************/
-/*! exports provided: BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
+/*! exports provided: BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1355,29 +1124,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__["FinalGradeCalculatorComponent"]; });
 
-/* harmony import */ var _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./grade-calculator/grade-calculator.component */ "./src/app/components/pages/applications/grade-calculator/grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GradeCalculatorComponent", function() { return _grade_calculator_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__["GradeCalculatorComponent"]; });
+/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_3__["GroupCreatorComponent"]; });
 
-/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__["GroupCreatorComponent"]; });
+/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_4__["HtmlSandboxComponent"]; });
 
-/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__["HtmlSandboxComponent"]; });
+/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_5__["MultiplicationTableComponent"]; });
 
-/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__["MultiplicationTableComponent"]; });
+/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_6__["Say2Component"]; });
 
-/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__["Say2Component"]; });
+/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_7__["TypingTestComponent"]; });
 
-/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__["TypingTestComponent"]; });
+/* harmony import */ var _iframe_app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./iframe-app.component */ "./src/app/components/pages/applications/iframe-app.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _iframe_app_component__WEBPACK_IMPORTED_MODULE_8__["IFrameAppComponent"]; });
 
-/* harmony import */ var _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./iframe-app.component */ "./src/app/components/pages/applications/iframe-app.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__["IFrameAppComponent"]; });
-
-/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_10__["ApplicationsComponent"]; });
+/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_9__["ApplicationsComponent"]; });
 
 
 
@@ -1390,18 +1156,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.css":
-/*!*******************************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/multiplication-table/multiplication-table.component.css ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1527,8 +1281,7 @@ var MultiplicationTableComponent = /** @class */ (function () {
     MultiplicationTableComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-multiplication-table",
-            template: __webpack_require__(/*! ./multiplication-table.component.html */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.html"),
-            styles: [__webpack_require__(/*! ./multiplication-table.component.css */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.css")]
+            template: __webpack_require__(/*! ./multiplication-table.component.html */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], MultiplicationTableComponent);
@@ -1536,17 +1289,6 @@ var MultiplicationTableComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/say2/say2.component.css":
-/*!***********************************************************************!*\
-  !*** ./src/app/components/pages/applications/say2/say2.component.css ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1647,8 +1389,7 @@ var Say2Component = /** @class */ (function () {
     Say2Component = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-say2",
-            template: __webpack_require__(/*! ./say2.component.html */ "./src/app/components/pages/applications/say2/say2.component.html"),
-            styles: [__webpack_require__(/*! ./say2.component.css */ "./src/app/components/pages/applications/say2/say2.component.css")]
+            template: __webpack_require__(/*! ./say2.component.html */ "./src/app/components/pages/applications/say2/say2.component.html")
         }),
         __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _node_modules_angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], Say2Component);
@@ -1656,17 +1397,6 @@ var Say2Component = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/applications/typing-test/typing-test.component.css":
-/*!*************************************************************************************!*\
-  !*** ./src/app/components/pages/applications/typing-test/typing-test.component.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1811,8 +1541,7 @@ var TypingTestComponent = /** @class */ (function () {
     TypingTestComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-typing-test",
-            template: __webpack_require__(/*! ./typing-test.component.html */ "./src/app/components/pages/applications/typing-test/typing-test.component.html"),
-            styles: [__webpack_require__(/*! ./typing-test.component.css */ "./src/app/components/pages/applications/typing-test/typing-test.component.css")]
+            template: __webpack_require__(/*! ./typing-test.component.html */ "./src/app/components/pages/applications/typing-test/typing-test.component.html")
         }),
         __metadata("design:paramtypes", [])
     ], TypingTestComponent);
@@ -1820,17 +1549,6 @@ var TypingTestComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/home/home.component.css":
-/*!**********************************************************!*\
-  !*** ./src/app/components/pages/home/home.component.css ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1904,8 +1622,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-home",
-            template: __webpack_require__(/*! ./home.component.html */ "./src/app/components/pages/home/home.component.html"),
-            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/components/pages/home/home.component.css")]
+            template: __webpack_require__(/*! ./home.component.html */ "./src/app/components/pages/home/home.component.html")
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], HomeComponent);
@@ -1913,17 +1630,6 @@ var HomeComponent = /** @class */ (function () {
 }());
 
 
-
-/***/ }),
-
-/***/ "./src/app/components/pages/videos/videos.component.css":
-/*!**************************************************************!*\
-  !*** ./src/app/components/pages/videos/videos.component.css ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
 
 /***/ }),
 
@@ -1996,8 +1702,7 @@ var VideosComponent = /** @class */ (function () {
     VideosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-videos",
-            template: __webpack_require__(/*! ./videos.component.html */ "./src/app/components/pages/videos/videos.component.html"),
-            styles: [__webpack_require__(/*! ./videos.component.css */ "./src/app/components/pages/videos/videos.component.css")]
+            template: __webpack_require__(/*! ./videos.component.html */ "./src/app/components/pages/videos/videos.component.html")
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _node_modules_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"]])
     ], VideosComponent);
@@ -2186,12 +1891,6 @@ var db = {
                                         + " you submit, this application will tell you the percentage you need in order to achieve"
                                         + " your goal."
                                 },
-                                // {
-                                // name: "GradeCalculator",
-                                // file: "webapplications/gradecalculator",
-                                // description: "Currently, this calculator is hard coded to work for Jacob Pursley's Physics"
-                                // + " 240 class, but I plan on de-hardcoding it in the future."
-                                // },
                                 {
                                     name: "FlappyFinch",
                                     file: "https://nate314.github.io/nathangawith/applications/webApplications/flappyFinch.html",
@@ -2467,7 +2166,6 @@ var routes = [
     { path: "webapplications/finalgradecalculator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"] },
     { path: "webapplications/flappyfinch", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["IFrameAppComponent"] },
     { path: "webapplications/floatystars", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["IFrameAppComponent"] },
-    // { path: "webapplications/gradecalculator", component: GradeCalculatorComponent },
     { path: "webapplications/groupcreator", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["GroupCreatorComponent"] },
     { path: "webapplications/htmlsandbox", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["HtmlSandboxComponent"] },
     { path: "webapplications/multiplicationtable", component: _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_3__["MultiplicationTableComponent"] },
@@ -2540,7 +2238,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Natha\Documents\Development\Angular\NathanGawith\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Natha\Documents\Development\Angular\site\src\main.ts */"./src/main.ts");
 
 
 /***/ })

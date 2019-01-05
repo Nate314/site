@@ -3,8 +3,7 @@ import { Helper } from "../../../../modules/Helper";
 
 @Component({
   selector: "app-final-grade-calculator",
-  templateUrl: "./final-grade-calculator.component.html",
-  styleUrls: ["./final-grade-calculator.component.css"]
+  templateUrl: "./final-grade-calculator.component.html"
 })
 export class FinalGradeCalculatorComponent implements OnInit {
 

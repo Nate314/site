@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-html-sandbox",
-  templateUrl: "./html-sandbox.component.html",
-  styleUrls: ["./html-sandbox.component.css"]
+  templateUrl: "./html-sandbox.component.html"
 })
 export class HtmlSandboxComponent implements OnInit {
 

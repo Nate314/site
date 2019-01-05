@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-betting-calculator",
-  templateUrl: "./betting-calculator.component.html",
-  styleUrls: ["./betting-calculator.component.css"]
+  templateUrl: "./betting-calculator.component.html"
 })
 export class BettingCalculatorComponent implements OnInit {
 

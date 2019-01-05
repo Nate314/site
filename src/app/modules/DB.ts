@@ -168,12 +168,6 @@ const db = {
 									+ " you submit, this application will tell you the percentage you need in order to achieve"
 									+ " your goal."
 								},
-								// {
-								// name: "GradeCalculator",
-								// file: "webapplications/gradecalculator",
-								// description: "Currently, this calculator is hard coded to work for Jacob Pursley's Physics"
-								// + " 240 class, but I plan on de-hardcoding it in the future."
-								// },
 								{
 									name: "FlappyFinch",
 									file: "https://nate314.github.io/nathangawith/applications/webApplications/flappyFinch.html",

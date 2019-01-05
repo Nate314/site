@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { Constants, PageNames, Helper } from "../../../modules/Helper";
+import { Constants, Helper } from "../../../modules/Helper";
 
 class Page {
   link: string;
@@ -10,8 +10,7 @@ class Page {
 
 @Component({
   selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  templateUrl: "./navbar.component.html"
 })
 export class NavbarComponent implements OnInit {
 

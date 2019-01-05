@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import * as _ from "lodash";
 import { Helper } from "src/app/modules/Helper";
+import * as _ from "lodash";
 
 @Component({
   selector: "app-dto-convert",
-  templateUrl: "./dto-convert.component.html",
-  styleUrls: ["./dto-convert.component.css"]
+  templateUrl: "./dto-convert.component.html"
 })
 export class DtoConvertComponent implements OnInit {
 

@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { Constants, Helper, PageNames } from "../../../modules/Helper";
-import { HttpClient, HttpHeaders } from "../../../../../node_modules/@angular/common/http";
+import { Helper, PageNames } from "../../../modules/Helper";
+import { HttpClient } from "../../../../../node_modules/@angular/common/http";
 
 @Component({
   selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  templateUrl: "./home.component.html"
 })
 export class HomeComponent implements OnInit {
 

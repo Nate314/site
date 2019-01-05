@@ -3,7 +3,7 @@ import { NotFoundComponent } from "./components/application-structure/not-found/
 import { HomeComponent } from "./components/pages/home/home.component";
 import { VideosComponent } from "./components/pages/videos/videos.component";
 import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
-  GradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
+  GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
   Say2Component, TypingTestComponent, ApplicationsComponent,
   IFrameAppComponent } from "./components/pages/applications/index";
 
@@ -22,7 +22,6 @@ export const routes: Routes = [
   { path: "webapplications/finalgradecalculator", component: FinalGradeCalculatorComponent },
   { path: "webapplications/flappyfinch", component: IFrameAppComponent },
   { path: "webapplications/floatystars", component: IFrameAppComponent },
-  // { path: "webapplications/gradecalculator", component: GradeCalculatorComponent },
   { path: "webapplications/groupcreator", component: GroupCreatorComponent },
   { path: "webapplications/htmlsandbox", component: HtmlSandboxComponent },
   { path: "webapplications/multiplicationtable", component: MultiplicationTableComponent },

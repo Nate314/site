@@ -2,8 +2,7 @@ import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-group-creator",
-  templateUrl: "./group-creator.component.html",
-  styleUrls: ["./group-creator.component.css"]
+  templateUrl: "./group-creator.component.html"
 })
 export class GroupCreatorComponent implements OnInit {
 

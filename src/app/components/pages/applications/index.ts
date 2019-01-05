@@ -1,7 +1,6 @@
 export * from "./betting-calculator/betting-calculator.component";
 export * from "./dto-convert/dto-convert.component";
 export * from "./final-grade-calculator/final-grade-calculator.component";
-export * from "./grade-calculator/grade-calculator.component";
 export * from "./group-creator/group-creator.component";
 export * from "./html-sandbox/html-sandbox.component";
 export * from "./multiplication-table/multiplication-table.component";

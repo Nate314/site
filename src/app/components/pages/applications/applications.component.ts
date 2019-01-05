@@ -1,10 +1,8 @@
-
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames, Constants } from "../../../modules/Helper";
 import { DB } from "../../../modules/DB";
-import { filter } from "rxjs/operators";
 import * as _ from "lodash";
 
 class Page {
@@ -23,8 +21,7 @@ class App {
 
 @Component({
   selector: "app-applications",
-  templateUrl: "./applications.component.html",
-  styleUrls: ["./applications.component.css"]
+  templateUrl: "./applications.component.html"
 })
 export class ApplicationsComponent implements OnInit {
 

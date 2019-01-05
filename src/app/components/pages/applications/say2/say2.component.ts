@@ -4,8 +4,7 @@ import { Location } from "../../../../../../node_modules/@angular/common";
 
 @Component({
   selector: "app-say2",
-  templateUrl: "./say2.component.html",
-  styleUrls: ["./say2.component.css"]
+  templateUrl: "./say2.component.html"
 })
 export class Say2Component implements OnInit {
 
