@@ -1946,6 +1946,12 @@ var db = {
                                         + " two languages are almost just as similar to each other as a car is to carpet."
                                 },
                                 {
+                                  name: "Snake",
+                                  file: "https://nate314.github.io/react-games/",
+                                  selector: "app-react-games",
+                                  description: "I made this game to learn react. You can learn react here (https://reactjs.org/)."
+                                },
+                                {
                                     name: "TypingTest",
                                     file: "webapplications/typingtest",
                                     selector: "app-typing-test",
