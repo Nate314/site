@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { Helper, PageNames } from "../../../modules/Helper";
+import { Helper, PageNames } from "../../../helpers/Helper";
 import { HttpClient } from "../../../../../node_modules/@angular/common/http";
 
 @Component({

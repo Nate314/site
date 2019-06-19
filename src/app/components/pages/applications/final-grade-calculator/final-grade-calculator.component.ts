@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Helper } from "../../../../modules/Helper";
+import { Helper } from "../../../../helpers/Helper";
 
 @Component({
   selector: "app-final-grade-calculator",

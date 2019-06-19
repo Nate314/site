@@ -1,0 +1,7 @@
+<a (click)="clickFolderName()">{{dir.name}}</a>
+<br />
+<a *ngFor="let foler of dir.folders" (click)="clickSubFolderName()">{{folder.name}}</a>
+<br />
+<a *ngFor="let file of dir.files" (click)="clickFileName()">{{file.name}}</a>
+<br />
+<a *ngFor="let comp of dir.components" (click)="clickComponentName()">{{comp.name}}</a>

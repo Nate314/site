@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
-import { Helper, PageNames, Constants } from "../../../modules/Helper";
-import { DB } from "../../../modules/DB";
+import { Helper, PageNames } from "../../../helpers/Helper";
+import { DB } from "../../../helpers/DB";
 import * as _ from "lodash";
+import { HttpClient } from "@angular/common/http";
 
 class Page {
   name: string;
@@ -44,65 +45,71 @@ export class ApplicationsComponent implements OnInit {
   webApplications: any;
   androidApplications: any;
 
-  constructor(private router: Router, private location: Location, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private router: Router,
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) { }
 
   ngOnInit() {
-
-    // load information about all applications from the database
-    this.javaApplications = DB.dbApplications.getJavaApplications();
-    this.webApplications = DB.dbApplications.getWebApplications();
-    this.androidApplications = DB.dbApplications.getAndroidApplications();
-    this.subpages.push(<Page>{
-      name: this.javaApplications["name"],
-      link: "../" + this.javaApplications["link"],
-      description: this.javaApplications["description"],
-      apps: this.javaApplications["apps"]
-    });
-    this.subpages.push(<Page>{
-      name: this.webApplications["name"],
-      link: "../" + this.webApplications["link"],
-      description: this.webApplications["description"],
-      apps: this.webApplications["apps"]
-    });
-    this.subpages.push(<Page>{
-      name: this.androidApplications["name"],
-      link: "../" + this.androidApplications["link"],
-      description: this.androidApplications["description"],
-      apps: this.androidApplications["apps"]
-    });
-
-    // load different sections of the page based on the url
-    const validSubpages = ["java", "web", "android"];
-    this.activatedRoute.url.subscribe(response => {
-      // get the subpage
-      const validSubpage = response.filter(x => _.includes(validSubpages, x.path));
-      if (validSubpage.length > 0) {
-        this.subpage = validSubpage[0].path;
-        // get the subpage object
-        const routeSubpage = this.subpages.filter(page =>
-          page.name.toUpperCase().includes(this.subpage.toUpperCase()));
-        if (routeSubpage.length > 0) {
-          const thisPage = routeSubpage[0];
-          this.pageName = thisPage["name"];
-          this.apps = thisPage["apps"];
-          // get the web application
-          if (response.length === 3)
-            this.webApp = this.getApp(this.webApplications["apps"], response[2].path);
+    new DB(this.http).getDB().subscribe(db => {
+      // load information about all applications from the database
+      this.javaApplications = db.getJavaApplications();
+      this.webApplications = db.getWebApplications();
+      this.androidApplications = db.getAndroidApplications();
+      this.subpages.push(<Page>{
+        name: this.javaApplications["name"],
+        link: "../" + this.javaApplications["link"],
+        description: this.javaApplications["description"],
+        apps: this.javaApplications["apps"]
+      });
+      this.subpages.push(<Page>{
+        name: this.webApplications["name"],
+        link: "../" + this.webApplications["link"],
+        description: this.webApplications["description"],
+        apps: this.webApplications["apps"]
+      });
+      this.subpages.push(<Page>{
+        name: this.androidApplications["name"],
+        link: "../" + this.androidApplications["link"],
+        description: this.androidApplications["description"],
+        apps: this.androidApplications["apps"]
+      });
+  
+      // load different sections of the page based on the url
+      const validSubpages = ["java", "web", "android"];
+      this.activatedRoute.url.subscribe(response => {
+        // get the subpage
+        const validSubpage = response.filter(x => _.includes(validSubpages, x.path));
+        if (validSubpage.length > 0) {
+          this.subpage = validSubpage[0].path;
+          // get the subpage object
+          const routeSubpage = this.subpages.filter(page =>
+            page.name.toUpperCase().includes(this.subpage.toUpperCase()));
+          if (routeSubpage.length > 0) {
+            const thisPage = routeSubpage[0];
+            this.pageName = thisPage["name"];
+            this.apps = thisPage["apps"];
+            // get the web application
+            if (response.length === 3)
+              this.webApp = this.getApp(this.webApplications["apps"], response[2].path);
+          }
         }
-      }
+      });
+  
+      // if a web app is being passed through the url, then open that web app
+      if (!Helper.equalsNull(this.webApp))
+        this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
+  
+      // initialize page
+      let pageTitle = String(PageNames.APPLICATIONS);
+      if (!Helper.equalsNull(this.pageName))
+        pageTitle += " | " + this.pageName;
+      if (!Helper.equalsNull(this.webApp))
+        pageTitle += " | " + this.webApp.name;
+      Helper.initializePage(this, this.router.url, pageTitle);
     });
-
-    // if a web app is being passed through the url, then open that web app
-    if (!Helper.equalsNull(this.webApp))
-      this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
-
-    // initialize page
-    let pageTitle = String(PageNames.APPLICATIONS);
-    if (!Helper.equalsNull(this.pageName))
-      pageTitle += " | " + this.pageName;
-    if (!Helper.equalsNull(this.webApp))
-      pageTitle += " | " + this.webApp.name;
-    Helper.initializePage(this, this.router.url, pageTitle);
   }
 
   getApp(appList: App[], appName: string): App {

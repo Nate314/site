@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Helper } from "src/app/modules/Helper";
+import { Helper } from "src/app/helpers/Helper";
 import * as _ from "lodash";
 
 @Component({

@@ -1,4 +1,5 @@
 export * from "./betting-calculator/betting-calculator.component";
+export * from "./code-viewer/code-viewer.component";
 export * from "./dto-convert/dto-convert.component";
 export * from "./final-grade-calculator/final-grade-calculator.component";
 export * from "./group-creator/group-creator.component";
@@ -8,3 +9,4 @@ export * from "./say2/say2.component";
 export * from "./typing-test/typing-test.component";
 export * from "./iframe-app.component";
 export * from "./applications.component";
+export * from "./code-viewer/code-viewer.component";

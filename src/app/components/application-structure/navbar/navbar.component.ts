@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { Constants, Helper } from "../../../modules/Helper";
+import { Constants, Helper } from "../../../helpers/Helper";
 
 class Page {
   link: string;

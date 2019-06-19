@@ -77,10 +77,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/pages/home/home.component */ "./src/app/components/pages/home/home.component.ts");
-/* harmony import */ var _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/pages/videos/videos.component */ "./src/app/components/pages/videos/videos.component.ts");
-/* harmony import */ var _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/application-structure/index */ "./src/app/components/application-structure/index.ts");
-/* harmony import */ var _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/pages/applications/index */ "./src/app/components/pages/applications/index.ts");
+/* harmony import */ var _components_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/index */ "./src/app/components/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -94,31 +91,29 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-
-
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["AppComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["NotFoundComponent"],
-                _components_pages_home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
-                _components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["FooterComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["ApplicationsComponent"],
-                _components_pages_videos_videos_component__WEBPACK_IMPORTED_MODULE_7__["VideosComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["IFrameAppComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["MultiplicationTableComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["FinalGradeCalculatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["BettingCalculatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["Say2Component"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["GroupCreatorComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["HtmlSandboxComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["TypingTestComponent"],
-                _components_pages_applications_index__WEBPACK_IMPORTED_MODULE_9__["DtoConvertComponent"]
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["NavbarComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["NotFoundComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["FooterComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["ApplicationsComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["VideosComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["IFrameAppComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["MultiplicationTableComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["FinalGradeCalculatorComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["BettingCalculatorComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["Say2Component"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["GroupCreatorComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["HtmlSandboxComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["TypingTestComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["DtoConvertComponent"],
+                _components_index__WEBPACK_IMPORTED_MODULE_6__["CodeViewerComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -128,7 +123,7 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"]
             ],
             providers: [_angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]],
-            bootstrap: [_components_application_structure_index__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
+            bootstrap: [_components_index__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -317,7 +312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modules/Helper */ "./src/app/modules/Helper.ts");
+/* harmony import */ var _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/Helper */ "./src/app/helpers/Helper.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -348,11 +343,11 @@ var NavbarComponent = /** @class */ (function () {
         this.pages.push({ link: "/videos", name: "Videos" });
     };
     NavbarComponent.prototype.goTo = function (url) {
-        _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
         // location.href = url;
     };
     NavbarComponent.prototype.isSelected = function (page) {
-        if (_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPageURL.includes(page.link))
+        if (_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPageURL.includes(page.link))
             return true;
         else
             return false;
@@ -431,6 +426,57 @@ var NotFoundComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/components/index.ts ***!
+  \*************************************/
+/*! exports provided: NotFoundComponent, AppComponent, FooterComponent, NavbarComponent, HomeComponent, VideosComponent, BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _application_structure_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application-structure/index */ "./src/app/components/application-structure/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["AppComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["FooterComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["NavbarComponent"]; });
+
+/* harmony import */ var _pages_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/index */ "./src/app/components/pages/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VideosComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["VideosComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BettingCalculatorComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["BettingCalculatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CodeViewerComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["CodeViewerComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["DtoConvertComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["FinalGradeCalculatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["GroupCreatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["HtmlSandboxComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["MultiplicationTableComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["Say2Component"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["TypingTestComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["IFrameAppComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _pages_index__WEBPACK_IMPORTED_MODULE_1__["ApplicationsComponent"]; });
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/pages/applications/applications.component.html":
 /*!***************************************************************************!*\
   !*** ./src/app/components/pages/applications/applications.component.html ***!
@@ -455,10 +501,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modules/Helper */ "./src/app/modules/Helper.ts");
-/* harmony import */ var _modules_DB__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../modules/DB */ "./src/app/modules/DB.ts");
+/* harmony import */ var _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/Helper */ "./src/app/helpers/Helper.ts");
+/* harmony import */ var _helpers_DB__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../helpers/DB */ "./src/app/helpers/DB.ts");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -468,6 +515,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -485,10 +533,11 @@ var App = /** @class */ (function () {
     return App;
 }());
 var ApplicationsComponent = /** @class */ (function () {
-    function ApplicationsComponent(router, location, activatedRoute) {
+    function ApplicationsComponent(router, location, activatedRoute, http) {
         this.router = router;
         this.location = location;
         this.activatedRoute = activatedRoute;
+        this.http = http;
         this.appSelector = "<app-dto-convert></app-dto-convert>";
         // Applications
         this.subpages = [];
@@ -498,59 +547,61 @@ var ApplicationsComponent = /** @class */ (function () {
     }
     ApplicationsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        // load information about all applications from the database
-        this.javaApplications = _modules_DB__WEBPACK_IMPORTED_MODULE_4__["DB"].dbApplications.getJavaApplications();
-        this.webApplications = _modules_DB__WEBPACK_IMPORTED_MODULE_4__["DB"].dbApplications.getWebApplications();
-        this.androidApplications = _modules_DB__WEBPACK_IMPORTED_MODULE_4__["DB"].dbApplications.getAndroidApplications();
-        this.subpages.push({
-            name: this.javaApplications["name"],
-            link: "../" + this.javaApplications["link"],
-            description: this.javaApplications["description"],
-            apps: this.javaApplications["apps"]
-        });
-        this.subpages.push({
-            name: this.webApplications["name"],
-            link: "../" + this.webApplications["link"],
-            description: this.webApplications["description"],
-            apps: this.webApplications["apps"]
-        });
-        this.subpages.push({
-            name: this.androidApplications["name"],
-            link: "../" + this.androidApplications["link"],
-            description: this.androidApplications["description"],
-            apps: this.androidApplications["apps"]
-        });
-        // load different sections of the page based on the url
-        var validSubpages = ["java", "web", "android"];
-        this.activatedRoute.url.subscribe(function (response) {
-            // get the subpage
-            var validSubpage = response.filter(function (x) { return lodash__WEBPACK_IMPORTED_MODULE_5__["includes"](validSubpages, x.path); });
-            if (validSubpage.length > 0) {
-                _this.subpage = validSubpage[0].path;
-                // get the subpage object
-                var routeSubpage = _this.subpages.filter(function (page) {
-                    return page.name.toUpperCase().includes(_this.subpage.toUpperCase());
-                });
-                if (routeSubpage.length > 0) {
-                    var thisPage = routeSubpage[0];
-                    _this.pageName = thisPage["name"];
-                    _this.apps = thisPage["apps"];
-                    // get the web application
-                    if (response.length === 3)
-                        _this.webApp = _this.getApp(_this.webApplications["apps"], response[2].path);
+        new _helpers_DB__WEBPACK_IMPORTED_MODULE_4__["DB"](this.http).getDB().subscribe(function (db) {
+            // load information about all applications from the database
+            _this.javaApplications = db.getJavaApplications();
+            _this.webApplications = db.getWebApplications();
+            _this.androidApplications = db.getAndroidApplications();
+            _this.subpages.push({
+                name: _this.javaApplications["name"],
+                link: "../" + _this.javaApplications["link"],
+                description: _this.javaApplications["description"],
+                apps: _this.javaApplications["apps"]
+            });
+            _this.subpages.push({
+                name: _this.webApplications["name"],
+                link: "../" + _this.webApplications["link"],
+                description: _this.webApplications["description"],
+                apps: _this.webApplications["apps"]
+            });
+            _this.subpages.push({
+                name: _this.androidApplications["name"],
+                link: "../" + _this.androidApplications["link"],
+                description: _this.androidApplications["description"],
+                apps: _this.androidApplications["apps"]
+            });
+            // load different sections of the page based on the url
+            var validSubpages = ["java", "web", "android"];
+            _this.activatedRoute.url.subscribe(function (response) {
+                // get the subpage
+                var validSubpage = response.filter(function (x) { return lodash__WEBPACK_IMPORTED_MODULE_5__["includes"](validSubpages, x.path); });
+                if (validSubpage.length > 0) {
+                    _this.subpage = validSubpage[0].path;
+                    // get the subpage object
+                    var routeSubpage = _this.subpages.filter(function (page) {
+                        return page.name.toUpperCase().includes(_this.subpage.toUpperCase());
+                    });
+                    if (routeSubpage.length > 0) {
+                        var thisPage = routeSubpage[0];
+                        _this.pageName = thisPage["name"];
+                        _this.apps = thisPage["apps"];
+                        // get the web application
+                        if (response.length === 3)
+                            _this.webApp = _this.getApp(_this.webApplications["apps"], response[2].path);
+                    }
                 }
-            }
+            });
+            // if a web app is being passed through the url, then open that web app
+            if (!_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(_this.webApp))
+                _this.openWebApp(_this.getApp(_this.webApplications["apps"], _this.webApp.name), false);
+            // initialize page
+            var pageTitle = String(_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].APPLICATIONS);
+            if (!_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(_this.pageName))
+                pageTitle += " | " + _this.pageName;
+            if (!_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(_this.webApp))
+                pageTitle += " | " + _this.webApp.name;
+            _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(_this, _this.router.url, pageTitle);
         });
-        // if a web app is being passed through the url, then open that web app
-        if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(this.webApp))
-            this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
-        // initialize page
-        var pageTitle = String(_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].APPLICATIONS);
-        if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(this.pageName))
-            pageTitle += " | " + this.pageName;
-        if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(this.webApp))
-            pageTitle += " | " + this.webApp.name;
-        _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, pageTitle);
     };
     ApplicationsComponent.prototype.getApp = function (appList, appName) {
         var appToOpen = appList.filter(function (application) { return application.name.toLowerCase() === appName.toLowerCase(); });
@@ -559,14 +610,14 @@ var ApplicationsComponent = /** @class */ (function () {
         return null;
     };
     ApplicationsComponent.prototype.open = function (url) {
-        _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
     };
     ApplicationsComponent.prototype.openWebApp = function (app, href) {
         if (href) {
-            _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, "/applications/web/" + app.name);
+            _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, "/applications/web/" + app.name);
         }
         else {
-            if (!_modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(app)) {
+            if (!_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].equalsNull(app)) {
                 this.webAppOpen = true;
                 document.getElementById("appDescription").innerHTML = app.description;
             }
@@ -589,7 +640,10 @@ var ApplicationsComponent = /** @class */ (function () {
             selector: "app-applications",
             template: __webpack_require__(/*! ./applications.component.html */ "./src/app/components/pages/applications/applications.component.html")
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]])
     ], ApplicationsComponent);
     return ApplicationsComponent;
 }());
@@ -715,6 +769,68 @@ var BettingCalculatorComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/pages/applications/code-viewer/code-viewer.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/code-viewer/code-viewer.component.html ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<a (click)=\"clickFolderName()\">{{dir.name}}</a>\r\n<br />\r\n<a *ngFor=\"let foler of dir.folders\" (click)=\"clickSubFolderName()\">{{folder.name}}</a>\r\n<br />\r\n<a *ngFor=\"let file of dir.files\" (click)=\"clickFileName()\">{{file.name}}</a>\r\n<br />\r\n<a *ngFor=\"let comp of dir.components\" (click)=\"clickComponentName()\">{{comp.name}}</a>"
+
+/***/ }),
+
+/***/ "./src/app/components/pages/applications/code-viewer/code-viewer.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/components/pages/applications/code-viewer/code-viewer.component.ts ***!
+  \************************************************************************************/
+/*! exports provided: CodeViewerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CodeViewerComponent", function() { return CodeViewerComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _helpers_FileStructure__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../helpers/FileStructure */ "./src/app/helpers/FileStructure.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CodeViewerComponent = /** @class */ (function () {
+    function CodeViewerComponent() {
+    }
+    CodeViewerComponent.prototype.ngOnInit = function () {
+        Object(_helpers_FileStructure__WEBPACK_IMPORTED_MODULE_1__["getSiteFiles"])();
+    };
+    CodeViewerComponent.prototype.clickFolderName = function () {
+    };
+    CodeViewerComponent.prototype.clickSubFolderName = function () {
+    };
+    CodeViewerComponent.prototype.clickFileName = function () {
+    };
+    CodeViewerComponent.prototype.clickComponentName = function () {
+    };
+    CodeViewerComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: "app-code-viewer",
+            template: __webpack_require__(/*! ./code-viewer.component.html */ "./src/app/components/pages/applications/code-viewer/code-viewer.component.html")
+        }),
+        __metadata("design:paramtypes", [])
+    ], CodeViewerComponent);
+    return CodeViewerComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/pages/applications/dto-convert/dto-convert.component.html":
 /*!**************************************************************************************!*\
   !*** ./src/app/components/pages/applications/dto-convert/dto-convert.component.html ***!
@@ -737,7 +853,7 @@ module.exports = "\n  <div class=\"row\">\n    <div class=\"col-1\">\n        Pl
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return DtoConvertComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modules/Helper */ "./src/app/modules/Helper.ts");
+/* harmony import */ var src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/helpers/Helper */ "./src/app/helpers/Helper.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -764,18 +880,18 @@ var DtoConvertComponent = /** @class */ (function () {
     };
     DtoConvertComponent.prototype.csharp_to_typescript = function () {
         var result = this.csharp_text;
-        result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
+        result = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
         var getset_list = ["{get;set;}", "{ get;set;}", "{ get; set;}", "{ get; set; }",
             "{get;set; }", "{get; set; }", "{get; set;}"];
         for (var _i = 0, getset_list_1 = getset_list; _i < getset_list_1.length; _i++) {
             var getset = getset_list_1[_i];
-            result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, getset, "");
+            result = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, getset, "");
         }
         var result_lines = result.split("\n");
         result = "";
         for (var _a = 0, result_lines_1 = result_lines; _a < result_lines_1.length; _a++) {
             var line = result_lines_1[_a];
-            if (!src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
+            if (!src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
                 if (line.indexOf("{") !== -1 || line.indexOf("}") !== -1) {
                     result += line + "\n";
                 }
@@ -790,19 +906,19 @@ var DtoConvertComponent = /** @class */ (function () {
     };
     DtoConvertComponent.prototype.typescript_to_csharp = function () {
         var result = this.typescript_text;
-        result = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
+        result = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(result, "  ", " ");
         var result_lines = result.split("\n");
         result = "";
         for (var _i = 0, result_lines_2 = result_lines; _i < result_lines_2.length; _i++) {
             var line = result_lines_2[_i];
-            if (!src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
+            if (!src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(line)) {
                 if (line.indexOf("{") !== -1 || line.indexOf("}") !== -1) {
                     result += line + "\n";
                 }
                 else {
                     var scope = "public";
-                    var type = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, " ", "").split(":")[1].split(";")[0];
-                    var variable = src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, "\t", "").split(":")[0];
+                    var type = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, " ", "").split(":")[1].split(";")[0];
+                    var variable = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(line, "\t", "").split(":")[0];
                     result += "\t" + scope + " " + type + " " + variable + " { get; set; }\n";
                 }
             }
@@ -845,7 +961,7 @@ module.exports = "<br />\n<div class=\"row\">\n  <div class=\"col-6\">\n    Curr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return FinalGradeCalculatorComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../modules/Helper */ "./src/app/modules/Helper.ts");
+/* harmony import */ var _helpers_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../helpers/Helper */ "./src/app/helpers/Helper.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -865,9 +981,9 @@ var FinalGradeCalculatorComponent = /** @class */ (function () {
     FinalGradeCalculatorComponent.prototype.calculate = function () {
         this.label = "";
         this.error = "";
-        if (_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.currentGrade)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.finalPercentage)
-            || _modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.goal))
+        if (_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.currentGrade)
+            || _helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.finalPercentage)
+            || _helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].equalsNull(this.goal))
             this.error = "Please fill out all three textboxes before pressing the Submit button.";
         else {
             var requiredFinalGrade = this.finalGradeRequired(this.currentGrade * 0.01, this.finalPercentage * 0.01, this.goal * 0.01);
@@ -1110,7 +1226,7 @@ var IFrameAppComponent = /** @class */ (function () {
 /*!********************************************************!*\
   !*** ./src/app/components/pages/applications/index.ts ***!
   \********************************************************/
-/*! exports provided: BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
+/*! exports provided: BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1118,32 +1234,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _betting_calculator_betting_calculator_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./betting-calculator/betting-calculator.component */ "./src/app/components/pages/applications/betting-calculator/betting-calculator.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BettingCalculatorComponent", function() { return _betting_calculator_betting_calculator_component__WEBPACK_IMPORTED_MODULE_0__["BettingCalculatorComponent"]; });
 
-/* harmony import */ var _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dto-convert/dto-convert.component */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_1__["DtoConvertComponent"]; });
+/* harmony import */ var _code_viewer_code_viewer_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./code-viewer/code-viewer.component */ "./src/app/components/pages/applications/code-viewer/code-viewer.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CodeViewerComponent", function() { return _code_viewer_code_viewer_component__WEBPACK_IMPORTED_MODULE_1__["CodeViewerComponent"]; });
 
-/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_2__["FinalGradeCalculatorComponent"]; });
+/* harmony import */ var _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dto-convert/dto-convert.component */ "./src/app/components/pages/applications/dto-convert/dto-convert.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _dto_convert_dto_convert_component__WEBPACK_IMPORTED_MODULE_2__["DtoConvertComponent"]; });
 
-/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_3__["GroupCreatorComponent"]; });
+/* harmony import */ var _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./final-grade-calculator/final-grade-calculator.component */ "./src/app/components/pages/applications/final-grade-calculator/final-grade-calculator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _final_grade_calculator_final_grade_calculator_component__WEBPACK_IMPORTED_MODULE_3__["FinalGradeCalculatorComponent"]; });
 
-/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_4__["HtmlSandboxComponent"]; });
+/* harmony import */ var _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./group-creator/group-creator.component */ "./src/app/components/pages/applications/group-creator/group-creator.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _group_creator_group_creator_component__WEBPACK_IMPORTED_MODULE_4__["GroupCreatorComponent"]; });
 
-/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_5__["MultiplicationTableComponent"]; });
+/* harmony import */ var _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./html-sandbox/html-sandbox.component */ "./src/app/components/pages/applications/html-sandbox/html-sandbox.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _html_sandbox_html_sandbox_component__WEBPACK_IMPORTED_MODULE_5__["HtmlSandboxComponent"]; });
 
-/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_6__["Say2Component"]; });
+/* harmony import */ var _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./multiplication-table/multiplication-table.component */ "./src/app/components/pages/applications/multiplication-table/multiplication-table.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _multiplication_table_multiplication_table_component__WEBPACK_IMPORTED_MODULE_6__["MultiplicationTableComponent"]; });
 
-/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_7__["TypingTestComponent"]; });
+/* harmony import */ var _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./say2/say2.component */ "./src/app/components/pages/applications/say2/say2.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _say2_say2_component__WEBPACK_IMPORTED_MODULE_7__["Say2Component"]; });
 
-/* harmony import */ var _iframe_app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./iframe-app.component */ "./src/app/components/pages/applications/iframe-app.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _iframe_app_component__WEBPACK_IMPORTED_MODULE_8__["IFrameAppComponent"]; });
+/* harmony import */ var _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./typing-test/typing-test.component */ "./src/app/components/pages/applications/typing-test/typing-test.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _typing_test_typing_test_component__WEBPACK_IMPORTED_MODULE_8__["TypingTestComponent"]; });
 
-/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_9__["ApplicationsComponent"]; });
+/* harmony import */ var _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./iframe-app.component */ "./src/app/components/pages/applications/iframe-app.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _iframe_app_component__WEBPACK_IMPORTED_MODULE_9__["IFrameAppComponent"]; });
+
+/* harmony import */ var _applications_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./applications.component */ "./src/app/components/pages/applications/applications.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_component__WEBPACK_IMPORTED_MODULE_10__["ApplicationsComponent"]; });
+
+/* empty/unused harmony star reexport */
 
 
 
@@ -1422,7 +1543,7 @@ module.exports = "\n<p *ngIf=\"paragraph === ''\">\n  Paste Text to use for typi
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return TypingTestComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modules/Helper */ "./src/app/modules/Helper.ts");
+/* harmony import */ var src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/helpers/Helper */ "./src/app/helpers/Helper.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1461,7 +1582,7 @@ var TypingTestComponent = /** @class */ (function () {
     };
     TypingTestComponent.prototype.replaceSpaces = function (str) {
         var typescript_non_breaking_space = String.fromCharCode(160);
-        return src_app_modules_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(str, "  ", " ");
+        return src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_1__["Helper"].replaceAll(str, "  ", " ");
     };
     TypingTestComponent.prototype.clockTick = function () {
         if (this.timerMinutes > 0 && this.timerSeconds === 0) {
@@ -1576,7 +1697,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modules/Helper */ "./src/app/modules/Helper.ts");
+/* harmony import */ var _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/Helper */ "./src/app/helpers/Helper.ts");
 /* harmony import */ var _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../node_modules/@angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1599,7 +1720,7 @@ var HomeComponent = /** @class */ (function () {
         this.http = http;
     }
     HomeComponent.prototype.ngOnInit = function () {
-        _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].HOME);
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].HOME);
     };
     HomeComponent.prototype.openLink = function (event, url) {
         console.log(event.which);
@@ -1613,7 +1734,7 @@ var HomeComponent = /** @class */ (function () {
     HomeComponent.prototype.openPage = function (event, page) {
         console.log(page);
         if (event.which === 1) {
-            _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, page);
+            _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, page);
         }
         if (event.which === 2) {
             window.open(page);
@@ -1628,6 +1749,51 @@ var HomeComponent = /** @class */ (function () {
     ], HomeComponent);
     return HomeComponent;
 }());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/pages/index.ts":
+/*!*******************************************!*\
+  !*** ./src/app/components/pages/index.ts ***!
+  \*******************************************/
+/*! exports provided: HomeComponent, VideosComponent, BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _applications_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./applications/index */ "./src/app/components/pages/applications/index.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BettingCalculatorComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["BettingCalculatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CodeViewerComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["CodeViewerComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DtoConvertComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["DtoConvertComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FinalGradeCalculatorComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["FinalGradeCalculatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "GroupCreatorComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["GroupCreatorComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HtmlSandboxComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["HtmlSandboxComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MultiplicationTableComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["MultiplicationTableComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Say2Component", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["Say2Component"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TypingTestComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["TypingTestComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "IFrameAppComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["IFrameAppComponent"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ApplicationsComponent", function() { return _applications_index__WEBPACK_IMPORTED_MODULE_0__["ApplicationsComponent"]; });
+
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home/home.component */ "./src/app/components/pages/home/home.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return _home_home_component__WEBPACK_IMPORTED_MODULE_1__["HomeComponent"]; });
+
+/* harmony import */ var _videos_videos_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videos/videos.component */ "./src/app/components/pages/videos/videos.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VideosComponent", function() { return _videos_videos_component__WEBPACK_IMPORTED_MODULE_2__["VideosComponent"]; });
+
+
+
 
 
 
@@ -1657,9 +1823,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _modules_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../modules/Helper */ "./src/app/modules/Helper.ts");
-/* harmony import */ var _modules_DB__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../modules/DB */ "./src/app/modules/DB.ts");
+/* harmony import */ var _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../helpers/Helper */ "./src/app/helpers/Helper.ts");
+/* harmony import */ var _helpers_DB__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../helpers/DB */ "./src/app/helpers/DB.ts");
 /* harmony import */ var _node_modules_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../node_modules/@angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1675,36 +1842,44 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var Video = /** @class */ (function () {
     function Video() {
     }
     return Video;
 }());
 var VideosComponent = /** @class */ (function () {
-    function VideosComponent(router, location, sanitizer) {
+    function VideosComponent(router, location, sanitizer, http) {
         this.router = router;
         this.location = location;
         this.sanitizer = sanitizer;
+        this.http = http;
         this.videos = [];
     }
     VideosComponent.prototype.ngOnInit = function () {
-        _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, _modules_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].VIDEOS);
-        var dbVideos = _modules_DB__WEBPACK_IMPORTED_MODULE_4__["DB"].dbVideos.getVideos();
-        this.videos = [];
-        for (var i = 0; i < dbVideos.length; i++) {
-            this.videos.push({
-                title: dbVideos[i]["title"],
-                link: this.sanitizer.bypassSecurityTrustResourceUrl(dbVideos[i]["link"]),
-                description: dbVideos[i]["description"]
-            });
-        }
+        var _this = this;
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].VIDEOS);
+        new _helpers_DB__WEBPACK_IMPORTED_MODULE_4__["DB"](this.http).getDB().subscribe(function (db) {
+            var dbVideos = db.getVideos();
+            _this.videos = [];
+            for (var i = 0; i < dbVideos.length; i++) {
+                _this.videos.push({
+                    title: dbVideos[i]["title"],
+                    link: _this.sanitizer.bypassSecurityTrustResourceUrl(dbVideos[i]["link"]),
+                    description: dbVideos[i]["description"]
+                });
+            }
+        });
     };
     VideosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-videos",
             template: __webpack_require__(/*! ./videos.component.html */ "./src/app/components/pages/videos/videos.component.html")
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"], _node_modules_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"],
+            _node_modules_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"]])
     ], VideosComponent);
     return VideosComponent;
 }());
@@ -1713,9 +1888,9 @@ var VideosComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/modules/DB.ts":
+/***/ "./src/app/helpers/DB.ts":
 /*!*******************************!*\
-  !*** ./src/app/modules/DB.ts ***!
+  !*** ./src/app/helpers/DB.ts ***!
   \*******************************/
 /*! exports provided: DB */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1723,335 +1898,260 @@ var VideosComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DB", function() { return DB; });
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
 var DBApplications = /** @class */ (function () {
-    function DBApplications() {
+    function DBApplications(applications) {
+        this.applications = applications;
     }
-    DBApplications.prototype.getApplications = function () {
-        return db.nate314.home.pages[0];
-    };
-    DBApplications.prototype.getJavaApplications = function () {
-        return db.nate314.home.pages[0].subpages[0];
-    };
-    DBApplications.prototype.getWebApplications = function () {
-        return db.nate314.home.pages[0].subpages[1];
-    };
-    DBApplications.prototype.getAndroidApplications = function () {
-        return db.nate314.home.pages[0].subpages[2];
-    };
     return DBApplications;
 }());
 var DBVideos = /** @class */ (function () {
-    function DBVideos() {
+    function DBVideos(videos) {
+        this.videos = videos;
     }
-    DBVideos.prototype.getVideos = function () {
-        return db.nate314.home.pages[1].subpages[0]["videos"];
-    };
     return DBVideos;
 }());
 var DB = /** @class */ (function () {
-    function DB() {
+    function DB(http, database) {
+        this.http = http;
+        this.database = database;
+        if (database) {
+            this.db = database;
+            this.applications = this.db.nate314.home.pages[0];
+            this.videos = this.db.nate314.home.pages[1].subpages[0]["videos"];
+            console.log(database);
+        }
     }
-    DB.getDB = function () {
-        return db;
+    DB.prototype.getDB = function () {
+        var _this = this;
+        return this.http.get("/assets/db.json").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (resp) {
+            return new DB(_this.http, resp);
+        }));
     };
-    DB.getHome = function () {
-        return db.nate314.home;
+    DB.prototype.getHome = function () {
+        return this.db.nate314.home;
     };
-    DB.getPages = function () {
-        return db.nate314.home.pages;
+    DB.prototype.getPages = function () {
+        return this.db.nate314.home.pages;
     };
-    DB.dbApplications = new DBApplications();
-    DB.dbVideos = new DBVideos();
+    DB.prototype.getApplications = function () {
+        return this.applications;
+    };
+    DB.prototype.getJavaApplications = function () {
+        console.log(this.applications);
+        return this.applications.subpages[0];
+    };
+    DB.prototype.getWebApplications = function () {
+        return this.applications.subpages[1];
+    };
+    DB.prototype.getAndroidApplications = function () {
+        return this.applications.subpages[2];
+    };
+    DB.prototype.getVideos = function () {
+        console.log(this.videos);
+        return this.videos;
+    };
     return DB;
 }());
 
-var db = {
-    nate314: {
-        home: {
-            title: "Nathan Gawith",
-            subtitle: "my github website",
-            name: "Home",
-            sections: ["Site Map", "Other Websites"],
-            otherwebsites: "Check out my friend's websites. They have also have lotsof cool software that you can download."
-                + "<ul><li>Hanavan's <a href=\"http://thekuhnbros.com/hanavan/\">website</a></li><li>Cody's <a href=\""
-                + "https://codymoose.github.io\">website</a></li><li>Alex's <a href=\"http://alexwebber.org/\">website</a></li></ul>>",
-            pages: [{
-                    title: "Applications",
-                    name: "Applications",
-                    subpages: [{
-                            name: "JavaApplications",
-                            description: "You can downlad any of these java applications by clicking on the name "
-                                + "of the application below, or you can view a list of all of the applications and descriptions ",
-                            link: "applications/java",
-                            apps: [
-                                {
-                                    name: "Clock",
-                                    file: "Clock.jar",
-                                    description: "This is a Clock prgram written in Java. This application is pretty self "
-                                        + "explanitory. When launched, an analog clock will be displayed with the current time. "
-                                        + "If you prefer digital, just click on the clock to toggle between analog and digital."
-                                },
-                                {
-                                    name: "DinoGame1920x1080",
-                                    file: "DinoGame1920x1080.jar",
-                                    description: "This is a game playing bot written in Java. This program jumps over most "
-                                        + "cacti in the Dinosaur Game that can be played in Google Chrome when you don't have an"
-                                        + " internet connection. Sadly, it only currently works on a screen resolution of 1920x1080"
-                                        + " when Chrome is maximized in windows. It doesn't yet duck under the pterodactyls yet, so"
-                                        + " you will have to take care of that part of the game yourself."
-                                },
-                                {
-                                    name: "FlappyBird",
-                                    file: "FlappyBird1.1.zip",
-                                    description: "This is my verion of Flappy Bird written in Java. Controls are listed below: "
-                                        + "<br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>"
-                                        + "left/right: slow down/speed up game</code>"
-                                },
-                                {
-                                    name: "Minesweeper",
-                                    file: "Minesweeper1.2.jar",
-                                    description: "This is my verion of Microsoft's Minesweeper written in Java. You can flag a"
-                                        + " square by right clicking, or attack by left clicking."
-                                },
-                                {
-                                    name: "NathaNOS",
-                                    file: "NathaNOS1.1.zip",
-                                    description: "This is my \"OS\" written in Java. When you open it, the easiest way to close"
-                                        + " it is to use the Shut Down button found by clicking on the menu in the bottom left hand"
-                                        + " corner. This \"OS\" was written to run Java applications inside of it. The only application"
-                                        + " that I have included with this version of NathaNOS is my clock application. To run a java"
-                                        + " program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should"
-                                        + " be ready to go!</p> <p>Note: if you want to add one of your own java programs to NathaNOS,"
-                                        + " then you will have to make the main class extend a JFrame, and you will have to make the"
-                                        + " constructor of your main class have one parameter that is a Boolean for visibility. You can"
-                                        + " see an example below:<pre><code>package clock;\n\nimport javax.swing.JFrame;\n\npublic"
-                                        + " class Main extends JFrame\n{\n\tpublic Main(Boolean visibility)\t{\n\t\tthis.setVisible"
-                                        + "(visibility.booleanValue());\n\t}\n}\n</code></pre>"
-                                },
-                                {
-                                    name: "RubiksCube2D",
-                                    file: "RubiksCube2D_3.jar",
-                                    description: "This is a 2D Rubik's Cube written in Java. To rotate, click on a square and"
-                                        + " then use wasd to rotate in the correlated direction."
-                                },
-                                {
-                                    name: "ScreenSaver",
-                                    file: "ScreenSaver0.1.jar",
-                                    description: "This is a Screen Saver written in Java. It should close if you move your mouse."
-                                },
-                                {
-                                    name: "SpriteFloatyStars",
-                                    file: "SpriteFloatyStars1.0.jar",
-                                    description: "This is a background program written in Java. Check out each of the cool"
-                                        + " modes. My personal favorite is Mode 3."
-                                },
-                                {
-                                    name: "UltimateTicTacToe",
-                                    file: "UltimateTicTacToe1.1.jar",
-                                    description: "This is an UltimateTicTacToe game written in Java. If you don't know how"
-                                        + " to play, you can check out the rules <a href=\"https://www.youtube.com/watch?v=37PC0bGMiTI\""
-                                        + ">here</a>"
-                                }
-                            ]
-                        },
-                        {
-                            name: "WebApplications",
-                            description: "You can use any of these web applications by clicking on the name "
-                                + "of the application below, or you can view a list of all of the applications and descriptions ",
-                            link: "applications/web",
-                            apps: [{
-                                    name: "BettingCalculator",
-                                    file: "webapplications/bettingcalculator",
-                                    selector: "app-betting-calculator",
-                                    description: "Betting Calculator can be used if you want to place bets on things and don't want"
-                                        + " to have to worry about the math. You can set up the number of things you are btting on and"
-                                        + " the number of humans that are placing bets, and then the winnings will be split"
-                                        + " proportionally between the palyers that placed bets on the thing that actually won."
-                                },
-                                {
-                                    name: "ColorFlux",
-                                    file: "https://nate314.github.io/nathangawith/applications/webApplications/colorFlux.html",
-                                    selector: "app-color-flux",
-                                    description: "Color Flux is an application that you could possibly use as a live background"
-                                        + " written in javascript. It just pulses between different colors continuously."
-                                },
-                                {
-                                    name: "DtoConvert",
-                                    file: "webapplications/dtoconvert",
-                                    selector: "app-dto-convert",
-                                    description: "Converts dtos from C# to typescript and from typescript to C#"
-                                },
-                                {
-                                    name: "FinalGradeCalculator",
-                                    file: "webapplications/finalgradecalculator",
-                                    selector: "app-final-grade-calculator",
-                                    description: "Final Grade Caclculator is a useful tool for when you are in a crunch and want"
-                                        + " to prioritize study time. Enter your current grade in the class, the percentage of your"
-                                        + " grade the final is worth, and the percentage you want to finish the class with. Once"
-                                        + " you submit, this application will tell you the percentage you need in order to achieve"
-                                        + " your goal."
-                                },
-                                {
-                                    name: "FlappyFinch",
-                                    file: "https://nate314.github.io/nathangawith/applications/webApplications/flappyFinch.html",
-                                    selector: "app-flappy-finch",
-                                    description: "Flappy Finch is a spin off of Flappy Bird created using javascipt. There is"
-                                        + " currently no collision code in place, so there is no way for the game to end. I wrote"
-                                        + " this to learn how to do an animation using a javscript canvas."
-                                },
-                                {
-                                    name: "FloatyStars",
-                                    file: "https://nate314.github.io/nathangawith/applications/webApplications/floatyStars.html",
-                                    selector: "app-floaty-stars",
-                                    description: "Floaty Stars is a simple application that I built to learn how to do 2D"
-                                        + " animations in javascript."
-                                },
-                                {
-                                    name: "GroupCreator",
-                                    file: "webapplications/groupcreator",
-                                    selector: "app-group-creator",
-                                    description: "Group Creator is a great application to use if you want to create random"
-                                        + " groups of people and want to do it in an efficient way using pure computer randomness."
-                                },
-                                {
-                                    name: "HTMLSandbox",
-                                    file: "webapplications/htmlsandbox",
-                                    selector: "app-html-sandbox",
-                                    description: "HTML Sandbox is a great application to use if you want to learn how to code"
-                                        + " in HTML but don't have a way of editing code on your computer or just want to try"
-                                        + " something out real quick in your browser."
-                                },
-                                {
-                                    name: "MultiplicationTable",
-                                    file: "webapplications/multiplicationtable",
-                                    selector: "app-multiplication-table",
-                                    description: "Multiplication Table is pretty much self explanitory. Enter a number between"
-                                        + " 0 and 120 and a multiplication table will be generated with that size."
-                                },
-                                {
-                                    name: "NathanGawithWebsite",
-                                    file: "https://nate314.github.io/",
-                                    selector: "",
-                                    description: "This website is technically a web application, so I included it in this list."
-                                },
-                                {
-                                    name: "Say2",
-                                    file: "webapplications/say2",
-                                    selector: "app-say2",
-                                    description: "Say2 is a simple program that takes a number as input and outputs the english"
-                                        + " text for that number. For example: if you type in \"123\", the program will output \"one"
-                                        + " hundred twenty three\". Say2 was originally a challenge that many of the programmers on"
-                                        + " my robotics team completed as part of java training. Say2 is the first web application"
-                                        + " that I have written in JavaScript, which even though JavaScript sounds like Java, the"
-                                        + " two languages are almost just as similar to each other as a car is to carpet."
-                                },
-                                {
-                                  name: "Snake",
-                                  file: "https://nate314.github.io/react-games/",
-                                  selector: "app-react-games",
-                                  description: "I made this game to learn react. You can learn react here (https://reactjs.org/)."
-                                },
-                                {
-                                    name: "TypingTest",
-                                    file: "webapplications/typingtest",
-                                    selector: "app-typing-test",
-                                    description: "Test how many words per minute you can type in one minute with any sample text"
-                                        + " you want to use."
-                                },
-                            ]
-                        },
-                        {
-                            name: "AndroidApplications",
-                            description: "You can downlad any of these java applications by clicking on the name "
-                                + "of the application below, or you can view a list of all of the applications and descriptions ",
-                            link: "applications/android",
-                            "apps": [{
-                                    name: "LiveWallpaper",
-                                    file: "LiveWallpaper.apk",
-                                    description: "Live Wallpaper is my first fully functional android application that I have written."
-                                        + " This live wallpaper changes color based on what direction your phone is facing using all three"
-                                        + " angles available (pitch, roll, and azmuth) from the standard accelerometer found in most phones."
-                                        + " You can use this live wallpaper by downloading and installing the apk file and then selecting"
-                                        + " \"Live Wallpaper\" as your live wallpaper for your phone or tablet."
-                                }]
-                        }
-                    ]
-                },
+var ApplicationType = /** @class */ (function () {
+    function ApplicationType() {
+    }
+    return ApplicationType;
+}());
+var ResourceType = /** @class */ (function () {
+    function ResourceType() {
+    }
+    return ResourceType;
+}());
+var PageType = /** @class */ (function () {
+    function PageType() {
+    }
+    return PageType;
+}());
+var DBtype = /** @class */ (function () {
+    function DBtype() {
+    }
+    return DBtype;
+}());
+
+
+/***/ }),
+
+/***/ "./src/app/helpers/FileStructure.ts":
+/*!******************************************!*\
+  !*** ./src/app/helpers/FileStructure.ts ***!
+  \******************************************/
+/*! exports provided: SiteFolder, SiteComponent, getSiteFiles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteFolder", function() { return SiteFolder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SiteComponent", function() { return SiteComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSiteFiles", function() { return getSiteFiles; });
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var SiteFolder = /** @class */ (function () {
+    function SiteFolder() {
+    }
+    return SiteFolder;
+}());
+
+var SiteComponent = /** @class */ (function (_super) {
+    __extends(SiteComponent, _super);
+    function SiteComponent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return SiteComponent;
+}(SiteFolder));
+
+function getSiteFiles() {
+    return SiteFiles;
+}
+var SiteFiles = {
+    name: "site",
+    folders: [
+        {
+            name: "e2e",
+            folders: [
                 {
-                    name: "OtherPages",
-                    subpages: [{
-                            name: "Videos",
-                            videos: [
+                    name: "src",
+                    folders: [],
+                    files: ["app.e2e-spec.ts", "app.po.ts"]
+                }
+            ],
+            files: ["protractor.conf.js", "tsconfig.e2e.ts"]
+        },
+        {
+            name: "src",
+            folders: [
+                {
+                    name: "app",
+                    folders: [
+                        {
+                            name: "components",
+                            folders: [
                                 {
-                                    title: "Timelapse - Cube",
-                                    link: "https://www.youtube.com/embed/eBCUe4jSPQQ",
-                                    description: "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving"
-                                        + " itself\". I accomplished this by taking a picture of the cube every quarter turn."
+                                    name: "application-structure",
+                                    folders: [
+                                        {
+                                            name: "app-component",
+                                            HTML: true, TS: true
+                                        },
+                                        {
+                                            name: "footer",
+                                            HTML: true, TS: true
+                                        },
+                                        {
+                                            name: "navbar",
+                                            HTML: true, TS: true
+                                        },
+                                        {
+                                            name: "not-found",
+                                            HTML: true, TS: true
+                                        }
+                                    ],
+                                    files: ["index.ts"]
                                 },
                                 {
-                                    title: "Timelapse - Rubik's",
-                                    link: "https://www.youtube.com/embed/EtycVB_mPnQ",
-                                    description: "This is the first timelapse video I ever made. This is also a video of a cube"
-                                        + " solving itself, but this one doesn't look as nice as the one above because I only took"
-                                        + " one picture for each turn. I also thought it would be a good idea to show the clock so"
-                                        + " that you can see how long it took."
-                                },
-                                {
-                                    title: "Mosaic - MVTV",
-                                    link: "https://www.youtube.com/embed/hD42xobUROM",
-                                    description: "I was interviewed about my puzzle cube collection and hobby while in high school,"
-                                        + " so I made this mosaic for the high school broadcasting class to use as a nice outro for the"
-                                        + " interview."
-                                },
-                                {
-                                    title: "Mosaic - US Flag",
-                                    link: "https://www.youtube.com/embed/V4cVGX8jyfI",
-                                    description: "This was probably the easiest mosaic I made as stripes are easy for anyone to make"
-                                        + " with cubes whether or not you know how to solve a puzzle cube."
-                                },
-                                {
-                                    title: "Dream Home - Ground Floor",
-                                    link: "https://www.youtube.com/embed/9rEE0PjNMA4",
-                                    description: "In my \"Architectural Design\" course in high school, we designed our dream home"
-                                        + " in autocad and then made a 3D rendering. This is a video showing walking around the ground floor."
-                                },
-                                {
-                                    title: "Dream Home - Basement",
-                                    link: "https://www.youtube.com/embed/cDsXrYSNA8c",
-                                    description: "In my \"Architectural Design\" course in high school, we designed our dream home"
-                                        + " in autocad and then made a 3D rendering. This is a video showing walking around the basement."
-                                },
-                                {
-                                    title: "Typling Bot",
-                                    link: "https://www.youtube.com/embed/UzCBnGSdWAE",
-                                    description: "As a computer science student, a friend of mine challenged me to a typing contest."
-                                        + " I lost, so I thought it would be fun to code a bot to play for me. As you can see in this"
-                                        + " video, it isn't actually very fast."
-                                },
-                                {
-                                    title: "Clash Royale Strategy",
-                                    link: "https://www.youtube.com/embed/gLKssL0FN98",
-                                    description: "I used to play Clash Royale a lot, and this was my favorite strategy to use in a"
-                                        + " two on two battle."
+                                    name: "pages",
+                                    folders: [
+                                        {
+                                            name: "applications",
+                                            components: [
+                                                {
+                                                    name: "betting-calculator",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "dto-convert",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "final-grade-calculator",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "group-creator",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "html-sandbox",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "multiplication-table",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "say2",
+                                                    HTML: true, TS: true
+                                                },
+                                                {
+                                                    name: "typing-test",
+                                                    HTML: true, TS: true
+                                                }
+                                            ],
+                                            HTML: true, TS: true,
+                                            files: ["iframe-app.component.ts", "index.ts"]
+                                        },
+                                        {
+                                            name: "home",
+                                            HTML: true, TS: true
+                                        },
+                                        {
+                                            name: "videos",
+                                            HTML: true, TS: true
+                                        }
+                                    ],
+                                    files: []
                                 }
                             ],
-                        }]
+                            files: []
+                        },
+                        {
+                            name: "modules",
+                            folders: [],
+                            files: ["DB.ts", "FileStructure.ts", "Helper.ts"]
+                        }
+                    ],
+                    files: ["app-routing.module.ts", "app.module.ts", "routes.ts"]
                 },
                 {
-                    name: "How I Created This Website",
-                    description: "Here you can view the code behind this website."
+                    name: "assets",
+                    folders: [],
+                    files: ["db.json"]
+                },
+                {
+                    name: "environments",
+                    folders: [],
+                    files: ["environment.prod.ts", "envoronment.ts"]
                 }
-            ]
+            ],
+            files: ["browserlist", "favicon.ico", "index.html", "karma.conf.js", "main.ts", "polyfills.ts",
+                "styles.css", "test.ts", "tsconfig.app.json", "tsconfig.spec.json", "tslint.json"]
         }
-    }
+    ],
+    files: [".editorconfig", ".firebawerc", ".gitignore", ".angular.json", "firebase.json", "package-lock.json",
+        "package.json", "README.md", "tsconfig.json", "tslint.json"]
 };
 
 
 /***/ }),
 
-/***/ "./src/app/modules/Helper.ts":
+/***/ "./src/app/helpers/Helper.ts":
 /*!***********************************!*\
-  !*** ./src/app/modules/Helper.ts ***!
+  !*** ./src/app/helpers/Helper.ts ***!
   \***********************************/
 /*! exports provided: Constants, Helper, PageNames, StatusCodes */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

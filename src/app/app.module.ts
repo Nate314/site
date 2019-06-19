@@ -4,13 +4,16 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { RouterModule } from "@angular/router";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { HomeComponent } from "./components/pages/home/home.component";
-import { VideosComponent } from "./components/pages/videos/videos.component";
-import { AppComponent, NavbarComponent, FooterComponent,
-  NotFoundComponent } from "./components/application-structure/index";
-import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
+import {
+  // application-structure
+  AppComponent, NavbarComponent, FooterComponent, NotFoundComponent,
+  // pages
+  HomeComponent, VideosComponent,
+  // applications
+  BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component,
-  TypingTestComponent, IFrameAppComponent, ApplicationsComponent } from "./components/pages/applications/index";
+  TypingTestComponent, IFrameAppComponent, ApplicationsComponent
+} from "./components/index";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorCo
     GroupCreatorComponent,
     HtmlSandboxComponent,
     TypingTestComponent,
-    DtoConvertComponent
+    DtoConvertComponent,
+    CodeViewerComponent
   ],
   imports: [
     BrowserModule,
