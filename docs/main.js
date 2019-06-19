@@ -1900,18 +1900,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DB", function() { return DB; });
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 
-var DBApplications = /** @class */ (function () {
-    function DBApplications(applications) {
-        this.applications = applications;
-    }
-    return DBApplications;
-}());
-var DBVideos = /** @class */ (function () {
-    function DBVideos(videos) {
-        this.videos = videos;
-    }
-    return DBVideos;
-}());
 var DB = /** @class */ (function () {
     function DB(http, database) {
         this.http = http;
@@ -1925,7 +1913,7 @@ var DB = /** @class */ (function () {
     }
     DB.prototype.getDB = function () {
         var _this = this;
-        return this.http.get("/assets/db.json").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (resp) {
+        return this.http.get("/site/assets/db.json").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (resp) {
             return new DB(_this.http, resp);
         }));
     };

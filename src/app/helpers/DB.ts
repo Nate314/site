@@ -2,24 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-class DBApplications {
-
-	applications: any;
-
-	constructor(applications: any) {
-		this.applications = applications;
-	}
-}
-
-class DBVideos {
-
-	videos: any;
-
-	constructor(videos: any) {
-		this.videos = videos;
-	}
-}
-
 export class DB {
 
 	applications: any;
@@ -37,7 +19,7 @@ export class DB {
 	}
 
 	public getDB(): Observable<any> {
-		return this.http.get<any>("/assets/db.json").pipe(map(resp => {
+		return this.http.get<any>("/site/assets/db.json").pipe(map(resp => {
 			return new DB(this.http, resp);
 		}));
 	}
