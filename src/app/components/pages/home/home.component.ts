@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { HttpClient } from "../../../../../node_modules/@angular/common/http";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-home",
@@ -14,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     Helper.initializePage(this, this.router.url, PageNames.HOME);
+    console.log(`production: ${environment.production}`);
   }
 
   openLink(event, url: string) {

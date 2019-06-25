@@ -2,18 +2,22 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { MarkdownModule } from "ngx-markdown";
 import {
   // application-structure
   AppComponent, NavbarComponent, FooterComponent, NotFoundComponent,
   // pages
-  HomeComponent, VideosComponent,
+  HomeComponent, ApplicationsComponent, GithubProjectsComponent, VideosComponent,
   // applications
   BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component,
-  TypingTestComponent, IFrameAppComponent, ApplicationsComponent
-} from "./components/index";
+  TypingTestComponent, IFrameAppComponent,
+  // modules
+  MaterialModule
+} from "./index";
 
 @NgModule({
   declarations: [
@@ -33,14 +37,18 @@ import {
     HtmlSandboxComponent,
     TypingTestComponent,
     DtoConvertComponent,
-    CodeViewerComponent
+    CodeViewerComponent,
+    GithubProjectsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MaterialModule,
+    MarkdownModule.forRoot()
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

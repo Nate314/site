@@ -1,0 +1,22 @@
+<br />
+<p>{{description}}</p>
+<br />
+<mat-accordion>
+<div *ngFor="let project of projects">
+        <mat-expansion-panel class="mat-elevation-z4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{project.title}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <a [href]="project.link">{{project.link}}</a>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+        
+            <markdown [src]="project.description"
+            lineNumbers [start]="5"></markdown>
+        </mat-expansion-panel>
+    <br />
+</div>
+</mat-accordion>
+<br />

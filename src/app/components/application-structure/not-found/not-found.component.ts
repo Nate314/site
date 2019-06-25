@@ -10,7 +10,7 @@ export class NotFoundComponent implements OnInit {
 
   loaded: boolean = false;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor() { }
 
   ngOnInit() {
     setTimeout(() => this.loaded = true, 200);

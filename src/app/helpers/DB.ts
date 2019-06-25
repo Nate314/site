@@ -2,25 +2,23 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
-export class DB {
+class DB {
 
-	applications: any;
 	videos: any;
 
-	db: any;
+	db: DBType;
 
-	constructor(private http: HttpClient, private database?: any) {
+	constructor(private http: HttpClient, private database?: DBType) {
 		if (database) {
-			this.db = database;
-			this.applications = this.db.nate314.home.pages[0];
-			this.videos = this.db.nate314.home.pages[1].subpages[0]["videos"];
+			this.db = <DBType> database;
 			console.log(database);
 		}
 	}
 
-	public getDB(): Observable<any> {
-		return this.http.get<any>("/site/assets/db.json").pipe(map(resp => {
-			return new DB(this.http, resp);
+	public getDB(): Observable<DB> {
+		const url = true ? "/site/assets/db.json" : "/assets/db.json";
+		return this.http.get<any>(url).pipe(map(resp => {
+			return new DB(this.http, <DBType> resp);
 		}));
 	}
 
@@ -28,44 +26,33 @@ export class DB {
 		return this.db.nate314.home;
 	}
 
-	public getPages() {
-		return this.db.nate314.home.pages;
+	public getGithubProjects(): PageType<ResourceType> {
+		return this.getHome().githubprojects;
 	}
 
-	public getApplications() {
-		return this.applications;
+	public getJavaApplications(): PageType<ApplicationType> {
+		return this.getHome().javaApplications;
 	}
 
-	public getJavaApplications() {
-		console.log(this.applications);
-		return this.applications.subpages[0];
+	public getWebApplications(): PageType<ApplicationType> {
+		return this.getHome().webApplications;
 	}
 
-	public getWebApplications() {
-		return this.applications.subpages[1];
+	public getAndroidApplications(): PageType<ApplicationType> {
+		return this.getHome().androidApplications;
 	}
 
-	public getAndroidApplications() {
-		return this.applications.subpages[2];
-	}
-
-	public getVideos() {
-		console.log(this.videos);
-		return this.videos;
+	public getVideos(): ResourceType[] {
+		return this.getHome().videos.subpages;
 	}
 
 }
 
 class ApplicationType {
 	name: string;
+	file: string;
+	selector: string;
 	description: string;
-	link: string;
-	apps: {
-		name: string;
-		file: string;
-		selector: string;
-		description: string;
-	}[];
 }
 
 class ResourceType {
@@ -77,11 +64,12 @@ class ResourceType {
 class PageType<T> {
 	title: string;
 	name: string;
+	link: string;
 	description: string;
 	subpages: T[];
 }
 
-class DBtype {
+class DBType {
 	nate314: {
 		home: {
 			title: string;
@@ -89,11 +77,14 @@ class DBtype {
 			name: string;
 			sections: string[];
 			otherwebsites: string;
-			JavaApplications: PageType<ApplicationType>;
-			WebApplications: PageType<ApplicationType>;
-			AndroidApplications: PageType<ApplicationType>;
+			javaApplications: PageType<ApplicationType>;
+			webApplications: PageType<ApplicationType>;
+			androidApplications: PageType<ApplicationType>;
 			videos: PageType<ResourceType>;
+			githubprojects: PageType<ResourceType>;
 			howitsmade: PageType<ResourceType>;
 		}
 	};
 }
+
+export { DB, DBType, PageType, ResourceType, ApplicationType }

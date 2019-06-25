@@ -1,20 +1,20 @@
 <!--Applications-->
-<div *ngIf="!webAppURL && apps.length == 0" class="container">
+<div *ngIf="apps.length == 0" class="container">
   <div *ngFor="let page of subpages" class="border border-top-0 border-left-0 border-right-0">
     <h1>{{ page.name }}</h1>
     <span [innerHTML]="page.description"></span>
-    <a class="hyperlink w3-hover-text-purple" [routerLink]="[page.link]">here</a>.
+    <a class="hyperlink w3-hover-text-purple" [routerLink]="'../' + [page.link]">here</a>.
     <br />
-    <span *ngFor="let app of page.apps; let i = index">
+    <span *ngFor="let app of page.subpages; let i = index">
       <a *ngIf="page.name.toUpperCase().startsWith('JAVA')" (click)="openJavaApp(app)"
       class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
       <a *ngIf="page.name.toUpperCase().startsWith('WEB')" (click)="openWebApp(app, true)"
       class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
       <a *ngIf="page.name.toUpperCase().startsWith('ANDROID')" (click)="openAndroidApp(app)"
       class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
-      <span *ngIf="i !== page.apps.length - 1 && i != page.apps.length - 2">, </span>
-      <span *ngIf="i === page.apps.length - 2">, and </span>
-      <span *ngIf="i === page.apps.length - 1">. </span>
+      <span *ngIf="i !== page.subpages.length - 1 && i != page.subpages.length - 2">, </span>
+      <span *ngIf="i === page.subpages.length - 2">, and </span>
+      <span *ngIf="i === page.subpages.length - 1">. </span>
     </span>
   </div>
 </div>

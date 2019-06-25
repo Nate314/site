@@ -31,6 +31,7 @@ export class VideosComponent implements OnInit {
     Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
     new DB(this.http).getDB().subscribe(db => {
       const dbVideos = db.getVideos();
+      console.log(dbVideos);
       this.videos = [];
       for (let i = 0; i < dbVideos.length; i++) {
         this.videos.push(<Video>{
