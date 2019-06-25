@@ -26,6 +26,7 @@ export class ApplicationsComponent implements OnInit {
   // Applications/Subpage/App
   webAppOpen: boolean = false;
   webApp: ApplicationType;
+  appDescription: string;
 
   // DB
   findPageThatStartsWith(str: string): PageType<ApplicationType>
@@ -111,7 +112,7 @@ export class ApplicationsComponent implements OnInit {
     else {
       if (!Helper.equalsNull(app)) {
         this.webAppOpen = true;
-        document.getElementById("appDescription").innerHTML = app.description;
+        this.appDescription = app.description;
       }
     }
   }

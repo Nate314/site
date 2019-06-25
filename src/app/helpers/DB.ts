@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 class DB {
 
@@ -16,7 +17,7 @@ class DB {
 	}
 
 	public getDB(): Observable<DB> {
-		const url = true ? "/site/assets/db.json" : "/assets/db.json";
+		const url = `${environment.production ? "/site/" : "/"}assets/db.json`;
 		return this.http.get<any>(url).pipe(map(resp => {
 			return new DB(this.http, <DBType> resp);
 		}));

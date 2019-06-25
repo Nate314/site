@@ -200,7 +200,7 @@
 			},
 			"githubprojects": {
 				"name": "Github Projects",
-				"description": "Below are listed several of my Projects on Github. You can view the README.md files here or click on the link to view the repository.",
+				"description": "Below are listed several of my Projects on Github. You can view the README.md files here or click on the link to view the repository or you can visit my github page directly <a href=\"https://github.com/Nate314\">here</a>.",
 				"subpages": [
 					{
 						"title": "NatePy",

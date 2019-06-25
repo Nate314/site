@@ -1,100 +1,103 @@
-<div class="container border border-secondary border-top-0 border-left-0 border-right-0">
-  <h1 class="border border-top-0 border-left-0 border-right-0">
-    Welcome!
-  </h1>
-  <p class="border border-top-0 border-left-0 border-right-0">
-    This is a website I put together to feature work I have done on
-    various applications including
-    <a (mouseup)="openPage($event, 'applications/java')"
-      class="hyperlink w3-hover-text-purple">Java Applications</a>,
-    <a (mouseup)="openPage($event, 'applications/web')"
-      class="hyperlink w3-hover-text-purple">Web Applications</a>, and
-    <a (mouseup)="openPage($event, 'applications/android')"
-      class="hyperlink w3-hover-text-purple">Android Applications</a>.
-    I also have a few videos that I made that are featured
-    <a (mouseup)="openPage($event, 'videos')"
-      class="hyperlink w3-hover-text-purple">here</a>.
-  </p>
-  <h3>An introduction to me:</h3>
-  <p>
-    I am currently a Computer Science student at the
-    <a (mouseup)="openLink($event, 'https://sce.umkc.edu/')"
-      class="hyperlink w3-hover-text-purple">School of Computing and Engineering</a>
-    at
-    <a (mouseup)="openLink($event, 'https://www.umkc.edu/')"
-      class="hyperlink w3-hover-text-purple">UMKC</a>
-    and a software development intern at
-    <a (mouseup)="openLink($event, 'https://wellsky.com/')"
-      class="hyperlink w3-hover-text-purple">WellSky</a>.
-  </p>
-  <p>
-    I love coding becuase I love learning, and I am a logical thinker.
-    The first programming language I learned was Java through
-    <a (mouseup)="openLink($event, 'https://www.firstinspires.org/robotics/frc')"
-      class="hyperlink w3-hover-text-purple">FRC</a>
-    in high school. This experience in robotics was great, and made me
-    realize that Computer Science could be a possible career path that I
-    could enjoy.
-  </p>
-  <p>
-    I have experience coding in many different languages including
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Angular_(application_platform)')"
-      class="hyperlink w3-hover-text-purple">Angular</a> (
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/HTML')"
-      class="hyperlink w3-hover-text-purple">HTML</a>,
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets')"
-      class="hyperlink w3-hover-text-purple">CSS</a>, and
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/TypeScript')"
-      class="hyperlink w3-hover-text-purple">TypeScript</a> ),
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/C%2B%2B')"
-      class="hyperlink w3-hover-text-purple">C++</a>,
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)')"
-      class="hyperlink w3-hover-text-purple">C#</a>,
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Java')"
-      class="hyperlink w3-hover-text-purple">Java</a>,
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Python_(programming_language)')"
-      class="hyperlink w3-hover-text-purple">Python</a>,
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/SQL')"
-      class="hyperlink w3-hover-text-purple">SQL</a>, and
-    <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Visual_Basic_.NET')"
-      class="hyperlink w3-hover-text-purple">VB.net</a>.
-    Some of the resources I use most often to learn coding on my own are
-    <a (mouseup)="openLink($event, 'https://stackoverflow.com/')"
-      class="hyperlink w3-hover-text-purple">Stack Overflow</a>,
-    <a (mouseup)="openLink($event, 'https://www.w3schools.com/')"
-      class="hyperlink w3-hover-text-purple">W3 Schools</a>, and
-    <a (mouseup)="openLink($event, 'https://developers.google.com/web/tools/chrome-devtools/console/')"
-      class="hyperlink w3-hover-text-purple">F12</a>.
-  </p>
-  <p class="border border-top-0 border-left-0 border-right-0">
-    Some of my favorite youtube channels include
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g')"
-      class="hyperlink w3-hover-text-purple">Gus Johnson</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/user/HelloInternetPodcast')"
-      class="hyperlink w3-hover-text-purple">Hello Internet</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg')"
-      class="hyperlink w3-hover-text-purple">Julian Smith</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q')"
-      class="hyperlink w3-hover-text-purple">Kurzgesagt – In a Nutshell</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A')"
-      class="hyperlink w3-hover-text-purple">standupmaths</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A')"
-      class="hyperlink w3-hover-text-purple">Steve Mould</a>,
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg')"
-      class="hyperlink w3-hover-text-purple">Taran Van Hemert</a>, and
-    <a (mouseup)="openLink($event, 'https://www.youtube.com/user/Vsauce')"
-      class="hyperlink w3-hover-text-purple">Vsauce</a>.
-  </p>
-  <h3>Check out Some of my Friend's websites:</h3>
-  <a (mouseup)="openLink($event, 'https://alexwebberfrc.github.io/')"
-    class="hyperlink w3-hover-text-purple">Alex</a>,
-  <a (mouseup)="openLink($event, 'https://codymoose.github.io/')"
-    class="hyperlink w3-hover-text-purple">Cody</a>,
-  <a (mouseup)="openLink($event, 'http://thekuhnbros.com/hanavan/')"
-    class="hyperlink w3-hover-text-purple">Hanavan</a>,
-  <a (mouseup)="openLink($event, 'https://xyzen.github.io/')"
-    class="hyperlink w3-hover-text-purple">Tyler</a>, and
-  <a (mouseup)="openLink($event, 'https://zachdeibert.github.io/')"
-    class="hyperlink w3-hover-text-purple">Zach</a>
-  all have websites where you can download or use software as well!
-</div>
+<br />
+<mat-card class="mat-elevation-z4">
+  <div class="container border border-secondary border-top-0 border-left-0 border-right-0">
+    <h1 class="border border-top-0 border-left-0 border-right-0">
+      Welcome!
+    </h1>
+    <p class="border border-top-0 border-left-0 border-right-0">
+      This is a website I put together to feature work I have done on
+      various applications including
+      <a (mouseup)="openPage($event, 'applications/java')"
+        class="hyperlink w3-hover-text-purple">Java Applications</a>,
+      <a (mouseup)="openPage($event, 'applications/web')"
+        class="hyperlink w3-hover-text-purple">Web Applications</a>, and
+      <a (mouseup)="openPage($event, 'applications/android')"
+        class="hyperlink w3-hover-text-purple">Android Applications</a>.
+      I also have a few videos that I made that are featured
+      <a (mouseup)="openPage($event, 'videos')"
+        class="hyperlink w3-hover-text-purple">here</a>.
+    </p>
+    <h3>An introduction to me:</h3>
+    <p>
+      I am currently a Computer Science student at the
+      <a (mouseup)="openLink($event, 'https://sce.umkc.edu/')"
+        class="hyperlink w3-hover-text-purple">School of Computing and Engineering</a>
+      at
+      <a (mouseup)="openLink($event, 'https://www.umkc.edu/')"
+        class="hyperlink w3-hover-text-purple">UMKC</a>
+      and a software development intern at
+      <a (mouseup)="openLink($event, 'https://wellsky.com/')"
+        class="hyperlink w3-hover-text-purple">WellSky</a>.
+    </p>
+    <p>
+      I love coding becuase I love learning, and I am a logical thinker.
+      The first programming language I learned was Java through
+      <a (mouseup)="openLink($event, 'https://www.firstinspires.org/robotics/frc')"
+        class="hyperlink w3-hover-text-purple">FRC</a>
+      in high school. This experience in robotics was great, and made me
+      realize that Computer Science could be a possible career path that I
+      could enjoy.
+    </p>
+    <p>
+      I have experience coding in many different languages including
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Angular_(application_platform)')"
+        class="hyperlink w3-hover-text-purple">Angular</a> (
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/HTML')"
+        class="hyperlink w3-hover-text-purple">HTML</a>,
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Cascading_Style_Sheets')"
+        class="hyperlink w3-hover-text-purple">CSS</a>, and
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/TypeScript')"
+        class="hyperlink w3-hover-text-purple">TypeScript</a> ),
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/C%2B%2B')"
+        class="hyperlink w3-hover-text-purple">C++</a>,
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/C_Sharp_(programming_language)')"
+        class="hyperlink w3-hover-text-purple">C#</a>,
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Java')"
+        class="hyperlink w3-hover-text-purple">Java</a>,
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Python_(programming_language)')"
+        class="hyperlink w3-hover-text-purple">Python</a>,
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/SQL')"
+        class="hyperlink w3-hover-text-purple">SQL</a>, and
+      <a (mouseup)="openLink($event, 'https://en.wikipedia.org/wiki/Visual_Basic_.NET')"
+        class="hyperlink w3-hover-text-purple">VB.net</a>.
+      Some of the resources I use most often to learn coding on my own are
+      <a (mouseup)="openLink($event, 'https://stackoverflow.com/')"
+        class="hyperlink w3-hover-text-purple">Stack Overflow</a>,
+      <a (mouseup)="openLink($event, 'https://www.w3schools.com/')"
+        class="hyperlink w3-hover-text-purple">W3 Schools</a>, and
+      <a (mouseup)="openLink($event, 'https://developers.google.com/web/tools/chrome-devtools/console/')"
+        class="hyperlink w3-hover-text-purple">F12</a>.
+    </p>
+    <p class="border border-top-0 border-left-0 border-right-0">
+      Some of my favorite youtube channels include
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g')"
+        class="hyperlink w3-hover-text-purple">Gus Johnson</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/user/HelloInternetPodcast')"
+        class="hyperlink w3-hover-text-purple">Hello Internet</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg')"
+        class="hyperlink w3-hover-text-purple">Julian Smith</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q')"
+        class="hyperlink w3-hover-text-purple">Kurzgesagt – In a Nutshell</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A')"
+        class="hyperlink w3-hover-text-purple">standupmaths</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A')"
+        class="hyperlink w3-hover-text-purple">Steve Mould</a>,
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg')"
+        class="hyperlink w3-hover-text-purple">Taran Van Hemert</a>, and
+      <a (mouseup)="openLink($event, 'https://www.youtube.com/user/Vsauce')"
+        class="hyperlink w3-hover-text-purple">Vsauce</a>.
+    </p>
+    <h3>Check out Some of my Friend's websites:</h3>
+    <a (mouseup)="openLink($event, 'https://alexwebberfrc.github.io/')"
+      class="hyperlink w3-hover-text-purple">Alex</a>,
+    <a (mouseup)="openLink($event, 'https://codymoose.github.io/')"
+      class="hyperlink w3-hover-text-purple">Cody</a>,
+    <a (mouseup)="openLink($event, 'http://thekuhnbros.com/hanavan/')"
+      class="hyperlink w3-hover-text-purple">Hanavan</a>,
+    <a (mouseup)="openLink($event, 'https://xyzen.github.io/')"
+      class="hyperlink w3-hover-text-purple">Tyler</a>, and
+    <a (mouseup)="openLink($event, 'https://zachdeibert.github.io/')"
+      class="hyperlink w3-hover-text-purple">Zach</a>
+    all have websites where you can download or use software as well!
+  </div>
+</mat-card>

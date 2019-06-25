@@ -1,21 +1,24 @@
 <!--Applications-->
 <div *ngIf="apps.length == 0" class="container">
   <div *ngFor="let page of subpages" class="border border-top-0 border-left-0 border-right-0">
-    <h1>{{ page.name }}</h1>
-    <span [innerHTML]="page.description"></span>
-    <a class="hyperlink w3-hover-text-purple" [routerLink]="'../' + [page.link]">here</a>.
     <br />
-    <span *ngFor="let app of page.subpages; let i = index">
-      <a *ngIf="page.name.toUpperCase().startsWith('JAVA')" (click)="openJavaApp(app)"
-      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
-      <a *ngIf="page.name.toUpperCase().startsWith('WEB')" (click)="openWebApp(app, true)"
-      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
-      <a *ngIf="page.name.toUpperCase().startsWith('ANDROID')" (click)="openAndroidApp(app)"
-      class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
-      <span *ngIf="i !== page.subpages.length - 1 && i != page.subpages.length - 2">, </span>
-      <span *ngIf="i === page.subpages.length - 2">, and </span>
-      <span *ngIf="i === page.subpages.length - 1">. </span>
-    </span>
+    <mat-card class="mat-elevation-z4">
+      <h1>{{ page.name }}</h1>
+      <span [innerHTML]="page.description"></span>
+      <a class="hyperlink w3-hover-text-purple" [routerLink]="'../' + [page.link]">here</a>.
+      <br />
+      <span *ngFor="let app of page.subpages; let i = index">
+        <a *ngIf="page.name.toUpperCase().startsWith('JAVA')" (click)="openJavaApp(app)"
+        class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+        <a *ngIf="page.name.toUpperCase().startsWith('WEB')" (click)="openWebApp(app, true)"
+        class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+        <a *ngIf="page.name.toUpperCase().startsWith('ANDROID')" (click)="openAndroidApp(app)"
+        class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
+        <span *ngIf="i !== page.subpages.length - 1 && i != page.subpages.length - 2">, </span>
+        <span *ngIf="i === page.subpages.length - 2">, and </span>
+        <span *ngIf="i === page.subpages.length - 1">. </span>
+      </span>
+    </mat-card>
   </div>
 </div>
 <!--/Applications-->
@@ -24,38 +27,46 @@
 <div *ngIf="!webAppOpen && pageName != null">
   <h1 class="border border-top-0 border-left-0 border-right-0">{{ pageName }}</h1>
   <div *ngFor="let app of apps" class="border border-top-0 border-left-0 border-right-0">
-    <h3>{{ app.name }}</h3>
-    <span [innerHtml]="app.description"></span>
     <br />
-    <span *ngIf="pageName.toUpperCase().startsWith('JAVA')">
-      <b>Download</b>&nbsp;
-      <a class="hyperlink w3-hover-text-purple" (click)="openJavaApp(app)">{{ app.name }}</a>
-    </span>
-    <span *ngIf="pageName.toUpperCase().startsWith('WEB')">
-      <b>Go to</b>&nbsp;
-      <a class="hyperlink w3-hover-text-purple" (click)="openWebApp(app, true)">{{ app.name }}</a>
-    </span>
-    <span *ngIf="pageName.toUpperCase().startsWith('ANDROID')">
-      <b>Download</b>&nbsp;
-      <a class="hyperlink w3-hover-text-purple" (click)="openAndroidApp(app)">{{ app.name }}</a>
-    </span>
+    <mat-card class="mat-elevation-z4">
+      <h3>{{ app.name }}</h3>
+      <span [innerHtml]="app.description"></span>
+      <br />
+      <span *ngIf="pageName.toUpperCase().startsWith('JAVA')">
+        <b>Download</b>&nbsp;
+        <a class="hyperlink w3-hover-text-purple" (click)="openJavaApp(app)">{{ app.name }}</a>
+      </span>
+      <span *ngIf="pageName.toUpperCase().startsWith('WEB')">
+        <b>Go to</b>&nbsp;
+        <a class="hyperlink w3-hover-text-purple" (click)="openWebApp(app, true)">{{ app.name }}</a>
+      </span>
+      <span *ngIf="pageName.toUpperCase().startsWith('ANDROID')">
+        <b>Download</b>&nbsp;
+        <a class="hyperlink w3-hover-text-purple" (click)="openAndroidApp(app)">{{ app.name }}</a>
+      </span>
+    </mat-card>
   </div>
 </div>
 <!--/Applications/Subpage-->
 
 <!--Applications/Subpage/App-->
-<div class="border border-secondary border-top-0 border-left-0 border-right-0">
-  <app-iframe-app *ngIf="webApp && webApp.file.includes('nate314')" [src]="webApp.file"></app-iframe-app>
-  <app-betting-calculator *ngIf="webApp && webApp.selector === 'app-betting-calculator'"></app-betting-calculator>
-  <app-dto-convert *ngIf="webApp && webApp.selector === 'app-dto-convert'"></app-dto-convert>
-  <app-final-grade-calculator *ngIf="webApp && webApp.selector === 'app-final-grade-calculator'"></app-final-grade-calculator>
-  <app-group-creator *ngIf="webApp && webApp.selector === 'app-group-creator'"></app-group-creator>
-  <app-html-sandbox *ngIf="webApp && webApp.selector === 'app-html-sandbox'"></app-html-sandbox>
-  <app-multiplication-table *ngIf="webApp && webApp.selector === 'app-multiplication-table'"></app-multiplication-table>
-  <app-root *ngIf="webApp && webApp.selector === 'app-root'"></app-root>
-  <app-say2 *ngIf="webApp && webApp.selector === 'app-say2'"></app-say2>
-  <app-typing-test *ngIf="webApp && webApp.selector === 'app-typing-test'"></app-typing-test>
-  <br *ngIf="webApp"/>
+<div *ngIf="webApp" class="border border-secondary border-top-0 border-left-0 border-right-0">
+  <br />
+  <mat-card class="mat-elevation-z4">
+    <app-iframe-app *ngIf="webApp && webApp.file.includes('nate314')" [src]="webApp.file"></app-iframe-app>
+    <app-betting-calculator *ngIf="webApp && webApp.selector === 'app-betting-calculator'"></app-betting-calculator>
+    <app-dto-convert *ngIf="webApp && webApp.selector === 'app-dto-convert'"></app-dto-convert>
+    <app-final-grade-calculator *ngIf="webApp && webApp.selector === 'app-final-grade-calculator'"></app-final-grade-calculator>
+    <app-group-creator *ngIf="webApp && webApp.selector === 'app-group-creator'"></app-group-creator>
+    <app-html-sandbox *ngIf="webApp && webApp.selector === 'app-html-sandbox'"></app-html-sandbox>
+    <app-multiplication-table *ngIf="webApp && webApp.selector === 'app-multiplication-table'"></app-multiplication-table>
+    <app-root *ngIf="webApp && webApp.selector === 'app-root'"></app-root>
+    <app-say2 *ngIf="webApp && webApp.selector === 'app-say2'"></app-say2>
+    <app-typing-test *ngIf="webApp && webApp.selector === 'app-typing-test'"></app-typing-test>
+  </mat-card>
+  <br />
+  <mat-card class="mat-elevation-z4">
+    {{appDescription}}
+  </mat-card>
 </div>
-<div id="appDescription"></div>
 <!--Applications/Subpage/App-->
