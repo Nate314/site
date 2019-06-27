@@ -6,6 +6,7 @@ import { DB } from "../../../helpers/DB";
 import { HttpClient } from "@angular/common/http";
 import { PageType, ApplicationType } from "../../../helpers/DB";
 import * as _ from "lodash";
+import { DatabaseService } from "src/app/services";
 
 @Component({
   selector: "app-applications",
@@ -42,11 +43,11 @@ export class ApplicationsComponent implements OnInit {
     private router: Router,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private databaseService: DatabaseService
   ) { }
 
   ngOnInit() {
-    new DB(this.http).getDB().subscribe(db => {
+    this.databaseService.connection().subscribe(db => {
       // load information about all applications from the database
       this.subpages.push(db.getJavaApplications());
       this.subpages.push(db.getWebApplications());

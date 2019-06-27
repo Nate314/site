@@ -15,6 +15,8 @@ import {
   BettingCalculatorComponent, CodeViewerComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component,
   TypingTestComponent, IFrameAppComponent,
+  // services
+  DatabaseService,
   // modules
   MaterialModule
 } from "./index";
@@ -50,7 +52,10 @@ import {
     MaterialModule,
     MarkdownModule.forRoot()
   ],
-  providers: [HttpClient],
+  providers: [
+    HttpClient,
+    DatabaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

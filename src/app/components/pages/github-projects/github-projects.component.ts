@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DB, ResourceType } from "src/app/helpers/DB";
 import { HttpClient } from "@angular/common/http";
+import { DatabaseService } from "src/app/services";
 
 @Component({
   selector: "app-github-projects",
@@ -15,12 +16,12 @@ export class GithubProjectsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private databaseService: DatabaseService
   ) { }
 
   ngOnInit() {
     Helper.initializePage(this, this.router.url, PageNames.GITHUB_PROJECTS);
-    new DB(this.http).getDB().subscribe(db => {
+    this.databaseService.connection().subscribe(db => {
       const githubProjects = db.getGithubProjects();
       this.description = githubProjects.description;
       this.projects = githubProjects.subpages;

@@ -4,8 +4,32 @@
 			"title": "Nathan Gawith",
 			"subtitle": "my github website",
 			"name": "Home",
-			"sections": ["Site Map", "Other Websites"],
-			"otherwebsites": "Check out my friend's websites. They have also have lotsof cool software that you can download.<ul><li>Hanavan's <a href=\"http://thekuhnbros.com/hanavan/\">website</a></li><li>Cody's <a href=\"https://codymoose.github.io\">website</a></li><li>Alex's <a href=\"http://alexwebber.org/\">website</a></li></ul>>",
+			"otherwebsites": [
+				{
+					"name": "Alex",
+					"link": "https://alexwebberfrc.github.io/"
+				},
+				{
+					"name": "Cody",
+					"link": "https://codymoose.github.io/"
+				},
+				{
+					"name": "Hanavan",
+					"link": "http://thekuhnbros.com/hanavan/"
+				},
+				{
+					"name": "Tran",
+					"link": "https://davidtstran.github.io/"
+				},
+				{
+					"name": "Tyler",
+					"link": "http://twheaton.com/"
+				},
+				{
+					"name": "Zach",
+					"link": "https://zachdeibert.github.io/"
+				}
+			],
 			"javaApplications": {
 				"name": "JavaApplications",
 				"description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",

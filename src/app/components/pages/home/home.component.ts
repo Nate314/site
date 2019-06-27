@@ -4,6 +4,8 @@ import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { HttpClient } from "../../../../../node_modules/@angular/common/http";
 import { environment } from "src/environments/environment";
+import { DB } from "src/app/helpers/DB";
+import { DatabaseService } from "src/app/services";
 
 @Component({
   selector: "app-home",
@@ -11,11 +13,20 @@ import { environment } from "src/environments/environment";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private location: Location, private http: HttpClient) { }
+  otherwebsites: { name: string, link: string }[] = [];
+
+  constructor(
+    private router: Router,
+    private location: Location,
+    private databaseService: DatabaseService
+  ) { }
 
   ngOnInit() {
-    Helper.initializePage(this, this.router.url, PageNames.HOME);
-    console.log(`production: ${environment.production}`);
+    this.databaseService.connection().subscribe(db => {
+      this.otherwebsites = db.getHome().otherwebsites;
+      Helper.initializePage(this, this.router.url, PageNames.HOME);
+      console.log(`production: ${environment.production}`);
+    });
   }
 
   openLink(event, url: string) {

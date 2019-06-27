@@ -1,10 +1,9 @@
-import { Component, OnInit, Pipe, PipeTransform } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DB } from "../../../helpers/DB";
 import { DomSanitizer, SafeResourceUrl } from "../../../../../node_modules/@angular/platform-browser";
-import { HttpClient } from "@angular/common/http";
+import { DatabaseService } from "src/app/services";
 
 class Video {
   title: string;
@@ -22,14 +21,13 @@ export class VideosComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private location: Location,
     private sanitizer: DomSanitizer,
-    private http: HttpClient
+    private databaseService: DatabaseService
   ) { }
 
   ngOnInit() {
     Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
-    new DB(this.http).getDB().subscribe(db => {
+    this.databaseService.connection().subscribe(db => {
       const dbVideos = db.getVideos();
       console.log(dbVideos);
       this.videos = [];

@@ -76,8 +76,7 @@ class DBType {
 			title: string;
 			subtitle: string;
 			name: string;
-			sections: string[];
-			otherwebsites: string;
+			otherwebsites: { name: string, link: string }[];
 			javaApplications: PageType<ApplicationType>;
 			webApplications: PageType<ApplicationType>;
 			androidApplications: PageType<ApplicationType>;

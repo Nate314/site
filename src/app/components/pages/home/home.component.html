@@ -88,16 +88,15 @@
         class="hyperlink w3-hover-text-purple">Vsauce</a>.
     </p>
     <h3>Check out Some of my Friend's websites:</h3>
-    <a (mouseup)="openLink($event, 'https://alexwebberfrc.github.io/')"
-      class="hyperlink w3-hover-text-purple">Alex</a>,
-    <a (mouseup)="openLink($event, 'https://codymoose.github.io/')"
-      class="hyperlink w3-hover-text-purple">Cody</a>,
-    <a (mouseup)="openLink($event, 'http://thekuhnbros.com/hanavan/')"
-      class="hyperlink w3-hover-text-purple">Hanavan</a>,
-    <a (mouseup)="openLink($event, 'https://xyzen.github.io/')"
-      class="hyperlink w3-hover-text-purple">Tyler</a>, and
-    <a (mouseup)="openLink($event, 'https://zachdeibert.github.io/')"
-      class="hyperlink w3-hover-text-purple">Zach</a>
+    <span *ngFor="let site of otherwebsites; let i = index;">
+      <a (mouseup)="openLink($event, site.link)"
+        class="hyperlink w3-hover-text-purple">{{site.name}}</a>
+        <span [ngSwitch]="i">
+          <span *ngSwitchCase="otherwebsites.length - 1"></span>
+          <span *ngSwitchCase="otherwebsites.length - 2">, and </span>
+          <span *ngSwitchDefault>, </span>
+        </span>
+    </span>
     all have websites where you can download or use software as well!
   </div>
 </mat-card>
