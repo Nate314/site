@@ -3,10 +3,23 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DB } from "../../../helpers/DB";
-import { HttpClient } from "@angular/common/http";
-import { PageType, ApplicationType } from "../../../helpers/DB";
 import * as _ from "lodash";
-import { DatabaseService } from "src/app/services";
+import { HttpClient } from "@angular/common/http";
+import { AngularFireDatabase } from "angularfire2/database";
+
+class Page {
+  name: string;
+  link: string;
+  description: string;
+  apps: App[];
+}
+
+class App {
+  name: string;
+  file: string;
+  description: string;
+  selector: string;
+}
 
 @Component({
   selector: "app-applications",
@@ -17,42 +30,53 @@ export class ApplicationsComponent implements OnInit {
   appSelector: string = "<app-dto-convert></app-dto-convert>";
 
   // Applications
-  subpages: PageType<ApplicationType>[] = [];
+  subpages: Page[] = [];
 
   // Applications/Subpage
   pageName: string;
   subpage: string;
-  apps: ApplicationType[] = [];
+  apps: App[] = [];
 
   // Applications/Subpage/App
   webAppOpen: boolean = false;
-  webApp: ApplicationType;
-  appDescription: string;
+  webApp: App;
 
   // DB
-  findPageThatStartsWith(str: string): PageType<ApplicationType>
-    { return this.subpages.find(page => page.name.toUpperCase().startsWith(str.toUpperCase())); }
-  get javaApplications(): PageType<ApplicationType>
-    { return this.findPageThatStartsWith("JAVA"); }
-  get webApplications(): PageType<ApplicationType>
-    { return this.findPageThatStartsWith("WEB"); }
-  get androidApplications(): PageType<ApplicationType>
-    { return this.findPageThatStartsWith("ANDROID"); }
+  javaApplications: any;
+  webApplications: any;
+  androidApplications: any;
 
   constructor(
     private router: Router,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private databaseService: DatabaseService
+    private afdb: AngularFireDatabase
   ) { }
 
   ngOnInit() {
-    this.databaseService.connection().subscribe(db => {
+    new DB(this.afdb).getDB().subscribe(db => {
       // load information about all applications from the database
-      this.subpages.push(db.getJavaApplications());
-      this.subpages.push(db.getWebApplications());
-      this.subpages.push(db.getAndroidApplications());
-      console.log(this.subpages);
+      this.javaApplications = db.getJavaApplications();
+      this.webApplications = db.getWebApplications();
+      this.androidApplications = db.getAndroidApplications();
+      this.subpages.push(<Page>{
+        name: this.javaApplications["name"],
+        link: "../" + this.javaApplications["link"],
+        description: this.javaApplications["description"],
+        apps: this.javaApplications["apps"]
+      });
+      this.subpages.push(<Page>{
+        name: this.webApplications["name"],
+        link: "../" + this.webApplications["link"],
+        description: this.webApplications["description"],
+        apps: this.webApplications["apps"]
+      });
+      this.subpages.push(<Page>{
+        name: this.androidApplications["name"],
+        link: "../" + this.androidApplications["link"],
+        description: this.androidApplications["description"],
+        apps: this.androidApplications["apps"]
+      });
 
       // load different sections of the page based on the url
       const validSubpages = ["java", "web", "android"];
@@ -66,22 +90,18 @@ export class ApplicationsComponent implements OnInit {
             page.name.toUpperCase().includes(this.subpage.toUpperCase()));
           if (routeSubpage.length > 0) {
             const thisPage = routeSubpage[0];
-            this.pageName = thisPage.name;
-            this.apps = thisPage.subpages;
+            this.pageName = thisPage["name"];
+            this.apps = thisPage["apps"];
             // get the web application
-            console.log(response);
-            console.log(response.length);
-            console.log(response.length === 3);
-            if (response.length === 3) {
-              this.webApp = this.getApp(this.webApplications.subpages, response[2].path);
-            }
+            if (response.length === 3)
+              this.webApp = this.getApp(this.webApplications["apps"], response[2].path);
           }
         }
       });
 
       // if a web app is being passed through the url, then open that web app
       if (!Helper.equalsNull(this.webApp))
-        this.openWebApp(this.getApp(this.webApplications.subpages, this.webApp.name), false);
+        this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
 
       // initialize page
       let pageTitle = String(PageNames.APPLICATIONS);
@@ -93,9 +113,7 @@ export class ApplicationsComponent implements OnInit {
     });
   }
 
-  getApp(appList: ApplicationType[], appName: string): ApplicationType {
-    console.log(appList);
-    console.log(appName);
+  getApp(appList: App[], appName: string): App {
     const appToOpen = appList.filter(application => application.name.toLowerCase() === appName.toLowerCase());
     if (appToOpen.length > 0)
       return appToOpen[0];
@@ -106,26 +124,26 @@ export class ApplicationsComponent implements OnInit {
     Helper.navigate(this.router, this.location, url);
   }
 
-  openWebApp(app: ApplicationType, href: boolean) {
+  openWebApp(app: App, href: boolean) {
     if (href) {
       Helper.navigate(this.router, this.location, "/applications/web/" + app.name);
     }
     else {
       if (!Helper.equalsNull(app)) {
         this.webAppOpen = true;
-        this.appDescription = app.description;
+        document.getElementById("appDescription").innerHTML = app.description;
       }
     }
   }
 
-  openJavaApp(app: ApplicationType) {
+  openJavaApp(app: App) {
     let url = app.file;
     if (!url.includes("https://nate314.github.io/nathangawith/applications/javaApplications/"))
       url = "https://nate314.github.io/nathangawith/applications/javaApplications/" + app.file;
     location.href = url;
   }
 
-  openAndroidApp(app: ApplicationType) {
+  openAndroidApp(app: App) {
     let url = app.file;
     if (!url.includes("https://nate314.github.io/nathangawith/applications/androidApplications/"))
       url = "https://nate314.github.io/nathangawith/applications/androidApplications/" + app.file;

@@ -3,9 +3,8 @@ import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { HttpClient } from "../../../../../node_modules/@angular/common/http";
-import { environment } from "src/environments/environment";
+import { AngularFireDatabase } from "angularfire2/database";
 import { DB } from "src/app/helpers/DB";
-import { DatabaseService } from "src/app/services";
 
 @Component({
   selector: "app-home",
@@ -13,24 +12,22 @@ import { DatabaseService } from "src/app/services";
 })
 export class HomeComponent implements OnInit {
 
-  otherwebsites: { name: string, link: string }[] = [];
+  friends: any;
 
   constructor(
     private router: Router,
     private location: Location,
-    private databaseService: DatabaseService
+    private afdb: AngularFireDatabase
   ) { }
 
   ngOnInit() {
-    this.databaseService.connection().subscribe(db => {
-      this.otherwebsites = db.getHome().otherwebsites;
+    new DB(this.afdb).getDB().subscribe(db => {
       Helper.initializePage(this, this.router.url, PageNames.HOME);
-      console.log(`production: ${environment.production}`);
+      this.friends = db.getHome().otherwebsites.friends;
     });
   }
 
   openLink(event, url: string) {
-    console.log(event.which);
     if (event.which === 1) {
       location.href = url;
     }
@@ -40,7 +37,6 @@ export class HomeComponent implements OnInit {
   }
 
   openPage(event, page: string) {
-    console.log(page);
     if (event.which === 1) {
       Helper.navigate(this.router, this.location, page);
     }

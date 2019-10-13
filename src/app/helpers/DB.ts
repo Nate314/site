@@ -1,59 +1,80 @@
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { environment } from "src/environments/environment";
+import { AngularFireDatabase } from "angularfire2/database";
 
-class DB {
+export class DB {
 
+	applications: any;
 	videos: any;
 
-	db: DBType;
+	db: any;
 
-	constructor(private http: HttpClient, private database?: DBType) {
+	constructor(
+		private afdb: AngularFireDatabase,
+		private database?: any
+	) {
 		if (database) {
-			this.db = <DBType> database;
+			this.db = database;
+			this.applications = this.db.home.pages[0];
+			this.videos = this.db.home.pages[1].subpages[0]["videos"];
 			console.log(database);
 		}
 	}
 
-	public getDB(): Observable<DB> {
-		const url = `${environment.production ? "/site/" : "/"}assets/db.json`;
-		return this.http.get<any>(url).pipe(map(resp => {
-			return new DB(this.http, <DBType> resp);
-		}));
+	public getDB(): Observable<any> {
+		return this.afdb.list("/").valueChanges()
+			.pipe(map(resp => {
+				return new DB(this.afdb, resp[0]);
+			}));
 	}
+
+	// public getFile(): Observable<any> {
+	// 	return this.
+	// }
 
 	public getHome() {
-		return this.db.nate314.home;
+		return this.db.home;
 	}
 
-	public getGithubProjects(): PageType<ResourceType> {
-		return this.getHome().githubprojects;
+	public getPages() {
+		return this.db.home.pages;
 	}
 
-	public getJavaApplications(): PageType<ApplicationType> {
-		return this.getHome().javaApplications;
+	public getApplications() {
+		return this.applications;
 	}
 
-	public getWebApplications(): PageType<ApplicationType> {
-		return this.getHome().webApplications;
+	public getJavaApplications() {
+		console.log(this.applications);
+		return this.applications.subpages[0];
 	}
 
-	public getAndroidApplications(): PageType<ApplicationType> {
-		return this.getHome().androidApplications;
+	public getWebApplications() {
+		return this.applications.subpages[1];
 	}
 
-	public getVideos(): ResourceType[] {
-		return this.getHome().videos.subpages;
+	public getAndroidApplications() {
+		return this.applications.subpages[2];
+	}
+
+	public getVideos() {
+		console.log(this.videos);
+		return this.videos;
 	}
 
 }
 
 class ApplicationType {
 	name: string;
-	file: string;
-	selector: string;
 	description: string;
+	link: string;
+	apps: {
+		name: string;
+		file: string;
+		selector: string;
+		description: string;
+	}[];
 }
 
 class ResourceType {
@@ -65,26 +86,23 @@ class ResourceType {
 class PageType<T> {
 	title: string;
 	name: string;
-	link: string;
 	description: string;
 	subpages: T[];
 }
 
-class DBType {
+class DBtype {
 	nate314: {
 		home: {
 			title: string;
 			subtitle: string;
 			name: string;
-			otherwebsites: { name: string, link: string }[];
-			javaApplications: PageType<ApplicationType>;
-			webApplications: PageType<ApplicationType>;
-			androidApplications: PageType<ApplicationType>;
+			sections: string[];
+			otherwebsites: { friends: ResourceType[] };
+			JavaApplications: PageType<ApplicationType>;
+			WebApplications: PageType<ApplicationType>;
+			AndroidApplications: PageType<ApplicationType>;
 			videos: PageType<ResourceType>;
-			githubprojects: PageType<ResourceType>;
 			howitsmade: PageType<ResourceType>;
 		}
 	};
 }
-
-export { DB, DBType, PageType, ResourceType, ApplicationType }

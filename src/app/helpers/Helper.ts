@@ -63,8 +63,7 @@ export enum PageNames {
     APPLICATIONS_JAVA = "Java Applications",
     APPLICATIONS_WEB = "Web Applications",
     APPLICATIONS_ANDROID = "Android Applications",
-    VIDEOS = "Videos",
-    GITHUB_PROJECTS = "Github Projects"
+    VIDEOS = "Videos"
 }
 
 export enum StatusCodes {
