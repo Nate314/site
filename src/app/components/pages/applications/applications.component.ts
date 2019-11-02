@@ -2,10 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DB } from "../../../helpers/DB";
+import { DatabaseService } from "src/app/services";
 import * as _ from "lodash";
-import { HttpClient } from "@angular/common/http";
-import { AngularFireDatabase } from "angularfire2/database";
 
 class Page {
   name: string;
@@ -40,6 +38,7 @@ export class ApplicationsComponent implements OnInit {
   // Applications/Subpage/App
   webAppOpen: boolean = false;
   webApp: App;
+  appDescription: string;
 
   // DB
   javaApplications: any;
@@ -50,11 +49,11 @@ export class ApplicationsComponent implements OnInit {
     private router: Router,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private afdb: AngularFireDatabase
+    private db: DatabaseService
   ) { }
 
   ngOnInit() {
-    new DB(this.afdb).getDB().subscribe(db => {
+    this.db.connection().subscribe(db => {
       // load information about all applications from the database
       this.javaApplications = db.getJavaApplications();
       this.webApplications = db.getWebApplications();
@@ -131,7 +130,7 @@ export class ApplicationsComponent implements OnInit {
     else {
       if (!Helper.equalsNull(app)) {
         this.webAppOpen = true;
-        document.getElementById("appDescription").innerHTML = app.description;
+        this.appDescription = app.description;
       }
     }
   }

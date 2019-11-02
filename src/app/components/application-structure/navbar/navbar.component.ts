@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.pages.push(<Page>{ link: "/home", name: "Home" });
     this.pages.push(<Page>{ link: "/applications", name: "Applications" });
+    this.pages.push(<Page>{ link: "/github-projects", name: "Github Projects" });
     this.pages.push(<Page>{ link: "/videos", name: "Videos" });
   }
 

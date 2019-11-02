@@ -2,9 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { HttpClient } from "../../../../../node_modules/@angular/common/http";
-import { AngularFireDatabase } from "angularfire2/database";
-import { DB } from "src/app/helpers/DB";
+import { DatabaseService } from "src/app/services";
 
 @Component({
   selector: "app-home",
@@ -12,18 +10,25 @@ import { DB } from "src/app/helpers/DB";
 })
 export class HomeComponent implements OnInit {
 
-  friends: any;
+  friendLinks: any[];
+  youtubeLinks: any[];
+  languageLinks: any[];
+  toolLinks: any[];
 
   constructor(
     private router: Router,
     private location: Location,
-    private afdb: AngularFireDatabase
+    private db: DatabaseService
   ) { }
 
   ngOnInit() {
-    new DB(this.afdb).getDB().subscribe(db => {
+    this.db.connection().subscribe(db => {
       Helper.initializePage(this, this.router.url, PageNames.HOME);
-      this.friends = db.getHome().otherwebsites.friends;
+      const otherwebsites = db.getHome().otherwebsites;
+      this.friendLinks = otherwebsites.friends;
+      this.youtubeLinks = otherwebsites.youtube;
+      this.languageLinks = otherwebsites.languages;
+      this.toolLinks = otherwebsites.tools;
     });
   }
 

@@ -1,6 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Location } from "../../../../../node_modules/@angular/common";
-import { Router } from "../../../../../node_modules/@angular/router";
 
 @Component({
   selector: "app-not-found",
@@ -10,7 +8,7 @@ export class NotFoundComponent implements OnInit {
 
   loaded: boolean = false;
 
-  constructor(private router: Router, private location: Location) { }
+  constructor() { }
 
   ngOnInit() {
     setTimeout(() => this.loaded = true, 200);

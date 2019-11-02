@@ -6,6 +6,7 @@ import { DB } from "../../../helpers/DB";
 import { DomSanitizer, SafeResourceUrl } from "../../../../../node_modules/@angular/platform-browser";
 import { HttpClient } from "@angular/common/http";
 import { AngularFireDatabase } from "angularfire2/database";
+import { DatabaseService } from "src/app/services";
 
 class Video {
   title: string;
@@ -24,15 +25,17 @@ export class VideosComponent implements OnInit {
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
-    private afdb: AngularFireDatabase
+    private db: DatabaseService
   ) { }
 
   ngOnInit() {
-    Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
-    new DB(this.afdb).getDB().subscribe(db => {
+    this.db.connection().subscribe(db => {
+      Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
       const dbVideos = db.getVideos();
+      console.log("dbVideos");
+      console.log(dbVideos);
       this.videos = dbVideos.map(v => {
-        return <Video> {
+        return <Video>{
           title: v["title"],
           link: this.sanitizer.bypassSecurityTrustResourceUrl(v["link"]),
           description: v["description"]

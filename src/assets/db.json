@@ -1,221 +1,389 @@
 {
-	"nate314": {
-		"home": {
-			"title": "Nathan Gawith",
-			"subtitle": "my github website",
-			"name": "Home",
-			"sections": ["Site Map", "Other Websites"],
-			"otherwebsites": "Check out my friend's websites. They have also have lotsof cool software that you can download.<ul><li>Hanavan's <a href=\"http://thekuhnbros.com/hanavan/\">website</a></li><li>Cody's <a href=\"https://codymoose.github.io\">website</a></li><li>Alex's <a href=\"http://alexwebber.org/\">website</a></li></ul>>",
-			"pages": [{
-					"title": "Applications",
-					"name": "Applications",
-					"subpages": [{
-							"name": "JavaApplications",
-							"description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
-							"link": "applications/java",
-							"apps": [
-								{
-									"name": "Clock",
-									"file": "Clock.jar",
-									"description": "This is a Clock prgram written in Java. This application is pretty self explanitory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital."
-								},
-								{
-									"name": "DinoGame1920x1080",
-									"file": "DinoGame1920x1080.jar",
-									"description": "This is a game playing bot written in Java. This program jumps over most cacti in the Dinosaur Game that can be played in Google Chrome when you don't have an internet connection. Sadly, it only currently works on a screen resolution of 1920x1080 when Chrome is maximized in windows. It doesn't yet duck under the pterodactyls yet, so you will have to take care of that part of the game yourself."
-								},
-								{
-									"name": "FlappyBird",
-									"file": "FlappyBird1.1.zip",
-									"description": "This is my verion of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>"
-								},
-								{
-									"name": "Minesweeper",
-									"file": "Minesweeper1.2.jar",
-									"description": "This is my verion of Microsoft's Minesweeper written in Java. You can flag a square by right clicking, or attack by left clicking."
-								},
-								{
-									"name": "NathaNOS",
-									"file": "NathaNOS1.1.zip",
-									"description": "This is my \"OS\" written in Java. When you open it, the easiest way to close it is to use the Shut Down button found by clicking on the menu in the bottom left hand corner. This \"OS\" was written to run Java applications inside of it. The only application that I have included with this version of NathaNOS is my clock application. To run a java program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should be ready to go!</p> <p>Note: if you want to add one of your own java programs to NathaNOS, then you will have to make the main class extend a JFrame, and you will have to make the constructor of your main class have one parameter that is a Boolean for visibility. You can see an example below:<pre><code>package clock;\n\nimport javax.swing.JFrame;\n\npublic class Main extends JFrame\n{\n\tpublic Main(Boolean visibility)\t{\n\t\tthis.setVisible(visibility.booleanValue());\n\t}\n}\n</code></pre>"
-								},
-								{
-									"name": "RubiksCube2D",
-									"file": "RubiksCube2D_3.jar",
-									"description": "This is a 2D Rubik's Cube written in Java. To rotate, click on a square and then use wasd to rotate in the correlated direction."
-								},
-								{
-									"name": "ScreenSaver",
-									"file": "ScreenSaver0.1.jar",
-									"description": "This is a Screen Saver written in Java. It should close if you move your mouse."
-								},
-								{
-									"name": "SpriteFloatyStars",
-									"file": "SpriteFloatyStars1.0.jar",
-									"description": "This is a background program written in Java. Check out each of the cool modes. My personal favorite is Mode 3."
-								},
-								{
-									"name": "UltimateTicTacToe",
-									"file": "UltimateTicTacToe1.1.jar",
-									"description": "This is an UltimateTicTacToe game written in Java. If you don't know how to play, you can check out the rules <a href=\"https://www.youtube.com/watch?v=37PC0bGMiTI\">here</a>"
-								}
-							]
-						},
-						{
-							"name": "WebApplications",
-							"description": "You can use any of these web applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
-							"link": "applications/web",
-							"apps": [{
-									"name": "BettingCalculator",
-									"file": "webapplications/bettingcalculator",
-									"selector": "app-betting-calculator",
-									"description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math. You can set up the number of things you are btting on and the number of humans that are placing bets, and then the winnings will be split proportionally between the palyers that placed bets on the thing that actually won."
-								},
-								{
-									"name": "ColorFlux",
-									"file": "https://nate314.github.io/nathangawith/applications/webApplications/colorFlux.html",
-									"selector": "app-color-flux",
-									"description": "Color Flux is an application that you could possibly use as a live background written in javascript. It just pulses between different colors continuously."
-								},
-								{
-									"name": "DtoConvert",
-									"file": "webapplications/dtoconvert",
-									"selector": "app-dto-convert",
-									"description": "Converts dtos from C# to typescript and from typescript to C#"
-								},
-								{
-									"name": "FinalGradeCalculator",
-									"file": "webapplications/finalgradecalculator",
-									"selector": "app-final-grade-calculator",
-									"description": "Final Grade Caclculator is a useful tool for when you are in a crunch and want to prioritize study time. Enter your current grade in the class, the percentage of your grade the final is worth, and the percentage you want to finish the class with. Once you submit, this application will tell you the percentage you need in order to achieve your goal."
-								},
-								{
-									"name": "FlappyFinch",
-									"file": "https://nate314.github.io/react-games/flappyfinch",
-									"selector": "app-flappy-finch",
-									"description": "I made this clone of Flappy Bird to learn react. You can learn react here (https://reactjs.org/)."
-								},
-								{
-									"name": "FloatyStars",
-									"file": "https://nate314.github.io/react-games/floatystars",
-									"selector": "app-react-games",
-									"description": "I made this simple animation to learn react. You can learn react here (https://reactjs.org/)."
-                                },
-								{
-									"name": "GameOfLife",
-									"file": "https://nate314.github.io/react-games/gameoflife",
-									"selector": "app-react-games",
-									"description": "I made this game to learn react. You can learn react here (https://reactjs.org/)."
-                                },
-								{
-									"name": "GroupCreator",
-									"file": "webapplications/groupcreator",
-									"selector": "app-group-creator",
-									"description": "Group Creator is a great application to use if you want to create random groups of people and want to do it in an efficient way using pure computer randomness."
-								},
-								{
-									"name": "HTMLSandbox",
-									"file": "webapplications/htmlsandbox",
-									"selector": "app-html-sandbox",
-									"description": "HTML Sandbox is a great application to use if you want to learn how to code in HTML but don't have a way of editing code on your computer or just want to try something out real quick in your browser."
-								},
-								{
-									"name": "MultiplicationTable",
-									"file": "webapplications/multiplicationtable",
-									"selector": "app-multiplication-table",
-									"description": "Multiplication Table is pretty much self explanitory. Enter a number between 0 and 120 and a multiplication table will be generated with that size."
-								},
-								{
-									"name": "NathanGawithWebsite",
-									"file": "https://nate314.github.io/",
-									"selector": "",
-									"description": "This website is technically a web application, so I included it in this list."
-								},
-								{
-									"name": "Say2",
-									"file": "webapplications/say2",
-									"selector": "app-say2",
-									"description": "Say2 is a simple program that takes a number as input and outputs the english text for that number. For example: if you type in \"123\", the program will output \"one hundred twenty three\". Say2 was originally a challenge that many of the programmers on my robotics team completed as part of java training. Say2 is the first web application that I have written in JavaScript, which even though JavaScript sounds like Java, the two languages are almost just as similar to each other as a car is to carpet."
-								},
-								{
-									"name": "Snake",
-									"file": "https://nate314.github.io/react-games/snake",
-									"selector": "app-react-games",
-									"description": "I made this game to learn react. You can learn react here (https://reactjs.org/)."
-                                },
-								{
-									"name": "TypingTest",
-									"file": "webapplications/typingtest",
-									"selector": "app-typing-test",
-                                    "description": "Test how many words per minute you can type in one minute with any sample text you want to use."
-								}
-							]
-						},
-						{
-							"name": "AndroidApplications",
-							"description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
-							"link": "applications/android",
-							"apps": [{
-								"name": "LiveWallpaper",
-								"file": "LiveWallpaper.apk",
-								"description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azmuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet."
-							}]
-						}
-					]
-				},
-				{
-					"name": "OtherPages",
-					"subpages": [{
-						"name": "Videos",
-						"videos": [
-							{
-								"title": "Timelapse - Cube",
-								"link": "https://www.youtube.com/embed/eBCUe4jSPQQ",
-								"description": "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving itself\". I accomplished this by taking a picture of the cube every quarter turn."
-							},
-							{
-								"title": "Timelapse - Rubik's",
-								"link": "https://www.youtube.com/embed/EtycVB_mPnQ",
-								"description": "This is the first timelapse video I ever made. This is also a video of a cube solving itself, but this one doesn't look as nice as the one above because I only took one picture for each turn. I also thought it would be a good idea to show the clock so that you can see how long it took."
-							},
-							{
-								"title": "Mosaic - MVTV",
-								"link": "https://www.youtube.com/embed/hD42xobUROM",
-								"description": "I was interviewed about my puzzle cube collection and hobby while in high school, so I made this mosaic for the high school broadcasting class to use as a nice outro for the interview."
-							},
-							{
-								"title": "Mosaic - US Flag",
-								"link": "https://www.youtube.com/embed/V4cVGX8jyfI",
-								"description": "This was probably the easiest mosaic I made as stripes are easy for anyone to make with cubes whether or not you know how to solve a puzzle cube."
-							},
-							{
-								"title": "Dream Home - Ground Floor",
-								"link": "https://www.youtube.com/embed/9rEE0PjNMA4",
-								"description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the ground floor."
-							},
-							{
-								"title": "Dream Home - Basement",
-								"link": "https://www.youtube.com/embed/cDsXrYSNA8c",
-								"description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the basement."
-							},
-							{
-								"title": "Typling Bot",
-								"link": "https://www.youtube.com/embed/UzCBnGSdWAE",
-								"description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast."
-							},
-							{
-								"title": "Clash Royale Strategy",
-								"link": "https://www.youtube.com/embed/gLKssL0FN98",
-								"description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle."
-							}
-						]
-					}]
-				},
-				{
-					"name": "How I Created This Website",
-					"description": "Here you can view the code behind this website."
-				}
-			]
-		}
-	}
+  "nate314": {
+    "home": {
+      "name": "Home",
+      "otherwebsites": {
+        "friends": [{
+            "name": "Alex",
+            "url": "https://alexwebberfrc.github.io/"
+          },
+          {
+            "name": "Christopher",
+            "url": "https://christopherswayne.com/"
+          },
+          {
+            "name": "Cody",
+            "url": "https://codymoose.github.io/"
+          },
+          {
+            "name": "Hanavan",
+            "url": "http://thekuhnbros.com/hanavan/"
+          },
+          {
+            "name": "Michael",
+            "url": "https://michaelcu.github.io/"
+          },
+          {
+            "name": "Tran",
+            "url": "https://davidtstran.github.io/"
+          },
+          {
+            "name": "Tyler",
+            "url": "http://twheaton.com/"
+          },
+          {
+            "name": "Zach",
+            "url": "https://zachdeibert.github.io/"
+          }
+        ],
+        "youtube": [{
+            "name": "Gus Johnson",
+            "url": "https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g"
+          },
+          {
+            "name": "Hello Internet",
+            "url": "https://www.youtube.com/user/HelloInternetPodcast"
+          },
+          {
+            "name": "Julian Smith",
+            "url": "https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg"
+          },
+          {
+            "name": "Kurzgesagt – In a Nutshell",
+            "url": "https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q"
+          },
+          {
+            "name": "standupmaths",
+            "url": "https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A"
+          },
+          {
+            "name": "Steve Mould",
+            "url": "https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A"
+          },
+          {
+            "name": "Taran Van Hemert",
+            "url": "https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg"
+          },
+          {
+            "name": "Vsauce",
+            "url": "https://www.youtube.com/user/Vsauce"
+          }
+        ],
+        "languages": [{
+            "name": "Angular",
+            "url": "https://en.wikipedia.org/wiki/Angular_(application_platform)"
+          },
+          {
+            "name": "HTML",
+            "url": "https://en.wikipedia.org/wiki/HTML"
+          },
+          {
+            "name": "CSS",
+            "url": "https://en.wikipedia.org/wiki/Cascading_Style_Sheets"
+          },
+          {
+            "name": "TypeScript",
+            "url": "https://en.wikipedia.org/wiki/TypeScript"
+          },
+          {
+            "name": "C++",
+            "url": "https://en.wikipedia.org/wiki/C%2B%2B"
+          },
+          {
+            "name": "C#",
+            "url": "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"
+          },
+          {
+            "name": "Java",
+            "url": "https://en.wikipedia.org/wiki/Java"
+          },
+          {
+            "name": "Python",
+            "url": "https://en.wikipedia.org/wiki/Python_(programming_language)"
+          },
+          {
+            "name": "SQL",
+            "url": "https://en.wikipedia.org/wiki/SQL"
+          },
+          {
+            "name": "VB.net",
+            "url": "https://en.wikipedia.org/wiki/Visual_Basic_.NET"
+          }
+        ],
+        "tools": [{
+            "name": "Stack Overflow",
+            "url": "https://stackoverflow.com/"
+          },
+          {
+            "name": "W3 Schools",
+            "url": "https://www.w3schools.com/"
+          },
+          {
+            "name": "F12",
+            "url": "https://developers.google.com/web/tools/chrome-devtools/console/"
+          }
+        ]
+      },
+      "pages": [{
+          "name": "Applications",
+          "subpages": [{
+              "apps": [{
+                  "description": "This is a Clock prgram written in Java. This application is pretty self explanitory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital.",
+                  "file": "Clock.jar",
+                  "name": "Clock"
+                },
+                {
+                  "description": "This is a game playing bot written in Java. This program jumps over most cacti in the Dinosaur Game that can be played in Google Chrome when you don't have an internet connection. Sadly, it only currently works on a screen resolution of 1920x1080 when Chrome is maximized in windows. It doesn't yet duck under the pterodactyls yet, so you will have to take care of that part of the game yourself.",
+                  "file": "DinoGame1920x1080.jar",
+                  "name": "DinoGame1920x1080"
+                },
+                {
+                  "description": "This is my verion of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>",
+                  "file": "FlappyBird1.1.zip",
+                  "name": "FlappyBird"
+                },
+                {
+                  "description": "This is my verion of Microsoft's Minesweeper written in Java. You can flag a square by right clicking, or attack by left clicking.",
+                  "file": "Minesweeper1.2.jar",
+                  "name": "Minesweeper"
+                },
+                {
+                  "description": "This is my \"OS\" written in Java. When you open it, the easiest way to close it is to use the Shut Down button found by clicking on the menu in the bottom left hand corner. This \"OS\" was written to run Java applications inside of it. The only application that I have included with this version of NathaNOS is my clock application. To run a java program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should be ready to go!</p> <p>Note: if you want to add one of your own java programs to NathaNOS, then you will have to make the main class extend a JFrame, and you will have to make the constructor of your main class have one parameter that is a Boolean for visibility. You can see an example below:<pre><code>package clock;\n\nimport javax.swing.JFrame;\n\npublic class Main extends JFrame\n{\n\tpublic Main(Boolean visibility)\t{\n\t\tthis.setVisible(visibility.booleanValue());\n\t}\n}\n</code></pre>",
+                  "file": "NathaNOS1.1.zip",
+                  "name": "NathaNOS"
+                },
+                {
+                  "description": "This is a 2D Rubik's Cube written in Java. To rotate, click on a square and then use wasd to rotate in the correlated direction.",
+                  "file": "RubiksCube2D_3.jar",
+                  "name": "RubiksCube2D"
+                },
+                {
+                  "description": "This is a Screen Saver written in Java. It should close if you move your mouse.",
+                  "file": "ScreenSaver0.1.jar",
+                  "name": "ScreenSaver"
+                },
+                {
+                  "description": "This is a background program written in Java. Check out each of the cool modes. My personal favorite is Mode 3.",
+                  "file": "SpriteFloatyStars1.0.jar",
+                  "name": "SpriteFloatyStars"
+                },
+                {
+                  "description": "This is an UltimateTicTacToe game written in Java. If you don't know how to play, you can check out the rules <a href=\"https://www.youtube.com/watch?v=37PC0bGMiTI\">here</a>",
+                  "file": "UltimateTicTacToe1.1.jar",
+                  "name": "UltimateTicTacToe"
+                }
+              ],
+              "description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
+              "link": "applications/java",
+              "name": "JavaApplications"
+            },
+            {
+              "apps": [{
+                  "description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math. You can set up the number of things you are btting on and the number of humans that are placing bets, and then the winnings will be split proportionally between the palyers that placed bets on the thing that actually won.",
+                  "file": "webapplications/bettingcalculator",
+                  "name": "BettingCalculator",
+                  "selector": "app-betting-calculator"
+                },
+                {
+                  "description": "Color Flux is an application that you could possibly use as a live background written in javascript. It just pulses between different colors continuously.",
+                  "file": "https://nate314.github.io/nathangawith/applications/webApplications/colorFlux.html",
+                  "name": "ColorFlux",
+                  "selector": "app-color-flux"
+                },
+                {
+                  "description": "Converts dtos from C# to typescript and from typescript to C#",
+                  "file": "webapplications/dtoconvert",
+                  "name": "DtoConvert",
+                  "selector": "app-dto-convert"
+                },
+                {
+                  "description": "Final Grade Caclculator is a useful tool for when you are in a crunch and want to prioritize study time. Enter your current grade in the class, the percentage of your grade the final is worth, and the percentage you want to finish the class with. Once you submit, this application will tell you the percentage you need in order to achieve your goal.",
+                  "file": "webapplications/finalgradecalculator",
+                  "name": "FinalGradeCalculator",
+                  "selector": "app-final-grade-calculator"
+                },
+                {
+                  "description": "I made this clone of Flappy Bird to learn react. You can learn react here (https://reactjs.org/).",
+                  "file": "https://nate314.github.io/react-games/flappyfinch",
+                  "name": "FlappyFinch",
+                  "selector": "app-flappy-finch"
+                },
+                {
+                  "description": "I made this simple animation to learn react. You can learn react here (https://reactjs.org/).",
+                  "file": "https://nate314.github.io/react-games/floatystars",
+                  "name": "FloatyStars",
+                  "selector": "app-react-games"
+                },
+                {
+                  "description": "I made this game to learn react. You can learn react here (https://reactjs.org/).",
+                  "file": "https://nate314.github.io/react-games/gameoflife",
+                  "name": "GameOfLife",
+                  "selector": "app-react-games"
+                },
+                {
+                  "description": "Group Creator is a great application to use if you want to create random groups of people and want to do it in an efficient way using pure computer randomness.",
+                  "file": "webapplications/groupcreator",
+                  "name": "GroupCreator",
+                  "selector": "app-group-creator"
+                },
+                {
+                  "description": "HTML Sandbox is a great application to use if you want to learn how to code in HTML but don't have a way of editing code on your computer or just want to try something out real quick in your browser.",
+                  "file": "webapplications/htmlsandbox",
+                  "name": "HTMLSandbox",
+                  "selector": "app-html-sandbox"
+                },
+                {
+                  "description": "Multiplication Table is pretty much self explanitory. Enter a number between 0 and 120 and a multiplication table will be generated with that size.",
+                  "file": "webapplications/multiplicationtable",
+                  "name": "MultiplicationTable",
+                  "selector": "app-multiplication-table"
+                },
+                {
+                  "description": "This website is technically a web application, so I included it in this list.",
+                  "file": "https://nate314.github.io/",
+                  "name": "NathanGawithWebsite",
+                  "selector": ""
+                },
+                {
+                  "description": "Say2 is a simple program that takes a number as input and outputs the english text for that number. For example: if you type in \"123\", the program will output \"one hundred twenty three\". Say2 was originally a challenge that many of the programmers on my robotics team completed as part of java training. Say2 is the first web application that I have written in JavaScript, which even though JavaScript sounds like Java, the two languages are almost just as similar to each other as a car is to carpet.",
+                  "file": "webapplications/say2",
+                  "name": "Say2",
+                  "selector": "app-say2"
+                },
+                {
+                  "description": "I made this game to learn react. You can learn react here (https://reactjs.org/).",
+                  "file": "https://nate314.github.io/react-games/snake",
+                  "name": "Snake",
+                  "selector": "app-react-games"
+                },
+                {
+                  "description": "Test how many words per minute you can type in one minute with any sample text you want to use.",
+                  "file": "webapplications/typingtest",
+                  "name": "TypingTest",
+                  "selector": "app-typing-test"
+                }
+              ],
+              "description": "You can use any of these web applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
+              "link": "applications/web",
+              "name": "WebApplications"
+            },
+            {
+              "apps": [{
+                "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azmuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet.",
+                "file": "LiveWallpaper.apk",
+                "name": "LiveWallpaper"
+              }],
+              "description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
+              "link": "applications/android",
+              "name": "AndroidApplications"
+            }
+          ],
+          "title": "Applications"
+        },
+        {
+          "name": "OtherPages",
+          "subpages": [{
+              "name": "Videos",
+              "videos": [{
+                  "description": "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving itself\". I accomplished this by taking a picture of the cube every quarter turn.",
+                  "link": "https://www.youtube.com/embed/eBCUe4jSPQQ",
+                  "title": "Timelapse - Cube"
+                },
+                {
+                  "description": "This is the first timelapse video I ever made. This is also a video of a cube solving itself, but this one doesn't look as nice as the one above because I only took one picture for each turn. I also thought it would be a good idea to show the clock so that you can see how long it took.",
+                  "link": "https://www.youtube.com/embed/EtycVB_mPnQ",
+                  "title": "Timelapse - Rubik's"
+                },
+                {
+                  "description": "I was interviewed about my puzzle cube collection and hobby while in high school, so I made this mosaic for the high school broadcasting class to use as a nice outro for the interview.",
+                  "link": "https://www.youtube.com/embed/hD42xobUROM",
+                  "title": "Mosaic - MVTV"
+                },
+                {
+                  "description": "This was probably the easiest mosaic I made as stripes are easy for anyone to make with cubes whether or not you know how to solve a puzzle cube.",
+                  "link": "https://www.youtube.com/embed/V4cVGX8jyfI",
+                  "title": "Mosaic - US Flag"
+                },
+                {
+                  "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the ground floor.",
+                  "link": "https://www.youtube.com/embed/9rEE0PjNMA4",
+                  "title": "Dream Home - Ground Floor"
+                },
+                {
+                  "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the basement.",
+                  "link": "https://www.youtube.com/embed/cDsXrYSNA8c",
+                  "title": "Dream Home - Basement"
+                },
+                {
+                  "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
+                  "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
+                  "title": "Typling Bot"
+                },
+                {
+                  "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
+                  "link": "https://www.youtube.com/embed/gLKssL0FN98",
+                  "title": "Clash Royale Strategy"
+                }
+              ]
+            },
+            {
+              "description": "Below are listed several of my projects on Github. You can view the README.md files here or click on the link to view the repository or you can visit my github page directly <a href=\"https://github.com/Nate314\">here</a>.",
+              "name": "Github Projects",
+              "subpages": [{
+                  "description": "https://raw.githubusercontent.com/Nate314/NatePy/master/README.md",
+                  "link": "https://github.com/Nate314/NatePy",
+                  "title": "NatePy"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/simplejsprojects/master/README.md",
+                  "link": "https://github.com/Nate314/simplejsprojects",
+                  "title": "Simple JS Projects"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/site/master/README.md",
+                  "link": "https://github.com/Nate314/site",
+                  "title": "This Website"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/react-games/master/README.md",
+                  "link": "https://github.com/Nate314/react-games",
+                  "title": "React Games"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/c3po/master/README.md",
+                  "link": "https://github.com/Nate314/c3po",
+                  "title": "C3PO"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/simplegamerenders/master/README.md",
+                  "link": "https://github.com/Nate314/simplegamerenders",
+                  "title": "Simple Game Renders"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/InfixParser/master/README.md",
+                  "link": "https://github.com/Nate314/InfixParser",
+                  "title": "C++ Infix Parser"
+                },
+                {
+                  "description": "https://raw.githubusercontent.com/Nate314/MorseCode/master/README.md",
+                  "link": "https://github.com/Nate314/MorseCode",
+                  "title": "C++ Morse Code"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "description": "Here you can view the code behind this website.",
+          "name": "How I Created This Website"
+        }
+      ],
+      "sections": [
+        "Site Map",
+        "Other Websites"
+      ],
+      "subtitle": "my github website",
+      "title": "Nathan Gawith"
+    }
+  }
 }

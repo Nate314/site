@@ -3,21 +3,27 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { RouterModule } from "@angular/router";
+import { MarkdownModule } from "ngx-markdown";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import {
   // application-structure
   AppComponent, NavbarComponent, FooterComponent, NotFoundComponent,
   // pages
-  HomeComponent, VideosComponent,
+  HomeComponent, VideosComponent, GithubProjectsComponent,
   // applications
   BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component,
-  TypingTestComponent, IFrameAppComponent, ApplicationsComponent
+  TypingTestComponent, IFrameAppComponent, ApplicationsComponent,
+  // general components
+  ListOfLinksComponent
 } from "./components/index";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { MaterialModule } from "./material.module";
+import { DatabaseService } from "./services";
 
 @NgModule({
   declarations: [
@@ -28,6 +34,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     FooterComponent,
     ApplicationsComponent,
     VideosComponent,
+    GithubProjectsComponent,
     IFrameAppComponent,
     MultiplicationTableComponent,
     FinalGradeCalculatorComponent,
@@ -36,7 +43,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     GroupCreatorComponent,
     HtmlSandboxComponent,
     TypingTestComponent,
-    DtoConvertComponent
+    DtoConvertComponent,
+    ListOfLinksComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +52,17 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+    MarkdownModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, "nate314"),
     AngularFirestoreModule,
     AngularFireDatabaseModule
   ],
-  providers: [HttpClient],
+  providers: [
+    HttpClient,
+    DatabaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,11 +6,13 @@ import { BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorCo
   GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent,
   Say2Component, TypingTestComponent, ApplicationsComponent,
   IFrameAppComponent } from "./components/pages/applications/index";
+import { GithubProjectsComponent } from "./components/pages/github-projects/github-projects.component";
 
 export const routes: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "videos", component: VideosComponent },
+  { path: "github-projects", component: GithubProjectsComponent },
   { path: "applications", component: ApplicationsComponent },
   { path: "applications/java/:application", component: ApplicationsComponent },
   { path: "applications/web/:application", component: ApplicationsComponent },
