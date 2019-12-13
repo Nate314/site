@@ -58,24 +58,24 @@ export class ApplicationsComponent implements OnInit {
       this.javaApplications = db.getJavaApplications();
       this.webApplications = db.getWebApplications();
       this.androidApplications = db.getAndroidApplications();
-      this.subpages.push(<Page>{
-        name: this.javaApplications["name"],
-        link: "../" + this.javaApplications["link"],
-        description: this.javaApplications["description"],
-        apps: this.javaApplications["apps"]
-      });
-      this.subpages.push(<Page>{
-        name: this.webApplications["name"],
-        link: "../" + this.webApplications["link"],
-        description: this.webApplications["description"],
-        apps: this.webApplications["apps"]
-      });
-      this.subpages.push(<Page>{
-        name: this.androidApplications["name"],
-        link: "../" + this.androidApplications["link"],
-        description: this.androidApplications["description"],
-        apps: this.androidApplications["apps"]
-      });
+      this.subpages = [
+        <Page>{
+          name: this.javaApplications["name"],
+          link: "../" + this.javaApplications["link"],
+          description: this.javaApplications["description"],
+          apps: this.javaApplications["apps"]
+        }, <Page>{
+          name: this.webApplications["name"],
+          link: "../" + this.webApplications["link"],
+          description: this.webApplications["description"],
+          apps: this.webApplications["apps"]
+        }, <Page>{
+          name: this.androidApplications["name"],
+          link: "../" + this.androidApplications["link"],
+          description: this.androidApplications["description"],
+          apps: this.androidApplications["apps"]
+        }
+      ];
 
       // load different sections of the page based on the url
       const validSubpages = ["java", "web", "android"];
@@ -135,17 +135,19 @@ export class ApplicationsComponent implements OnInit {
     }
   }
 
-  openJavaApp(app: App) {
-    let url = app.file;
-    if (!url.includes("https://nate314.github.io/nathangawith/applications/javaApplications/"))
-      url = "https://nate314.github.io/nathangawith/applications/javaApplications/" + app.file;
+  openLink(url: string, ext?: string) {
+    if (!url.includes("firebasestorage.googleapis.com")) {
+      if (!url.includes(`https://nate314.github.io/nathangawith/applications/${ext}/`))
+        url = `https://nate314.github.io/nathangawith/applications/${ext}/` + url;
+    }
     location.href = url;
   }
 
+  openJavaApp(app: App) {
+    this.openLink(app.file, "javaApplications");
+  }
+
   openAndroidApp(app: App) {
-    let url = app.file;
-    if (!url.includes("https://nate314.github.io/nathangawith/applications/androidApplications/"))
-      url = "https://nate314.github.io/nathangawith/applications/androidApplications/" + app.file;
-    location.href = url;
+    this.openLink(app.file, "androidApplications");
   }
 }
