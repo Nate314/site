@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 export class FooterComponent implements OnInit {
 
   get url(): string {
-    return this.router.url;
+    return `${window.location.host}${this.router.url}`;
   }
 
   constructor(private router: Router) { }

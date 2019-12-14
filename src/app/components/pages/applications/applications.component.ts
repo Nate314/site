@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DatabaseService } from "src/app/services";
-import * as _ from "lodash";
 
 class Page {
   name: string;
@@ -26,6 +25,8 @@ class App {
 export class ApplicationsComponent implements OnInit {
 
   appSelector: string = "<app-dto-convert></app-dto-convert>";
+
+  animationState: string = "out";
 
   // Applications
   subpages: Page[] = [];
@@ -81,7 +82,7 @@ export class ApplicationsComponent implements OnInit {
       const validSubpages = ["java", "web", "android"];
       this.activatedRoute.url.subscribe(response => {
         // get the subpage
-        const validSubpage = response.filter(x => _.includes(validSubpages, x.path));
+        const validSubpage = response.filter(x => validSubpages.includes(x.path));
         if (validSubpage.length > 0) {
           this.subpage = validSubpage[0].path;
           // get the subpage object

@@ -9,7 +9,29 @@ export class Constants {
   public static dev: boolean = false;
 }
 
+export enum PageNames {
+  SITE_TITLE = "NathanGawith",
+  HOME = "Home",
+  APPLICATIONS = "Applications",
+  APPLICATIONS_JAVA = "Java Applications",
+  APPLICATIONS_WEB = "Web Applications",
+  APPLICATIONS_ANDROID = "Android Applications",
+  GITHUB_PROJECTS = "Github Projects",
+  VIDEOS = "Videos"
+}
+
+export enum StatusCodes {
+  OK = 200,
+  NOT_FOUND = 404
+}
+
 export class Helper {
+
+  public static flatten2dArray(array: any[][]): any[] {
+    const result = [];
+    array.forEach(arr => arr.forEach(val => result.push(val)));
+    return result;
+  }
 
   public static replaceAll(str: string, replace: string, replacement: string): string {
     if (str.indexOf(replace) !== -1) {
@@ -54,20 +76,4 @@ export class Helper {
   public static navigate(router: Router, location: Location, url: string) {
     router.navigate([url]);
   }
-}
-
-export enum PageNames {
-  SITE_TITLE = "NathanGawith",
-  HOME = "Home",
-  APPLICATIONS = "Applications",
-  APPLICATIONS_JAVA = "Java Applications",
-  APPLICATIONS_WEB = "Web Applications",
-  APPLICATIONS_ANDROID = "Android Applications",
-  GITHUB_PROJECTS = "Github Projects",
-  VIDEOS = "Videos"
-}
-
-export enum StatusCodes {
-  OK = 200,
-  NOT_FOUND = 404
 }

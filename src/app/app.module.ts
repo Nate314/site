@@ -48,6 +48,7 @@ import { DatabaseService } from "./services";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
