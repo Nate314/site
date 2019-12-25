@@ -120,6 +120,10 @@ export class ApplicationsComponent implements OnInit {
     return null;
   }
 
+  useIFrame(file: string): boolean {
+    return file.includes("nate314.github.io") || file.includes("nathangawith.com");
+  }
+
   open(url: string) {
     Helper.navigate(this.router, this.location, url);
   }

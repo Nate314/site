@@ -55,7 +55,7 @@
   <br />
   <mat-card class="mat-elevation-z4">
     <div *ngIf="webApp">
-      <app-iframe-app *ngIf="webApp.file.includes('nate314')" [src]="webApp.file"></app-iframe-app>
+      <app-iframe-app *ngIf="useIFrame(webApp.file)" [src]="webApp.file"></app-iframe-app>
       <app-betting-calculator *ngIf="webApp.selector === 'app-betting-calculator'"></app-betting-calculator>
       <app-dto-convert *ngIf="webApp.selector === 'app-dto-convert'"></app-dto-convert>
       <app-final-grade-calculator *ngIf="webApp.selector === 'app-final-grade-calculator'"></app-final-grade-calculator>
