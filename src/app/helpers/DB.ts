@@ -34,6 +34,10 @@ export class DB {
   //  return this.
   // }
 
+  public getRedirects(): ResourceType[] {
+    return this.db.home.otherwebsites.redirects;
+  }
+
   public getHome() {
     return this.db.home;
   }
@@ -47,7 +51,6 @@ export class DB {
   }
 
   public getJavaApplications() {
-    console.log(this.applications);
     return this.applications.subpages[0];
   }
 
@@ -60,12 +63,10 @@ export class DB {
   }
 
   public getVideos() {
-    console.log(this.videos);
     return this.videos;
   }
 
   public getGithubProjects() {
-    console.log(this.githubProjects);
     return this.githubProjects;
   }
 
@@ -103,7 +104,7 @@ class DBtype {
       subtitle: string;
       name: string;
       sections: string[];
-      otherwebsites: { friends: ResourceType[] };
+      otherwebsites: { friends: ResourceType[], redirects: ResourceType[] };
       JavaApplications: PageType<ApplicationType>;
       WebApplications: PageType<ApplicationType>;
       AndroidApplications: PageType<ApplicationType>;

@@ -39,19 +39,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/not-found/not-found.component.html":
-/*!***************************************************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/not-found/not-found.component.html ***!
-  \***************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"loaded\">\n  ¯\\_(ツ)_/¯ NOT FOUND\n</div>\n");
-
-/***/ }),
-
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/pages/applications/applications.component.html":
 /*!*****************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/components/pages/applications/applications.component.html ***!
@@ -718,6 +705,7 @@ var NavbarComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return NotFoundComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services */ "./src/app/services/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -731,20 +719,45 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 
+
 var NotFoundComponent = /** @class */ (function () {
-    function NotFoundComponent() {
+    function NotFoundComponent(db) {
+        this.db = db;
         this.loaded = false;
+        this.content = "¯\\_(ツ)_/¯ NOT FOUND";
     }
     NotFoundComponent.prototype.ngOnInit = function () {
         var _this = this;
-        setTimeout(function () { return _this.loaded = true; }, 200);
+        this.db.connection().subscribe(function (db) {
+            var path = window.location.pathname;
+            var redirects = db.getRedirects();
+            if (redirects.map(function (x) { return x.title; }).includes(path)) {
+                var route_1 = redirects.find(function (x) { return x.title === path; });
+                _this.content = "Redirecting to " + route_1.description;
+                _this.dots();
+                setTimeout(function () {
+                    window.location.href = route_1.link;
+                }, 1200);
+            }
+            _this.loaded = true;
+        });
     };
+    NotFoundComponent.prototype.dots = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.content += " .";
+            _this.dots();
+        }, 200);
+    };
+    NotFoundComponent.ctorParameters = function () { return [
+        { type: src_app_services__WEBPACK_IMPORTED_MODULE_1__["DatabaseService"] }
+    ]; };
     NotFoundComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-not-found",
-            template: __importDefault(__webpack_require__(/*! raw-loader!./not-found.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/not-found/not-found.component.html")).default
+            template: "\n  <div *ngIf=\"loaded\">\n    {{ content }}\n  </div>\n"
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [src_app_services__WEBPACK_IMPORTED_MODULE_1__["DatabaseService"]])
     ], NotFoundComponent);
     return NotFoundComponent;
 }());
@@ -2260,6 +2273,9 @@ var DB = /** @class */ (function () {
     // public getFile(): Observable<any> {
     //  return this.
     // }
+    DB.prototype.getRedirects = function () {
+        return this.db.home.otherwebsites.redirects;
+    };
     DB.prototype.getHome = function () {
         return this.db.home;
     };
@@ -2270,7 +2286,6 @@ var DB = /** @class */ (function () {
         return this.applications;
     };
     DB.prototype.getJavaApplications = function () {
-        console.log(this.applications);
         return this.applications.subpages[0];
     };
     DB.prototype.getWebApplications = function () {
@@ -2280,11 +2295,9 @@ var DB = /** @class */ (function () {
         return this.applications.subpages[2];
     };
     DB.prototype.getVideos = function () {
-        console.log(this.videos);
         return this.videos;
     };
     DB.prototype.getGithubProjects = function () {
-        console.log(this.githubProjects);
         return this.githubProjects;
     };
     return DB;

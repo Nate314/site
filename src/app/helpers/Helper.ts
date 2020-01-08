@@ -60,11 +60,11 @@ export class Helper {
     && queryparams["queryParams"]["subpage"] != undefined
     && queryparams["queryParams"]["appName"] == undefined
     && Constants.currentPageURL.includes("application")) {*/
-    setTimeout(function () {
+    setTimeout(() => {
       router.navigate(["/not-found"]);
     }, 0);
     /*}*/
-    setTimeout(function () {
+    setTimeout(() => {
       router.navigate(url, queryparams);
     }, 0);
     /*
