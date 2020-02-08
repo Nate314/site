@@ -1,6 +1,6 @@
 import { trigger, style, transition, animate, query, group, state } from "@angular/animations";
 import { Router, NavigationEnd, RouterOutlet } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI

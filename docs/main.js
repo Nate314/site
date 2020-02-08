@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <br /><br />\n  <div style=\"height:10px;\"></div>\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" class=\"container\" style=\"position:relative;\">\n    <router-outlet #outlet=\"outlet\"></router-outlet>\n  </div>\n  <br /><br />\n  <br /><br />\n  <app-footer></app-footer>\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n\n<!-- <div class=\"container p-4\">\n  <div class=\"row\">\n    <div class=\"col text-center\">\n      <a (click)=\"changeState('a')\" class=\"btn btn-danger\">Change To State A</a>\n    </div>\n    <div class=\"col text-center\">\n      <a (click)=\"changeState('b')\" class=\"btn btn-danger\">Change To State B</a>\n    </div>\n    <div class=\"col text-center\">\n      <a (click)=\"changeState('c')\" class=\"btn btn-danger\">Change To State C</a>\n    </div>\n  </div>\n  <div class=\"row justify-content-center align-items-center\">\n    <app-animate [stateSelector]=\"stateSelector\"></app-animate>\n  </div>\n</div> -->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <br /><br />\n  <div style=\"height:10px;\"></div>\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" class=\"container\" style=\"position:relative;\">\n    <router-outlet #outlet=\"outlet\"></router-outlet>\n  </div>\n  <br /><br />\n  <br /><br />\n  <app-footer></app-footer>\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n");
 
 /***/ }),
 
@@ -204,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n  <div *ngFor=\"let video of videos\">\n    <br />\n    <mat-card class=\"mat-elevation-z4\">\n      <h3>{{ video.title }}</h3>\n      <iframe [src]=\"video.link\" frameborder=\"1\" allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\"\n        allowfullscreen></iframe>\n      <p>{{ video.description }}</p>\n    </mat-card>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<br />\n<mat-grid-list [cols]=\"getColumns()\" rowHeight=\"450px\" gutterSize=\"15px\" id=\"videoGrid\">\n  <mat-grid-tile *ngFor=\"let video of videos\" [colspan]=\"1\" [rowspan]=\"1\">\n    <mat-card class=\"mat-elevation-z4\" style=\"height:450px\">\n      <h3>{{ video.title }}</h3>\n      <img *ngIf=\"!video.enabled\" [src]=\"video.preview\" style=\"width:100%;\" (click)=\"btnThumbnail(video)\"/>\n      <iframe *ngIf=\"video.enabled\" [src]=\"video.link\" frameborder=\"1\" allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\"\n        allowfullscreen></iframe>\n      <p>{{ video.description }}</p>\n      <p>Click <a [href]=\"getYoutubeLink(video.link)\">here</a> to watch on Youtube.</p>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>\n");
 
 /***/ }),
 
@@ -2201,6 +2201,7 @@ var VideosComponent = /** @class */ (function () {
     }
     VideosComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var getSanatized = function (link) { return _this.sanitizer.bypassSecurityTrustResourceUrl(link); };
         this.db.connection().subscribe(function (db) {
             _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].initializePage(_this, _this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["PageNames"].VIDEOS);
             var dbVideos = db.getVideos();
@@ -2209,11 +2210,30 @@ var VideosComponent = /** @class */ (function () {
             _this.videos = dbVideos.map(function (v) {
                 return {
                     title: v["title"],
-                    link: _this.sanitizer.bypassSecurityTrustResourceUrl(v["link"]),
-                    description: v["description"]
+                    link: getSanatized("https://www.youtube.com/embed/" + v["link"]),
+                    description: v["description"],
+                    preview: v["preview"],
+                    enabled: false
                 };
             });
         });
+    };
+    VideosComponent.prototype.getColumns = function () {
+        var el = document.getElementById("videoGrid");
+        var width = el ? el.offsetWidth : window.innerWidth;
+        var result = Math.max(Math.floor(width / 340), 1);
+        return result;
+    };
+    VideosComponent.prototype.getYoutubeLink = function (sanatizedLink) {
+        var link = sanatizedLink["changingThisBreaksApplicationSecurity"];
+        var urlParts = (link + "/").split("/");
+        var id = urlParts[urlParts.length >= 2 ? urlParts.length - 2 : urlParts.length - 1];
+        var result = "https://www.youtube.com/watch?v=" + id;
+        return result;
+    };
+    VideosComponent.prototype.btnThumbnail = function (video) {
+        this.videos.forEach(function (x) { return x.enabled = false; });
+        video.enabled = true;
     };
     VideosComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },

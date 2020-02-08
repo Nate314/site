@@ -1,17 +1,15 @@
-import { Component, OnInit, Pipe, PipeTransform } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DB } from "../../../helpers/DB";
 import { DomSanitizer, SafeResourceUrl } from "../../../../../node_modules/@angular/platform-browser";
-import { HttpClient } from "@angular/common/http";
-import { AngularFireDatabase } from "angularfire2/database";
 import { DatabaseService } from "src/app/services";
 
 class Video {
   title: string;
   link: SafeResourceUrl;
   description: string;
+  preview: string;
+  enabled: boolean;
 }
 
 @Component({
@@ -29,6 +27,7 @@ export class VideosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const getSanatized = link => this.sanitizer.bypassSecurityTrustResourceUrl(link)
     this.db.connection().subscribe(db => {
       Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
       const dbVideos = db.getVideos();
@@ -37,10 +36,32 @@ export class VideosComponent implements OnInit {
       this.videos = dbVideos.map(v => {
         return <Video>{
           title: v["title"],
-          link: this.sanitizer.bypassSecurityTrustResourceUrl(v["link"]),
-          description: v["description"]
+          link: getSanatized(`https://www.youtube.com/embed/${v["link"]}`),
+          description: v["description"],
+          preview: v["preview"],
+          enabled: false
         };
       });
     });
+  }
+
+  getColumns(): number {
+    const el = document.getElementById("videoGrid");
+    const width = el ? el.offsetWidth : window.innerWidth;
+    const result = Math.max(Math.floor(width / 340), 1);
+    return result;
+  }
+
+  getYoutubeLink(sanatizedLink: any): string {
+    const link = sanatizedLink["changingThisBreaksApplicationSecurity"];
+    const urlParts = `${link}/`.split("/");
+    const id = urlParts[urlParts.length >= 2 ? urlParts.length - 2 : urlParts.length - 1];
+    const result = `https://www.youtube.com/watch?v=${id}`;
+    return result;
+  }
+
+  btnThumbnail(video: Video): void {
+    this.videos.forEach(x => x.enabled = false);
+    video.enabled = true;
   }
 }
