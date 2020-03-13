@@ -20,6 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/CNAME",
+              "src/.well-known/keybase.txt",
               "src/assets",
               "src/assets/db.json"
             ],
@@ -78,6 +80,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
+              "src/CNAME",
+              "src/.well-known/keybase.txt",
               "src/assets",
               "src/assets/db.json"
             ]
