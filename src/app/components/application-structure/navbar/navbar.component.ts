@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
     this.pages.push(<Page>{ link: "/github-projects", name: "Github Projects", svg: "github" });
     this.pages.push(<Page>{ link: "/videos", name: "Videos", svg: "youtube" });
     this.pages.push(<Page>{ link: "https://games.nathangawith.com/", name: "Games", svg: "gamepad" });
-    this.pages.push(<Page>{ link: "https://resume.nathangawith.com/", name: "Games", svg: "file-invoice" });
+    this.pages.push(<Page>{ link: "https://resume.nathangawith.com/", name: "Resume", svg: "file-invoice" });
   }
 
   goTo(url: string) {

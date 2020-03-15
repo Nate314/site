@@ -692,7 +692,7 @@ var NavbarComponent = /** @class */ (function () {
         this.pages.push({ link: "/github-projects", name: "Github Projects", svg: "github" });
         this.pages.push({ link: "/videos", name: "Videos", svg: "youtube" });
         this.pages.push({ link: "https://games.nathangawith.com/", name: "Games", svg: "gamepad" });
-        this.pages.push({ link: "https://resume.nathangawith.com/", name: "Games", svg: "file-invoice" });
+        this.pages.push({ link: "https://resume.nathangawith.com/", name: "Resume", svg: "file-invoice" });
     };
     NavbarComponent.prototype.goTo = function (url) {
         if (url.includes("https://")) {
