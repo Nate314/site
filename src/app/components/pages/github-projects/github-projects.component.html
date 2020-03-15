@@ -1,22 +1,24 @@
-<br />
 <mat-card class="mat-elevation-z4" [innerHTML]="description">
 </mat-card>
 <br />
 <mat-accordion>
   <div *ngFor="let project of projects">
     <mat-expansion-panel class="mat-elevation-z4">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
+      <mat-expansion-panel-header *ngIf="!isScreenSmall()" class="row">
+        <div class="col-4">
           {{project.title}}
-        </mat-panel-title>
-        <mat-panel-description>
+        </div>
+        <div class="col-8">
           <a [href]="project.link">{{project.link}}</a>
-        </mat-panel-description>
+        </div>
       </mat-expansion-panel-header>
-
+      <mat-expansion-panel-header *ngIf="isScreenSmall()" class="row">
+        <div class="col-12">
+          <a [href]="project.link">{{project.title}}</a>
+        </div>
+      </mat-expansion-panel-header>
       <markdown [src]="project.description" lineNumbers [start]="5"></markdown>
     </mat-expansion-panel>
     <br />
   </div>
 </mat-accordion>
-<br />

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" [ngStyle]=\"getStyle()\">\n    <router-outlet #outlet=\"outlet\"></router-outlet>\n  </div>\n  <br /><br />\n  <br /><br />\n  <!-- <app-footer></app-footer> -->\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <div [ngStyle]=\"getStyle()\">\n    <br>\n    <h1>\n      <span *ngIf=\"!isScreenSmall()\">Nathan&nbsp;Gawith&nbsp;|&nbsp;</span>\n      <span *ngIf=\"pageName\">{{ pageName }}</span>\n      <span *ngIf=\"!pageName\" style=\"color:#AAAAAA;\">.</span>\n    </h1>\n    <mat-divider>&nbsp;</mat-divider>\n    <br>\n  </div>\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" [ngStyle]=\"getStyle()\">\n    <router-outlet #outlet=\"outlet\"></router-outlet>\n  </div>\n  <br /><br />\n  <br /><br />\n  <!-- <app-footer></app-footer> -->\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar\">\n  <ul class=\"navbar-nav\">\n    <li class=\"logo\">\n      <a class=\"nav-link\" (click)=\"goTo('/home')\" style=\"cursor:pointer;\">\n        <img src=\"assets/svg/ng_icon_cutout.svg\" />\n        <span class=\"link-text\">NathanGawith</span>\n      </a>\n    </li>\n    <li *ngFor=\"let page of pages\" class=\"nav-item\">\n      <a class=\"nav-link\" (click)=\"goTo(page.link)\" style=\"cursor:pointer;\">\n        <img [src]=\"'assets/svg/' + page.svg + '.svg'\" />\n        <span class=\"link-text\">{{ page.name }}</span>\n      </a>\n    </li>\n  </ul>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar\">\n  <ul class=\"navbar-nav\">\n    <li class=\"logo\">\n      <a class=\"nav-link\" (click)=\"goTo('/home')\" style=\"cursor:pointer;\">\n        <img src=\"http://cdn.nathangawith.com/images/svg/ng_icon_cutout.svg\" />\n        <span class=\"link-text\">NathanGawith</span>\n      </a>\n    </li>\n    <li *ngFor=\"let page of pages\" class=\"nav-item\">\n      <a class=\"nav-link\" (click)=\"goTo(page.link)\" style=\"cursor:pointer;\">\n        <img [src]=\"page.svg\" />\n        <span class=\"link-text\">{{ page.name }}</span>\n      </a>\n    </li>\n  </ul>\n</nav>\n");
 
 /***/ }),
 
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--Applications-->\n<div *ngIf=\"apps.length == 0\">\n  <br />\n  <div *ngFor=\"let page of subpages\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h1>{{ page.name }}</h1>\n      <span [innerHTML]=\"page.description\"></span>\n      <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n      <br />\n      <span *ngFor=\"let app of page.apps; let i = index\">\n        <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n        <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n        <span *ngIf=\"i === page.apps.length - 1\">. </span>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <h1>{{ pageName }}</h1>\n  <div *ngFor=\"let app of apps\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h3>{{ app.name }}</h3>\n      <span [innerHtml]=\"app.description\"></span>\n      <br />\n      <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n        <b>Go to</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div *ngIf=\"webApp\">\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    <div *ngIf=\"webApp\">\n      <app-iframe-app *ngIf=\"useIFrame(webApp.file)\" [src]=\"webApp.file\"></app-iframe-app>\n      <app-betting-calculator *ngIf=\"webApp.selector === 'app-betting-calculator'\"></app-betting-calculator>\n      <app-dto-convert *ngIf=\"webApp.selector === 'app-dto-convert'\"></app-dto-convert>\n      <app-final-grade-calculator *ngIf=\"webApp.selector === 'app-final-grade-calculator'\"></app-final-grade-calculator>\n      <app-group-creator *ngIf=\"webApp.selector === 'app-group-creator'\"></app-group-creator>\n      <app-html-sandbox *ngIf=\"webApp.selector === 'app-html-sandbox'\"></app-html-sandbox>\n      <app-multiplication-table *ngIf=\"webApp.selector === 'app-multiplication-table'\"></app-multiplication-table>\n      <app-root *ngIf=\"webApp.selector === 'app-root'\"></app-root>\n      <app-say2 *ngIf=\"webApp.selector === 'app-say2'\"></app-say2>\n      <app-typing-test *ngIf=\"webApp.selector === 'app-typing-test'\"></app-typing-test>\n    </div>\n  </mat-card>\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    {{appDescription}}\n  </mat-card>\n</div>\n<!--Applications/Subpage/App-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--Applications-->\n<div *ngIf=\"apps.length == 0\">\n  <div *ngFor=\"let page of subpages\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h1>{{ page.name }}</h1>\n      <span [innerHTML]=\"page.description\"></span>\n      <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n      <br />\n      <span *ngFor=\"let app of page.apps; let i = index\">\n        <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n        <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n        <span *ngIf=\"i === page.apps.length - 1\">. </span>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <div *ngFor=\"let app of apps\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h3>{{ app.name }}</h3>\n      <span [innerHtml]=\"app.description\"></span>\n      <br />\n      <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n        <b>Go to</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div *ngIf=\"webApp\">\n  <mat-card class=\"mat-elevation-z4\">\n    <div *ngIf=\"webApp\">\n      <app-iframe-app *ngIf=\"useIFrame(webApp.file)\" [src]=\"webApp.file\"></app-iframe-app>\n      <app-betting-calculator *ngIf=\"webApp.selector === 'app-betting-calculator'\"></app-betting-calculator>\n      <app-dto-convert *ngIf=\"webApp.selector === 'app-dto-convert'\"></app-dto-convert>\n      <app-final-grade-calculator *ngIf=\"webApp.selector === 'app-final-grade-calculator'\"></app-final-grade-calculator>\n      <app-group-creator *ngIf=\"webApp.selector === 'app-group-creator'\"></app-group-creator>\n      <app-html-sandbox *ngIf=\"webApp.selector === 'app-html-sandbox'\"></app-html-sandbox>\n      <app-multiplication-table *ngIf=\"webApp.selector === 'app-multiplication-table'\"></app-multiplication-table>\n      <app-root *ngIf=\"webApp.selector === 'app-root'\"></app-root>\n      <app-say2 *ngIf=\"webApp.selector === 'app-say2'\"></app-say2>\n      <app-typing-test *ngIf=\"webApp.selector === 'app-typing-test'\"></app-typing-test>\n    </div>\n  </mat-card>\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    {{appDescription}}\n  </mat-card>\n</div>\n<!--Applications/Subpage/App-->\n");
 
 /***/ }),
 
@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<br />\r\n<mat-card class=\"mat-elevation-z4\" [innerHTML]=\"description\">\r\n</mat-card>\r\n<br />\r\n<mat-accordion>\r\n  <div *ngFor=\"let project of projects\">\r\n    <mat-expansion-panel class=\"mat-elevation-z4\">\r\n      <mat-expansion-panel-header>\r\n        <mat-panel-title>\r\n          {{project.title}}\r\n        </mat-panel-title>\r\n        <mat-panel-description>\r\n          <a [href]=\"project.link\">{{project.link}}</a>\r\n        </mat-panel-description>\r\n      </mat-expansion-panel-header>\r\n\r\n      <markdown [src]=\"project.description\" lineNumbers [start]=\"5\"></markdown>\r\n    </mat-expansion-panel>\r\n    <br />\r\n  </div>\r\n</mat-accordion>\r\n<br />\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"mat-elevation-z4\" [innerHTML]=\"description\">\r\n</mat-card>\r\n<br />\r\n<mat-accordion>\r\n  <div *ngFor=\"let project of projects\">\r\n    <mat-expansion-panel class=\"mat-elevation-z4\">\r\n      <mat-expansion-panel-header *ngIf=\"!isScreenSmall()\" class=\"row\">\r\n        <div class=\"col-4\">\r\n          {{project.title}}\r\n        </div>\r\n        <div class=\"col-8\">\r\n          <a [href]=\"project.link\">{{project.link}}</a>\r\n        </div>\r\n      </mat-expansion-panel-header>\r\n      <mat-expansion-panel-header *ngIf=\"isScreenSmall()\" class=\"row\">\r\n        <div class=\"col-12\">\r\n          <a [href]=\"project.link\">{{project.title}}</a>\r\n        </div>\r\n      </mat-expansion-panel-header>\r\n      <markdown [src]=\"project.description\" lineNumbers [start]=\"5\"></markdown>\r\n    </mat-expansion-panel>\r\n    <br />\r\n  </div>\r\n</mat-accordion>\r\n");
 
 /***/ }),
 
@@ -178,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<br />\n<mat-card class=\"mat-elevation-z4\">\n  <div>\n    <h1>\n      Welcome!\n    </h1>\n    <mat-divider></mat-divider>\n    <p>\n      This is a website I put together to feature work I have done on\n      various applications including\n      <a (mouseup)=\"openPage($event, 'applications/java')\" class=\"hyperlink w3-hover-text-purple\">Java Applications</a>,\n      <a (mouseup)=\"openPage($event, 'applications/web')\" class=\"hyperlink w3-hover-text-purple\">Web Applications</a>,\n      and\n      <a (mouseup)=\"openPage($event, 'applications/android')\" class=\"hyperlink w3-hover-text-purple\">Android\n        Applications</a>.\n      I also have a few videos that I made that are featured\n      <a (mouseup)=\"openPage($event, 'videos')\" class=\"hyperlink w3-hover-text-purple\">here</a>.\n    </p>\n    <mat-divider></mat-divider>\n    <h3>An introduction to me:</h3>\n    <p>\n      I am currently a Computer Science student at the\n      <a (mouseup)=\"openLink($event, 'https://sce.umkc.edu/')\" class=\"hyperlink w3-hover-text-purple\">School of\n        Computing and Engineering</a>\n      at\n      <a (mouseup)=\"openLink($event, 'https://www.umkc.edu/')\" class=\"hyperlink w3-hover-text-purple\">UMKC</a>\n      and a software development intern at\n      <a (mouseup)=\"openLink($event, 'https://wellsky.com/')\" class=\"hyperlink w3-hover-text-purple\">WellSky</a>.\n    </p>\n    <p>\n      I love coding becuase I love learning, and I am a logical thinker.\n      The first programming language I learned was Java through\n      <a (mouseup)=\"openLink($event, 'https://www.firstinspires.org/robotics/frc')\"\n        class=\"hyperlink w3-hover-text-purple\">FRC</a>\n      in high school. This experience in robotics was great, and made me\n      realize that Computer Science could be a possible career path that I\n      could enjoy.\n    </p>\n    <p *ngIf=\"languageLinks && toolLinks\">\n      I have experience coding in many different languages including\n      <app-list-of-links [links]=\"languageLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n      Some of the resources I use most often to learn coding on my own are\n      <app-list-of-links [links]=\"toolLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n    </p>\n    <p *ngIf=\"youtubeLinks\">\n      Some of my favorite youtube channels include\n      <app-list-of-links [links]=\"youtubeLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n    </p>\n    <mat-divider></mat-divider>\n    <div *ngIf=\"friendLinks\">\n      <h3>Check out Some of my Friend's websites:</h3>\n      <app-list-of-links [links]=\"friendLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>\n      all have websites where you can download or use software as well!\n    </div>\n  </div>\n</mat-card>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"mat-elevation-z4\">\n  <div>\n    <h1>\n      Welcome!\n    </h1>\n    <mat-divider></mat-divider>\n    <p>\n      This is a website I put together to feature work I have done on\n      various applications including\n      <a (mouseup)=\"openPage($event, 'applications/java')\" class=\"hyperlink w3-hover-text-purple\">Java Applications</a>,\n      <a (mouseup)=\"openPage($event, 'applications/web')\" class=\"hyperlink w3-hover-text-purple\">Web Applications</a>,\n      and\n      <a (mouseup)=\"openPage($event, 'applications/android')\" class=\"hyperlink w3-hover-text-purple\">Android\n        Applications</a>.\n      I also have a few videos that I made that are featured\n      <a (mouseup)=\"openPage($event, 'videos')\" class=\"hyperlink w3-hover-text-purple\">here</a>.\n    </p>\n    <mat-divider></mat-divider>\n    <h3>An introduction to me:</h3>\n    <p>\n      I am currently a Computer Science student at the\n      <a (mouseup)=\"openLink($event, 'https://sce.umkc.edu/')\" class=\"hyperlink w3-hover-text-purple\">School of\n        Computing and Engineering</a>\n      at\n      <a (mouseup)=\"openLink($event, 'https://www.umkc.edu/')\" class=\"hyperlink w3-hover-text-purple\">UMKC</a>\n      and a software development intern at\n      <a (mouseup)=\"openLink($event, 'https://wellsky.com/')\" class=\"hyperlink w3-hover-text-purple\">WellSky</a>.\n    </p>\n    <p>\n      I love coding becuase I love learning, and I am a logical thinker.\n      The first programming language I learned was Java through\n      <a (mouseup)=\"openLink($event, 'https://www.firstinspires.org/robotics/frc')\"\n        class=\"hyperlink w3-hover-text-purple\">FRC</a>\n      in high school. This experience in robotics was great, and made me\n      realize that Computer Science could be a possible career path that I\n      could enjoy.\n    </p>\n    <p *ngIf=\"languageLinks && toolLinks\">\n      I have experience coding in many different languages including\n      <app-list-of-links [links]=\"languageLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n      Some of the resources I use most often to learn coding on my own are\n      <app-list-of-links [links]=\"toolLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n    </p>\n    <p *ngIf=\"youtubeLinks\">\n      Some of my favorite youtube channels include\n      <app-list-of-links [links]=\"youtubeLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>.\n    </p>\n    <mat-divider></mat-divider>\n    <div *ngIf=\"friendLinks\">\n      <h3>Check out Some of my Friend's websites:</h3>\n      <app-list-of-links [links]=\"friendLinks\" (click)=\"openLink($event.key, $event.value)\"></app-list-of-links>\n      all have websites where you can download or use software as well!\n    </div>\n  </div>\n</mat-card>\n");
 
 /***/ }),
 
@@ -204,7 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<br />\n<mat-grid-list [cols]=\"getColumns()\" rowHeight=\"450px\" gutterSize=\"15px\" id=\"videoGrid\">\n  <mat-grid-tile *ngFor=\"let video of videos\" [colspan]=\"1\" [rowspan]=\"1\">\n    <mat-card class=\"mat-elevation-z4\" style=\"height:450px\">\n      <h3>{{ video.title }}</h3>\n      <img *ngIf=\"!video.enabled\" [src]=\"video.preview\" style=\"width:100%;\" (click)=\"btnThumbnail(video)\"/>\n      <iframe *ngIf=\"video.enabled\" [src]=\"video.link\" frameborder=\"1\" allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\"\n        allowfullscreen></iframe>\n      <p>{{ video.description }}</p>\n      <p>Click <a [href]=\"getYoutubeLink(video.link)\">here</a> to watch on Youtube.</p>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-grid-list [cols]=\"getColumns()\" rowHeight=\"450px\" gutterSize=\"15px\" id=\"videoGrid\">\n  <mat-grid-tile *ngFor=\"let video of videos\" [colspan]=\"1\" [rowspan]=\"1\">\n    <mat-card class=\"mat-elevation-z4\" style=\"height:450px\">\n      <h3>{{ video.title }}</h3>\n      <img *ngIf=\"!video.enabled\" [src]=\"video.preview\" style=\"width:100%;\" (click)=\"btnThumbnail(video)\"/>\n      <iframe *ngIf=\"video.enabled\" [src]=\"video.link\" frameborder=\"1\" allow=\"autoplay; encrypted-media\" style=\"width:100%; height:25vh;\"\n        allowfullscreen></iframe>\n      <p>{{ video.description }}</p>\n      <p>Click <a [href]=\"getYoutubeLink(video.link)\">here</a> to watch on Youtube.</p>\n    </mat-card>\n  </mat-grid-tile>\n</mat-grid-list>\n");
 
 /***/ }),
 
@@ -432,12 +432,11 @@ var AppModule = /** @class */ (function () {
 /*!*********************************************************************************!*\
   !*** ./src/app/components/application-structure/app-component/app.component.ts ***!
   \*********************************************************************************/
-/*! exports provided: isScreenSmall, slideTo, AppComponent */
+/*! exports provided: slideTo, AppComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isScreenSmall", function() { return isScreenSmall; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "slideTo", function() { return slideTo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
@@ -460,38 +459,43 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
-function isScreenSmall() {
-    return window.innerWidth < 600;
-}
+
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI
 function slideTo(from, to) {
-    var _a, _b, _c, _d;
-    var dir1 = isScreenSmall() ? "right" : "bottom";
-    var dir2 = isScreenSmall() ? "left" : "top";
+    var dir1 = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall() ? "right" : "bottom";
+    var dir2 = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall() ? "left" : "top";
     var direction = from < to ? dir1 : dir2;
     var distance = 100 * Math.abs(from - to);
     var optional = { optional: true };
-    var animationTime = "1000ms ease";
+    var animationTime = "600ms ease";
+    var enterLeaveStyle = {
+        position: "absolute",
+        top: "97.5px",
+        width: "calc(100% - " + (src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall() ? 4 : 9) + "rem)",
+        opacity: 1
+    };
+    var enterStyle = { opacity: 0 };
+    var groupLeaveStyle = { opacity: 0 };
+    var groupEnterStyle = { opacity: 1 };
+    if (src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall()) {
+        // enterLeaveStyle[direction] = 0;
+        // enterStyle[direction] = `-${distance}%`;
+        // groupLeaveStyle[direction] = `${distance}%`;
+        // groupEnterStyle[direction] = "0%";
+    }
     return [
         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(":enter, :leave", [
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])((_a = {
-                    position: "absolute",
-                    top: 0
-                },
-                _a[direction] = 0,
-                _a.width = "calc(100% - " + (isScreenSmall() ? 4 : 9) + "rem)",
-                _a.opacity = 1,
-                _a))
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(enterLeaveStyle)
         ], optional),
         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(":enter", [
-            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])((_b = {}, _b[direction] = "-" + distance + "%", _b.opacity = 0, _b))
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(enterStyle)
         ]),
         Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["group"])([
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(":leave", [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animationTime, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])((_c = {}, _c[direction] = distance + "%", _c.opacity = 0, _c)))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animationTime, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(groupLeaveStyle))
             ], optional),
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["query"])(":enter", [
-                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animationTime, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])((_d = {}, _d[direction] = "0%", _d.opacity = 1, _d)))
+                Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["animate"])(animationTime, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["style"])(groupEnterStyle))
             ])
         ])
     ];
@@ -504,10 +508,57 @@ var AppComponent = /** @class */ (function () {
     function AppComponent(router, appRef) {
         this.router = router;
         this.appRef = appRef;
+        this.erasing = true;
+        this.i = 0;
         this.webapplication = false;
+        this.previousPageName = "";
+        this.currentPageName = "";
+        this._pageName = "";
     }
+    Object.defineProperty(AppComponent.prototype, "pageName", {
+        get: function () {
+            return this._pageName;
+        },
+        set: function (val) {
+            var _this = this;
+            if (this.currentPageName !== val) {
+                this.currentPageName = val;
+                this.i = this._pageName.length;
+                this.erasing = true;
+                setTimeout(function () {
+                    var interval = setInterval(function () {
+                        if (_this.erasing) {
+                            if (_this.i >= 0) {
+                                _this._pageName = _this.previousPageName.substr(0, _this.i--);
+                            }
+                            else {
+                                _this.erasing = false;
+                            }
+                        }
+                        else {
+                            _this._pageName = _this.currentPageName.substr(0, _this.i++);
+                        }
+                        // this._pageName = this.currentPageName.substr(0, this.i) + this.previousPageName.substr(this.i);
+                        // this.i++;
+                        if (_this.pageName === _this.currentPageName) {
+                            _this.previousPageName = _this._pageName;
+                            console.log("previous set to " + _this.previousPageName);
+                            clearInterval(interval);
+                        }
+                    }, 50);
+                }, 500);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.pageNameInterval = setInterval(function () {
+            _this.pageName = src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPage.includes(" |")
+                ? src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPage.substr(src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPage.lastIndexOf("|") + 1).trim()
+                : src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPage;
+        }, 250);
         this.router.events.subscribe(function (event) {
             if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]) {
                 if (event.url.toLocaleLowerCase().includes("webapplications")
@@ -517,15 +568,21 @@ var AppComponent = /** @class */ (function () {
         });
         window.addEventListener("resize", function () { return _this.appRef.tick(); });
     };
+    AppComponent.prototype.ngOnDestroy = function () {
+        clearInterval(this.pageNameInterval);
+    };
     AppComponent.prototype.prepareRoute = function (outlet) {
         return outlet && outlet.activatedRouteData && outlet.activatedRouteData["animation"];
     };
     AppComponent.prototype.getStyle = function () {
         var margin = 2;
         return {
-            "margin-left": isScreenSmall() ? margin + "rem" : margin + 5 + "rem",
+            "margin-left": src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall() ? margin + "rem" : margin + 5 + "rem",
             "margin-right": margin + "rem"
         };
+    };
+    AppComponent.prototype.isScreenSmall = function () {
+        return src_app_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].isScreenSmall();
     };
     AppComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
@@ -606,7 +663,7 @@ var FooterComponent = /** @class */ (function () {
 /*!***********************************************************!*\
   !*** ./src/app/components/application-structure/index.ts ***!
   \***********************************************************/
-/*! exports provided: NotFoundComponent, isScreenSmall, slideTo, AppComponent, FooterComponent, NavbarComponent */
+/*! exports provided: NotFoundComponent, slideTo, AppComponent, FooterComponent, NavbarComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -615,8 +672,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"]; });
 
 /* harmony import */ var _app_component_app_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-component/app.component */ "./src/app/components/application-structure/app-component/app.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isScreenSmall", function() { return _app_component_app_component__WEBPACK_IMPORTED_MODULE_1__["isScreenSmall"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "slideTo", function() { return _app_component_app_component__WEBPACK_IMPORTED_MODULE_1__["slideTo"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return _app_component_app_component__WEBPACK_IMPORTED_MODULE_1__["AppComponent"]; });
@@ -693,12 +748,12 @@ var NavbarComponent = /** @class */ (function () {
         this.pages = [];
     }
     NavbarComponent.prototype.ngOnInit = function () {
-        this.pages.push({ link: "/home", name: "Home", svg: "home" });
-        this.pages.push({ link: "/applications", name: "Applications", svg: "laptop" });
-        this.pages.push({ link: "/github-projects", name: "Github Projects", svg: "github" });
-        this.pages.push({ link: "/videos", name: "Videos", svg: "youtube" });
-        this.pages.push({ link: "https://games.nathangawith.com/", name: "Games", svg: "gamepad" });
-        this.pages.push({ link: "https://resume.nathangawith.com/", name: "Resume", svg: "file-invoice" });
+        this.pages.push({ link: "/home", name: "Home", svg: "http://cdn.nathangawith.com/images/svg/home.svg" });
+        this.pages.push({ link: "/applications", name: "Applications", svg: "http://cdn.nathangawith.com/images/svg/laptop.svg" });
+        this.pages.push({ link: "/github-projects", name: "Github Projects", svg: "http://cdn.nathangawith.com/images/svg/github.svg" });
+        this.pages.push({ link: "/videos", name: "Videos", svg: "http://cdn.nathangawith.com/images/svg/youtube.svg" });
+        this.pages.push({ link: "https://games.nathangawith.com/", name: "Games", svg: "http://cdn.nathangawith.com/images/svg/gamepad.svg" });
+        this.pages.push({ link: "https://resume.nathangawith.com/", name: "Resume", svg: "http://cdn.nathangawith.com/images/svg/file-invoice.svg" });
     };
     NavbarComponent.prototype.goTo = function (url) {
         if (url.includes("https://")) {
@@ -809,15 +864,13 @@ var NotFoundComponent = /** @class */ (function () {
 /*!*************************************!*\
   !*** ./src/app/components/index.ts ***!
   \*************************************/
-/*! exports provided: NotFoundComponent, isScreenSmall, slideTo, AppComponent, FooterComponent, NavbarComponent, HomeComponent, ListOfLinksComponent, VideosComponent, GithubProjectsComponent, BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
+/*! exports provided: NotFoundComponent, slideTo, AppComponent, FooterComponent, NavbarComponent, HomeComponent, ListOfLinksComponent, VideosComponent, GithubProjectsComponent, BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent, GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component, TypingTestComponent, IFrameAppComponent, ApplicationsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _application_structure_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./application-structure/index */ "./src/app/components/application-structure/index.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NotFoundComponent", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["NotFoundComponent"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isScreenSmall", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["isScreenSmall"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "slideTo", function() { return _application_structure_index__WEBPACK_IMPORTED_MODULE_0__["slideTo"]; });
 
@@ -965,6 +1018,9 @@ var ApplicationsComponent = /** @class */ (function () {
                         if (response.length === 3)
                             _this.webApp = _this.getApp(_this.webApplications["apps"], response[2].path);
                     }
+                }
+                else {
+                    _this.pageName = "Applications";
                 }
             });
             // if a web app is being passed through the url, then open that web app
@@ -1975,12 +2031,15 @@ var GithubProjectsComponent = /** @class */ (function () {
     }
     GithubProjectsComponent.prototype.ngOnInit = function () {
         var _this = this;
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].initializePage(this, this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["PageNames"].GITHUB_PROJECTS);
         this.db.connection().subscribe(function (db) {
-            _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].initializePage(_this, _this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["PageNames"].GITHUB_PROJECTS);
             var githubProjects = db.getGithubProjects();
             _this.description = githubProjects.description;
             _this.projects = githubProjects.subpages;
         });
+    };
+    GithubProjectsComponent.prototype.isScreenSmall = function () {
+        return _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].isScreenSmall();
     };
     GithubProjectsComponent.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
@@ -2041,8 +2100,8 @@ var HomeComponent = /** @class */ (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(this, this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].HOME);
         this.db.connection().subscribe(function (db) {
-            _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].initializePage(_this, _this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["PageNames"].HOME);
             var otherwebsites = db.getHome().otherwebsites;
             _this.friendLinks = otherwebsites.friends;
             _this.youtubeLinks = otherwebsites.youtube;
@@ -2242,18 +2301,19 @@ var VideosComponent = /** @class */ (function () {
     }
     VideosComponent.prototype.ngOnInit = function () {
         var _this = this;
+        _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].initializePage(this, this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["PageNames"].VIDEOS);
         var getSanatized = function (link) { return _this.sanitizer.bypassSecurityTrustResourceUrl(link); };
         this.db.connection().subscribe(function (db) {
-            _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["Helper"].initializePage(_this, _this.router.url, _helpers_Helper__WEBPACK_IMPORTED_MODULE_2__["PageNames"].VIDEOS);
             var dbVideos = db.getVideos();
             console.log("dbVideos");
             console.log(dbVideos);
+            var time = new Date().getTime();
             _this.videos = dbVideos.map(function (v) {
                 return {
                     title: v["title"],
                     link: getSanatized("https://www.youtube.com/embed/" + v["link"]),
                     description: v["description"],
-                    preview: v["preview"],
+                    preview: v["preview"] + ("?time=" + time),
                     enabled: false
                 };
             });
@@ -2444,6 +2504,9 @@ var StatusCodes;
 var Helper = /** @class */ (function () {
     function Helper() {
     }
+    Helper.isScreenSmall = function () {
+        return window.innerWidth < 600;
+    };
     Helper.flatten2dArray = function (array) {
         var result = [];
         array.forEach(function (arr) { return arr.forEach(function (val) { return result.push(val); }); });

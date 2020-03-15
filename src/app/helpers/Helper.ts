@@ -27,6 +27,10 @@ export enum StatusCodes {
 
 export class Helper {
 
+  public static isScreenSmall(): boolean {
+    return window.innerWidth < 600;
+  }
+
   public static flatten2dArray(array: any[][]): any[] {
     const result = [];
     array.forEach(arr => arr.forEach(val => result.push(val)));

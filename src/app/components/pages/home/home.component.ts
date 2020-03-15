@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    Helper.initializePage(this, this.router.url, PageNames.HOME);
     this.db.connection().subscribe(db => {
-      Helper.initializePage(this, this.router.url, PageNames.HOME);
       const otherwebsites = db.getHome().otherwebsites;
       this.friendLinks = otherwebsites.friends;
       this.youtubeLinks = otherwebsites.youtube;

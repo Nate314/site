@@ -18,11 +18,15 @@ export class GithubProjectsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    Helper.initializePage(this, this.router.url, PageNames.GITHUB_PROJECTS);
     this.db.connection().subscribe(db => {
-      Helper.initializePage(this, this.router.url, PageNames.GITHUB_PROJECTS);
       const githubProjects = db.getGithubProjects();
       this.description = githubProjects.description;
       this.projects = githubProjects.subpages;
     });
+  }
+
+  isScreenSmall(): boolean {
+    return Helper.isScreenSmall();
   }
 }

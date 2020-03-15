@@ -27,18 +27,19 @@ export class VideosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const getSanatized = link => this.sanitizer.bypassSecurityTrustResourceUrl(link)
+    Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
+    const getSanatized = link => this.sanitizer.bypassSecurityTrustResourceUrl(link);
     this.db.connection().subscribe(db => {
-      Helper.initializePage(this, this.router.url, PageNames.VIDEOS);
       const dbVideos = db.getVideos();
       console.log("dbVideos");
       console.log(dbVideos);
+      const time = new Date().getTime();
       this.videos = dbVideos.map(v => {
         return <Video>{
           title: v["title"],
           link: getSanatized(`https://www.youtube.com/embed/${v["link"]}`),
           description: v["description"],
-          preview: v["preview"],
+          preview: v["preview"] + `?time=${time}`,
           enabled: false
         };
       });

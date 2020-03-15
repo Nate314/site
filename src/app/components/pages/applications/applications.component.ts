@@ -96,6 +96,8 @@ export class ApplicationsComponent implements OnInit {
             if (response.length === 3)
               this.webApp = this.getApp(this.webApplications["apps"], response[2].path);
           }
+        } else {
+          this.pageName = "Applications";
         }
       });
 
