@@ -1,12 +1,16 @@
-import { trigger, style, transition, animate, query, group, state } from "@angular/animations";
+import { trigger, style, transition, animate, query, group } from "@angular/animations";
 import { Router, NavigationEnd, RouterOutlet } from "@angular/router";
 import { Component, OnInit, ApplicationRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 
+export function isScreenSmall(): boolean {
+  return window.innerWidth < 600;
+}
+
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI
 export function slideTo(from: number, to: number) {
-  const dir1 = window.innerWidth < 600 ? "right" : "bottom";
-  const dir2 = window.innerWidth < 600 ? "left" : "top";
+  const dir1 = isScreenSmall() ? "right" : "bottom";
+  const dir2 = isScreenSmall() ? "left" : "top";
   const direction = from < to ? dir1 : dir2;
   const distance = 100 * Math.abs(from - to);
   const optional = { optional: true };
@@ -17,7 +21,7 @@ export function slideTo(from: number, to: number) {
         position: "absolute",
         top: 0,
         [direction]: 0,
-        width: "100%",
+        width: `calc(100% - ${isScreenSmall() ? 4 : 9}rem)`,
         opacity: 1
       })
     ], optional),
@@ -71,9 +75,9 @@ export class AppComponent implements OnInit {
   }
 
   getStyle(): any {
-    const margin = 0.5;
+    const margin = 2;
     return {
-      "margin-left": window.innerWidth < 600 ? `${margin}rem` : `${margin + 5}rem`,
+      "margin-left": isScreenSmall() ? `${margin}rem` : `${margin + 5}rem`,
       "margin-right": `${margin}rem`
     };
   }
