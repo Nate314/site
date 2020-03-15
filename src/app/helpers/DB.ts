@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { AngularFireDatabase } from "angularfire2/database";
 
@@ -24,10 +24,17 @@ export class DB {
   }
 
   public getDB(): Observable<any> {
-    return this.afdb.list("/").valueChanges()
+    const subject = new Subject<DB>();
+    const emit = r => subject.next(new DB(this.afdb, r));
+    const localStorageDBKey = "db";
+    const localStorageDB = localStorage.getItem(localStorageDBKey);
+    this.afdb.list("/").valueChanges()
       .pipe(map(resp => {
-        return new DB(this.afdb, resp[0]);
-      }));
+        localStorage.setItem(localStorageDBKey, JSON.stringify(resp[0]));
+        emit(resp[0]);
+      })).subscribe();
+    if (!!localStorageDB) setTimeout(() => emit(JSON.parse(localStorageDB)), 0);
+    return subject.asObservable();
   }
 
   // public getFile(): Observable<any> {

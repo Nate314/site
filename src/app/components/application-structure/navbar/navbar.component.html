@@ -1,18 +1,16 @@
-<nav class="navbar navbar-expand-sm bg-dark w3-text-white"
-  style="position:fixed; left:0; top:0; width:100%; z-index:1;">
-  <a class="navbar-brand w3-text-white">NathanGawith</a>
-  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color:white">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li *ngFor="let page of pages" class="nav-item" [ngClass]="isSelected(page) ? 'w3-blue' : ''">
-        <a class="nav-link w3-text-white w3-hover-gray w3-hover-text-black" (click)="goTo(page.link)"
-          style="cursor:pointer;">
-          &nbsp;&nbsp;{{ page.name }}&nbsp;&nbsp;
-        </a>
-      </li>
-    </ul>
-  </div>
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="logo">
+      <a class="nav-link" (click)="goTo('/home')" style="cursor:pointer;">
+        <img src="assets/svg/ng_icon_cutout.svg" />
+        <span class="link-text">NathanGawith</span>
+      </a>
+    </li>
+    <li *ngFor="let page of pages" class="nav-item">
+      <a class="nav-link" (click)="goTo(page.link)" style="cursor:pointer;">
+        <img [src]="'assets/svg/' + page.svg + '.svg'" />
+        <span class="link-text">{{ page.name }}</span>
+      </a>
+    </li>
+  </ul>
 </nav>

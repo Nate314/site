@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <br /><br />\n  <div style=\"height:10px;\"></div>\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" class=\"container\" style=\"position:relative;\">\n    <router-outlet #outlet=\"outlet\"></router-outlet>\n  </div>\n  <br /><br />\n  <br /><br />\n  <app-footer></app-footer>\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"!webapplication\">\n  <app-navbar></app-navbar>\n  <!-- <br /><br />\n  <div style=\"height:10px;\"></div> -->\n  <div [@routeAnimations]=\"prepareRoute(outlet)\" [ngStyle]=\"getStyle()\">\n    <div class=\"container\">\n      <router-outlet #outlet=\"outlet\"></router-outlet>\n    </div>\n  </div>\n  <br /><br />\n  <br /><br />\n  <!-- <app-footer></app-footer> -->\n</div>\n<div *ngIf=\"webapplication\">\n  <router-outlet></router-outlet>\n</div>\n");
 
 /***/ }),
 
@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand-sm bg-dark w3-text-white\"\n  style=\"position:fixed; left:0; top:0; width:100%; z-index:1;\">\n  <a class=\"navbar-brand w3-text-white\">NathanGawith</a>\n  <button class=\"navbar-toggler navbar-dark\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\" style=\"color:white\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li *ngFor=\"let page of pages\" class=\"nav-item\" [ngClass]=\"isSelected(page) ? 'w3-blue' : ''\">\n        <a class=\"nav-link w3-text-white w3-hover-gray w3-hover-text-black\" (click)=\"goTo(page.link)\"\n          style=\"cursor:pointer;\">\n          &nbsp;&nbsp;{{ page.name }}&nbsp;&nbsp;\n        </a>\n      </li>\n    </ul>\n  </div>\n</nav>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar\">\n  <ul class=\"navbar-nav\">\n    <li class=\"logo\">\n      <a class=\"nav-link\" (click)=\"goTo('/home')\" style=\"cursor:pointer;\">\n        <img src=\"assets/svg/ng_icon_cutout.svg\" />\n        <span class=\"link-text\">NathanGawith</span>\n      </a>\n    </li>\n    <li *ngFor=\"let page of pages\" class=\"nav-item\">\n      <a class=\"nav-link\" (click)=\"goTo(page.link)\" style=\"cursor:pointer;\">\n        <img [src]=\"'assets/svg/' + page.svg + '.svg'\" />\n        <span class=\"link-text\">{{ page.name }}</span>\n      </a>\n    </li>\n  </ul>\n</nav>\n");
 
 /***/ }),
 
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!--Applications-->\n<div *ngIf=\"apps.length == 0\" class=\"container\">\n  <br />\n  <div *ngFor=\"let page of subpages\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h1>{{ page.name }}</h1>\n      <span [innerHTML]=\"page.description\"></span>\n      <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n      <br />\n      <span *ngFor=\"let app of page.apps; let i = index\">\n        <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n        <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n        <span *ngIf=\"i === page.apps.length - 1\">. </span>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <h1>{{ pageName }}</h1>\n  <div *ngFor=\"let app of apps\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h3>{{ app.name }}</h3>\n      <span [innerHtml]=\"app.description\"></span>\n      <br />\n      <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n        <b>Go to</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div *ngIf=\"webApp\">\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    <div *ngIf=\"webApp\">\n      <app-iframe-app *ngIf=\"useIFrame(webApp.file)\" [src]=\"webApp.file\"></app-iframe-app>\n      <app-betting-calculator *ngIf=\"webApp.selector === 'app-betting-calculator'\"></app-betting-calculator>\n      <app-dto-convert *ngIf=\"webApp.selector === 'app-dto-convert'\"></app-dto-convert>\n      <app-final-grade-calculator *ngIf=\"webApp.selector === 'app-final-grade-calculator'\"></app-final-grade-calculator>\n      <app-group-creator *ngIf=\"webApp.selector === 'app-group-creator'\"></app-group-creator>\n      <app-html-sandbox *ngIf=\"webApp.selector === 'app-html-sandbox'\"></app-html-sandbox>\n      <app-multiplication-table *ngIf=\"webApp.selector === 'app-multiplication-table'\"></app-multiplication-table>\n      <app-root *ngIf=\"webApp.selector === 'app-root'\"></app-root>\n      <app-say2 *ngIf=\"webApp.selector === 'app-say2'\"></app-say2>\n      <app-typing-test *ngIf=\"webApp.selector === 'app-typing-test'\"></app-typing-test>\n    </div>\n  </mat-card>\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    {{appDescription}}\n  </mat-card>\n</div>\n<!--Applications/Subpage/App-->\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--Applications-->\n<div *ngIf=\"apps.length == 0\">\n  <br />\n  <div *ngFor=\"let page of subpages\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h1>{{ page.name }}</h1>\n      <span [innerHTML]=\"page.description\"></span>\n      <a class=\"hyperlink w3-hover-text-purple\" [routerLink]=\"[page.link]\">here</a>.\n      <br />\n      <span *ngFor=\"let app of page.apps; let i = index\">\n        <a *ngIf=\"page.name.toUpperCase().startsWith('JAVA')\" (click)=\"openJavaApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('WEB')\" (click)=\"openWebApp(app, true)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <a *ngIf=\"page.name.toUpperCase().startsWith('ANDROID')\" (click)=\"openAndroidApp(app)\"\n          class=\"hyperlink w3-hover-text-purple\">{{ app.name }}</a>\n        <span *ngIf=\"i !== page.apps.length - 1 && i != page.apps.length - 2\">, </span>\n        <span *ngIf=\"i === page.apps.length - 2\">, and </span>\n        <span *ngIf=\"i === page.apps.length - 1\">. </span>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications-->\n\n<!--Applications/Subpage-->\n<div *ngIf=\"!webAppOpen && pageName != null\">\n  <h1>{{ pageName }}</h1>\n  <div *ngFor=\"let app of apps\">\n    <mat-card class=\"mat-elevation-z4\">\n      <h3>{{ app.name }}</h3>\n      <span [innerHtml]=\"app.description\"></span>\n      <br />\n      <span *ngIf=\"pageName.toUpperCase().startsWith('JAVA')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openJavaApp(app)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('WEB')\">\n        <b>Go to</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openWebApp(app, true)\">{{ app.name }}</a>\n      </span>\n      <span *ngIf=\"pageName.toUpperCase().startsWith('ANDROID')\">\n        <b>Download</b>&nbsp;\n        <a class=\"hyperlink w3-hover-text-purple\" (click)=\"openAndroidApp(app)\">{{ app.name }}</a>\n      </span>\n    </mat-card>\n    <br />\n  </div>\n</div>\n<!--/Applications/Subpage-->\n\n<!--Applications/Subpage/App-->\n<div *ngIf=\"webApp\">\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    <div *ngIf=\"webApp\">\n      <app-iframe-app *ngIf=\"useIFrame(webApp.file)\" [src]=\"webApp.file\"></app-iframe-app>\n      <app-betting-calculator *ngIf=\"webApp.selector === 'app-betting-calculator'\"></app-betting-calculator>\n      <app-dto-convert *ngIf=\"webApp.selector === 'app-dto-convert'\"></app-dto-convert>\n      <app-final-grade-calculator *ngIf=\"webApp.selector === 'app-final-grade-calculator'\"></app-final-grade-calculator>\n      <app-group-creator *ngIf=\"webApp.selector === 'app-group-creator'\"></app-group-creator>\n      <app-html-sandbox *ngIf=\"webApp.selector === 'app-html-sandbox'\"></app-html-sandbox>\n      <app-multiplication-table *ngIf=\"webApp.selector === 'app-multiplication-table'\"></app-multiplication-table>\n      <app-root *ngIf=\"webApp.selector === 'app-root'\"></app-root>\n      <app-say2 *ngIf=\"webApp.selector === 'app-say2'\"></app-say2>\n      <app-typing-test *ngIf=\"webApp.selector === 'app-typing-test'\"></app-typing-test>\n    </div>\n  </mat-card>\n  <br />\n  <mat-card class=\"mat-elevation-z4\">\n    {{appDescription}}\n  </mat-card>\n</div>\n<!--Applications/Subpage/App-->\n");
 
 /***/ }),
 
@@ -462,7 +462,9 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI
 function slideTo(from, to) {
     var _a, _b, _c, _d;
-    var direction = from < to ? "right" : "left";
+    var dir1 = window.innerWidth < 600 ? "right" : "bottom";
+    var dir2 = window.innerWidth < 600 ? "left" : "top";
+    var direction = from < to ? dir1 : dir2;
     var distance = 100 * Math.abs(from - to);
     var optional = { optional: true };
     var animationTime = "1000ms ease";
@@ -495,8 +497,9 @@ var slider = Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["trigger"])
     return Object(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["transition"])(from + " => " + to, slideTo(from, to));
 }); })));
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router) {
+    function AppComponent(router, appRef) {
         this.router = router;
+        this.appRef = appRef;
         this.webapplication = false;
     }
     AppComponent.prototype.ngOnInit = function () {
@@ -508,12 +511,21 @@ var AppComponent = /** @class */ (function () {
                     _this.webapplication = true;
             }
         });
+        window.addEventListener("resize", function () { return _this.appRef.tick(); });
     };
     AppComponent.prototype.prepareRoute = function (outlet) {
         return outlet && outlet.activatedRouteData && outlet.activatedRouteData["animation"];
     };
+    AppComponent.prototype.getStyle = function () {
+        var margin = 0.5;
+        return {
+            "margin-left": window.innerWidth < 600 ? margin + "rem" : margin + 5 + "rem",
+            "margin-right": margin + "rem"
+        };
+    };
     AppComponent.ctorParameters = function () { return [
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] },
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ApplicationRef"] }
     ]; };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
@@ -521,7 +533,8 @@ var AppComponent = /** @class */ (function () {
             template: __importDefault(__webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/app-component/app.component.html")).default,
             animations: [slider]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ApplicationRef"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -619,6 +632,19 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 /***/ }),
 
+/***/ "./src/app/components/application-structure/navbar/navbar.component.css":
+/*!******************************************************************************!*\
+  !*** ./src/app/components/application-structure/navbar/navbar.component.css ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("/*\r\nCSS inspired by Fireship\r\nhttps://www.youtube.com/watch?v=biOMz4puGt8\r\n*/\r\n\r\n.navbar {\r\n  margin: 0;\r\n  padding: 0;\r\n  z-index: 1;\r\n  position: fixed;\r\n  background-color: #23232e;\r\n  transition: width 600ms ease;\r\n  overflow: hidden;\r\n}\r\n\r\n.navbar-nav {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  height: 100%;\r\n}\r\n\r\n.nav-item {\r\n  width: 100%;\r\n}\r\n\r\n.nav-link {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 5rem;\r\n  color: #b6b6b6 !important;\r\n  text-decoration: none;\r\n  -webkit-filter: grayscale(100%) opacity(0.7);\r\n          filter: grayscale(100%) opacity(0.7);\r\n  transition: 600ms;\r\n}\r\n\r\n.nav-link:hover {\r\n  -webkit-filter: grayscale(0%) opacity(1);\r\n          filter: grayscale(0%) opacity(1);\r\n  background: #141418;\r\n  color: #ececec !important;\r\n}\r\n\r\n.link-text {\r\n  display: none;\r\n  margin-left: 1rem;\r\n}\r\n\r\n.nav-link img {\r\n  width: 2rem;\r\n  min-width: 2rem;\r\n  margin: 0 1.5rem;\r\n  -webkit-filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n          filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n}\r\n\r\n.logo {\r\n  font-weight: bold;\r\n  text-transform: uppercase;\r\n  margin-bottom: 1rem;\r\n  text-align: center;\r\n  color: #ececec;\r\n  background: #141418;\r\n  font-size: 1.5rem;\r\n  letter-spacing: 0.3ch;\r\n  width: 100%;\r\n}\r\n\r\n.logo img {\r\n  transform: rotate(0deg);\r\n  transition: 600ms;\r\n  -webkit-filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n          filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n}\r\n\r\n.logo-text {\r\n  display: inline;\r\n  position: absolute;\r\n  /* left: -999px; */\r\n  transition: 600ms;\r\n}\r\n\r\n.navbar:hover .logo img {\r\n  transform: rotate(-360deg);\r\n  -webkit-filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n          filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);\r\n}\r\n\r\n/* Small screens */\r\n\r\n@media only screen and (max-width: 600px) {\r\n  .navbar {\r\n    bottom: 0;\r\n    width: 100vw;\r\n    height: 5rem;\r\n  }\r\n\r\n  .logo {\r\n    display: none;\r\n  }\r\n\r\n  .navbar-nav {\r\n    flex-direction: row;\r\n  }\r\n\r\n  .nav-link {\r\n    justify-content: center;\r\n  }\r\n\r\n  main {\r\n    margin: 0;\r\n  }\r\n}\r\n\r\n/* Large screens */\r\n\r\n@media only screen and (min-width: 600px) {\r\n  .navbar {\r\n    top: 0;\r\n    width: 5rem;\r\n    height: 100vh;\r\n  }\r\n\r\n  .navbar:hover {\r\n    width: 22rem;\r\n  }\r\n\r\n  .navbar:hover .link-text {\r\n    display: inline;\r\n  }\r\n\r\n  /* .navbar:hover .logo img {\r\n      margin-left: 11rem;\r\n    } */\r\n\r\n  .navbar:hover .logo-text {\r\n    left: 0px;\r\n  }\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hcHBsaWNhdGlvbi1zdHJ1Y3R1cmUvbmF2YmFyL25hdmJhci5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7Q0FHQzs7QUFFRDtFQUNFLFNBQVM7RUFDVCxVQUFVO0VBQ1YsVUFBVTtFQUNWLGVBQWU7RUFDZix5QkFBeUI7RUFDekIsNEJBQTRCO0VBQzVCLGdCQUFnQjtBQUNsQjs7QUFFQTtFQUNFLGdCQUFnQjtFQUNoQixVQUFVO0VBQ1YsU0FBUztFQUNULGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsbUJBQW1CO0VBQ25CLFlBQVk7QUFDZDs7QUFFQTtFQUNFLFdBQVc7QUFDYjs7QUFFQTtFQUNFLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLHlCQUF5QjtFQUN6QixxQkFBcUI7RUFDckIsNENBQW9DO1VBQXBDLG9DQUFvQztFQUNwQyxpQkFBaUI7QUFDbkI7O0FBRUE7RUFDRSx3Q0FBZ0M7VUFBaEMsZ0NBQWdDO0VBQ2hDLG1CQUFtQjtFQUNuQix5QkFBeUI7QUFDM0I7O0FBRUE7RUFDRSxhQUFhO0VBQ2IsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsV0FBVztFQUNYLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsa0VBQTBEO1VBQTFELDBEQUEwRDtBQUM1RDs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQix5QkFBeUI7RUFDekIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixjQUFjO0VBQ2QsbUJBQW1CO0VBQ25CLGlCQUFpQjtFQUNqQixxQkFBcUI7RUFDckIsV0FBVztBQUNiOztBQUVBO0VBQ0UsdUJBQXVCO0VBQ3ZCLGlCQUFpQjtFQUNqQixrRUFBMEQ7VUFBMUQsMERBQTBEO0FBQzVEOztBQUVBO0VBQ0UsZUFBZTtFQUNmLGtCQUFrQjtFQUNsQixrQkFBa0I7RUFDbEIsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsMEJBQTBCO0VBQzFCLGtFQUEwRDtVQUExRCwwREFBMEQ7QUFDNUQ7O0FBRUEsa0JBQWtCOztBQUNsQjtFQUNFO0lBQ0UsU0FBUztJQUNULFlBQVk7SUFDWixZQUFZO0VBQ2Q7O0VBRUE7SUFDRSxhQUFhO0VBQ2Y7O0VBRUE7SUFDRSxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSx1QkFBdUI7RUFDekI7O0VBRUE7SUFDRSxTQUFTO0VBQ1g7QUFDRjs7QUFFQSxrQkFBa0I7O0FBQ2xCO0VBQ0U7SUFDRSxNQUFNO0lBQ04sV0FBVztJQUNYLGFBQWE7RUFDZjs7RUFFQTtJQUNFLFlBQVk7RUFDZDs7RUFFQTtJQUNFLGVBQWU7RUFDakI7O0VBRUE7O09BRUs7O0VBRUw7SUFDRSxTQUFTO0VBQ1g7QUFDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYXBwbGljYXRpb24tc3RydWN0dXJlL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qXHJcbkNTUyBpbnNwaXJlZCBieSBGaXJlc2hpcFxyXG5odHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWJpT016NHB1R3Q4XHJcbiovXHJcblxyXG4ubmF2YmFyIHtcclxuICBtYXJnaW46IDA7XHJcbiAgcGFkZGluZzogMDtcclxuICB6LWluZGV4OiAxO1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjMyMzJlO1xyXG4gIHRyYW5zaXRpb246IHdpZHRoIDYwMG1zIGVhc2U7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLm5hdmJhci1uYXYge1xyXG4gIGxpc3Qtc3R5bGU6IG5vbmU7XHJcbiAgcGFkZGluZzogMDtcclxuICBtYXJnaW46IDA7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG59XHJcblxyXG4ubmF2LWl0ZW0ge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ubmF2LWxpbmsge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBoZWlnaHQ6IDVyZW07XHJcbiAgY29sb3I6ICNiNmI2YjYgIWltcG9ydGFudDtcclxuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgZmlsdGVyOiBncmF5c2NhbGUoMTAwJSkgb3BhY2l0eSgwLjcpO1xyXG4gIHRyYW5zaXRpb246IDYwMG1zO1xyXG59XHJcblxyXG4ubmF2LWxpbms6aG92ZXIge1xyXG4gIGZpbHRlcjogZ3JheXNjYWxlKDAlKSBvcGFjaXR5KDEpO1xyXG4gIGJhY2tncm91bmQ6ICMxNDE0MTg7XHJcbiAgY29sb3I6ICNlY2VjZWMgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmxpbmstdGV4dCB7XHJcbiAgZGlzcGxheTogbm9uZTtcclxuICBtYXJnaW4tbGVmdDogMXJlbTtcclxufVxyXG5cclxuLm5hdi1saW5rIGltZyB7XHJcbiAgd2lkdGg6IDJyZW07XHJcbiAgbWluLXdpZHRoOiAycmVtO1xyXG4gIG1hcmdpbjogMCAxLjVyZW07XHJcbiAgZmlsdGVyOiBpbnZlcnQoLjUpIHNlcGlhKDEpIHNhdHVyYXRlKDUpIGh1ZS1yb3RhdGUoMTgwZGVnKTtcclxufVxyXG5cclxuLmxvZ28ge1xyXG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgbWFyZ2luLWJvdHRvbTogMXJlbTtcclxuICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgY29sb3I6ICNlY2VjZWM7XHJcbiAgYmFja2dyb3VuZDogIzE0MTQxODtcclxuICBmb250LXNpemU6IDEuNXJlbTtcclxuICBsZXR0ZXItc3BhY2luZzogMC4zY2g7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5sb2dvIGltZyB7XHJcbiAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XHJcbiAgdHJhbnNpdGlvbjogNjAwbXM7XHJcbiAgZmlsdGVyOiBpbnZlcnQoLjUpIHNlcGlhKDEpIHNhdHVyYXRlKDUpIGh1ZS1yb3RhdGUoMTgwZGVnKTtcclxufVxyXG5cclxuLmxvZ28tdGV4dCB7XHJcbiAgZGlzcGxheTogaW5saW5lO1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAvKiBsZWZ0OiAtOTk5cHg7ICovXHJcbiAgdHJhbnNpdGlvbjogNjAwbXM7XHJcbn1cclxuXHJcbi5uYXZiYXI6aG92ZXIgLmxvZ28gaW1nIHtcclxuICB0cmFuc2Zvcm06IHJvdGF0ZSgtMzYwZGVnKTtcclxuICBmaWx0ZXI6IGludmVydCguNSkgc2VwaWEoMSkgc2F0dXJhdGUoNSkgaHVlLXJvdGF0ZSgxODBkZWcpO1xyXG59XHJcblxyXG4vKiBTbWFsbCBzY3JlZW5zICovXHJcbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1heC13aWR0aDogNjAwcHgpIHtcclxuICAubmF2YmFyIHtcclxuICAgIGJvdHRvbTogMDtcclxuICAgIHdpZHRoOiAxMDB2dztcclxuICAgIGhlaWdodDogNXJlbTtcclxuICB9XHJcblxyXG4gIC5sb2dvIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgfVxyXG5cclxuICAubmF2YmFyLW5hdiB7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xyXG4gIH1cclxuXHJcbiAgLm5hdi1saW5rIHtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIH1cclxuXHJcbiAgbWFpbiB7XHJcbiAgICBtYXJnaW46IDA7XHJcbiAgfVxyXG59XHJcblxyXG4vKiBMYXJnZSBzY3JlZW5zICovXHJcbkBtZWRpYSBvbmx5IHNjcmVlbiBhbmQgKG1pbi13aWR0aDogNjAwcHgpIHtcclxuICAubmF2YmFyIHtcclxuICAgIHRvcDogMDtcclxuICAgIHdpZHRoOiA1cmVtO1xyXG4gICAgaGVpZ2h0OiAxMDB2aDtcclxuICB9XHJcblxyXG4gIC5uYXZiYXI6aG92ZXIge1xyXG4gICAgd2lkdGg6IDIycmVtO1xyXG4gIH1cclxuXHJcbiAgLm5hdmJhcjpob3ZlciAubGluay10ZXh0IHtcclxuICAgIGRpc3BsYXk6IGlubGluZTtcclxuICB9XHJcblxyXG4gIC8qIC5uYXZiYXI6aG92ZXIgLmxvZ28gaW1nIHtcclxuICAgICAgbWFyZ2luLWxlZnQ6IDExcmVtO1xyXG4gICAgfSAqL1xyXG5cclxuICAubmF2YmFyOmhvdmVyIC5sb2dvLXRleHQge1xyXG4gICAgbGVmdDogMHB4O1xyXG4gIH1cclxufVxyXG4iXX0= */");
+
+/***/ }),
+
 /***/ "./src/app/components/application-structure/navbar/navbar.component.ts":
 /*!*****************************************************************************!*\
   !*** ./src/app/components/application-structure/navbar/navbar.component.ts ***!
@@ -661,14 +687,19 @@ var NavbarComponent = /** @class */ (function () {
         this.pages = [];
     }
     NavbarComponent.prototype.ngOnInit = function () {
-        this.pages.push({ link: "/home", name: "Home" });
-        this.pages.push({ link: "/applications", name: "Applications" });
-        this.pages.push({ link: "/github-projects", name: "Github Projects" });
-        this.pages.push({ link: "/videos", name: "Videos" });
+        this.pages.push({ link: "/home", name: "Home", svg: "home" });
+        this.pages.push({ link: "/applications", name: "Applications", svg: "laptop" });
+        this.pages.push({ link: "/github-projects", name: "Github Projects", svg: "github" });
+        this.pages.push({ link: "/videos", name: "Videos", svg: "youtube" });
+        this.pages.push({ link: "https://games.nathangawith.com/", name: "Games", svg: "gamepad" });
     };
     NavbarComponent.prototype.goTo = function (url) {
-        _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
-        // location.href = url;
+        if (url.includes('https://')) {
+            location.href = url;
+        }
+        else {
+            _helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Helper"].navigate(this.router, this.location, url);
+        }
     };
     NavbarComponent.prototype.isSelected = function (page) {
         if (_helpers_Helper__WEBPACK_IMPORTED_MODULE_3__["Constants"].currentPageURL.includes(page.link))
@@ -683,7 +714,8 @@ var NavbarComponent = /** @class */ (function () {
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: "app-navbar",
-            template: __importDefault(__webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/navbar/navbar.component.html")).default
+            template: __importDefault(__webpack_require__(/*! raw-loader!./navbar.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/components/application-structure/navbar/navbar.component.html")).default,
+            styles: [__importDefault(__webpack_require__(/*! ./navbar.component.css */ "./src/app/components/application-structure/navbar/navbar.component.css")).default]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["Location"]])
     ], NavbarComponent);
@@ -2266,10 +2298,12 @@ var VideosComponent = /** @class */ (function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DB", function() { return DB; });
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 var DB = /** @class */ (function () {
     function DB(afdb, database) {
@@ -2285,10 +2319,18 @@ var DB = /** @class */ (function () {
     }
     DB.prototype.getDB = function () {
         var _this = this;
-        return this.afdb.list("/").valueChanges()
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(function (resp) {
-            return new DB(_this.afdb, resp[0]);
-        }));
+        var subject = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
+        var emit = function (r) { return subject.next(new DB(_this.afdb, r)); };
+        var localStorageDBKey = "db";
+        var localStorageDB = localStorage.getItem(localStorageDBKey);
+        this.afdb.list("/").valueChanges()
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (resp) {
+            localStorage.setItem(localStorageDBKey, JSON.stringify(resp[0]));
+            emit(resp[0]);
+        })).subscribe();
+        if (!!localStorageDB)
+            setTimeout(function () { return emit(JSON.parse(localStorageDB)); }, 0);
+        return subject.asObservable();
     };
     // public getFile(): Observable<any> {
     //  return this.

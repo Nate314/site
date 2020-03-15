@@ -6,11 +6,13 @@ import { Constants, Helper } from "../../../helpers/Helper";
 class Page {
   link: string;
   name: string;
+  svg: string;
 }
 
 @Component({
   selector: "app-navbar",
-  templateUrl: "./navbar.component.html"
+  templateUrl: "./navbar.component.html",
+  styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
 
@@ -19,15 +21,19 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router, private location: Location) { }
 
   ngOnInit() {
-    this.pages.push(<Page>{ link: "/home", name: "Home" });
-    this.pages.push(<Page>{ link: "/applications", name: "Applications" });
-    this.pages.push(<Page>{ link: "/github-projects", name: "Github Projects" });
-    this.pages.push(<Page>{ link: "/videos", name: "Videos" });
+    this.pages.push(<Page>{ link: "/home", name: "Home", svg: "home" });
+    this.pages.push(<Page>{ link: "/applications", name: "Applications", svg: "laptop" });
+    this.pages.push(<Page>{ link: "/github-projects", name: "Github Projects", svg: "github" });
+    this.pages.push(<Page>{ link: "/videos", name: "Videos", svg: "youtube" });
+    this.pages.push(<Page>{ link: "https://games.nathangawith.com/", name: "Games", svg: "gamepad" });
   }
 
   goTo(url: string) {
-    Helper.navigate(this.router, this.location, url);
-    // location.href = url;
+    if (url.includes('https://')) {
+      location.href = url;
+    } else {
+      Helper.navigate(this.router, this.location, url);
+    }
   }
 
   isSelected(page: Page) {

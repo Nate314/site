@@ -9,3 +9,15 @@
 .hyperlink:hover {
     text-decoration: underline;
 }
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #AAAAAA;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #23232e;
+}

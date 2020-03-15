@@ -1,13 +1,15 @@
 <div *ngIf="!webapplication">
   <app-navbar></app-navbar>
-  <br /><br />
-  <div style="height:10px;"></div>
-  <div [@routeAnimations]="prepareRoute(outlet)" class="container" style="position:relative;">
-    <router-outlet #outlet="outlet"></router-outlet>
+  <!-- <br /><br />
+  <div style="height:10px;"></div> -->
+  <div [@routeAnimations]="prepareRoute(outlet)" [ngStyle]="getStyle()">
+    <div class="container">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </div>
   </div>
   <br /><br />
   <br /><br />
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
 </div>
 <div *ngIf="webapplication">
   <router-outlet></router-outlet>
