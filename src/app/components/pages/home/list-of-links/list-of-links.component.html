@@ -1,8 +1,0 @@
-<span *ngFor="let link of links; let i = index;">
-  <a (mouseup)="openLink($event, link.url)" class="hyperlink w3-hover-text-purple">{{link.name}}</a>
-  <span [ngSwitch]="i">
-    <span *ngSwitchCase="links.length - 1"></span>
-    <span *ngSwitchCase="links.length - 2">, and </span>
-    <span *ngSwitchDefault>, </span>
-  </span>
-</span>
