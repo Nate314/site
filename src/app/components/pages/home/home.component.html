@@ -16,24 +16,25 @@
       <a (mouseup)="openPage($event, 'videos')" class="hyperlink w3-hover-text-purple">here</a>.
     </p>
     <mat-divider></mat-divider>
-    <h3>An introduction to me:</h3>
+    
     <p>
-      I am currently a Computer Science student at the
-      <a (mouseup)="openLink($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
-        Computing and Engineering</a>
-      at
-      <a (mouseup)="openLink($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
-      and a software development intern at
-      <a (mouseup)="openLink($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>.
-    </p>
-    <p>
-      I love coding becuase I love learning, and I am a logical thinker.
+      I love coding becuase I love learning, and enjoy thinking through logical problems.
+      Writing code can present many opportunities to dive deep into how different things work, whether that be related to sofware, mathematics, or the field that the application you are writing deals with.
       The first programming language I learned was Java through
       <a (mouseup)="openLink($event, 'https://www.firstinspires.org/robotics/frc')"
         class="hyperlink w3-hover-text-purple">FRC</a>
       in high school. This experience in robotics was great, and made me
       realize that Computer Science could be a possible career path that I
       could enjoy.
+    </p>
+    <p>
+      I am a graduate of the
+      <a (mouseup)="openLink($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
+        Computing and Engineering</a>
+      at <a (mouseup)="openLink($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
+      with a bachelor's degree in Computer Science with an emphasis in Software Engineering and a Mathematics Minor.
+      Currently, I am working as a Software Engineer at 
+      <a (mouseup)="openLink($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>.
     </p>
     <p *ngIf="languageLinks && toolLinks">
       I have experience coding in many different languages including
