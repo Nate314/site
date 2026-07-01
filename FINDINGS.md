@@ -15,7 +15,16 @@ The GitHub Pages site `https://nate314.github.io/nathangawith/` no longer exists
 | What you see | Real URL it hits | Status |
 |---|---|---|
 | ColorFlux "NOT FOUND" | `nate314.github.io/nathangawith/applications/webApplications/colorFlux.html` | 404 |
-| `.jar` / `.zip` links "NOT FOUND" | `nate314.github.io/nathangawith/applications/javaApplications/Clock.jar` | 404 |
+| `.jar` / `.zip` / `.apk` links "NOT FOUND" | `nate314.github.io/nathangawith/applications/javaApplications/Clock.jar` | 404 |
+
+### RESOLVED for Java/Android downloads
+The `.jar`/`.zip`/`.apk` files were copied into `src/assets/{javaApplications,androidApplications}/`
+and are now hosted by the site itself. `openLink()` resolves bare filenames
+against the site's own `assets/<ext>/` folder (via `document.baseURI`, so it
+respects `<base href>`), with any full `http(s)` URL still passed through as-is.
+`angular.json` already bundles `src/assets/**/*`, so the files ship in the build.
+**Still open:** the web apps (ColorFlux etc.) are `.html` files that were NOT
+copied locally; their `db.json` `file` URLs still point at the dead repo.
 
 Key point: the ColorFlux "NOT FOUND" is **not** Angular's not-found page. The
 Angular app renders correctly (the `<app-applications>` component and the

@@ -157,9 +157,11 @@ export class ApplicationsComponent implements OnInit {
   }
 
   openLink(url: string, ext?: string) {
-    if (!url.includes("firebasestorage.googleapis.com")) {
-      if (!url.includes(`https://nate314.github.io/nathangawith/applications/${ext}/`))
-        url = `https://nate314.github.io/nathangawith/applications/${ext}/` + url;
+    // Full URLs (legacy/external links) are used as-is; bare filenames are served
+    // from the site's own static assets (src/assets/<ext>/) so downloads no longer
+    // depend on external hosting (Firebase Storage / the old GitHub Pages repo).
+    if (!/^https?:\/\//i.test(url)) {
+      url = new URL(`assets/${ext}/${url}`, document.baseURI).href;
     }
     location.href = url;
   }

@@ -1,6 +1,24 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 /* You can add global styles to this file, and also import other style files */
+
+/* Angular Material 15+ (MDC) dropped the default padding on mat-card itself
+   (it now lives on mat-card-content, which this app doesn't use). Restore the
+   classic card padding so content isn't flush against the card edges. */
+.mat-mdc-card {
+    padding: 16px;
+}
+
+/* ngx-markdown renders README content via [innerHTML], so it never picks up
+   component-scoped CSS (Angular only scopes markup compiled from a
+   component's own template). Constrain images globally so they never
+   overflow the card they're rendered in. */
+markdown img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .hyperlink {
     color: #007bff !important;
     cursor: pointer !important;

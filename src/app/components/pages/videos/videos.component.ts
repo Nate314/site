@@ -15,7 +15,8 @@ class Video {
 @Component({
   standalone: false,
   selector: "app-videos",
-  templateUrl: "./videos.component.html"
+  templateUrl: "./videos.component.html",
+  styleUrls: ["./videos.component.css"]
 })
 export class VideosComponent implements OnInit {
 
@@ -35,24 +36,22 @@ export class VideosComponent implements OnInit {
       const dbVideos = db.getVideos();
       const time = new Date().getTime();
       this.videos = dbVideos.map(v => {
+        // v.link may be a full YouTube embed URL or a bare video id
+        const raw = String(v["link"]);
+        const id = raw.includes("/") ? raw.split("/").pop().split("?")[0] : raw;
         return <Video>{
           title: v["title"],
-          link: getSanatized(`https://www.youtube.com/embed/${v["link"]}`),
+          link: getSanatized(`https://www.youtube.com/embed/${id}`),
           description: v["description"],
-          preview: v["preview"] + `?time=${time}`,
+          preview: v["preview"]
+            ? v["preview"] + `?time=${time}`
+            : `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
           enabled: false
         };
       });
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
-  }
-
-  getColumns(): number {
-    const el = document.getElementById("videoGrid");
-    const width = el ? el.offsetWidth : window.innerWidth;
-    const result = Math.max(Math.floor(width / 340), 1);
-    return result;
   }
 
   getYoutubeLink(sanatizedLink: any): string {
