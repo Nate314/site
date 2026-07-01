@@ -7,21 +7,24 @@
     <p>
       This is a website I put together to feature work I have done on
       various applications including
-      <a (mouseup)="openPage($event, 'applications/java')" class="hyperlink w3-hover-text-purple">Java Applications</a>,
-      <a (mouseup)="openPage($event, 'applications/web')" class="hyperlink w3-hover-text-purple">Web Applications</a>,
+      <a [href]="hrefFor('applications/java')" (click)="go($event, 'applications/java')" class="hyperlink w3-hover-text-purple">Java Applications</a>,
+      <a [href]="hrefFor('applications/web')" (click)="go($event, 'applications/web')" class="hyperlink w3-hover-text-purple">Web Applications</a>,
       and
-      <a (mouseup)="openPage($event, 'applications/android')" class="hyperlink w3-hover-text-purple">Android
+      <a [href]="hrefFor('applications/android')" (click)="go($event, 'applications/android')" class="hyperlink w3-hover-text-purple">Android
         Applications</a>.
       I also have a few videos that I made that are featured
-      <a (mouseup)="openPage($event, 'videos')" class="hyperlink w3-hover-text-purple">here</a>.
+      <a [href]="hrefFor('videos')" (click)="go($event, 'videos')" class="hyperlink w3-hover-text-purple">here</a>,
+      and you can check out some of my
+      <a [href]="hrefFor('github-projects')" (click)="go($event, 'github-projects')" class="hyperlink w3-hover-text-purple">Github Projects</a>
+      as well.
     </p>
     <mat-divider></mat-divider>
-    
+
     <p>
       I love coding becuase I love learning, and enjoy thinking through logical problems.
       Writing code can present many opportunities to dive deep into how different things work, whether that be related to sofware, mathematics, or the field that the application you are writing deals with.
       The first programming language I learned was Java through
-      <a (mouseup)="openLink($event, 'https://www.firstinspires.org/robotics/frc')"
+      <a [href]="hrefFor('https://www.firstinspires.org/robotics/frc')" (click)="go($event, 'https://www.firstinspires.org/robotics/frc')"
         class="hyperlink w3-hover-text-purple">FRC</a>
       in high school. This experience in robotics was great, and made me
       realize that Computer Science could be a possible career path that I
@@ -29,27 +32,39 @@
     </p>
     <p>
       I am a graduate of the
-      <a (mouseup)="openLink($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
+      <a [href]="hrefFor('https://sce.umkc.edu/')" (click)="go($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
         Computing and Engineering</a>
-      at <a (mouseup)="openLink($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
+      at <a [href]="hrefFor('https://www.umkc.edu/')" (click)="go($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
       with a bachelor's degree in Computer Science with an emphasis in Software Engineering and a Mathematics Minor.
-      Currently, I am working as a Software Engineer at 
-      <a (mouseup)="openLink($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>.
+      I am a former engineer at
+      <a [href]="hrefFor('https://wellsky.com/')" (click)="go($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>
+      (8 years total), and am
+      <a [href]="hrefFor('https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" (click)="go($event, 'https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" class="hyperlink w3-hover-text-purple">looking</a>
+      for a new Software Engineering position in the Kansas City area.
     </p>
-    <p *ngIf="languageLinks && toolLinks">
-      I have experience coding in many different languages including
-      <app-list-of-links [links]="languageLinks" (click)="openLink($event.key, $event.value)"></app-list-of-links>.
-      Some of the resources I use most often to learn coding on my own are
-      <app-list-of-links [links]="toolLinks" (click)="openLink($event.key, $event.value)"></app-list-of-links>.
+    <p *ngIf="workLinks">
+      My work at WellSky was primarily in .NET backend and Angular frontend development, but I also had the
+      opportunity to learn a myriad of other languages and technologies including but not limited to
+      <app-list-of-links [links]="workLinks"></app-list-of-links>.
+      I've also had the privilege of guiding a few small development teams over the years at WellSky, both
+      informally and formally.
+    </p>
+    <p *ngIf="personalLinks">
+      For personal projects and daily development work, I also have experience using tools such as
+      <app-list-of-links [links]="personalLinks"></app-list-of-links>.
+      My top 5
+      <a [href]="hrefFor('https://www.gallup.com/cliftonstrengths/en/home.aspx')" (click)="go($event, 'https://www.gallup.com/cliftonstrengths/en/home.aspx')"
+        class="hyperlink w3-hover-text-purple">CliftonStrengths&reg;</a>
+      are: Harmony, Deliberative, Analytical, Consistency, and Responsibility.
     </p>
     <p *ngIf="youtubeLinks">
       Some of my favorite youtube channels include
-      <app-list-of-links [links]="youtubeLinks" (click)="openLink($event.key, $event.value)"></app-list-of-links>.
+      <app-list-of-links [links]="youtubeLinks"></app-list-of-links>.
     </p>
     <mat-divider></mat-divider>
     <div *ngIf="friendLinks">
       <h3>Check out Some of my Friend's websites:</h3>
-      <app-list-of-links [links]="friendLinks" (click)="openLink($event.key, $event.value)"></app-list-of-links>
+      <app-list-of-links [links]="friendLinks"></app-list-of-links>
       all have websites where you can download or use software as well!
     </div>
   </div>

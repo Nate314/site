@@ -3,6 +3,7 @@ import { Router } from "../../../../../../node_modules/@angular/router";
 import { Location } from "../../../../../../node_modules/@angular/common";
 
 @Component({
+  standalone: false,
   selector: "app-say2",
   templateUrl: "./say2.component.html"
 })

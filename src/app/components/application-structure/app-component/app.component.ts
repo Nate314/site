@@ -1,6 +1,6 @@
 import { trigger, style, transition, animate, query, group } from "@angular/animations";
 import { Router, NavigationEnd, RouterOutlet } from "@angular/router";
-import { Component, OnInit, OnDestroy, ApplicationRef } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 import { Constants } from "src/app/helpers/Helper";
 
@@ -52,6 +52,7 @@ const slider = trigger("routeAnimations",
 ))));
 
 @Component({
+  standalone: false,
   selector: "app-root",
   templateUrl: "./app.component.html",
   animations: [ slider ]
@@ -88,9 +89,9 @@ export class AppComponent implements OnInit, OnDestroy {
           // this.i++;
           if (this.pageName === this.currentPageName) {
             this.previousPageName = this._pageName;
-            console.log("previous set to " + this.previousPageName);
             clearInterval(interval);
           }
+          this.cdr.detectChanges();
         }, 50);
       }, 500);
     }
@@ -98,7 +99,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private appRef: ApplicationRef
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -106,15 +107,18 @@ export class AppComponent implements OnInit, OnDestroy {
       this.pageName = Constants.currentPage.includes(" |")
         ? Constants.currentPage.substr(Constants.currentPage.lastIndexOf("|") + 1).trim()
         : Constants.currentPage;
+      // Refresh the navbar selection state / shell (zoneless: see pageName typing).
+      this.cdr.detectChanges();
     }, 250);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (event.url.toLocaleLowerCase().includes("webapplications")
           && !event.url.toLocaleLowerCase().includes("nathangawithwebsite"))
           this.webapplication = true;
-        }
-      });
-    window.addEventListener("resize", () => this.appRef.tick());
+        this.cdr.detectChanges();
+      }
+    });
+    window.addEventListener("resize", () => this.cdr.detectChanges());
   }
 
   ngOnDestroy() {

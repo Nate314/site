@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
+  standalone: false,
   selector: "app-html-sandbox",
   templateUrl: "./html-sandbox.component.html"
 })

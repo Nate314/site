@@ -1,8 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 import * as _ from "lodash";
 
 @Component({
+  standalone: false,
   selector: "app-typing-test",
   templateUrl: "./typing-test.component.html"
 })
@@ -32,7 +33,7 @@ export class TypingTestComponent implements OnInit {
 
   firstTry: boolean = true;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -95,6 +96,8 @@ export class TypingTestComponent implements OnInit {
         setInterval(() => {
           if (this.timerStarted) {
             this.clockTick();
+            // Zoneless: the countdown timer must explicitly trigger CD.
+            this.cdr.detectChanges();
           }
         }, 1000);
       }

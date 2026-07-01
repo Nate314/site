@@ -57,7 +57,7 @@ export class Helper {
   }
 
   public static navigateTo(router: Router, location: Location, url: string[], queryparams) {
-    if (url === ["/"]) {
+    if (url.length === 1 && url[0] === "/") {
       url = ["/home"];
     }
     /*if(url[0].includes("application")
@@ -79,5 +79,32 @@ export class Helper {
 
   public static navigate(router: Router, location: Location, url: string) {
     router.navigate([url]);
+  }
+
+  // A real, resolvable URL for a link's [href] binding, so the browser can
+  // offer "Copy Link Address"/"Open in new tab" on right-click even though
+  // (click) handles the actual in-app navigation. Bare internal route
+  // strings (e.g. "videos") aren't valid hrefs on their own, so they get a
+  // leading slash; absolute URLs (internal or external) are used as-is.
+  public static hrefFor(url: string): string {
+    return /^https?:\/\//i.test(url) ? url : "/" + url;
+  }
+
+  // Routes internal links (bare paths like "videos", or absolute URLs whose
+  // origin matches the current page) through Angular's Router instead of a
+  // full page reload. Only intervenes for a plain left-click on an internal
+  // link; external links and modified clicks (middle-click, ctrl/cmd/shift,
+  // right-click) are left alone so the real [href] (see hrefFor) handles
+  // them natively - e.g. opening in a new tab.
+  public static smartNavigate(router: Router, url: string, event: MouseEvent): void {
+    const isAbsolute = /^https?:\/\//i.test(url);
+    const parsed = isAbsolute ? new URL(url) : null;
+    const isInternal = !isAbsolute || parsed.origin === window.location.origin;
+    const isPlainLeftClick = event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey;
+
+    if (isInternal && isPlainLeftClick) {
+      event.preventDefault();
+      router.navigate([isAbsolute ? parsed.pathname + parsed.search : url]);
+    }
   }
 }

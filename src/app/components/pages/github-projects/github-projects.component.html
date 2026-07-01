@@ -1,24 +1,68 @@
-<mat-card class="mat-elevation-z4" [innerHTML]="description">
-</mat-card>
-<br />
-<mat-accordion>
-  <div *ngFor="let project of projects">
-    <mat-expansion-panel class="mat-elevation-z4">
-      <mat-expansion-panel-header *ngIf="!isScreenSmall()" class="row">
+<div class="page-tabs">
+  <div *ngFor="let tab of pageTabs" class="page-tab" [class.page-tab-active]="activeTab === tab.key"
+    (click)="selectTab(tab.key)">
+    {{ tab.label }}
+  </div>
+</div>
+
+<div class="tab-content" [hidden]="activeTab !== 'wellsky'">
+  <mat-card class="mat-elevation-z4">
+    <h2>Contributions at WellSky</h2>
+    <p>
+      From January 2019 to June 2026 I made over 9,900 contributions on my
+      <a href="https://github.com/NathanGawithMediware" target="_blank" rel="noopener"
+        class="hyperlink w3-hover-text-purple">NathanGawithMediware</a>
+      work account. WellSky's repositories are private, so only the contribution
+      activity is shown below. Contributions at WellSky prior to January 2019
+      were not made through GitHub.
+    </p>
+    <div class="contrib-years" #contribYears>
+      <ng-container *ngFor="let row of contributionYearRows; let last = last">
+        <div class="contrib-year-row">
+          <div class="contrib-year" *ngFor="let contribYear of row">
+            <div class="contrib-year-label">{{ contribYear.year }} &middot; {{ contribYear.total }} contributions</div>
+            <div class="contrib-grid">
+              <div class="contrib-week" *ngFor="let week of contribYear.weeks">
+                <div
+                  *ngFor="let day of week"
+                  class="contrib-day"
+                  [style.background-color]="day ? contributionColor(day.level) : 'transparent'"
+                  [title]="day ? (day.date + ': ' + day.count + ' contributions') : ''">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider *ngIf="!last && contribGraphsFitTwoPerRow"></mat-divider>
+      </ng-container>
+    </div>
+  </mat-card>
+</div>
+
+<div *ngFor="let group of projectGroups" class="tab-content" [hidden]="activeTab !== group.category">
+  <div *ngFor="let project of group.projects">
+    <mat-card class="mat-elevation-z4">
+      <div class="row project-header" (click)="toggleProject(project)" *ngIf="!isScreenSmall()">
         <div class="col-4">
+          <span class="expand-indicator" [class.expand-indicator-open]="project.expanded">&#9656;</span>
           {{project.title}}
         </div>
         <div class="col-8">
-          <a [href]="project.link">{{project.link}}</a>
+          <a [href]="project.link" (click)="$event.stopPropagation()">{{project.link}}</a>
         </div>
-      </mat-expansion-panel-header>
-      <mat-expansion-panel-header *ngIf="isScreenSmall()" class="row">
+      </div>
+      <div class="row project-header" (click)="toggleProject(project)" *ngIf="isScreenSmall()">
         <div class="col-12">
-          <a [href]="project.link">{{project.title}}</a>
+          <span class="expand-indicator" [class.expand-indicator-open]="project.expanded">&#9656;</span>
+          <a [href]="project.link" (click)="$event.stopPropagation()">{{project.title}}</a>
         </div>
-      </mat-expansion-panel-header>
-      <markdown [src]="project.description" lineNumbers [start]="5"></markdown>
-    </mat-expansion-panel>
+      </div>
+      <markdown *ngIf="project.expanded && project.readmeContent"
+        [data]="project.readmeContent" lineNumbers [start]="5"></markdown>
+      <p *ngIf="project.expanded && (!project.description || project.readmeError)">
+        No README is available for this project.
+      </p>
+    </mat-card>
     <br />
   </div>
-</mat-accordion>
+</div>

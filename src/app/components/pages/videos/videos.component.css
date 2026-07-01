@@ -1,0 +1,35 @@
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 15px;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A fixed 16:9 box for the thumbnail/iframe so clicking to play the video
+   doesn't change the card's height (the img and iframe fill this box the
+   same way, instead of the iframe using a viewport-relative height). */
+.video-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.video-media img,
+.video-media iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-media img {
+  object-fit: cover;
+  cursor: pointer;
+}
