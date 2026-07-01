@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
+  standalone: false,
   selector: "app-group-creator",
   templateUrl: "./group-creator.component.html"
 })

@@ -4,6 +4,10 @@
 /dist
 /tmp
 /out-tsc
+/docs
+
+# Angular build cache
+/.angular
 
 # dependencies
 /node_modules

@@ -1,9 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DatabaseService } from "src/app/services";
 
 @Component({
+  standalone: false,
   selector: "app-github-projects",
   templateUrl: "./github-projects.component.html"
 })
@@ -14,7 +15,8 @@ export class GithubProjectsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private db: DatabaseService
+    private db: DatabaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -23,6 +25,8 @@ export class GithubProjectsComponent implements OnInit {
       const githubProjects = db.getGithubProjects();
       this.description = githubProjects.description;
       this.projects = githubProjects.subpages;
+      // Zoneless: explicitly trigger change detection after async data loads.
+      this.cdr.detectChanges();
     });
   }
 

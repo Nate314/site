@@ -1,7 +1,3 @@
-import { Observable, Subject } from "rxjs";
-import { map } from "rxjs/operators";
-import { AngularFireDatabase } from "angularfire2/database";
-
 export class DB {
 
   applications: any;
@@ -10,36 +6,13 @@ export class DB {
 
   db: any;
 
-  constructor(
-    private afdb: AngularFireDatabase,
-    private database?: any
-  ) {
-    if (database) {
-      this.db = database;
-      this.applications = this.db.home.pages[0];
-      this.videos = this.db.home.pages[1].subpages[0]["videos"];
-      this.githubProjects = this.db.home.pages[1].subpages[1];
-      console.log(database);
-    }
+  // `database` is the value of the "nate314" node, i.e. { home: { ... } }.
+  constructor(database: any) {
+    this.db = database;
+    this.applications = this.db.home.pages[0];
+    this.videos = this.db.home.pages[1].subpages[0]["videos"];
+    this.githubProjects = this.db.home.pages[1].subpages[1];
   }
-
-  public getDB(): Observable<any> {
-    const subject = new Subject<DB>();
-    const emit = r => subject.next(new DB(this.afdb, r));
-    const localStorageDBKey = "db";
-    const localStorageDB = localStorage.getItem(localStorageDBKey);
-    this.afdb.list("/").valueChanges()
-      .pipe(map(resp => {
-        localStorage.setItem(localStorageDBKey, JSON.stringify(resp[0]));
-        emit(resp[0]);
-      })).subscribe();
-    if (!!localStorageDB) setTimeout(() => emit(JSON.parse(localStorageDB)), 0);
-    return subject.asObservable();
-  }
-
-  // public getFile(): Observable<any> {
-  //  return this.
-  // }
 
   public getRedirects(): ResourceType[] {
     return this.db.home.otherwebsites.redirects;

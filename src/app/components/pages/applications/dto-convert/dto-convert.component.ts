@@ -3,6 +3,7 @@ import { Helper } from "src/app/helpers/Helper";
 import * as _ from "lodash";
 
 @Component({
+  standalone: false,
   selector: "app-dto-convert",
   templateUrl: "./dto-convert.component.html"
 })

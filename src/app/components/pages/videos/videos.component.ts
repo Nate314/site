@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DomSanitizer, SafeResourceUrl } from "../../../../../node_modules/@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { DatabaseService } from "src/app/services";
 
 class Video {
@@ -13,6 +13,7 @@ class Video {
 }
 
 @Component({
+  standalone: false,
   selector: "app-videos",
   templateUrl: "./videos.component.html"
 })
@@ -23,7 +24,8 @@ export class VideosComponent implements OnInit {
   constructor(
     private router: Router,
     private sanitizer: DomSanitizer,
-    private db: DatabaseService
+    private db: DatabaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -31,8 +33,6 @@ export class VideosComponent implements OnInit {
     const getSanatized = link => this.sanitizer.bypassSecurityTrustResourceUrl(link);
     this.db.connection().subscribe(db => {
       const dbVideos = db.getVideos();
-      console.log("dbVideos");
-      console.log(dbVideos);
       const time = new Date().getTime();
       this.videos = dbVideos.map(v => {
         return <Video>{
@@ -43,6 +43,8 @@ export class VideosComponent implements OnInit {
           enabled: false
         };
       });
+      // Zoneless: explicitly trigger change detection after async data loads.
+      this.cdr.detectChanges();
     });
   }
 

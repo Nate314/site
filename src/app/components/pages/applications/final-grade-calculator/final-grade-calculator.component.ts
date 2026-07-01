@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Helper } from "../../../../helpers/Helper";
 
 @Component({
+  standalone: false,
   selector: "app-final-grade-calculator",
   templateUrl: "./final-grade-calculator.component.html"
 })

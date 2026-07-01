@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DatabaseService } from "src/app/services";
 
 @Component({
+  standalone: false,
   selector: "app-home",
   templateUrl: "./home.component.html"
 })
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private location: Location,
-    private db: DatabaseService
+    private db: DatabaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,8 @@ export class HomeComponent implements OnInit {
       this.youtubeLinks = otherwebsites.youtube;
       this.languageLinks = otherwebsites.languages;
       this.toolLinks = otherwebsites.tools;
+      // Zoneless: explicitly trigger change detection after async data loads.
+      this.cdr.detectChanges();
     });
   }
 

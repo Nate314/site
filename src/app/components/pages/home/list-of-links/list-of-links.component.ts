@@ -3,6 +3,7 @@ import { KeyValue } from "@angular/common";
 import { Subject } from "rxjs";
 
 @Component({
+  standalone: false,
   selector: "app-list-of-links",
   templateUrl: "./list-of-links.component.html"
 })

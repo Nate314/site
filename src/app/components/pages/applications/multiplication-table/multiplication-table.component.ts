@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
+  standalone: false,
   selector: "app-multiplication-table",
   templateUrl: "./multiplication-table.component.html"
 })
@@ -10,9 +11,9 @@ export class MultiplicationTableComponent implements OnInit {
   loading: boolean = false;
   size: number;
   lastsize: number;
-  multTableTraditional: number[][] = [];
-  multTableOther: number[][] = [];
-  multTable: string[][] = [];
+  multTableTraditional: any[][] = [];
+  multTableOther: any[][] = [];
+  multTable: any[][] = [];
 
   constructor() { }
 

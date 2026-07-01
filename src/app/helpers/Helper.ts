@@ -57,7 +57,7 @@ export class Helper {
   }
 
   public static navigateTo(router: Router, location: Location, url: string[], queryparams) {
-    if (url === ["/"]) {
+    if (url.length === 1 && url[0] === "/") {
       url = ["/home"];
     }
     /*if(url[0].includes("application")

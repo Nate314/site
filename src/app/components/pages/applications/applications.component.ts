@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
@@ -19,6 +19,7 @@ class App {
 }
 
 @Component({
+  standalone: false,
   selector: "app-applications",
   templateUrl: "./applications.component.html"
 })
@@ -50,7 +51,8 @@ export class ApplicationsComponent implements OnInit {
     private router: Router,
     private location: Location,
     private activatedRoute: ActivatedRoute,
-    private db: DatabaseService
+    private db: DatabaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -78,9 +80,17 @@ export class ApplicationsComponent implements OnInit {
         }
       ];
 
-      // load different sections of the page based on the url
+      // load different sections of the page based on the url. This runs on every
+      // navigation (incl. switching between web apps, when Angular reuses this
+      // component), so all per-navigation state is reset and recomputed here.
       const validSubpages = ["java", "web", "android"];
       this.activatedRoute.url.subscribe(response => {
+        // reset per-navigation state so a previous web app doesn't linger
+        this.webApp = null;
+        this.webAppOpen = false;
+        this.apps = [];
+        this.pageName = null;
+
         // get the subpage
         const validSubpage = response.filter(x => validSubpages.includes(x.path));
         if (validSubpage.length > 0) {
@@ -99,19 +109,23 @@ export class ApplicationsComponent implements OnInit {
         } else {
           this.pageName = "Applications";
         }
+
+        // if a web app is being passed through the url, then open that web app
+        if (!Helper.equalsNull(this.webApp))
+          this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
+
+        // initialize page
+        let pageTitle = String(PageNames.APPLICATIONS);
+        if (!Helper.equalsNull(this.pageName))
+          pageTitle += " | " + this.pageName;
+        if (!Helper.equalsNull(this.webApp))
+          pageTitle += " | " + this.webApp.name;
+        Helper.initializePage(this, this.router.url, pageTitle);
+
+        // Angular 22 NgModule apps run zoneless by default, so navigation/data
+        // updates must explicitly trigger change detection.
+        this.cdr.detectChanges();
       });
-
-      // if a web app is being passed through the url, then open that web app
-      if (!Helper.equalsNull(this.webApp))
-        this.openWebApp(this.getApp(this.webApplications["apps"], this.webApp.name), false);
-
-      // initialize page
-      let pageTitle = String(PageNames.APPLICATIONS);
-      if (!Helper.equalsNull(this.pageName))
-        pageTitle += " | " + this.pageName;
-      if (!Helper.equalsNull(this.webApp))
-        pageTitle += " | " + this.webApp.name;
-      Helper.initializePage(this, this.router.url, pageTitle);
     });
   }
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { DatabaseService } from "src/app/services";
 
 @Component({
+  standalone: false,
   selector: "app-not-found",
   template: `
   <div *ngIf="loaded">
@@ -15,7 +16,8 @@ export class NotFoundComponent implements OnInit {
   content = "¯\\_(ツ)_/¯ NOT FOUND";
 
   constructor(
-    private db: DatabaseService
+    private db: DatabaseService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -31,12 +33,15 @@ export class NotFoundComponent implements OnInit {
         }, 1200);
       }
       this.loaded = true;
+      // Zoneless: explicitly trigger change detection after async data loads.
+      this.cdr.detectChanges();
     });
   }
 
   dots() {
     setTimeout(() => {
       this.content += " .";
+      this.cdr.detectChanges();
       this.dots();
     }, 200);
   }
