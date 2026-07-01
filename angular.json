@@ -24,19 +24,12 @@
               "src/favicon.ico",
               "src/CNAME",
               {
-                "glob": "keybase.txt",
-                "input": "src/.well-known",
-                "output": ".well-known"
-              },
-              {
                 "glob": "**/*",
                 "input": "src/assets",
                 "output": "assets"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -97,18 +90,11 @@
             "tsConfig": "src/tsconfig.spec.json",
             "browsers": "ChromeHeadless",
             "codeCoverage": true,
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": [],
             "assets": [
               "src/favicon.ico",
               "src/CNAME",
-              {
-                "glob": "keybase.txt",
-                "input": "src/.well-known",
-                "output": ".well-known"
-              },
               {
                 "glob": "**/*",
                 "input": "src/assets",
@@ -120,10 +106,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
