@@ -37,90 +37,244 @@
           }
         ],
         "youtube": [{
-            "name": "Gus Johnson",
-            "url": "https://www.youtube.com/channel/UCpIafFPGutTAKOBHMtGen7g"
+            "name": "Be Smart",
+            "url": "https://www.youtube.com/@besmart"
           },
           {
-            "name": "Hello Internet",
-            "url": "https://www.youtube.com/user/HelloInternetPodcast"
+            "name": "Ben Awad",
+            "url": "https://www.youtube.com/@bawad"
+          },
+          {
+            "name": "Casually Explained",
+            "url": "https://www.youtube.com/@CasuallyExplained"
+          },
+          {
+            "name": "Code Bullet",
+            "url": "https://www.youtube.com/@CodeBullet"
+          },
+          {
+            "name": "CodeParade",
+            "url": "https://www.youtube.com/@CodeParade"
+          },
+          {
+            "name": "Computerphile",
+            "url": "https://www.youtube.com/@Computerphile"
+          },
+          {
+            "name": "cubfan135",
+            "url": "https://www.youtube.com/@cubfan"
+          },
+          {
+            "name": "Daniel Thrasher",
+            "url": "https://www.youtube.com/@danielthrasher"
+          },
+          {
+            "name": "ElectroBOOM",
+            "url": "https://www.youtube.com/@ElectroBOOM"
+          },
+          {
+            "name": "EthosLab",
+            "url": "https://www.youtube.com/@EthosLab"
+          },
+          {
+            "name": "Fireship",
+            "url": "https://www.youtube.com/@Fireship"
+          },
+          {
+            "name": "George Kamel",
+            "url": "https://www.youtube.com/@GeorgeKamel"
+          },
+          {
+            "name": "Graham Stephan",
+            "url": "https://www.youtube.com/@GrahamStephan"
+          },
+          {
+            "name": "Half as Interesting",
+            "url": "https://www.youtube.com/@halfasinteresting"
           },
           {
             "name": "Julian Smith",
-            "url": "https://www.youtube.com/channel/UCxUycBeiK8TcU6WBRkTXRlg"
+            "url": "https://www.youtube.com/@juliansmith87"
           },
           {
-            "name": "Kurzgesagt – In a Nutshell",
-            "url": "https://www.youtube.com/channel/UCsXVk37bltHxD1rDPwtNM8Q"
+            "name": "Killdozer_tv",
+            "url": "https://www.youtube.com/@Killdozer_tv"
           },
           {
-            "name": "standupmaths",
-            "url": "https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A"
+            "name": "Linus Tech Tips",
+            "url": "https://www.youtube.com/@LinusTechTips"
           },
           {
-            "name": "Steve Mould",
-            "url": "https://www.youtube.com/channel/UCEIwxahdLz7bap-VDs9h35A"
+            "name": "Mark Rober",
+            "url": "https://www.youtube.com/@MarkRober"
           },
           {
-            "name": "Taran Van Hemert",
-            "url": "https://www.youtube.com/channel/UCd0ZD4iCXRXf18p3cA7EQfg"
+            "name": "Marques Brownlee",
+            "url": "https://www.youtube.com/@mkbhd"
+          },
+          {
+            "name": "Michael Reeves",
+            "url": "https://www.youtube.com/@MichaelReeves"
+          },
+          {
+            "name": "Mumbo Jumbo",
+            "url": "https://www.youtube.com/@ThatMumboJumbo"
+          },
+          {
+            "name": "Pongfinity",
+            "url": "https://www.youtube.com/@Pongfinity"
+          },
+          {
+            "name": "Simone Giertz",
+            "url": "https://www.youtube.com/@simonegiertz"
+          },
+          {
+            "name": "Stuff Made Here",
+            "url": "https://www.youtube.com/@StuffMadeHere"
+          },
+          {
+            "name": "Tom Scott",
+            "url": "https://www.youtube.com/@TomScottGo"
+          },
+          {
+            "name": "Veritasium",
+            "url": "https://www.youtube.com/@veritasium"
           },
           {
             "name": "Vsauce",
-            "url": "https://www.youtube.com/user/Vsauce"
+            "url": "https://www.youtube.com/@Vsauce"
           }
         ],
         "languages": [{
+            "context": "work",
             "name": "Angular",
             "url": "https://en.wikipedia.org/wiki/Angular_(application_platform)"
           },
           {
+            "context": "both",
             "name": "HTML",
             "url": "https://en.wikipedia.org/wiki/HTML"
           },
           {
+            "context": "both",
             "name": "CSS",
             "url": "https://en.wikipedia.org/wiki/Cascading_Style_Sheets"
           },
           {
+            "context": "work",
             "name": "TypeScript",
             "url": "https://en.wikipedia.org/wiki/TypeScript"
           },
           {
+            "context": "personal",
             "name": "C++",
             "url": "https://en.wikipedia.org/wiki/C%2B%2B"
           },
           {
+            "context": "both",
             "name": "C#",
             "url": "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)"
           },
           {
+            "context": "personal",
             "name": "Java",
             "url": "https://en.wikipedia.org/wiki/Java"
           },
           {
+            "context": "personal",
             "name": "Python",
             "url": "https://en.wikipedia.org/wiki/Python_(programming_language)"
           },
           {
+            "context": "work",
             "name": "SQL",
             "url": "https://en.wikipedia.org/wiki/SQL"
           },
           {
+            "context": "work",
             "name": "VB.net",
             "url": "https://en.wikipedia.org/wiki/Visual_Basic_.NET"
+          },
+          {
+            "context": "work",
+            "name": ".NET",
+            "url": "https://en.wikipedia.org/wiki/.NET"
+          },
+          {
+            "context": "work",
+            "name": "TSQL",
+            "url": "https://en.wikipedia.org/wiki/Transact-SQL"
+          },
+          {
+            "context": "personal",
+            "name": "React",
+            "url": "https://en.wikipedia.org/wiki/React_(software)"
+          },
+          {
+            "context": "personal",
+            "name": "Vue",
+            "url": "https://en.wikipedia.org/wiki/Vue.js"
+          },
+          {
+            "context": "personal",
+            "name": "Express",
+            "url": "https://en.wikipedia.org/wiki/Express.js"
           }
         ],
         "tools": [{
-            "name": "Stack Overflow",
-            "url": "https://stackoverflow.com/"
+            "context": "personal",
+            "name": "Windows",
+            "url": "https://en.wikipedia.org/wiki/Microsoft_Windows"
           },
           {
-            "name": "W3 Schools",
-            "url": "https://www.w3schools.com/"
+            "context": "personal",
+            "name": "VS Code",
+            "url": "https://code.visualstudio.com/"
           },
           {
-            "name": "F12",
-            "url": "https://developers.google.com/web/tools/chrome-devtools/console/"
+            "context": "personal",
+            "name": "Github",
+            "url": "https://github.com/"
+          },
+          {
+            "context": "work",
+            "name": "Azure DevOps",
+            "url": "https://azure.microsoft.com/en-us/products/devops"
+          },
+          {
+            "context": "work",
+            "name": "Terraform",
+            "url": "https://www.terraform.io/"
+          },
+          {
+            "context": "work",
+            "name": "Playwright",
+            "url": "https://playwright.dev/"
+          },
+          {
+            "context": "work",
+            "name": "GCP",
+            "url": "https://cloud.google.com/"
+          },
+          {
+            "context": "work",
+            "name": "PowerShell",
+            "url": "https://learn.microsoft.com/en-us/powershell/"
+          },
+          {
+            "context": "personal",
+            "name": "Docker",
+            "url": "https://www.docker.com/"
+          },
+          {
+            "context": "personal",
+            "name": "Raspberry Pi",
+            "url": "https://en.wikipedia.org/wiki/Raspberry_Pi"
+          },
+          {
+            "context": "work",
+            "name": "Claude Code",
+            "url": "https://claude.com/claude-code"
           }
         ]
       },
@@ -128,7 +282,7 @@
           "name": "Applications",
           "subpages": [{
               "apps": [{
-                  "description": "This is a Clock prgram written in Java. This application is pretty self explanitory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital.",
+                  "description": "This is a Clock program written in Java. This application is pretty self-explanatory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital.",
                   "file": "Clock.jar",
                   "name": "Clock"
                 },
@@ -138,12 +292,12 @@
                   "name": "DinoGame1920x1080"
                 },
                 {
-                  "description": "This is my verion of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>",
+                  "description": "This is my version of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>",
                   "file": "FlappyBird1.1.zip",
                   "name": "FlappyBird"
                 },
                 {
-                  "description": "This is my verion of Microsoft's Minesweeper written in Java. You can flag a square by right clicking, or attack by left clicking.",
+                  "description": "This is my version of Microsoft's Minesweeper written in Java. You can flag a square by right clicking, or attack by left clicking.",
                   "file": "Minesweeper1.2.jar",
                   "name": "Minesweeper"
                 },
@@ -173,13 +327,13 @@
                   "name": "UltimateTicTacToe"
                 }
               ],
-              "description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
+              "description": "You can download any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
               "link": "applications/java",
               "name": "JavaApplications"
             },
             {
               "apps": [{
-                  "description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math. You can set up the number of things you are btting on and the number of humans that are placing bets, and then the winnings will be split proportionally between the palyers that placed bets on the thing that actually won.",
+                  "description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math. You can set up the number of things you are betting on and the number of humans that are placing bets, and then the winnings will be split proportionally between the players that placed bets on the thing that actually won.",
                   "file": "webapplications/bettingcalculator",
                   "name": "BettingCalculator",
                   "selector": "app-betting-calculator"
@@ -197,7 +351,7 @@
                   "selector": "app-dto-convert"
                 },
                 {
-                  "description": "Final Grade Caclculator is a useful tool for when you are in a crunch and want to prioritize study time. Enter your current grade in the class, the percentage of your grade the final is worth, and the percentage you want to finish the class with. Once you submit, this application will tell you the percentage you need in order to achieve your goal.",
+                  "description": "Final Grade Calculator is a useful tool for when you are in a crunch and want to prioritize study time. Enter your current grade in the class, the percentage of your grade the final is worth, and the percentage you want to finish the class with. Once you submit, this application will tell you the percentage you need in order to achieve your goal.",
                   "file": "webapplications/finalgradecalculator",
                   "name": "FinalGradeCalculator",
                   "selector": "app-final-grade-calculator"
@@ -233,7 +387,7 @@
                   "selector": "app-html-sandbox"
                 },
                 {
-                  "description": "Multiplication Table is pretty much self explanitory. Enter a number between 0 and 120 and a multiplication table will be generated with that size.",
+                  "description": "Multiplication Table is pretty much self-explanatory. Enter a number between 0 and 120 and a multiplication table will be generated with that size.",
                   "file": "webapplications/multiplicationtable",
                   "name": "MultiplicationTable",
                   "selector": "app-multiplication-table"
@@ -269,11 +423,11 @@
             },
             {
               "apps": [{
-                "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azmuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet.",
+                "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azimuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet.",
                 "file": "LiveWallpaper.apk",
                 "name": "LiveWallpaper"
               }],
-              "description": "You can downlad any of these java applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
+              "description": "You can download any of these android applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
               "link": "applications/android",
               "name": "AndroidApplications"
             }
@@ -317,12 +471,17 @@
                 {
                   "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
                   "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
-                  "title": "Typling Bot"
+                  "title": "Typing Bot"
                 },
                 {
                   "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
                   "link": "https://www.youtube.com/embed/gLKssL0FN98",
                   "title": "Clash Royale Strategy"
+                },
+                {
+                  "description": "This is a video demonstrating an elevator mechanism I designed and built for a project in my high school's PLTW (Project Lead The Way) class.",
+                  "link": "https://www.youtube.com/embed/rmOcGzxN05U",
+                  "title": "High School Vex Robotics Elevator Project"
                 }
               ]
             },
@@ -330,44 +489,159 @@
               "description": "Below are listed several of my projects on Github. You can view the README.md files here or click on the link to view the repository or you can visit my github page directly <a href=\"https://github.com/Nate314\">here</a>.",
               "name": "Github Projects",
               "subpages": [{
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/NatePy/master/README.md",
                   "link": "https://github.com/Nate314/NatePy",
                   "title": "NatePy"
                 },
                 {
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/simplejsprojects/master/README.md",
                   "link": "https://github.com/Nate314/simplejsprojects",
                   "title": "Simple JS Projects"
                 },
                 {
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/site/master/README.md",
                   "link": "https://github.com/Nate314/site",
                   "title": "This Website"
                 },
                 {
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/react-games/master/README.md",
                   "link": "https://github.com/Nate314/react-games",
                   "title": "React Games"
                 },
                 {
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/c3po/master/README.md",
                   "link": "https://github.com/Nate314/c3po",
                   "title": "C3PO"
                 },
                 {
+                  "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/simplegamerenders/master/README.md",
                   "link": "https://github.com/Nate314/simplegamerenders",
                   "title": "Simple Game Renders"
                 },
                 {
+                  "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/InfixParser/master/README.md",
                   "link": "https://github.com/Nate314/InfixParser",
                   "title": "C++ Infix Parser"
                 },
                 {
+                  "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/MorseCode/master/README.md",
                   "link": "https://github.com/Nate314/MorseCode",
                   "title": "C++ Morse Code"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/EZPoll/master/README.md",
+                  "link": "https://github.com/Nate314/EZPoll",
+                  "title": "EZPoll"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/card-games/master/README.md",
+                  "link": "https://github.com/Nate314/card-games",
+                  "title": "Card Games"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/SortingAlgorithms/master/README.md",
+                  "link": "https://github.com/Nate314/SortingAlgorithms",
+                  "title": "Sorting Algorithms"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/e-ink-display/master/README.md",
+                  "link": "https://github.com/Nate314/e-ink-display",
+                  "title": "E-Ink Display"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/CppConsoleAnimation/master/README.md",
+                  "link": "https://github.com/Nate314/CppConsoleAnimation",
+                  "title": "C++ Console Animation"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/java-rest-example/master/README.md",
+                  "link": "https://github.com/Nate314/java-rest-example",
+                  "title": "Java REST Example"
+                },
+                {
+                  "category": "hackathon",
+                  "description": "https://raw.githubusercontent.com/Nate314/island-decimation/master/README.md",
+                  "link": "https://github.com/Nate314/island-decimation",
+                  "title": "Island Decimation"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/CS449Project/master/README.md",
+                  "link": "https://github.com/Nate314/CS449Project",
+                  "title": "CS449 Android Project"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/CS449UmpireBuddy/master/README.md",
+                  "link": "https://github.com/Nate314/CS449UmpireBuddy",
+                  "title": "CS449 Umpire Buddy"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/RamenNoodles/master/README.md",
+                  "link": "https://github.com/Nate314/RamenNoodles",
+                  "title": "CS461 Ramen Noodles"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/WarAndPeaceEntropy/master/README.md",
+                  "link": "https://github.com/Nate314/WarAndPeaceEntropy",
+                  "title": "CS441 War and Peace Entropy"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/PrologLogicPuzzle/master/README.md",
+                  "link": "https://github.com/Nate314/PrologLogicPuzzle",
+                  "title": "CS461 Prolog Logic Puzzle"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/UniversityScheduling/master/README.md",
+                  "link": "https://github.com/Nate314/UniversityScheduling",
+                  "title": "CS461 University Scheduling"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/Fifteen/master/README.md",
+                  "link": "https://github.com/Nate314/Fifteen",
+                  "title": "CS461 Fifteen"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/CS470GroupProject/master/README.md",
+                  "link": "https://github.com/Nate314/CS470GroupProject",
+                  "title": "CS470 Group Project"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/NABSINA/CS457GroupProject/master/README.md",
+                  "link": "https://github.com/NABSINA/CS457GroupProject",
+                  "title": "CS457 Group Project (WebStore)"
+                },
+                {
+                  "category": "hackathon",
+                  "description": "https://raw.githubusercontent.com/NABSINA/TuringMessenger/master/README.md",
+                  "link": "https://github.com/NABSINA/TuringMessenger",
+                  "title": "Turing Messenger"
+                },
+                {
+                  "category": "hackathon",
+                  "link": "https://github.com/glowing-potato/graph-theory-game",
+                  "title": "Graph Theory Game"
                 }
               ]
             }
