@@ -10,6 +10,7 @@ export class MidiLooperAudioService {
   private audioContext: AudioContext | null = null;
   private schedulerTimer: ReturnType<typeof setInterval> | null = null;
   private startContextTime = 0;
+  private nextWindowStart = 0;
   private tempo = 120;
   private tracks: Track[] = [];
 
@@ -29,6 +30,7 @@ export class MidiLooperAudioService {
     this.tracks = tracks;
     this.tempo = tempo;
     this.startContextTime = ctx.currentTime;
+    this.nextWindowStart = 0;
     if (this.schedulerTimer) clearInterval(this.schedulerTimer);
     this.schedulerTimer = setInterval(() => this.tick(), this.lookaheadMs);
   }
@@ -49,16 +51,19 @@ export class MidiLooperAudioService {
   private tick(): void {
     const ctx = this.ensureContext();
     const elapsed = ctx.currentTime - this.startContextTime;
+    const windowStart = this.nextWindowStart;
     const windowEnd = elapsed + this.scheduleAheadSec;
+    if (windowEnd <= windowStart) return;
     for (const track of this.tracks) {
       for (const note of track.notes) {
-        const times = computeNoteOccurrences(note.startBeat, track.loopLengthBeats, this.tempo, elapsed, windowEnd);
+        const times = computeNoteOccurrences(note.startBeat, track.loopLengthBeats, this.tempo, windowStart, windowEnd);
         const durationSec = (note.durationBeats / this.tempo) * 60;
         for (const t of times) {
           this.playNote(track.instrument, note.pitch, note.velocity, this.startContextTime + t, durationSec);
         }
       }
     }
+    this.nextWindowStart = windowEnd;
   }
 
   private playNote(instrument: Instrument, pitch: number, velocity: number, when: number, durationSec: number): void {
