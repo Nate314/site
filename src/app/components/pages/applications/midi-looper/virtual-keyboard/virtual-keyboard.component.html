@@ -1,0 +1,13 @@
+<div class="virtual-keyboard">
+  <button type="button" (click)="shiftOctave(-1)">Octave -</button>
+  <span>Octave: {{ baseOctave }}</span>
+  <button type="button" (click)="shiftOctave(1)">Octave +</button>
+  <div class="keys" style="display:flex;">
+    <button type="button" *ngFor="let key of keys"
+      [style.background]="key.isBlack ? 'black' : 'white'"
+      [style.color]="key.isBlack ? 'white' : 'black'"
+      (mousedown)="press(key.pitch)" (mouseup)="release(key.pitch)" (mouseleave)="release(key.pitch)">
+      {{ key.label }}
+    </button>
+  </div>
+</div>
