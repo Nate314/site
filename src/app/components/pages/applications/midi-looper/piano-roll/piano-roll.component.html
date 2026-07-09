@@ -4,8 +4,9 @@
       <td class="pitch-label">{{ pitch }} &middot; {{ pitchLabel(pitch) }}</td>
       <td *ngFor="let step of stepIndices()"
           [style.background]="isNoteActive(pitch, step) ? 'purple' : 'transparent'"
-          style="border:1px solid #ccc; width:16px; height:14px; cursor:pointer;"
-          (click)="toggleCell(pitch, step)">
+          style="border:1px solid #ccc; width:16px; height:14px; cursor:pointer; user-select:none;"
+          (mousedown)="startDrag(pitch, step)"
+          (mouseenter)="continueDrag(pitch, step)">
       </td>
     </tr>
   </table>

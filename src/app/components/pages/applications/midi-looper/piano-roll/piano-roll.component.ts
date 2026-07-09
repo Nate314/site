@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, HostListener, Input, Output } from "@angular/core";
 import { Track } from "../models";
 import { quantizeBeat } from "../quantize";
 
@@ -15,6 +15,9 @@ export class PianoRollComponent {
   @Input() gridResolutionStepsPerBeat: number = 4;
 
   @Output() noteToggled = new EventEmitter<{ pitch: number; startBeat: number }>();
+
+  isDragging: boolean = false;
+  dragMode: "draw" | "erase" | null = null;
 
   readonly minPitch = 21;  // A0
   readonly maxPitch = 108; // C8
@@ -42,6 +45,25 @@ export class PianoRollComponent {
 
   toggleCell(pitch: number, stepIndex: number): void {
     this.noteToggled.emit({ pitch, startBeat: this.stepStartBeat(stepIndex) });
+  }
+
+  startDrag(pitch: number, stepIndex: number): void {
+    this.dragMode = this.isNoteActive(pitch, stepIndex) ? "erase" : "draw";
+    this.isDragging = true;
+    this.toggleCell(pitch, stepIndex);
+  }
+
+  continueDrag(pitch: number, stepIndex: number): void {
+    if (!this.isDragging) return;
+    const active = this.isNoteActive(pitch, stepIndex);
+    if (this.dragMode === "draw" && !active) this.toggleCell(pitch, stepIndex);
+    else if (this.dragMode === "erase" && active) this.toggleCell(pitch, stepIndex);
+  }
+
+  @HostListener("document:mouseup")
+  endDrag(): void {
+    this.isDragging = false;
+    this.dragMode = null;
   }
 
   pitchLabel(pitch: number): string {
