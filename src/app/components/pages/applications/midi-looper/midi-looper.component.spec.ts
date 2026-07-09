@@ -47,11 +47,14 @@ describe("MidiLooperComponent", () => {
     });
 
     it("shifts the selected index down when a track before it is removed", () => {
-      component.addTrack(); // now 2 tracks, selectedTrackIndex = 1
-      component.addTrack(); // now 3 tracks, selectedTrackIndex = 2
-      component.removeTrack(0); // remove the first track, which is before the selected one
+      component.addTrack(); // now 2 tracks: ["Track 1", "Track 2"], selectedTrackIndex = 1
+      component.addTrack(); // now 3 tracks: ["Track 1", "Track 2", "Track 3"], selectedTrackIndex = 2
+      component.selectedTrackIndex = 1; // select the middle track ("Track 2"), not the last one
+      const selectedTrackName = component.project.tracks[component.selectedTrackIndex].name;
+      component.removeTrack(0); // remove "Track 1", which is before the selected track
       expect(component.project.tracks.length).toBe(2);
-      expect(component.selectedTrackIndex).toBe(1); // was 2, should shift down by 1 since track 0 (before it) was removed
+      expect(component.selectedTrackIndex).toBe(0); // shifted down by 1 since a track before it was removed
+      expect(component.project.tracks[component.selectedTrackIndex].name).toBe(selectedTrackName); // still points at the same logical track ("Track 2")
     });
   });
 
