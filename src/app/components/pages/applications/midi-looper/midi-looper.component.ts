@@ -18,6 +18,7 @@ export class MidiLooperComponent implements OnInit {
   timeSignatureNumerator: number = 4;
   timeSignatureDenominator: number = 4;
   keyboardOctaveCount: number = 2;
+  volume: number = 1;
 
   isPlaying: boolean = false;
   isRecording: boolean = false;
@@ -128,6 +129,11 @@ export class MidiLooperComponent implements OnInit {
     this.isPlaying = false;
     this.isRecording = false;
     this.cdr.detectChanges();
+  }
+
+  onVolumeChanged(volume: number): void {
+    this.volume = volume;
+    this.audioService.setVolume(volume);
   }
 
   onTempoChanged(tempo: number): void {

@@ -12,7 +12,7 @@ describe("MidiLooperComponent", () => {
   let fileService: jasmine.SpyObj<MidiLooperFileService>;
 
   beforeEach(() => {
-    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo"]);
+    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo", "setVolume"]);
     webMidiService = jasmine.createSpyObj("WebMidiService", ["isSupported", "connect", "notes"]);
     webMidiService.isSupported.and.returnValue(false);
     webMidiService.notes.and.returnValue(of());
@@ -130,6 +130,23 @@ describe("MidiLooperComponent", () => {
     it("does not call the audio service when not playing", () => {
       component.onTempoChanged(140);
       expect(audioService.setTempo).not.toHaveBeenCalled();
+    });
+  });
+
+  describe("onVolumeChanged", () => {
+    it("updates the volume", () => {
+      component.onVolumeChanged(0.5);
+      expect(component.volume).toBe(0.5);
+    });
+
+    it("pushes the new volume to the audio service", () => {
+      component.onVolumeChanged(0.5);
+      expect(audioService.setVolume).toHaveBeenCalledWith(0.5);
+    });
+
+    it("pushes the volume to the audio service even when not playing", () => {
+      component.onVolumeChanged(0.25);
+      expect(audioService.setVolume).toHaveBeenCalledWith(0.25);
     });
   });
 

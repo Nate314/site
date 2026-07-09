@@ -8,6 +8,7 @@ import { computeNoteOccurrences, mergeConnectedNotes, pitchToFrequency } from ".
 export class MidiLooperAudioService {
 
   private audioContext: AudioContext | null = null;
+  private masterGain: GainNode | null = null;
   private schedulerTimer: ReturnType<typeof setInterval> | null = null;
   private startContextTime = 0;
   private nextWindowStart = 0;
@@ -22,6 +23,19 @@ export class MidiLooperAudioService {
       this.audioContext = new AudioContext();
     }
     return this.audioContext;
+  }
+
+  private ensureMasterGain(): GainNode {
+    const ctx = this.ensureContext();
+    if (!this.masterGain) {
+      this.masterGain = ctx.createGain();
+      this.masterGain.connect(ctx.destination);
+    }
+    return this.masterGain;
+  }
+
+  setVolume(volume: number): void {
+    this.ensureMasterGain().gain.value = Math.max(0, Math.min(1, volume));
   }
 
   start(tracks: Track[], tempo: number): void {
@@ -84,7 +98,7 @@ export class MidiLooperAudioService {
     gain.gain.setValueAtTime(peak, sustainUntil);
     gain.gain.linearRampToValueAtTime(0, when + durationSec);
 
-    osc.connect(gain).connect(ctx.destination);
+    osc.connect(gain).connect(this.ensureMasterGain());
     osc.start(when);
     osc.stop(when + durationSec + 0.02);
   }
