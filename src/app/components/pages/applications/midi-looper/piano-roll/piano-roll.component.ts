@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Track } from "../models";
 import { quantizeBeat } from "../quantize";
 
+const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
+
 @Component({
   standalone: false,
   selector: "app-piano-roll",
@@ -40,5 +42,10 @@ export class PianoRollComponent {
 
   toggleCell(pitch: number, stepIndex: number): void {
     this.noteToggled.emit({ pitch, startBeat: this.stepStartBeat(stepIndex) });
+  }
+
+  pitchLabel(pitch: number): string {
+    const octave = Math.floor(pitch / 12) - 1;
+    return NOTE_NAMES[pitch % 12].split("/").map(name => name + octave).join("/");
   }
 }

@@ -52,4 +52,22 @@ describe("PianoRollComponent", () => {
       expect(emitted).toEqual([{ pitch: 64, startBeat: 1.5 }]);
     });
   });
+
+  describe("pitchLabel", () => {
+    it("labels a natural note with its name and octave", () => {
+      expect(component.pitchLabel(60)).toBe("C4");
+    });
+
+    it("labels a sharp/flat note with both enharmonic names and octave", () => {
+      expect(component.pitchLabel(61)).toBe("C#4/Db4");
+    });
+
+    it("labels the lowest pitch on the roll (A0)", () => {
+      expect(component.pitchLabel(21)).toBe("A0");
+    });
+
+    it("labels the highest pitch on the roll (C8)", () => {
+      expect(component.pitchLabel(108)).toBe("C8");
+    });
+  });
 });
