@@ -2,10 +2,12 @@
   <button type="button" (click)="shiftOctave(-1)">Octave -</button>
   <span>Octave: {{ baseOctave }}</span>
   <button type="button" (click)="shiftOctave(1)">Octave +</button>
-  <div class="keys" style="position:relative; height:140px; user-select:none;">
+  <div class="keys" [style.width.px]="keyboardWidthPx" style="position:relative; height:140px; user-select:none;">
     <div style="display:flex; height:140px;">
       <button type="button" *ngFor="let key of whiteKeys"
-        style="flex:0 0 44px; width:44px; background:white; color:black; border:1px solid #333; border-radius:0 0 4px 4px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-size:11px;"
+        [style.flex]="'0 0 ' + whiteKeyWidthPx + 'px'"
+        [style.width.px]="whiteKeyWidthPx"
+        style="background:white; color:black; border:1px solid #333; border-radius:0 0 4px 4px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-size:11px;"
         (mousedown)="press(key.pitch)" (mouseup)="release(key.pitch)" (mouseleave)="release(key.pitch)">
         {{ key.label }}
       </button>

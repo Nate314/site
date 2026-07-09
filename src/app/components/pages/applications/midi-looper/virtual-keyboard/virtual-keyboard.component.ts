@@ -35,6 +35,8 @@ export class VirtualKeyboardComponent {
   @Output() noteOn = new EventEmitter<number>();
   @Output() noteOff = new EventEmitter<number>();
 
+  readonly whiteKeyWidthPx = 44;
+
   get keys(): KeyDef[] {
     const basePitch = (this.baseOctave + 1) * 12; // MIDI pitch of C in this octave
     const keys: KeyDef[] = [];
@@ -54,6 +56,10 @@ export class VirtualKeyboardComponent {
 
   get blackKeys(): KeyDef[] {
     return this.keys.filter(k => k.isBlack);
+  }
+
+  get keyboardWidthPx(): number {
+    return this.whiteKeys.length * this.whiteKeyWidthPx;
   }
 
   blackKeyLeftPercent(pitch: number): number {

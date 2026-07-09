@@ -60,6 +60,14 @@ describe("VirtualKeyboardComponent", () => {
     });
   });
 
+  describe("keyboardWidthPx", () => {
+    it("equals the number of white keys times the fixed white-key width", () => {
+      component.baseOctave = 4;
+      component.octaveCount = 2;
+      expect(component.keyboardWidthPx).toBe(component.whiteKeys.length * component.whiteKeyWidthPx);
+    });
+  });
+
   describe("shiftOctave", () => {
     it("increases the base octave", () => {
       component.baseOctave = 4;
