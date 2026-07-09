@@ -12,19 +12,22 @@ export class TrackListComponent {
   @Input() selectedIndex: number = 0;
 
   @Output() selectedIndexChange = new EventEmitter<number>();
-  @Output() trackAdded = new EventEmitter<void>();
+  @Output() trackAdded = new EventEmitter<string>();
   @Output() trackRemoved = new EventEmitter<number>();
   @Output() instrumentChanged = new EventEmitter<{ index: number; instrument: Instrument }>();
   @Output() loopLengthChanged = new EventEmitter<{ index: number; loopLengthBeats: number }>();
 
   readonly instruments: Instrument[] = ["sine", "square", "sawtooth", "triangle"];
 
+  newTrackName: string = "";
+
   select(index: number): void {
     this.selectedIndexChange.emit(index);
   }
 
   addTrack(): void {
-    this.trackAdded.emit();
+    this.trackAdded.emit(this.newTrackName.trim());
+    this.newTrackName = "";
   }
 
   removeTrack(index: number): void {

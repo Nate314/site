@@ -44,7 +44,7 @@
     [tracks]="project.tracks"
     [selectedIndex]="selectedTrackIndex"
     (selectedIndexChange)="selectedTrackIndex = $event"
-    (trackAdded)="addTrack()"
+    (trackAdded)="addTrack($event)"
     (trackRemoved)="removeTrack($event)"
     (instrumentChanged)="onInstrumentChanged($event)"
     (loopLengthChanged)="onLoopLengthChanged($event)">

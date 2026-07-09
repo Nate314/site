@@ -66,9 +66,9 @@ export class MidiLooperComponent implements OnInit {
     });
   }
 
-  addTrack(): void {
+  addTrack(name?: string): void {
     this.project.tracks.push({
-      name: "Track " + (this.project.tracks.length + 1),
+      name: name && name.length > 0 ? name : "Track " + (this.project.tracks.length + 1),
       instrument: "sine",
       loopLengthBeats: 16,
       notes: []

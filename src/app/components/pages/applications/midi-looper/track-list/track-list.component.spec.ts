@@ -24,11 +24,36 @@ describe("TrackListComponent", () => {
     expect(emitted).toEqual([0]);
   });
 
-  it("emits trackAdded when a track is added", () => {
-    let calls = 0;
-    component.trackAdded.subscribe(() => calls++);
-    component.addTrack();
-    expect(calls).toBe(1);
+  describe("addTrack", () => {
+    it("emits trackAdded with the typed name", () => {
+      const emitted: string[] = [];
+      component.trackAdded.subscribe(name => emitted.push(name));
+      component.newTrackName = "Bass";
+      component.addTrack();
+      expect(emitted).toEqual(["Bass"]);
+    });
+
+    it("trims whitespace from the typed name", () => {
+      const emitted: string[] = [];
+      component.trackAdded.subscribe(name => emitted.push(name));
+      component.newTrackName = "  Lead  ";
+      component.addTrack();
+      expect(emitted).toEqual(["Lead"]);
+    });
+
+    it("emits an empty string when no name was typed", () => {
+      const emitted: string[] = [];
+      component.trackAdded.subscribe(name => emitted.push(name));
+      component.newTrackName = "";
+      component.addTrack();
+      expect(emitted).toEqual([""]);
+    });
+
+    it("clears the typed name after adding", () => {
+      component.newTrackName = "Bass";
+      component.addTrack();
+      expect(component.newTrackName).toBe("");
+    });
   });
 
   it("emits trackRemoved with the index when a track is removed", () => {

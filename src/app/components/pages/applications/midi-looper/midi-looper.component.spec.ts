@@ -118,6 +118,21 @@ describe("MidiLooperComponent", () => {
       expect(component.selectedTrackIndex).toBe(1);
     });
 
+    it("uses the given name for the new track", () => {
+      component.addTrack("Bass");
+      expect(component.project.tracks[1].name).toBe("Bass");
+    });
+
+    it("falls back to the default name when no name is given", () => {
+      component.addTrack();
+      expect(component.project.tracks[1].name).toBe("Track 2");
+    });
+
+    it("falls back to the default name when an empty string is given", () => {
+      component.addTrack("");
+      expect(component.project.tracks[1].name).toBe("Track 2");
+    });
+
     it("does not remove the last remaining track", () => {
       component.removeTrack(0);
       expect(component.project.tracks.length).toBe(1);

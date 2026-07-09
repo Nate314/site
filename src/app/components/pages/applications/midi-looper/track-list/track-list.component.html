@@ -13,5 +13,8 @@
     </label>
     <button type="button" (click)="removeTrack(i)" [disabled]="tracks.length <= 1">Remove</button>
   </div>
-  <button type="button" (click)="addTrack()">+ Add Track</button>
+  <div style="display:flex; gap:8px; align-items:center;">
+    <input type="text" placeholder="Track name" [(ngModel)]="newTrackName" (keyup.enter)="addTrack()" />
+    <button type="button" (click)="addTrack()">+ Add Track</button>
+  </div>
 </div>
