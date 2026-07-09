@@ -37,8 +37,8 @@ export class PianoRollComponent implements AfterViewInit {
 
   @Input() track: Track;
   @Input() gridResolutionStepsPerBeat: number = 4;
-  @Input() timeSignatureNumerator: number = 64;
-  @Input() timeSignatureDenominator: number = 16;
+  @Input() timeSignatureNumerator: number = 4;
+  @Input() timeSignatureDenominator: number = 4;
 
   @ViewChild("scrollContainer") scrollContainer: ElementRef<HTMLDivElement>;
 
