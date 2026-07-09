@@ -9,6 +9,25 @@ export function computeCenteredScrollTop(rowOffsetTop: number, rowHeight: number
   return rowOffsetTop - containerClientHeight / 2 + rowHeight / 2;
 }
 
+const EPSILON = 1e-9;
+
+export function beatLineIntervalBeats(timeSignatureDenominator: number): number {
+  return 4 / timeSignatureDenominator;
+}
+
+export function measureLineIntervalBeats(timeSignatureNumerator: number, timeSignatureDenominator: number): number {
+  return timeSignatureNumerator * beatLineIntervalBeats(timeSignatureDenominator);
+}
+
+export function isBeatLine(stepStartBeat: number, intervalBeats: number): boolean {
+  const ratio = stepStartBeat / intervalBeats;
+  return Math.abs(ratio - Math.round(ratio)) < EPSILON;
+}
+
+export function isMeasureLine(stepStartBeat: number, intervalBeats: number): boolean {
+  return isBeatLine(stepStartBeat, intervalBeats);
+}
+
 @Component({
   standalone: false,
   selector: "app-piano-roll",
@@ -18,6 +37,8 @@ export class PianoRollComponent implements AfterViewInit {
 
   @Input() track: Track;
   @Input() gridResolutionStepsPerBeat: number = 4;
+  @Input() timeSignatureNumerator: number = 64;
+  @Input() timeSignatureDenominator: number = 16;
 
   @ViewChild("scrollContainer") scrollContainer: ElementRef<HTMLDivElement>;
 
@@ -71,6 +92,15 @@ export class PianoRollComponent implements AfterViewInit {
   endDrag(): void {
     this.isDragging = false;
     this.dragMode = null;
+  }
+
+  lineClass(stepIndex: number): "measure" | "beat" | "normal" {
+    const startBeat = this.stepStartBeat(stepIndex);
+    const measureInterval = measureLineIntervalBeats(this.timeSignatureNumerator, this.timeSignatureDenominator);
+    if (isMeasureLine(startBeat, measureInterval)) return "measure";
+    const beatInterval = beatLineIntervalBeats(this.timeSignatureDenominator);
+    if (isBeatLine(startBeat, beatInterval)) return "beat";
+    return "normal";
   }
 
   pitchLabel(pitch: number): string {

@@ -15,6 +15,8 @@ export class MidiLooperComponent implements OnInit {
   project: Project;
   selectedTrackIndex: number = 0;
   gridResolutionStepsPerBeat: number = 4;
+  timeSignatureNumerator: number = 64;
+  timeSignatureDenominator: number = 16;
 
   isPlaying: boolean = false;
   isRecording: boolean = false;
