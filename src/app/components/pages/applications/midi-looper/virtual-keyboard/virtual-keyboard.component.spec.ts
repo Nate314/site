@@ -20,10 +20,10 @@ describe("VirtualKeyboardComponent", () => {
       expect(keys[0]).toEqual({ pitch: 60, isBlack: false, label: "C4" });
     });
 
-    it("marks sharps as black keys", () => {
+    it("marks sharps as black keys and labels them with both enharmonic names", () => {
       component.baseOctave = 4;
       const cSharp = component.keys[1];
-      expect(cSharp).toEqual({ pitch: 61, isBlack: true, label: "C#4" });
+      expect(cSharp).toEqual({ pitch: 61, isBlack: true, label: "C#4/Db4" });
     });
   });
 

@@ -6,7 +6,7 @@ interface KeyDef {
   label: string;
 }
 
-const NOTE_NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
 
 @Component({
   standalone: false,
@@ -27,7 +27,8 @@ export class VirtualKeyboardComponent {
       const pitch = basePitch + i;
       const name = NOTE_NAMES[pitch % 12];
       const octave = Math.floor(pitch / 12) - 1;
-      keys.push({ pitch, isBlack: name.includes("#"), label: name + octave });
+      const label = name.split("/").map(n => n + octave).join("/");
+      keys.push({ pitch, isBlack: name.includes("#"), label });
     }
     return keys;
   }
