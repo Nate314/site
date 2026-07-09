@@ -68,7 +68,7 @@ export class MidiLooperComponent implements OnInit {
 
   addTrack(name?: string): void {
     this.project.tracks.push({
-      name: name && name.length > 0 ? name : "Track " + (this.project.tracks.length + 1),
+      name: name && name.length > 0 ? name : this.nextDefaultTrackName(),
       instrument: "sine",
       loopLengthBeats: 16,
       notes: []
@@ -235,6 +235,14 @@ export class MidiLooperComponent implements OnInit {
     this.selectedTrackIndex = 0;
     this.saveState();
     this.cdr.detectChanges();
+  }
+
+  private nextDefaultTrackName(): string {
+    let n = this.project.tracks.length + 1;
+    while (this.project.tracks.some(t => t.name === `Track ${n}`)) {
+      n++;
+    }
+    return `Track ${n}`;
   }
 
   private createDefaultProject(): Project {

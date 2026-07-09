@@ -133,6 +133,19 @@ describe("MidiLooperComponent", () => {
       expect(component.project.tracks[1].name).toBe("Track 2");
     });
 
+    it("does not reuse an existing track's default name after an earlier track was removed", () => {
+      // ["Track 1"] -> addTrack -> ["Track 1", "Track 2"] -> remove "Track 1" -> ["Track 2"]
+      component.addTrack();
+      component.removeTrack(0);
+      expect(component.project.tracks.map(t => t.name)).toEqual(["Track 2"]);
+
+      // A naive "tracks.length + 1" default would produce "Track 2" again here, colliding.
+      component.addTrack();
+      const names = component.project.tracks.map(t => t.name);
+      expect(names).toEqual(["Track 2", "Track 3"]);
+      expect(new Set(names).size).toBe(names.length);
+    });
+
     it("does not remove the last remaining track", () => {
       component.removeTrack(0);
       expect(component.project.tracks.length).toBe(1);
