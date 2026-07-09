@@ -1,18 +1,25 @@
-import { Component, EventEmitter, HostListener, Input, Output } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
 import { Track } from "../models";
 import { quantizeBeat } from "../quantize";
 
 const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
+const MIDDLE_C_PITCH = 60;
+
+export function computeCenteredScrollTop(rowOffsetTop: number, rowHeight: number, containerClientHeight: number): number {
+  return rowOffsetTop - containerClientHeight / 2 + rowHeight / 2;
+}
 
 @Component({
   standalone: false,
   selector: "app-piano-roll",
   templateUrl: "./piano-roll.component.html"
 })
-export class PianoRollComponent {
+export class PianoRollComponent implements AfterViewInit {
 
   @Input() track: Track;
   @Input() gridResolutionStepsPerBeat: number = 4;
+
+  @ViewChild("scrollContainer") scrollContainer: ElementRef<HTMLDivElement>;
 
   @Output() noteToggled = new EventEmitter<{ pitch: number; startBeat: number }>();
 
@@ -69,5 +76,13 @@ export class PianoRollComponent {
   pitchLabel(pitch: number): string {
     const octave = Math.floor(pitch / 12) - 1;
     return NOTE_NAMES[pitch % 12].split("/").map(name => name + octave).join("/");
+  }
+
+  ngAfterViewInit(): void {
+    const container = this.scrollContainer.nativeElement;
+    const middleCRow = container.querySelector(`tr[data-pitch="${MIDDLE_C_PITCH}"]`) as HTMLElement;
+    if (middleCRow) {
+      container.scrollTop = computeCenteredScrollTop(middleCRow.offsetTop, middleCRow.offsetHeight, container.clientHeight);
+    }
   }
 }

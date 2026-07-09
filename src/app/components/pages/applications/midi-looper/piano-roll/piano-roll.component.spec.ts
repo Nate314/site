@@ -1,5 +1,16 @@
-import { PianoRollComponent } from "./piano-roll.component";
+import { PianoRollComponent, computeCenteredScrollTop } from "./piano-roll.component";
 import { Track } from "../models";
+
+describe("computeCenteredScrollTop", () => {
+  it("centers a row within the container's visible height", () => {
+    // container is 400px tall, row is 15px tall, positioned 500px down the full scrollable content
+    expect(computeCenteredScrollTop(500, 15, 400)).toBe(500 - 200 + 7.5);
+  });
+
+  it("returns a negative value when the row is near the very top (browser clamps this to 0)", () => {
+    expect(computeCenteredScrollTop(10, 15, 400)).toBe(10 - 200 + 7.5);
+  });
+});
 
 describe("PianoRollComponent", () => {
 

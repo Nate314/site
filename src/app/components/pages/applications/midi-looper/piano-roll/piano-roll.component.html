@@ -1,6 +1,6 @@
-<div class="piano-roll" style="overflow:auto; max-height:400px;">
+<div class="piano-roll" #scrollContainer style="overflow:auto; max-height:400px;">
   <table>
-    <tr *ngFor="let pitch of pitches">
+    <tr *ngFor="let pitch of pitches" [attr.data-pitch]="pitch">
       <td class="pitch-label">{{ pitch }} &middot; {{ pitchLabel(pitch) }}</td>
       <td *ngFor="let step of stepIndices()"
           [style.background]="isNoteActive(pitch, step) ? 'purple' : 'transparent'"
