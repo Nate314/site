@@ -228,6 +228,23 @@ describe("PianoRollComponent", () => {
     });
   });
 
+  describe("isCurrentStep", () => {
+    it("returns true when the step matches currentStepIndex", () => {
+      component.currentStepIndex = 4;
+      expect(component.isCurrentStep(4)).toBe(true);
+    });
+
+    it("returns false when the step does not match currentStepIndex", () => {
+      component.currentStepIndex = 4;
+      expect(component.isCurrentStep(5)).toBe(false);
+    });
+
+    it("returns false for every step when currentStepIndex is null (not playing)", () => {
+      component.currentStepIndex = null;
+      expect(component.isCurrentStep(0)).toBe(false);
+    });
+  });
+
   describe("lineClass", () => {
     beforeEach(() => {
       component.timeSignatureNumerator = 64;

@@ -225,6 +225,32 @@ describe("MidiLooperComponent", () => {
       expect(component.isPlaying).toBe(true);
       expect(component.isRecording).toBe(true);
     });
+
+    it("clears the current step index on stop", () => {
+      component.play();
+      component.currentStepIndex = 5;
+      component.stop();
+      expect(component.currentStepIndex).toBeNull();
+    });
+  });
+
+  describe("updatePlayhead", () => {
+    it("computes the current step index from elapsed time since the transport started", () => {
+      component.project.tempo = 120; // 2 beats/sec
+      component.gridResolutionStepsPerBeat = 4; // 4 steps/beat
+      component.transportStartMs = performance.now() - 500; // 0.5s elapsed => 1 beat => step 4
+      component.updatePlayhead();
+      expect(component.currentStepIndex).toBe(4);
+    });
+
+    it("wraps the step index around the selected track's loop length", () => {
+      component.project.tracks[0].loopLengthBeats = 1; // 1-beat loop
+      component.project.tempo = 120; // 2 beats/sec => 1 beat every 0.5s
+      component.gridResolutionStepsPerBeat = 4;
+      component.transportStartMs = performance.now() - 750; // 1.5 beats elapsed, wraps to 0.5 beats into the loop
+      component.updatePlayhead();
+      expect(component.currentStepIndex).toBe(2); // 0.5 beats * 4 steps/beat
+    });
   });
 
   describe("onTempoChanged", () => {

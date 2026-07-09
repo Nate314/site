@@ -39,6 +39,7 @@ export class PianoRollComponent implements AfterViewInit {
   @Input() gridResolutionStepsPerBeat: number = 4;
   @Input() timeSignatureNumerator: number = 4;
   @Input() timeSignatureDenominator: number = 4;
+  @Input() currentStepIndex: number | null = null;
 
   @ViewChild("scrollContainer") scrollContainer: ElementRef<HTMLDivElement>;
 
@@ -106,6 +107,10 @@ export class PianoRollComponent implements AfterViewInit {
     const beatInterval = beatLineIntervalBeats(this.timeSignatureDenominator);
     if (isBeatLine(startBeat, beatInterval)) return "beat";
     return "normal";
+  }
+
+  isCurrentStep(stepIndex: number): boolean {
+    return this.currentStepIndex === stepIndex;
   }
 
   pitchLabel(pitch: number): string {

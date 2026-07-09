@@ -3,10 +3,12 @@
     <tr *ngFor="let pitch of pitches" [attr.data-pitch]="pitch">
       <td class="pitch-label">{{ pitch }} &middot; {{ pitchLabel(pitch) }}</td>
       <td *ngFor="let step of stepIndices()"
-          [style.background]="isNoteActive(pitch, step) ? 'purple' : 'transparent'"
+          [style.background]="isNoteActive(pitch, step) ? 'purple' : (isCurrentStep(step) ? 'rgba(255, 200, 0, 0.25)' : 'transparent')"
           [style.border-left-width.px]="isConnectedToPrevious(pitch, step) ? 0 : (lineClass(step) === 'measure' ? 5 : (lineClass(step) === 'beat' ? 2 : 1))"
           [style.border-left-color]="lineClass(step) === 'normal' ? '#ccc' : '#333'"
-          style="border-left-style:solid; border-top:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc; width:16px; height:14px; cursor:pointer; user-select:none;"
+          [style.border-top]="isCurrentStep(step) ? '2px solid orange' : '1px solid #ccc'"
+          [style.border-bottom]="isCurrentStep(step) ? '2px solid orange' : '1px solid #ccc'"
+          style="border-left-style:solid; border-right:1px solid #ccc; width:16px; height:14px; cursor:pointer; user-select:none;"
           (mousedown)="startDrag(pitch, step)"
           (mouseenter)="continueDrag(pitch, step)">
       </td>

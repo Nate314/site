@@ -14,6 +14,7 @@ export class MidiLooperAudioService {
   private nextWindowStart = 0;
   private tempo = 120;
   private tracks: Track[] = [];
+  private activeVoices: { osc: OscillatorNode; gain: GainNode }[] = [];
 
   private readonly lookaheadMs = 25;
   private readonly scheduleAheadSec = 0.1;
@@ -54,6 +55,7 @@ export class MidiLooperAudioService {
       clearInterval(this.schedulerTimer);
       this.schedulerTimer = null;
     }
+    this.silenceActiveVoices();
   }
 
   setTempo(tempo: number): void {
@@ -99,7 +101,30 @@ export class MidiLooperAudioService {
     gain.gain.linearRampToValueAtTime(0, when + durationSec);
 
     osc.connect(gain).connect(this.ensureMasterGain());
+    const voice = { osc, gain };
+    this.activeVoices.push(voice);
+    osc.onended = () => {
+      const i = this.activeVoices.indexOf(voice);
+      if (i >= 0) this.activeVoices.splice(i, 1);
+    };
     osc.start(when);
     osc.stop(when + durationSec + 0.02);
+  }
+
+  /** Immediately silences every currently-sounding note, instead of letting
+   *  already-scheduled notes ring out to their natural end. */
+  private silenceActiveVoices(): void {
+    const ctx = this.ensureContext();
+    const now = ctx.currentTime;
+    for (const voice of this.activeVoices) {
+      try {
+        voice.gain.gain.cancelScheduledValues(now);
+        voice.gain.gain.setValueAtTime(0, now);
+        voice.osc.stop(now);
+      } catch {
+        // the oscillator may already have stopped naturally - nothing to do
+      }
+    }
+    this.activeVoices = [];
   }
 }
