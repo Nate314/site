@@ -1,5 +1,5 @@
 import { of } from "rxjs";
-import { MidiLooperComponent } from "./midi-looper.component";
+import { MidiLooperComponent, STORAGE_KEY } from "./midi-looper.component";
 import { MidiLooperAudioService } from "./midi-looper-audio.service";
 import { WebMidiService } from "./web-midi.service";
 import { MidiLooperFileService, InvalidProjectFileError } from "./midi-looper-file.service";
@@ -11,20 +11,103 @@ describe("MidiLooperComponent", () => {
   let webMidiService: jasmine.SpyObj<WebMidiService>;
   let fileService: jasmine.SpyObj<MidiLooperFileService>;
 
+  function createComponent(): MidiLooperComponent {
+    const c = new MidiLooperComponent(audioService, webMidiService, fileService, { detectChanges: () => { } } as any);
+    c.ngOnInit();
+    return c;
+  }
+
   beforeEach(() => {
+    localStorage.removeItem(STORAGE_KEY);
     audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo", "setVolume"]);
     webMidiService = jasmine.createSpyObj("WebMidiService", ["isSupported", "connect", "notes"]);
     webMidiService.isSupported.and.returnValue(false);
     webMidiService.notes.and.returnValue(of());
-    fileService = jasmine.createSpyObj("MidiLooperFileService", ["exportProject", "importProject"]);
+    fileService = jasmine.createSpyObj("MidiLooperFileService", ["exportProject", "importProject", "parseProject"]);
 
-    component = new MidiLooperComponent(audioService, webMidiService, fileService, { detectChanges: () => { } } as any);
-    component.ngOnInit();
+    component = createComponent();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem(STORAGE_KEY);
   });
 
   it("is created with one default track selected", () => {
     expect(component.project.tracks.length).toBe(1);
     expect(component.selectedTrackIndex).toBe(0);
+  });
+
+  it("defaults volume to 0.75 and applies it to the audio service on init", () => {
+    expect(component.volume).toBe(0.75);
+    expect(audioService.setVolume).toHaveBeenCalledWith(0.75);
+  });
+
+  describe("persistence", () => {
+    it("saves the project, volume, and settings to localStorage after a change", () => {
+      component.onVolumeChanged(0.4);
+      component.onGridResolutionChanged(8);
+      component.onTimeSignatureNumeratorChanged(3);
+      component.onTimeSignatureDenominatorChanged(8);
+      component.onKeyboardOctaveCountChanged(3);
+      component.addTrack();
+
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) as string);
+      expect(saved.volume).toBe(0.4);
+      expect(saved.gridResolutionStepsPerBeat).toBe(8);
+      expect(saved.timeSignatureNumerator).toBe(3);
+      expect(saved.timeSignatureDenominator).toBe(8);
+      expect(saved.keyboardOctaveCount).toBe(3);
+      expect(saved.project.tracks.length).toBe(2);
+    });
+
+    it("loads a previously saved volume and settings on init", () => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        volume: 0.2,
+        gridResolutionStepsPerBeat: 2,
+        timeSignatureNumerator: 6,
+        timeSignatureDenominator: 8,
+        keyboardOctaveCount: 4
+      }));
+
+      const reloaded = createComponent();
+
+      expect(reloaded.volume).toBe(0.2);
+      expect(reloaded.gridResolutionStepsPerBeat).toBe(2);
+      expect(reloaded.timeSignatureNumerator).toBe(6);
+      expect(reloaded.timeSignatureDenominator).toBe(8);
+      expect(reloaded.keyboardOctaveCount).toBe(4);
+      expect(audioService.setVolume).toHaveBeenCalledWith(0.2);
+    });
+
+    it("loads a previously saved project on init, validating it via the file service", () => {
+      const savedProject = { tempo: 90, tracks: [{ name: "Saved", instrument: "square" as const, loopLengthBeats: 8, notes: [] }] };
+      fileService.parseProject.and.returnValue(savedProject);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ project: savedProject }));
+
+      const reloaded = createComponent();
+
+      expect(fileService.parseProject).toHaveBeenCalledWith(JSON.stringify(savedProject));
+      expect(reloaded.project).toBe(savedProject);
+    });
+
+    it("falls back to the default project when the saved project fails validation", () => {
+      fileService.parseProject.and.throwError(new InvalidProjectFileError("bad saved project"));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ project: { tempo: -1, tracks: "not an array" } }));
+
+      const reloaded = createComponent();
+
+      expect(reloaded.project.tracks.length).toBe(1);
+      expect(reloaded.project.tracks[0].name).toBe("Track 1");
+    });
+
+    it("ignores corrupted localStorage content and falls back to defaults", () => {
+      localStorage.setItem(STORAGE_KEY, "not valid json{{{");
+
+      const reloaded = createComponent();
+
+      expect(reloaded.volume).toBe(0.75);
+      expect(reloaded.project.tracks.length).toBe(1);
+    });
   });
 
   describe("addTrack / removeTrack", () => {

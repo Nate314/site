@@ -3,7 +3,18 @@ import { Instrument, Project } from "./models";
 import { quantizeBeat, wrapToLoop } from "./quantize";
 import { MidiLooperAudioService } from "./midi-looper-audio.service";
 import { WebMidiService } from "./web-midi.service";
-import { MidiLooperFileService } from "./midi-looper-file.service";
+import { InvalidProjectFileError, MidiLooperFileService } from "./midi-looper-file.service";
+
+export const STORAGE_KEY = "midi-looper-state";
+
+interface PersistedState {
+  project: Project;
+  volume: number;
+  gridResolutionStepsPerBeat: number;
+  timeSignatureNumerator: number;
+  timeSignatureDenominator: number;
+  keyboardOctaveCount: number;
+}
 
 @Component({
   standalone: false,
@@ -18,7 +29,7 @@ export class MidiLooperComponent implements OnInit {
   timeSignatureNumerator: number = 4;
   timeSignatureDenominator: number = 4;
   keyboardOctaveCount: number = 2;
-  volume: number = 1;
+  volume: number = 0.75;
 
   isPlaying: boolean = false;
   isRecording: boolean = false;
@@ -42,6 +53,8 @@ export class MidiLooperComponent implements OnInit {
       tracks: [{ name: "Track 1", instrument: "sine", loopLengthBeats: 16, notes: [] }]
     };
     this.selectedTrackIndex = 0;
+    this.loadState();
+    this.audioService.setVolume(this.volume);
 
     this.midiSupported = this.webMidi.isSupported();
     if (this.midiSupported) {
@@ -63,6 +76,7 @@ export class MidiLooperComponent implements OnInit {
       notes: []
     });
     this.selectedTrackIndex = this.project.tracks.length - 1;
+    this.saveState();
     this.cdr.detectChanges();
   }
 
@@ -74,16 +88,19 @@ export class MidiLooperComponent implements OnInit {
     } else if (this.selectedTrackIndex >= this.project.tracks.length) {
       this.selectedTrackIndex = this.project.tracks.length - 1;
     }
+    this.saveState();
     this.cdr.detectChanges();
   }
 
   onInstrumentChanged(event: { index: number; instrument: Instrument }): void {
     this.project.tracks[event.index].instrument = event.instrument;
+    this.saveState();
     this.cdr.detectChanges();
   }
 
   onLoopLengthChanged(event: { index: number; loopLengthBeats: number }): void {
     this.project.tracks[event.index].loopLengthBeats = event.loopLengthBeats;
+    this.saveState();
     this.cdr.detectChanges();
   }
 
@@ -100,6 +117,7 @@ export class MidiLooperComponent implements OnInit {
         velocity: 100
       });
     }
+    this.saveState();
     this.cdr.detectChanges();
   }
 
@@ -112,6 +130,7 @@ export class MidiLooperComponent implements OnInit {
     if (this.isRecording) {
       const beat = quantizeBeat(wrapToLoop(this.currentBeat(), track.loopLengthBeats), this.gridResolutionStepsPerBeat);
       track.notes.push({ pitch, startBeat: beat, durationBeats: 1 / this.gridResolutionStepsPerBeat, velocity: 100 });
+      this.saveState();
     }
     this.cdr.detectChanges();
   }
@@ -134,6 +153,7 @@ export class MidiLooperComponent implements OnInit {
   onVolumeChanged(volume: number): void {
     this.volume = volume;
     this.audioService.setVolume(volume);
+    this.saveState();
   }
 
   onTempoChanged(tempo: number): void {
@@ -141,7 +161,28 @@ export class MidiLooperComponent implements OnInit {
     if (this.isPlaying) {
       this.audioService.setTempo(tempo);
     }
+    this.saveState();
     this.cdr.detectChanges();
+  }
+
+  onGridResolutionChanged(gridResolutionStepsPerBeat: number): void {
+    this.gridResolutionStepsPerBeat = gridResolutionStepsPerBeat;
+    this.saveState();
+  }
+
+  onTimeSignatureNumeratorChanged(timeSignatureNumerator: number): void {
+    this.timeSignatureNumerator = timeSignatureNumerator;
+    this.saveState();
+  }
+
+  onTimeSignatureDenominatorChanged(timeSignatureDenominator: number): void {
+    this.timeSignatureDenominator = timeSignatureDenominator;
+    this.saveState();
+  }
+
+  onKeyboardOctaveCountChanged(keyboardOctaveCount: number): void {
+    this.keyboardOctaveCount = keyboardOctaveCount;
+    this.saveState();
   }
 
   toggleRecord(): void {
@@ -160,6 +201,7 @@ export class MidiLooperComponent implements OnInit {
     try {
       this.project = await this.fileService.importProject(file);
       this.selectedTrackIndex = 0;
+      this.saveState();
     } catch (err) {
       this.importError = err instanceof Error ? err.message : "Failed to import file.";
     }
@@ -177,5 +219,51 @@ export class MidiLooperComponent implements OnInit {
   private currentBeat(): number {
     const elapsedMs = performance.now() - this.transportStartMs;
     return (elapsedMs / 1000) * (this.project.tempo / 60);
+  }
+
+  private saveState(): void {
+    const state: PersistedState = {
+      project: this.project,
+      volume: this.volume,
+      gridResolutionStepsPerBeat: this.gridResolutionStepsPerBeat,
+      timeSignatureNumerator: this.timeSignatureNumerator,
+      timeSignatureDenominator: this.timeSignatureDenominator,
+      keyboardOctaveCount: this.keyboardOctaveCount
+    };
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      // localStorage may be unavailable (e.g. private browsing quota) - persistence is best-effort
+    }
+  }
+
+  private loadState(): void {
+    let raw: string | null;
+    try {
+      raw = localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return;
+    }
+    if (!raw) return;
+
+    let parsed: Partial<PersistedState>;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return;
+    }
+
+    if (parsed.project) {
+      try {
+        this.project = this.fileService.parseProject(JSON.stringify(parsed.project));
+      } catch (err) {
+        if (!(err instanceof InvalidProjectFileError)) throw err;
+      }
+    }
+    if (typeof parsed.volume === "number") this.volume = Math.max(0, Math.min(1, parsed.volume));
+    if (typeof parsed.gridResolutionStepsPerBeat === "number") this.gridResolutionStepsPerBeat = parsed.gridResolutionStepsPerBeat;
+    if (typeof parsed.timeSignatureNumerator === "number") this.timeSignatureNumerator = parsed.timeSignatureNumerator;
+    if (typeof parsed.timeSignatureDenominator === "number") this.timeSignatureDenominator = parsed.timeSignatureDenominator;
+    if (typeof parsed.keyboardOctaveCount === "number") this.keyboardOctaveCount = parsed.keyboardOctaveCount;
   }
 }

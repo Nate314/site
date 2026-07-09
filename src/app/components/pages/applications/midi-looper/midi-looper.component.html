@@ -7,7 +7,7 @@
     <button type="button" (click)="stop()" [disabled]="!isPlaying">Stop</button>
     <button type="button" (click)="toggleRecord()">{{ isRecording ? "Stop Recording" : "Record" }}</button>
     <label>Grid:
-      <select [(ngModel)]="gridResolutionStepsPerBeat">
+      <select [ngModel]="gridResolutionStepsPerBeat" (ngModelChange)="onGridResolutionChanged($event)">
         <option [ngValue]="1">4th notes</option>
         <option [ngValue]="2">8th notes</option>
         <option [ngValue]="4">16th notes</option>
@@ -15,9 +15,9 @@
       </select>
     </label>
     <label>Time signature:
-      <input type="number" min="1" [(ngModel)]="timeSignatureNumerator" style="width:3em;" />
+      <input type="number" min="1" [ngModel]="timeSignatureNumerator" (ngModelChange)="onTimeSignatureNumeratorChanged($event)" style="width:3em;" />
       /
-      <select [(ngModel)]="timeSignatureDenominator">
+      <select [ngModel]="timeSignatureDenominator" (ngModelChange)="onTimeSignatureDenominatorChanged($event)">
         <option [ngValue]="1">1</option>
         <option [ngValue]="2">2</option>
         <option [ngValue]="4">4</option>
@@ -27,7 +27,7 @@
       </select>
     </label>
     <label>Keyboard octaves:
-      <input type="number" min="1" max="6" [(ngModel)]="keyboardOctaveCount" style="width:3em;" />
+      <input type="number" min="1" max="6" [ngModel]="keyboardOctaveCount" (ngModelChange)="onKeyboardOctaveCountChanged($event)" style="width:3em;" />
     </label>
     <label>Volume:
       <input type="range" min="0" max="1" step="0.01" [ngModel]="volume" (ngModelChange)="onVolumeChanged($event)" />
