@@ -387,6 +387,12 @@
                   "selector": "app-html-sandbox"
                 },
                 {
+                  "description": "MidiLooper is a multi-track piano-roll looper. Draw notes on the grid, play them with the on-screen keyboard, or record live input from a MIDI controller, then loop and layer tracks over each other. Export your composition as a JSON file and import it again later.",
+                  "file": "webapplications/midilooper",
+                  "name": "MidiLooper",
+                  "selector": "app-midi-looper"
+                },
+                {
                   "description": "Multiplication Table is pretty much self-explanatory. Enter a number between 0 and 120 and a multiplication table will be generated with that size.",
                   "file": "webapplications/multiplicationtable",
                   "name": "MultiplicationTable",
