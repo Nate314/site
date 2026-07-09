@@ -13,8 +13,9 @@
       </button>
     </div>
     <button type="button" *ngFor="let key of blackKeys"
-      [style.left.%]="blackKeyLeftPercent(key.pitch)"
-      style="position:absolute; top:0; width:5.5%; height:85px; background:black; color:white; border:1px solid #333; border-radius:0 0 3px 3px; z-index:2; display:flex; align-items:flex-end; justify-content:center; padding-bottom:4px; font-size:9px;"
+      [style.left.px]="blackKeyLeftPx(key.pitch)"
+      [style.width.px]="blackKeyWidthPx"
+      style="position:absolute; top:0; height:85px; background:black; color:white; border:1px solid #333; border-radius:0 0 3px 3px; z-index:2; display:flex; align-items:flex-end; justify-content:center; padding-bottom:4px; font-size:9px;"
       (mousedown)="press(key.pitch)" (mouseup)="release(key.pitch)" (mouseleave)="release(key.pitch)">
       {{ key.label }}
     </button>

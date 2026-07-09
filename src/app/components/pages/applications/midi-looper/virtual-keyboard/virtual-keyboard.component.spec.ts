@@ -1,6 +1,6 @@
-import { VirtualKeyboardComponent, computeBlackKeyLeftPercent } from "./virtual-keyboard.component";
+import { VirtualKeyboardComponent, computeBlackKeyLeftPx } from "./virtual-keyboard.component";
 
-describe("computeBlackKeyLeftPercent", () => {
+describe("computeBlackKeyLeftPx", () => {
   const keys = [
     { pitch: 60, isBlack: false, label: "C4" },
     { pitch: 61, isBlack: true, label: "C#4/Db4" },
@@ -9,15 +9,21 @@ describe("computeBlackKeyLeftPercent", () => {
     { pitch: 64, isBlack: false, label: "E4" }
   ];
 
-  it("positions the first black key right after the first white key", () => {
-    // 2 white keys before it out of... wait, only 1 white key (C4) precedes C#4
-    const whiteKeyWidth = 100 / 3; // 3 white keys in this sample: C4, D4, E4
-    expect(computeBlackKeyLeftPercent(keys, 61, 5.5)).toBeCloseTo(1 * whiteKeyWidth - 2.75, 5);
+  it("positions the first black key right after the first white key, independent of total key count", () => {
+    // 1 white key (C4) precedes C#4
+    expect(computeBlackKeyLeftPx(keys, 61, 44, 26)).toBe(1 * 44 - 26 / 2);
   });
 
   it("positions a later black key after all white keys preceding it", () => {
-    const whiteKeyWidth = 100 / 3;
-    expect(computeBlackKeyLeftPercent(keys, 63, 5.5)).toBeCloseTo(2 * whiteKeyWidth - 2.75, 5);
+    // 2 white keys (C4, D4) precede D#4
+    expect(computeBlackKeyLeftPx(keys, 63, 44, 26)).toBe(2 * 44 - 26 / 2);
+  });
+
+  it("stays a fixed size/position relative to a fixed white-key width, regardless of how many keys are shown", () => {
+    // Same white-key width (44px) as above, but a much longer keys array (more octaves) —
+    // the black key's position must not change just because the total range grew.
+    const manyKeys = [...keys, ...keys.map(k => ({ ...k, pitch: k.pitch + 12 }))];
+    expect(computeBlackKeyLeftPx(manyKeys, 61, 44, 26)).toBe(1 * 44 - 26 / 2);
   });
 });
 

@@ -7,19 +7,20 @@ interface KeyDef {
 }
 
 const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
-const DEFAULT_BLACK_KEY_WIDTH_PERCENT = 5.5;
 
-/** Horizontal position (as a % of the white-key row's width) for a black key,
- *  centered over the boundary between the white keys on either side of it. */
-export function computeBlackKeyLeftPercent(
+/** Horizontal position (in px) for a black key, centered over the boundary
+ *  between the white keys on either side of it. Fixed-pixel (not percentage)
+ *  so a black key's size/position stays constant regardless of how many
+ *  octaves are shown — only the fixed white-key width matters. */
+export function computeBlackKeyLeftPx(
   keys: KeyDef[],
   pitch: number,
-  blackKeyWidthPercent: number = DEFAULT_BLACK_KEY_WIDTH_PERCENT
+  whiteKeyWidthPx: number,
+  blackKeyWidthPx: number
 ): number {
   const whiteKeys = keys.filter(k => !k.isBlack);
   const whiteKeysBefore = whiteKeys.filter(k => k.pitch < pitch).length;
-  const whiteKeyWidthPercent = 100 / whiteKeys.length;
-  return whiteKeysBefore * whiteKeyWidthPercent - blackKeyWidthPercent / 2;
+  return whiteKeysBefore * whiteKeyWidthPx - blackKeyWidthPx / 2;
 }
 
 @Component({
@@ -36,6 +37,7 @@ export class VirtualKeyboardComponent {
   @Output() noteOff = new EventEmitter<number>();
 
   readonly whiteKeyWidthPx = 44;
+  readonly blackKeyWidthPx = 26;
 
   get keys(): KeyDef[] {
     const basePitch = (this.baseOctave + 1) * 12; // MIDI pitch of C in this octave
@@ -62,8 +64,8 @@ export class VirtualKeyboardComponent {
     return this.whiteKeys.length * this.whiteKeyWidthPx;
   }
 
-  blackKeyLeftPercent(pitch: number): number {
-    return computeBlackKeyLeftPercent(this.keys, pitch);
+  blackKeyLeftPx(pitch: number): number {
+    return computeBlackKeyLeftPx(this.keys, pitch, this.whiteKeyWidthPx, this.blackKeyWidthPx);
   }
 
   shiftOctave(delta: number): void {
