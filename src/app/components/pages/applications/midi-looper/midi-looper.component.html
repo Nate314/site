@@ -1,0 +1,40 @@
+<div class="midi-looper">
+  <div class="transport" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+    <label>Tempo (BPM):
+      <input type="number" min="20" max="300" [(ngModel)]="project.tempo" />
+    </label>
+    <button type="button" (click)="play()" [disabled]="isPlaying">Play</button>
+    <button type="button" (click)="stop()" [disabled]="!isPlaying">Stop</button>
+    <button type="button" (click)="toggleRecord()">{{ isRecording ? "Stop Recording" : "Record" }}</button>
+    <label>Grid:
+      <select [(ngModel)]="gridResolutionStepsPerBeat">
+        <option [ngValue]="1">4th notes</option>
+        <option [ngValue]="2">8th notes</option>
+        <option [ngValue]="4">16th notes</option>
+        <option [ngValue]="8">32nd notes</option>
+      </select>
+    </label>
+    <button type="button" (click)="exportProject()">Export</button>
+    <input type="file" accept="application/json" (change)="handleFileInput($event)" />
+    <span *ngIf="importError" style="color:red;">{{ importError }}</span>
+    <span *ngIf="!midiSupported">Live MIDI input is not supported in this browser (try Chrome or Edge).</span>
+  </div>
+
+  <app-track-list *ngIf="project"
+    [tracks]="project.tracks"
+    [selectedIndex]="selectedTrackIndex"
+    (selectedIndexChange)="selectedTrackIndex = $event"
+    (trackAdded)="addTrack()"
+    (trackRemoved)="removeTrack($event)"
+    (instrumentChanged)="onInstrumentChanged($event)"
+    (loopLengthChanged)="onLoopLengthChanged($event)">
+  </app-track-list>
+
+  <app-piano-roll *ngIf="project && project.tracks[selectedTrackIndex]"
+    [track]="project.tracks[selectedTrackIndex]"
+    [gridResolutionStepsPerBeat]="gridResolutionStepsPerBeat"
+    (noteToggled)="onGridToggle($event)">
+  </app-piano-roll>
+
+  <app-virtual-keyboard (noteOn)="onLiveNoteOn($event)"></app-virtual-keyboard>
+</div>
