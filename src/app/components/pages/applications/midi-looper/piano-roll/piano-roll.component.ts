@@ -71,6 +71,11 @@ export class PianoRollComponent implements AfterViewInit {
       n.pitch === pitch && quantizeBeat(n.startBeat, this.gridResolutionStepsPerBeat) === startBeat);
   }
 
+  isConnectedToPrevious(pitch: number, stepIndex: number): boolean {
+    if (stepIndex <= 0) return false;
+    return this.isNoteActive(pitch, stepIndex - 1) && this.isNoteActive(pitch, stepIndex);
+  }
+
   toggleCell(pitch: number, stepIndex: number): void {
     this.noteToggled.emit({ pitch, startBeat: this.stepStartBeat(stepIndex) });
   }

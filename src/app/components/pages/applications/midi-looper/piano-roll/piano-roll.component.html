@@ -4,7 +4,7 @@
       <td class="pitch-label">{{ pitch }} &middot; {{ pitchLabel(pitch) }}</td>
       <td *ngFor="let step of stepIndices()"
           [style.background]="isNoteActive(pitch, step) ? 'purple' : 'transparent'"
-          [style.border-left-width.px]="lineClass(step) === 'measure' ? 5 : (lineClass(step) === 'beat' ? 2 : 1)"
+          [style.border-left-width.px]="isConnectedToPrevious(pitch, step) ? 0 : (lineClass(step) === 'measure' ? 5 : (lineClass(step) === 'beat' ? 2 : 1))"
           [style.border-left-color]="lineClass(step) === 'normal' ? '#ccc' : '#333'"
           style="border-left-style:solid; border-top:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc; width:16px; height:14px; cursor:pointer; user-select:none;"
           (mousedown)="startDrag(pitch, step)"

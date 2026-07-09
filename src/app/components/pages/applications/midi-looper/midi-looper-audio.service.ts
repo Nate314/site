@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Instrument, Track } from "./models";
-import { computeNoteOccurrences, pitchToFrequency } from "./scheduling";
+import { computeNoteOccurrences, mergeConnectedNotes, pitchToFrequency } from "./scheduling";
 
 @Injectable({
   providedIn: "root"
@@ -59,7 +59,7 @@ export class MidiLooperAudioService {
     const windowEnd = elapsed + this.scheduleAheadSec;
     if (windowEnd <= windowStart) return;
     for (const track of this.tracks) {
-      for (const note of track.notes) {
+      for (const note of mergeConnectedNotes(track.notes)) {
         const times = computeNoteOccurrences(note.startBeat, track.loopLengthBeats, this.tempo, windowStart, windowEnd);
         const durationSec = (note.durationBeats / this.tempo) * 60;
         for (const t of times) {

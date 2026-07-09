@@ -205,6 +205,29 @@ describe("PianoRollComponent", () => {
     });
   });
 
+  describe("isConnectedToPrevious", () => {
+    it("returns false for the first step in the row (no previous step)", () => {
+      expect(component.isConnectedToPrevious(60, 0)).toBe(false);
+    });
+
+    it("returns false when the previous cell at that pitch is empty", () => {
+      track.notes.push({ pitch: 60, startBeat: 0.25, durationBeats: 0.25, velocity: 100 });
+      expect(component.isConnectedToPrevious(60, 1)).toBe(false);
+    });
+
+    it("returns true when both this cell and the previous cell at that pitch are active", () => {
+      track.notes.push({ pitch: 60, startBeat: 0, durationBeats: 0.25, velocity: 100 });
+      track.notes.push({ pitch: 60, startBeat: 0.25, durationBeats: 0.25, velocity: 100 });
+      expect(component.isConnectedToPrevious(60, 1)).toBe(true);
+    });
+
+    it("returns false when the previous cell is active but at a different pitch", () => {
+      track.notes.push({ pitch: 62, startBeat: 0, durationBeats: 0.25, velocity: 100 });
+      track.notes.push({ pitch: 60, startBeat: 0.25, durationBeats: 0.25, velocity: 100 });
+      expect(component.isConnectedToPrevious(60, 1)).toBe(false);
+    });
+  });
+
   describe("lineClass", () => {
     beforeEach(() => {
       component.timeSignatureNumerator = 64;

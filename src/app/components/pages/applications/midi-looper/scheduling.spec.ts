@@ -1,4 +1,5 @@
-import { computeNoteOccurrences, pitchToFrequency } from "./scheduling";
+import { computeNoteOccurrences, pitchToFrequency, mergeConnectedNotes } from "./scheduling";
+import { Note } from "./models";
 
 describe("computeNoteOccurrences", () => {
   it("returns the single occurrence inside a one-shot window", () => {
@@ -20,6 +21,41 @@ describe("computeNoteOccurrences", () => {
   it("does not return occurrences before the window start", () => {
     const times = computeNoteOccurrences(0, 4, 120, 2.5, 5.0);
     expect(times).toEqual([4.0]);
+  });
+});
+
+describe("mergeConnectedNotes", () => {
+  const note = (pitch: number, startBeat: number, durationBeats: number): Note =>
+    ({ pitch, startBeat, durationBeats, velocity: 100 });
+
+  it("merges two back-to-back notes of the same pitch into one longer note", () => {
+    const merged = mergeConnectedNotes([note(60, 0, 0.25), note(60, 0.25, 0.25)]);
+    expect(merged).toEqual([note(60, 0, 0.5)]);
+  });
+
+  it("merges a run of three or more back-to-back notes into one note", () => {
+    const merged = mergeConnectedNotes([note(60, 0, 0.25), note(60, 0.25, 0.25), note(60, 0.5, 0.25)]);
+    expect(merged).toEqual([note(60, 0, 0.75)]);
+  });
+
+  it("does not merge notes of the same pitch when there is a gap between them", () => {
+    const merged = mergeConnectedNotes([note(60, 0, 0.25), note(60, 1, 0.25)]);
+    expect(merged.length).toBe(2);
+    expect(merged).toEqual(jasmine.arrayContaining([note(60, 0, 0.25), note(60, 1, 0.25)]));
+  });
+
+  it("does not merge adjacent notes of different pitches", () => {
+    const merged = mergeConnectedNotes([note(60, 0, 0.25), note(62, 0.25, 0.25)]);
+    expect(merged.length).toBe(2);
+    expect(merged).toEqual(jasmine.arrayContaining([note(60, 0, 0.25), note(62, 0.25, 0.25)]));
+  });
+
+  it("leaves a single isolated note unchanged", () => {
+    expect(mergeConnectedNotes([note(60, 0, 0.25)])).toEqual([note(60, 0, 0.25)]);
+  });
+
+  it("returns an empty array for an empty input", () => {
+    expect(mergeConnectedNotes([])).toEqual([]);
   });
 });
 
