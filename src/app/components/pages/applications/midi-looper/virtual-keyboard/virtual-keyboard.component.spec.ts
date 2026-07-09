@@ -46,6 +46,18 @@ describe("VirtualKeyboardComponent", () => {
       const cSharp = component.keys[1];
       expect(cSharp).toEqual({ pitch: 61, isBlack: true, label: "C#4/Db4" });
     });
+
+    it("returns 12 keys for a single octave when octaveCount is 1", () => {
+      component.baseOctave = 4;
+      component.octaveCount = 1;
+      expect(component.keys.length).toBe(12);
+    });
+
+    it("returns 36 keys for three octaves when octaveCount is 3", () => {
+      component.baseOctave = 4;
+      component.octaveCount = 3;
+      expect(component.keys.length).toBe(36);
+    });
   });
 
   describe("shiftOctave", () => {

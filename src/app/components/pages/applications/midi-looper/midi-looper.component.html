@@ -26,6 +26,9 @@
         <option [ngValue]="32">32</option>
       </select>
     </label>
+    <label>Keyboard octaves:
+      <input type="number" min="1" max="6" [(ngModel)]="keyboardOctaveCount" style="width:3em;" />
+    </label>
     <button type="button" (click)="exportProject()">Export</button>
     <input type="file" accept="application/json" (change)="handleFileInput($event)" />
     <span *ngIf="importError" style="color:red;">{{ importError }}</span>
@@ -50,5 +53,5 @@
     (noteToggled)="onGridToggle($event)">
   </app-piano-roll>
 
-  <app-virtual-keyboard (noteOn)="onLiveNoteOn($event)"></app-virtual-keyboard>
+  <app-virtual-keyboard [octaveCount]="keyboardOctaveCount" (noteOn)="onLiveNoteOn($event)"></app-virtual-keyboard>
 </div>

@@ -30,6 +30,7 @@ export function computeBlackKeyLeftPercent(
 export class VirtualKeyboardComponent {
 
   @Input() baseOctave: number = 4;
+  @Input() octaveCount: number = 2;
 
   @Output() noteOn = new EventEmitter<number>();
   @Output() noteOff = new EventEmitter<number>();
@@ -37,7 +38,7 @@ export class VirtualKeyboardComponent {
   get keys(): KeyDef[] {
     const basePitch = (this.baseOctave + 1) * 12; // MIDI pitch of C in this octave
     const keys: KeyDef[] = [];
-    for (let i = 0; i < 24; i++) {
+    for (let i = 0; i < this.octaveCount * 12; i++) {
       const pitch = basePitch + i;
       const name = NOTE_NAMES[pitch % 12];
       const octave = Math.floor(pitch / 12) - 1;

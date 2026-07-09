@@ -17,6 +17,7 @@ export class MidiLooperComponent implements OnInit {
   gridResolutionStepsPerBeat: number = 4;
   timeSignatureNumerator: number = 4;
   timeSignatureDenominator: number = 4;
+  keyboardOctaveCount: number = 2;
 
   isPlaying: boolean = false;
   isRecording: boolean = false;
