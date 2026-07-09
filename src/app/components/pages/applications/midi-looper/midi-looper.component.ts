@@ -127,6 +127,14 @@ export class MidiLooperComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  onTempoChanged(tempo: number): void {
+    this.project.tempo = tempo;
+    if (this.isPlaying) {
+      this.audioService.setTempo(tempo);
+    }
+    this.cdr.detectChanges();
+  }
+
   toggleRecord(): void {
     if (!this.isPlaying) this.play();
     this.isRecording = !this.isRecording;
@@ -138,6 +146,7 @@ export class MidiLooperComponent implements OnInit {
   }
 
   async onImportFile(file: File): Promise<void> {
+    this.stop();
     this.importError = null;
     try {
       this.project = await this.fileService.importProject(file);

@@ -12,7 +12,7 @@ describe("MidiLooperComponent", () => {
   let fileService: jasmine.SpyObj<MidiLooperFileService>;
 
   beforeEach(() => {
-    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate"]);
+    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo"]);
     webMidiService = jasmine.createSpyObj("WebMidiService", ["isSupported", "connect", "notes"]);
     webMidiService.isSupported.and.returnValue(false);
     webMidiService.notes.and.returnValue(of());
@@ -115,6 +115,24 @@ describe("MidiLooperComponent", () => {
     });
   });
 
+  describe("onTempoChanged", () => {
+    it("updates the project tempo", () => {
+      component.onTempoChanged(140);
+      expect(component.project.tempo).toBe(140);
+    });
+
+    it("pushes the new tempo to the audio service while playing", () => {
+      component.play();
+      component.onTempoChanged(140);
+      expect(audioService.setTempo).toHaveBeenCalledWith(140);
+    });
+
+    it("does not call the audio service when not playing", () => {
+      component.onTempoChanged(140);
+      expect(audioService.setTempo).not.toHaveBeenCalled();
+    });
+  });
+
   describe("exportProject", () => {
     it("delegates to the file service", () => {
       component.exportProject();
@@ -138,6 +156,15 @@ describe("MidiLooperComponent", () => {
       await component.onImportFile({} as File);
       expect(component.project).toBe(originalProject);
       expect(component.importError).toBe("bad file");
+    });
+
+    it("stops playback before importing", async () => {
+      component.play();
+      const imported = { tempo: 90, tracks: [{ name: "Imported", instrument: "square" as const, loopLengthBeats: 8, notes: [] }] };
+      fileService.importProject.and.returnValue(Promise.resolve(imported));
+      await component.onImportFile({} as File);
+      expect(audioService.stop).toHaveBeenCalled();
+      expect(component.isPlaying).toBe(false);
     });
   });
 });

@@ -42,6 +42,10 @@ export class MidiLooperAudioService {
     }
   }
 
+  setTempo(tempo: number): void {
+    this.tempo = tempo;
+  }
+
   playImmediate(instrument: Instrument, pitch: number, velocity: number, durationSec: number = 0.3): void {
     const ctx = this.ensureContext();
     if (ctx.state === "suspended") ctx.resume();

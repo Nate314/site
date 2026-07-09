@@ -1,7 +1,7 @@
 <div class="midi-looper">
   <div class="transport" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
     <label>Tempo (BPM):
-      <input type="number" min="20" max="300" [(ngModel)]="project.tempo" />
+      <input type="number" min="20" max="300" [ngModel]="project.tempo" (ngModelChange)="onTempoChanged($event)" />
     </label>
     <button type="button" (click)="play()" [disabled]="isPlaying">Play</button>
     <button type="button" (click)="stop()" [disabled]="!isPlaying">Stop</button>
