@@ -3,6 +3,7 @@ import { MidiLooperComponent, STORAGE_KEY } from "./midi-looper.component";
 import { MidiLooperAudioService } from "./midi-looper-audio.service";
 import { WebMidiService } from "./web-midi.service";
 import { MidiLooperFileService, InvalidProjectFileError } from "./midi-looper-file.service";
+import { DEMO_PROJECT } from "./demo-project";
 
 describe("MidiLooperComponent", () => {
 
@@ -263,6 +264,65 @@ describe("MidiLooperComponent", () => {
       const imported = { tempo: 90, tracks: [{ name: "Imported", instrument: "square" as const, loopLengthBeats: 8, notes: [] }] };
       fileService.importProject.and.returnValue(Promise.resolve(imported));
       await component.onImportFile({} as File);
+      expect(audioService.stop).toHaveBeenCalled();
+      expect(component.isPlaying).toBe(false);
+    });
+  });
+
+  describe("loadDemo", () => {
+    it("does nothing when the user cancels the confirmation", () => {
+      spyOn(component, "confirmAction").and.returnValue(false);
+      const originalProject = component.project;
+      component.loadDemo();
+      expect(component.project).toBe(originalProject);
+    });
+
+    it("loads a copy of the demo project when confirmed", () => {
+      spyOn(component, "confirmAction").and.returnValue(true);
+      component.loadDemo();
+      expect(component.project).toEqual(DEMO_PROJECT);
+      expect(component.project).not.toBe(DEMO_PROJECT);
+      expect(component.selectedTrackIndex).toBe(0);
+    });
+
+    it("does not mutate the shared DEMO_PROJECT constant when the loaded copy is edited", () => {
+      spyOn(component, "confirmAction").and.returnValue(true);
+      component.loadDemo();
+      component.onGridToggle({ pitch: 100, startBeat: 0 });
+      expect(DEMO_PROJECT.tracks[0].notes.find(n => n.pitch === 100)).toBeUndefined();
+    });
+
+    it("stops playback before loading", () => {
+      component.play();
+      spyOn(component, "confirmAction").and.returnValue(true);
+      component.loadDemo();
+      expect(audioService.stop).toHaveBeenCalled();
+      expect(component.isPlaying).toBe(false);
+    });
+  });
+
+  describe("clearProject", () => {
+    it("does nothing when the user cancels the confirmation", () => {
+      spyOn(component, "confirmAction").and.returnValue(false);
+      const originalProject = component.project;
+      component.clearProject();
+      expect(component.project).toBe(originalProject);
+    });
+
+    it("resets to a single empty default track when confirmed", () => {
+      component.addTrack();
+      component.onGridToggle({ pitch: 60, startBeat: 0 });
+      spyOn(component, "confirmAction").and.returnValue(true);
+      component.clearProject();
+      expect(component.project.tracks.length).toBe(1);
+      expect(component.project.tracks[0].notes.length).toBe(0);
+      expect(component.selectedTrackIndex).toBe(0);
+    });
+
+    it("stops playback before clearing", () => {
+      component.play();
+      spyOn(component, "confirmAction").and.returnValue(true);
+      component.clearProject();
       expect(audioService.stop).toHaveBeenCalled();
       expect(component.isPlaying).toBe(false);
     });

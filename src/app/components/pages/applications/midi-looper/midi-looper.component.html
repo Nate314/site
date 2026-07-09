@@ -32,6 +32,8 @@
     <label>Volume:
       <input type="range" min="0" max="1" step="0.01" [ngModel]="volume" (ngModelChange)="onVolumeChanged($event)" />
     </label>
+    <button type="button" (click)="loadDemo()">Load Demo</button>
+    <button type="button" (click)="clearProject()">Clear</button>
     <button type="button" (click)="exportProject()">Export</button>
     <input type="file" accept="application/json" (change)="handleFileInput($event)" />
     <span *ngIf="importError" style="color:red;">{{ importError }}</span>

@@ -4,6 +4,7 @@ import { quantizeBeat, wrapToLoop } from "./quantize";
 import { MidiLooperAudioService } from "./midi-looper-audio.service";
 import { WebMidiService } from "./web-midi.service";
 import { InvalidProjectFileError, MidiLooperFileService } from "./midi-looper-file.service";
+import { DEMO_PROJECT } from "./demo-project";
 
 export const STORAGE_KEY = "midi-looper-state";
 
@@ -48,10 +49,7 @@ export class MidiLooperComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.project = {
-      tempo: 120,
-      tracks: [{ name: "Track 1", instrument: "sine", loopLengthBeats: 16, notes: [] }]
-    };
+    this.project = this.createDefaultProject();
     this.selectedTrackIndex = 0;
     this.loadState();
     this.audioService.setVolume(this.volume);
@@ -214,6 +212,36 @@ export class MidiLooperComponent implements OnInit {
       this.onImportFile(input.files[0]);
       input.value = "";
     }
+  }
+
+  /** Wrapped so tests can spy on it instead of the global window.confirm. */
+  confirmAction(message: string): boolean {
+    return window.confirm(message);
+  }
+
+  loadDemo(): void {
+    if (!this.confirmAction("Loading the demo will replace your current project. Are you sure?")) return;
+    this.stop();
+    this.project = JSON.parse(JSON.stringify(DEMO_PROJECT));
+    this.selectedTrackIndex = 0;
+    this.saveState();
+    this.cdr.detectChanges();
+  }
+
+  clearProject(): void {
+    if (!this.confirmAction("This will clear your current project. Are you sure?")) return;
+    this.stop();
+    this.project = this.createDefaultProject();
+    this.selectedTrackIndex = 0;
+    this.saveState();
+    this.cdr.detectChanges();
+  }
+
+  private createDefaultProject(): Project {
+    return {
+      tempo: 120,
+      tracks: [{ name: "Track 1", instrument: "sine", loopLengthBeats: 16, notes: [] }]
+    };
   }
 
   private currentBeat(): number {
