@@ -2,10 +2,17 @@
   <button type="button" (click)="shiftOctave(-1)">Octave -</button>
   <span>Octave: {{ baseOctave }}</span>
   <button type="button" (click)="shiftOctave(1)">Octave +</button>
-  <div class="keys" style="display:flex;">
-    <button type="button" *ngFor="let key of keys"
-      [style.background]="key.isBlack ? 'black' : 'white'"
-      [style.color]="key.isBlack ? 'white' : 'black'"
+  <div class="keys" style="position:relative; height:140px; user-select:none;">
+    <div style="display:flex; height:140px;">
+      <button type="button" *ngFor="let key of whiteKeys"
+        style="flex:1; min-width:0; background:white; color:black; border:1px solid #333; border-radius:0 0 4px 4px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-size:11px;"
+        (mousedown)="press(key.pitch)" (mouseup)="release(key.pitch)" (mouseleave)="release(key.pitch)">
+        {{ key.label }}
+      </button>
+    </div>
+    <button type="button" *ngFor="let key of blackKeys"
+      [style.left.%]="blackKeyLeftPercent(key.pitch)"
+      style="position:absolute; top:0; width:5.5%; height:85px; background:black; color:white; border:1px solid #333; border-radius:0 0 3px 3px; z-index:2; display:flex; align-items:flex-end; justify-content:center; padding-bottom:4px; font-size:9px;"
       (mousedown)="press(key.pitch)" (mouseup)="release(key.pitch)" (mouseleave)="release(key.pitch)">
       {{ key.label }}
     </button>

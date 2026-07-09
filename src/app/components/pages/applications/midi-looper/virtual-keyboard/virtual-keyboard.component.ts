@@ -7,6 +7,20 @@ interface KeyDef {
 }
 
 const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
+const DEFAULT_BLACK_KEY_WIDTH_PERCENT = 5.5;
+
+/** Horizontal position (as a % of the white-key row's width) for a black key,
+ *  centered over the boundary between the white keys on either side of it. */
+export function computeBlackKeyLeftPercent(
+  keys: KeyDef[],
+  pitch: number,
+  blackKeyWidthPercent: number = DEFAULT_BLACK_KEY_WIDTH_PERCENT
+): number {
+  const whiteKeys = keys.filter(k => !k.isBlack);
+  const whiteKeysBefore = whiteKeys.filter(k => k.pitch < pitch).length;
+  const whiteKeyWidthPercent = 100 / whiteKeys.length;
+  return whiteKeysBefore * whiteKeyWidthPercent - blackKeyWidthPercent / 2;
+}
 
 @Component({
   standalone: false,
@@ -31,6 +45,18 @@ export class VirtualKeyboardComponent {
       keys.push({ pitch, isBlack: name.includes("#"), label });
     }
     return keys;
+  }
+
+  get whiteKeys(): KeyDef[] {
+    return this.keys.filter(k => !k.isBlack);
+  }
+
+  get blackKeys(): KeyDef[] {
+    return this.keys.filter(k => k.isBlack);
+  }
+
+  blackKeyLeftPercent(pitch: number): number {
+    return computeBlackKeyLeftPercent(this.keys, pitch);
   }
 
   shiftOctave(delta: number): void {

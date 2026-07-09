@@ -1,4 +1,25 @@
-import { VirtualKeyboardComponent } from "./virtual-keyboard.component";
+import { VirtualKeyboardComponent, computeBlackKeyLeftPercent } from "./virtual-keyboard.component";
+
+describe("computeBlackKeyLeftPercent", () => {
+  const keys = [
+    { pitch: 60, isBlack: false, label: "C4" },
+    { pitch: 61, isBlack: true, label: "C#4/Db4" },
+    { pitch: 62, isBlack: false, label: "D4" },
+    { pitch: 63, isBlack: true, label: "D#4/Eb4" },
+    { pitch: 64, isBlack: false, label: "E4" }
+  ];
+
+  it("positions the first black key right after the first white key", () => {
+    // 2 white keys before it out of... wait, only 1 white key (C4) precedes C#4
+    const whiteKeyWidth = 100 / 3; // 3 white keys in this sample: C4, D4, E4
+    expect(computeBlackKeyLeftPercent(keys, 61, 5.5)).toBeCloseTo(1 * whiteKeyWidth - 2.75, 5);
+  });
+
+  it("positions a later black key after all white keys preceding it", () => {
+    const whiteKeyWidth = 100 / 3;
+    expect(computeBlackKeyLeftPercent(keys, 63, 5.5)).toBeCloseTo(2 * whiteKeyWidth - 2.75, 5);
+  });
+});
 
 describe("VirtualKeyboardComponent", () => {
 
