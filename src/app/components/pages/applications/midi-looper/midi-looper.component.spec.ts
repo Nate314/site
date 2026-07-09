@@ -45,6 +45,14 @@ describe("MidiLooperComponent", () => {
       expect(component.project.tracks.length).toBe(1);
       expect(component.selectedTrackIndex).toBe(0);
     });
+
+    it("shifts the selected index down when a track before it is removed", () => {
+      component.addTrack(); // now 2 tracks, selectedTrackIndex = 1
+      component.addTrack(); // now 3 tracks, selectedTrackIndex = 2
+      component.removeTrack(0); // remove the first track, which is before the selected one
+      expect(component.project.tracks.length).toBe(2);
+      expect(component.selectedTrackIndex).toBe(1); // was 2, should shift down by 1 since track 0 (before it) was removed
+    });
   });
 
   describe("onGridToggle", () => {

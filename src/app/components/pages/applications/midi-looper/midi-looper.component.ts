@@ -65,7 +65,9 @@ export class MidiLooperComponent implements OnInit {
   removeTrack(index: number): void {
     if (this.project.tracks.length <= 1) return;
     this.project.tracks.splice(index, 1);
-    if (this.selectedTrackIndex >= this.project.tracks.length) {
+    if (index < this.selectedTrackIndex) {
+      this.selectedTrackIndex--;
+    } else if (this.selectedTrackIndex >= this.project.tracks.length) {
       this.selectedTrackIndex = this.project.tracks.length - 1;
     }
     this.cdr.detectChanges();
