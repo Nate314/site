@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "../../../../../../node_modules/@angular/router";
-import { Location } from "../../../../../../node_modules/@angular/common";
+import { Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   standalone: false,
