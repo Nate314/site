@@ -20,7 +20,8 @@ describe("MidiLooperComponent", () => {
 
   beforeEach(() => {
     localStorage.removeItem(STORAGE_KEY);
-    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo", "setVolume"]);
+    audioService = jasmine.createSpyObj("MidiLooperAudioService", ["start", "stop", "playImmediate", "setTempo", "setVolume", "getElapsedSeconds"]);
+    audioService.getElapsedSeconds.and.returnValue(0);
     webMidiService = jasmine.createSpyObj("WebMidiService", ["isSupported", "connect", "notes"]);
     webMidiService.isSupported.and.returnValue(false);
     webMidiService.notes.and.returnValue(of());
@@ -198,7 +199,7 @@ describe("MidiLooperComponent", () => {
     it("records an overdubbed note onto the selected track when recording", () => {
       component.isPlaying = true;
       component.isRecording = true;
-      component.transportStartMs = performance.now();
+      audioService.getElapsedSeconds.and.returnValue(0);
       component.onLiveNoteOn(60);
       expect(component.project.tracks[0].notes.length).toBe(1);
     });
@@ -235,10 +236,10 @@ describe("MidiLooperComponent", () => {
   });
 
   describe("updatePlayhead", () => {
-    it("computes the current step index from elapsed time since the transport started", () => {
+    it("computes the current step index from the audio engine's own elapsed-time clock", () => {
       component.project.tempo = 120; // 2 beats/sec
       component.gridResolutionStepsPerBeat = 4; // 4 steps/beat
-      component.transportStartMs = performance.now() - 500; // 0.5s elapsed => 1 beat => step 4
+      audioService.getElapsedSeconds.and.returnValue(0.5); // 0.5s elapsed => 1 beat => step 4
       component.updatePlayhead();
       expect(component.currentStepIndex).toBe(4);
     });
@@ -247,7 +248,7 @@ describe("MidiLooperComponent", () => {
       component.project.tracks[0].loopLengthBeats = 1; // 1-beat loop
       component.project.tempo = 120; // 2 beats/sec => 1 beat every 0.5s
       component.gridResolutionStepsPerBeat = 4;
-      component.transportStartMs = performance.now() - 750; // 1.5 beats elapsed, wraps to 0.5 beats into the loop
+      audioService.getElapsedSeconds.and.returnValue(0.75); // 1.5 beats elapsed, wraps to 0.5 beats into the loop
       component.updatePlayhead();
       expect(component.currentStepIndex).toBe(2); // 0.5 beats * 4 steps/beat
     });

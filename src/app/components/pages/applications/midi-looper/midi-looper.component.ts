@@ -38,10 +38,6 @@ export class MidiLooperComponent implements OnInit {
   importError: string | null = null;
   currentStepIndex: number | null = null;
 
-  /** performance.now() timestamp when the transport last started, used to
-   *  compute the current beat position for overdub recording. */
-  transportStartMs: number = 0;
-
   private playheadTimer: ReturnType<typeof setInterval> | null = null;
   private readonly playheadUpdateIntervalMs = 50;
 
@@ -139,7 +135,6 @@ export class MidiLooperComponent implements OnInit {
 
   play(): void {
     if (this.isPlaying) return;
-    this.transportStartMs = performance.now();
     this.audioService.start(this.project.tracks, this.project.tempo);
     this.isPlaying = true;
     this.playheadTimer = setInterval(() => this.updatePlayhead(), this.playheadUpdateIntervalMs);
@@ -271,8 +266,7 @@ export class MidiLooperComponent implements OnInit {
   }
 
   private currentBeat(): number {
-    const elapsedMs = performance.now() - this.transportStartMs;
-    return (elapsedMs / 1000) * (this.project.tempo / 60);
+    return this.audioService.getElapsedSeconds() * (this.project.tempo / 60);
   }
 
   private saveState(): void {

@@ -62,6 +62,15 @@ export class MidiLooperAudioService {
     this.tempo = tempo;
   }
 
+  /** Elapsed time (seconds) since the transport last started, measured on the
+   *  same AudioContext clock the scheduler uses to place notes — the single
+   *  source of truth for "where the transport currently is", so callers
+   *  (e.g. a UI playhead) stay in sync with what's actually audible instead
+   *  of drifting against a separate wall-clock timer. */
+  getElapsedSeconds(): number {
+    return this.ensureContext().currentTime - this.startContextTime;
+  }
+
   playImmediate(instrument: Instrument, pitch: number, velocity: number, durationSec: number = 0.3): void {
     const ctx = this.ensureContext();
     if (ctx.state === "suspended") ctx.resume();
