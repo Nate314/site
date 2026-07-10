@@ -12,8 +12,9 @@ import {
   HomeComponent, VideosComponent, GithubProjectsComponent,
   // applications
   BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
-  GroupCreatorComponent, HtmlSandboxComponent, MultiplicationTableComponent, Say2Component,
-  TypingTestComponent, IFrameAppComponent, ApplicationsComponent,
+  GroupCreatorComponent, HtmlSandboxComponent, MidiLooperComponent, MultiplicationTableComponent,
+  PianoRollComponent, Say2Component, TrackListComponent, TypingTestComponent,
+  VirtualKeyboardComponent, IFrameAppComponent, ApplicationsComponent,
   // general components
   ListOfLinksComponent
 } from "./components/index";
@@ -39,6 +40,10 @@ import { DatabaseService } from "./services";
     HtmlSandboxComponent,
     TypingTestComponent,
     DtoConvertComponent,
+    MidiLooperComponent,
+    PianoRollComponent,
+    TrackListComponent,
+    VirtualKeyboardComponent,
     ListOfLinksComponent
   ],
   imports: [

@@ -1,0 +1,20 @@
+<div class="track-list">
+  <div *ngFor="let track of tracks; let i = index" style="display:flex; gap:8px; align-items:center;">
+    <button type="button" [style.fontWeight]="i === selectedIndex ? 'bold' : 'normal'" (click)="select(i)">
+      {{ track.name }}
+    </button>
+    <select [ngModel]="track.instrument" (ngModelChange)="changeInstrument(i, $event)">
+      <option *ngFor="let inst of instruments" [ngValue]="inst">{{ inst }}</option>
+    </select>
+    <label>
+      Loop length (beats):
+      <input type="number" min="1" [ngModel]="track.loopLengthBeats"
+        (ngModelChange)="changeLoopLength(i, $event)" />
+    </label>
+    <button type="button" (click)="removeTrack(i)" [disabled]="tracks.length <= 1">Remove</button>
+  </div>
+  <div style="display:flex; gap:8px; align-items:center;">
+    <input type="text" placeholder="Track name" [(ngModel)]="newTrackName" (keyup.enter)="addTrack()" />
+    <button type="button" (click)="addTrack()">+ Add Track</button>
+  </div>
+</div>
