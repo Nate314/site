@@ -3,7 +3,8 @@
     "home": {
       "name": "Home",
       "otherwebsites": {
-        "friends": [{
+        "friends": [
+          {
             "name": "Alex",
             "url": "https://alexwebberfrc.github.io/"
           },
@@ -36,7 +37,8 @@
             "url": "https://zachdeibert.github.io/"
           }
         ],
-        "youtube": [{
+        "youtube": [
+          {
             "name": "Be Smart",
             "url": "https://www.youtube.com/@besmart"
           },
@@ -145,7 +147,8 @@
             "url": "https://www.youtube.com/@Vsauce"
           }
         ],
-        "languages": [{
+        "languages": [
+          {
             "context": "work",
             "name": "Angular",
             "url": "https://en.wikipedia.org/wiki/Angular_(application_platform)"
@@ -221,7 +224,8 @@
             "url": "https://en.wikipedia.org/wiki/Express.js"
           }
         ],
-        "tools": [{
+        "tools": [
+          {
             "context": "personal",
             "name": "Windows",
             "url": "https://en.wikipedia.org/wiki/Microsoft_Windows"
@@ -278,10 +282,13 @@
           }
         ]
       },
-      "pages": [{
+      "pages": [
+        {
           "name": "Applications",
-          "subpages": [{
-              "apps": [{
+          "subpages": [
+            {
+              "apps": [
+                {
                   "description": "This is a Clock program written in Java. This application is pretty self-explanatory. When launched, an analog clock will be displayed with the current time. If you prefer digital, just click on the clock to toggle between analog and digital.",
                   "file": "Clock.jar",
                   "name": "Clock"
@@ -332,17 +339,12 @@
               "name": "JavaApplications"
             },
             {
-              "apps": [{
+              "apps": [
+                {
                   "description": "Betting Calculator can be used if you want to place bets on things and don't want to have to worry about the math. You can set up the number of things you are betting on and the number of humans that are placing bets, and then the winnings will be split proportionally between the players that placed bets on the thing that actually won.",
                   "file": "webapplications/bettingcalculator",
                   "name": "BettingCalculator",
                   "selector": "app-betting-calculator"
-                },
-                {
-                  "description": "Color Flux is an application that you could possibly use as a live background written in javascript. It just pulses between different colors continuously.",
-                  "file": "https://nate314.github.io/nathangawith/applications/webApplications/colorFlux.html",
-                  "name": "ColorFlux",
-                  "selector": "app-color-flux"
                 },
                 {
                   "description": "Converts dtos from C# to typescript and from typescript to C#",
@@ -358,19 +360,19 @@
                 },
                 {
                   "description": "I made this clone of Flappy Bird to learn react. You can learn react here (https://reactjs.org/).",
-                  "file": "https://nate314.github.io/react-games/flappyfinch",
+                  "file": "https://games.nathangawith.com/flappyfinch",
                   "name": "FlappyFinch",
                   "selector": "app-flappy-finch"
                 },
                 {
                   "description": "I made this simple animation to learn react. You can learn react here (https://reactjs.org/).",
-                  "file": "https://nate314.github.io/react-games/floatystars",
+                  "file": "https://games.nathangawith.com/floatystars",
                   "name": "FloatyStars",
                   "selector": "app-react-games"
                 },
                 {
                   "description": "I made this game to learn react. You can learn react here (https://reactjs.org/).",
-                  "file": "https://nate314.github.io/react-games/gameoflife",
+                  "file": "https://games.nathangawith.com/gameoflife",
                   "name": "GameOfLife",
                   "selector": "app-react-games"
                 },
@@ -406,7 +408,7 @@
                 },
                 {
                   "description": "I made this game to learn react. You can learn react here (https://reactjs.org/).",
-                  "file": "https://nate314.github.io/react-games/snake",
+                  "file": "https://games.nathangawith.com/snake",
                   "name": "Snake",
                   "selector": "app-react-games"
                 },
@@ -422,11 +424,13 @@
               "name": "WebApplications"
             },
             {
-              "apps": [{
-                "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azimuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet.",
-                "file": "LiveWallpaper.apk",
-                "name": "LiveWallpaper"
-              }],
+              "apps": [
+                {
+                  "description": "Live Wallpaper is my first fully functional android application that I have written. This live wallpaper changes color based on what direction your phone is facing using all three angles available (pitch, roll, and azimuth) from the standard accelerometer found in most phones. You can use this live wallpaper by downloading and installing the apk file and then selecting \"Live Wallpaper\" as your live wallpaper for your phone or tablet.",
+                  "file": "LiveWallpaper.apk",
+                  "name": "LiveWallpaper"
+                }
+              ],
               "description": "You can download any of these android applications by clicking on the name of the application below, or you can view a list of all of the applications and descriptions ",
               "link": "applications/android",
               "name": "AndroidApplications"
@@ -436,9 +440,11 @@
         },
         {
           "name": "OtherPages",
-          "subpages": [{
+          "subpages": [
+            {
               "name": "Videos",
-              "videos": [{
+              "videos": [
+                {
                   "description": "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving itself\". I accomplished this by taking a picture of the cube every quarter turn.",
                   "link": "https://www.youtube.com/embed/eBCUe4jSPQQ",
                   "title": "Timelapse - Cube"
@@ -482,13 +488,19 @@
                   "description": "This is a video demonstrating an elevator mechanism I designed and built for a project in my high school's PLTW (Project Lead The Way) class.",
                   "link": "https://www.youtube.com/embed/rmOcGzxN05U",
                   "title": "High School Vex Robotics Elevator Project"
+                },
+                {
+                  "description": "A video demonstration of a java program I wrote to view the screen and play Tetris through an NES emulator.",
+                  "link": "https://www.youtube.com/embed/zwWAG3Ii7w8",
+                  "title": "TetrisBot"
                 }
               ]
             },
             {
               "description": "Below are listed several of my projects on Github. You can view the README.md files here or click on the link to view the repository or you can visit my github page directly <a href=\"https://github.com/Nate314\">here</a>.",
               "name": "Github Projects",
-              "subpages": [{
+              "subpages": [
+                {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/NatePy/master/README.md",
                   "link": "https://github.com/Nate314/NatePy",
@@ -652,10 +664,7 @@
           "name": "How I Created This Website"
         }
       ],
-      "sections": [
-        "Site Map",
-        "Other Websites"
-      ],
+      "sections": ["Site Map", "Other Websites"],
       "subtitle": "my github website",
       "title": "Nathan Gawith"
     }
