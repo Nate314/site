@@ -51,6 +51,7 @@ describe("MidiLooperComponent", () => {
       component.onTimeSignatureNumeratorChanged(3);
       component.onTimeSignatureDenominatorChanged(8);
       component.onKeyboardOctaveCountChanged(3);
+      component.onKeyboardBaseOctaveChanged(5);
       component.addTrack();
 
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) as string);
@@ -59,6 +60,7 @@ describe("MidiLooperComponent", () => {
       expect(saved.timeSignatureNumerator).toBe(3);
       expect(saved.timeSignatureDenominator).toBe(8);
       expect(saved.keyboardOctaveCount).toBe(3);
+      expect(saved.keyboardBaseOctave).toBe(5);
       expect(saved.project.tracks.length).toBe(2);
     });
 
@@ -68,7 +70,8 @@ describe("MidiLooperComponent", () => {
         gridResolutionStepsPerBeat: 2,
         timeSignatureNumerator: 6,
         timeSignatureDenominator: 8,
-        keyboardOctaveCount: 4
+        keyboardOctaveCount: 4,
+        keyboardBaseOctave: 3
       }));
 
       const reloaded = createComponent();
@@ -78,6 +81,7 @@ describe("MidiLooperComponent", () => {
       expect(reloaded.timeSignatureNumerator).toBe(6);
       expect(reloaded.timeSignatureDenominator).toBe(8);
       expect(reloaded.keyboardOctaveCount).toBe(4);
+      expect(reloaded.keyboardBaseOctave).toBe(3);
       expect(audioService.setVolume).toHaveBeenCalledWith(0.2);
     });
 

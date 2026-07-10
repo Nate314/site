@@ -75,22 +75,28 @@ describe("VirtualKeyboardComponent", () => {
   });
 
   describe("shiftOctave", () => {
-    it("increases the base octave", () => {
+    it("emits baseOctaveChange with the increased octave", () => {
       component.baseOctave = 4;
+      const emitted: number[] = [];
+      component.baseOctaveChange.subscribe(o => emitted.push(o));
       component.shiftOctave(1);
-      expect(component.baseOctave).toBe(5);
+      expect(emitted).toEqual([5]);
     });
 
-    it("does not go below octave 0", () => {
+    it("does not emit when already at the lowest octave", () => {
       component.baseOctave = 0;
+      const emitted: number[] = [];
+      component.baseOctaveChange.subscribe(o => emitted.push(o));
       component.shiftOctave(-1);
-      expect(component.baseOctave).toBe(0);
+      expect(emitted).toEqual([]);
     });
 
-    it("does not go above octave 8", () => {
+    it("does not emit when already at the highest octave", () => {
       component.baseOctave = 8;
+      const emitted: number[] = [];
+      component.baseOctaveChange.subscribe(o => emitted.push(o));
       component.shiftOctave(1);
-      expect(component.baseOctave).toBe(8);
+      expect(emitted).toEqual([]);
     });
   });
 

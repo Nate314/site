@@ -15,6 +15,7 @@ interface PersistedState {
   timeSignatureNumerator: number;
   timeSignatureDenominator: number;
   keyboardOctaveCount: number;
+  keyboardBaseOctave: number;
 }
 
 @Component({
@@ -30,6 +31,7 @@ export class MidiLooperComponent implements OnInit {
   timeSignatureNumerator: number = 4;
   timeSignatureDenominator: number = 4;
   keyboardOctaveCount: number = 2;
+  keyboardBaseOctave: number = 4;
   volume: number = 0.75;
 
   isPlaying: boolean = false;
@@ -196,6 +198,11 @@ export class MidiLooperComponent implements OnInit {
     this.saveState();
   }
 
+  onKeyboardBaseOctaveChanged(keyboardBaseOctave: number): void {
+    this.keyboardBaseOctave = keyboardBaseOctave;
+    this.saveState();
+  }
+
   toggleRecord(): void {
     if (!this.isPlaying) this.play();
     this.isRecording = !this.isRecording;
@@ -276,7 +283,8 @@ export class MidiLooperComponent implements OnInit {
       gridResolutionStepsPerBeat: this.gridResolutionStepsPerBeat,
       timeSignatureNumerator: this.timeSignatureNumerator,
       timeSignatureDenominator: this.timeSignatureDenominator,
-      keyboardOctaveCount: this.keyboardOctaveCount
+      keyboardOctaveCount: this.keyboardOctaveCount,
+      keyboardBaseOctave: this.keyboardBaseOctave
     };
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -313,5 +321,6 @@ export class MidiLooperComponent implements OnInit {
     if (typeof parsed.timeSignatureNumerator === "number") this.timeSignatureNumerator = parsed.timeSignatureNumerator;
     if (typeof parsed.timeSignatureDenominator === "number") this.timeSignatureDenominator = parsed.timeSignatureDenominator;
     if (typeof parsed.keyboardOctaveCount === "number") this.keyboardOctaveCount = parsed.keyboardOctaveCount;
+    if (typeof parsed.keyboardBaseOctave === "number") this.keyboardBaseOctave = parsed.keyboardBaseOctave;
   }
 }

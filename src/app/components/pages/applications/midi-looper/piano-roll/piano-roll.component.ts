@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
-import { Track } from "../models";
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, SimpleChanges, ViewChild } from "@angular/core";
+import { Note, Track } from "../models";
 import { quantizeBeat } from "../quantize";
 
 const NOTE_NAMES = ["C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B"];
@@ -28,18 +28,34 @@ export function isMeasureLine(stepStartBeat: number, intervalBeats: number): boo
   return isBeatLine(stepStartBeat, intervalBeats);
 }
 
+/** The smallest pitch range, rounded out to full octave (C-to-B) boundaries,
+ *  that covers every note in the track — or null if the track has no notes
+ *  yet (a blank track has no "smart" range to compute). */
+export function computeSmartRange(notes: Note[]): { min: number; max: number } | null {
+  if (notes.length === 0) return null;
+  const pitches = notes.map(n => n.pitch);
+  const lowest = Math.min(...pitches);
+  const highest = Math.max(...pitches);
+  return {
+    min: Math.floor(lowest / 12) * 12,
+    max: Math.floor(highest / 12) * 12 + 11
+  };
+}
+
 @Component({
   standalone: false,
   selector: "app-piano-roll",
   templateUrl: "./piano-roll.component.html"
 })
-export class PianoRollComponent implements AfterViewInit {
+export class PianoRollComponent implements AfterViewInit, OnChanges {
 
   @Input() track: Track;
   @Input() gridResolutionStepsPerBeat: number = 4;
   @Input() timeSignatureNumerator: number = 4;
   @Input() timeSignatureDenominator: number = 4;
   @Input() currentStepIndex: number | null = null;
+  @Input() keyboardBaseOctave: number = 4;
+  @Input() keyboardOctaveCount: number = 2;
 
   @ViewChild("scrollContainer") scrollContainer: ElementRef<HTMLDivElement>;
 
@@ -48,13 +64,46 @@ export class PianoRollComponent implements AfterViewInit {
   isDragging: boolean = false;
   dragMode: "draw" | "erase" | null = null;
 
-  readonly minPitch = 21;  // A0
-  readonly maxPitch = 108; // C8
+  readonly absoluteMinPitch = 21;  // A0
+  readonly absoluteMaxPitch = 108; // C8
+
+  private expandDownOctaves = 0;
+  private expandUpOctaves = 0;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["track"] && changes["track"].previousValue !== changes["track"].currentValue) {
+      this.expandDownOctaves = 0;
+      this.expandUpOctaves = 0;
+    }
+  }
+
+  private get baseRange(): { min: number; max: number } {
+    const smart = computeSmartRange(this.track.notes);
+    if (smart) return smart;
+    const keyboardMin = (this.keyboardBaseOctave + 1) * 12;
+    return { min: keyboardMin, max: keyboardMin + this.keyboardOctaveCount * 12 - 1 };
+  }
+
+  get minPitch(): number {
+    return Math.max(this.absoluteMinPitch, this.baseRange.min - this.expandDownOctaves * 12);
+  }
+
+  get maxPitch(): number {
+    return Math.min(this.absoluteMaxPitch, this.baseRange.max + this.expandUpOctaves * 12);
+  }
 
   get pitches(): number[] {
     const list: number[] = [];
     for (let p = this.maxPitch; p >= this.minPitch; p--) list.push(p);
     return list;
+  }
+
+  expandRangeUp(): void {
+    this.expandUpOctaves++;
+  }
+
+  expandRangeDown(): void {
+    this.expandDownOctaves++;
   }
 
   stepIndices(): number[] {

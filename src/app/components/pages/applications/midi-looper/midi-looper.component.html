@@ -56,8 +56,15 @@
     [timeSignatureNumerator]="timeSignatureNumerator"
     [timeSignatureDenominator]="timeSignatureDenominator"
     [currentStepIndex]="currentStepIndex"
+    [keyboardBaseOctave]="keyboardBaseOctave"
+    [keyboardOctaveCount]="keyboardOctaveCount"
     (noteToggled)="onGridToggle($event)">
   </app-piano-roll>
 
-  <app-virtual-keyboard [octaveCount]="keyboardOctaveCount" (noteOn)="onLiveNoteOn($event)"></app-virtual-keyboard>
+  <app-virtual-keyboard
+    [baseOctave]="keyboardBaseOctave"
+    [octaveCount]="keyboardOctaveCount"
+    (baseOctaveChange)="onKeyboardBaseOctaveChanged($event)"
+    (noteOn)="onLiveNoteOn($event)">
+  </app-virtual-keyboard>
 </div>

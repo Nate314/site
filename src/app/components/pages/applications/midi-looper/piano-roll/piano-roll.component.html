@@ -1,3 +1,7 @@
+<div style="display:flex; gap:8px; align-items:center; margin-bottom:4px;">
+  <button type="button" (click)="expandRangeUp()" [disabled]="maxPitch >= absoluteMaxPitch">Expand Range &#9650;</button>
+  <button type="button" (click)="expandRangeDown()" [disabled]="minPitch <= absoluteMinPitch">Expand Range &#9660;</button>
+</div>
 <div class="piano-roll" #scrollContainer style="overflow:auto; max-height:400px;">
   <table>
     <tr *ngFor="let pitch of pitches" [attr.data-pitch]="pitch">

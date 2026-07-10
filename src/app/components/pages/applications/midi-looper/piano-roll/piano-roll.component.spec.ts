@@ -1,8 +1,32 @@
 import {
   PianoRollComponent, computeCenteredScrollTop,
-  beatLineIntervalBeats, measureLineIntervalBeats, isBeatLine, isMeasureLine
+  beatLineIntervalBeats, measureLineIntervalBeats, isBeatLine, isMeasureLine,
+  computeSmartRange
 } from "./piano-roll.component";
-import { Track } from "../models";
+import { Note, Track } from "../models";
+
+describe("computeSmartRange", () => {
+  const note = (pitch: number): Note => ({ pitch, startBeat: 0, durationBeats: 1, velocity: 100 });
+
+  it("returns null for an empty note list", () => {
+    expect(computeSmartRange([])).toBeNull();
+  });
+
+  it("rounds a single note's octave out to full C-to-B boundaries", () => {
+    // pitch 64 = E4, its octave spans C4 (60) to B4 (71)
+    expect(computeSmartRange([note(64)])).toEqual({ min: 60, max: 71 });
+  });
+
+  it("rounds a multi-note span out to cover every octave touched", () => {
+    // lowest 62 (D4, in the C4-B4 octave), highest 74 (D5, in the C5-B5 octave)
+    expect(computeSmartRange([note(62), note(74)])).toEqual({ min: 60, max: 83 });
+  });
+
+  it("does not round further when notes already sit exactly on octave boundaries", () => {
+    // 60 = C4 (start of its octave), 71 = B4 (end of its octave)
+    expect(computeSmartRange([note(60), note(71)])).toEqual({ min: 60, max: 71 });
+  });
+});
 
 describe("computeCenteredScrollTop", () => {
   it("centers a row within the container's visible height", () => {
@@ -82,6 +106,60 @@ describe("PianoRollComponent", () => {
 
   it("is created", () => {
     expect(component).toBeTruthy();
+  });
+
+  describe("minPitch / maxPitch", () => {
+    it("falls back to the keyboard's range when the track has no notes", () => {
+      component.keyboardBaseOctave = 4;
+      component.keyboardOctaveCount = 2;
+      expect(component.minPitch).toBe(60);  // C4
+      expect(component.maxPitch).toBe(83);  // B5 (2 octaves up from C4)
+    });
+
+    it("uses the smart range computed from the track's notes when present, ignoring the keyboard range", () => {
+      track.notes.push({ pitch: 64, startBeat: 0, durationBeats: 1, velocity: 100 }); // E4
+      component.keyboardBaseOctave = 0;
+      component.keyboardOctaveCount = 6;
+      expect(component.minPitch).toBe(60); // C4
+      expect(component.maxPitch).toBe(71); // B4
+    });
+
+    it("expandRangeUp raises maxPitch by one octave per call", () => {
+      component.keyboardBaseOctave = 4;
+      component.keyboardOctaveCount = 2;
+      component.expandRangeUp();
+      expect(component.maxPitch).toBe(95); // 83 + 12
+      expect(component.minPitch).toBe(60); // unchanged
+    });
+
+    it("expandRangeDown lowers minPitch by one octave per call", () => {
+      component.keyboardBaseOctave = 4;
+      component.keyboardOctaveCount = 2;
+      component.expandRangeDown();
+      expect(component.minPitch).toBe(48); // 60 - 12
+      expect(component.maxPitch).toBe(83); // unchanged
+    });
+
+    it("clamps to the absolute piano range (A0-C8) even after repeated expansion", () => {
+      component.keyboardBaseOctave = 4;
+      component.keyboardOctaveCount = 2;
+      for (let i = 0; i < 20; i++) {
+        component.expandRangeUp();
+        component.expandRangeDown();
+      }
+      expect(component.minPitch).toBe(component.absoluteMinPitch);
+      expect(component.maxPitch).toBe(component.absoluteMaxPitch);
+    });
+
+    it("resets expansion when the track input changes to a different track", () => {
+      component.expandRangeUp();
+      component.expandRangeDown();
+      const newTrack: Track = { name: "Other", instrument: "sine", loopLengthBeats: 4, notes: [] };
+      component.track = newTrack;
+      component.ngOnChanges({ track: { previousValue: track, currentValue: newTrack, firstChange: false, isFirstChange: () => false } });
+      expect(component.minPitch).toBe(60);
+      expect(component.maxPitch).toBe(83);
+    });
   });
 
   describe("stepIndices", () => {

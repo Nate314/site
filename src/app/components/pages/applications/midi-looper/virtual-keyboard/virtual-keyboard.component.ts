@@ -35,6 +35,7 @@ export class VirtualKeyboardComponent {
 
   @Output() noteOn = new EventEmitter<number>();
   @Output() noteOff = new EventEmitter<number>();
+  @Output() baseOctaveChange = new EventEmitter<number>();
 
   readonly whiteKeyWidthPx = 44;
   readonly blackKeyWidthPx = 26;
@@ -70,7 +71,7 @@ export class VirtualKeyboardComponent {
 
   shiftOctave(delta: number): void {
     const next = this.baseOctave + delta;
-    if (next >= 0 && next <= 8) this.baseOctave = next;
+    if (next >= 0 && next <= 8) this.baseOctaveChange.emit(next);
   }
 
   press(pitch: number): void {
