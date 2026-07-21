@@ -135,6 +135,10 @@
             "url": "https://www.youtube.com/@StuffMadeHere"
           },
           {
+            "name": "The Money Guy Show",
+            "url": "https://www.youtube.com/channel/UC9vUu4vlIlMC0dHQCTvQPbg"
+          },
+          {
             "name": "Tom Scott",
             "url": "https://www.youtube.com/@TomScottGo"
           },
@@ -660,6 +664,12 @@
                   "category": "hackathon",
                   "link": "https://github.com/glowing-potato/graph-theory-game",
                   "title": "Graph Theory Game"
+                },
+                {
+                  "category": "school",
+                  "description": "https://raw.githubusercontent.com/Nate314/semester-group-project-cs451-group3/master/README.md",
+                  "link": "https://github.com/Nate314/semester-group-project-cs451-group3",
+                  "title": "CS451 Semester Group Project"
                 }
               ]
             }
