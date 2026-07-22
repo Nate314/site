@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, Cha
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 interface ContributionDay {
   date: string;
@@ -52,7 +52,8 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
     private router: Router,
     private db: DatabaseService,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -64,6 +65,9 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
       this.cdr.detectChanges();
     });
     this.loadWellSkyContributions();
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
   }
 
   ngAfterViewInit() {
@@ -145,13 +149,14 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
 
   // Groups the flat projects list into labeled sections (personal/school/
   // hackathon), in a fixed display order, omitting any empty category.
+  // Entries marked "hidden" are excluded unless the secret unlock is active.
   get projectGroups(): { category: string; label: string; projects: any[] }[] {
     if (!this.projects) return [];
     return this.projectCategoryOrder
       .map(category => ({
         category,
         label: this.projectCategoryLabels[category] || category,
-        projects: this.projects.filter(p => p.category === category)
+        projects: this.projects.filter(p => p.category === category && (!p.hidden || this.unlock.unlocked))
       }))
       .filter(group => group.projects.length > 0);
   }
