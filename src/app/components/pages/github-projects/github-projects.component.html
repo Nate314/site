@@ -41,7 +41,8 @@
 
 <div *ngFor="let group of projectGroups" class="tab-content" [hidden]="activeTab !== group.category">
   <div *ngFor="let project of group.projects">
-    <mat-card class="mat-elevation-z4">
+    <mat-card class="mat-elevation-z4" [id]="projectElementId(project.title)"
+      [class.highlight-pulse]="project.title === highlightedProjectTitle">
       <div class="row project-header" (click)="toggleProject(project)" *ngIf="!isScreenSmall()">
         <div class="col-4">
           <span class="expand-indicator" [class.expand-indicator-open]="project.expanded">&#9656;</span>

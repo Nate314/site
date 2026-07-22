@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DatabaseService } from "src/app/services";
 
@@ -48,8 +48,14 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
   private readonly contribCellGap = 3;
   private readonly contribRowGap = 24;
 
+  // Set (from a "project" query param) when navigating in from a video's
+  // "View the code" link, and cleared after the highlight-pulse animation
+  // finishes so the CSS class can retrigger on a later visit.
+  highlightedProjectTitle: string | null = null;
+
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private db: DatabaseService,
     private http: HttpClient,
     private cdr: ChangeDetectorRef
@@ -60,10 +66,38 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
     this.db.connection().subscribe(db => {
       const githubProjects = db.getGithubProjects();
       this.projects = githubProjects.subpages;
+      this.applyLinkedProjectHighlight();
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
     this.loadWellSkyContributions();
+  }
+
+  // Switches to the linked project's category tab and schedules a scroll +
+  // highlight-pulse once the tab's content has rendered. No-ops (page loads
+  // exactly as it does with no query param) if there's no "project" param or
+  // it doesn't match any known project title.
+  private applyLinkedProjectHighlight() {
+    const title = this.route.snapshot.queryParamMap.get("project");
+    if (!title) return;
+    const project = this.projects.find(p => p.title === title);
+    if (!project) return;
+    this.activeTab = project.category;
+    setTimeout(() => {
+      document.getElementById(this.projectElementId(project.title))
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      this.highlightedProjectTitle = project.title;
+      this.cdr.detectChanges();
+      setTimeout(() => {
+        this.highlightedProjectTitle = null;
+        this.cdr.detectChanges();
+      }, 2000);
+    }, 0);
+  }
+
+  // Turns a project title into a DOM-safe id for scrollIntoView targeting.
+  projectElementId(title: string): string {
+    return "gh-project-" + title.replace(/[^a-zA-Z0-9]+/g, "-");
   }
 
   ngAfterViewInit() {
