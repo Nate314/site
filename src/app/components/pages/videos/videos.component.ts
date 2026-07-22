@@ -10,6 +10,7 @@ class Video {
   description: string;
   preview: string;
   enabled: boolean;
+  linkedProject?: string;
 }
 
 @Component({
@@ -46,7 +47,8 @@ export class VideosComponent implements OnInit {
           preview: v["preview"]
             ? v["preview"] + `?time=${time}`
             : `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-          enabled: false
+          enabled: false,
+          linkedProject: v["linkedProject"]
         };
       });
       // Zoneless: explicitly trigger change detection after async data loads.

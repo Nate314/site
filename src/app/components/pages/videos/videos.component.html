@@ -8,5 +8,10 @@
     </div>
     <p>{{ video.description }}</p>
     <p>Click <a [href]="getYoutubeLink(video.link)">here</a> to watch on Youtube.</p>
+    <p *ngIf="video.linkedProject">
+      <a [routerLink]="['/github-projects']" [queryParams]="{ project: video.linkedProject }">
+        View the code &rarr;
+      </a>
+    </p>
   </mat-card>
 </div>
