@@ -504,6 +504,12 @@
                   "description": "A video demonstration of a java program I wrote to view the screen and play Tetris through an NES emulator.",
                   "link": "https://www.youtube.com/embed/zwWAG3Ii7w8",
                   "title": "TetrisBot"
+                },
+                {
+                  "description": "A demo of Stats Search, a Minecraft mod I wrote that adds a search box to the in-game Statistics screen so you can filter the General, Items, and Mobs lists by name instead of scrolling through hundreds of entries, and pins the Items tab's column headers in place so they stay visible while you scroll.",
+                  "link": "https://www.youtube.com/embed/ma4OUp9ZN7k",
+                  "title": "Minecraft Statistics Search Mod",
+                  "linkedProject": "Minecraft Stats Search"
                 }
               ]
             },
@@ -681,6 +687,18 @@
                   "description": "https://raw.githubusercontent.com/Nate314/semester-group-project-cs451-group3/master/README.md",
                   "link": "https://github.com/Nate314/semester-group-project-cs451-group3",
                   "title": "CS451 Semester Group Project"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/quoridor/master/README.md",
+                  "link": "https://github.com/Nate314/quoridor",
+                  "title": "Quoridor"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/minecraft-stats-search/master/README.md",
+                  "link": "https://github.com/Nate314/minecraft-stats-search",
+                  "title": "Minecraft Stats Search"
                 }
               ]
             }
