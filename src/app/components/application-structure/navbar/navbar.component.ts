@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Constants, Helper } from "../../../helpers/Helper";
+import { UnlockService } from "src/app/services";
 
 class Page {
   link: string;
@@ -19,7 +20,12 @@ export class NavbarComponent implements OnInit {
 
   pages: Page[] = [];
 
-  constructor(private router: Router, private location: Location) { }
+  constructor(
+    private router: Router,
+    private location: Location,
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
+  ) { }
 
   ngOnInit() {
     this.pages.push(<Page>{ link: "/home", name: "Home", svg: "http://cdn.nathangawith.com/images/svg/home.svg" });
@@ -28,6 +34,9 @@ export class NavbarComponent implements OnInit {
     this.pages.push(<Page>{ link: "/videos", name: "Videos", svg: "http://cdn.nathangawith.com/images/svg/youtube.svg" });
     this.pages.push(<Page>{ link: "https://games.nathangawith.com/", name: "Games", svg: "http://cdn.nathangawith.com/images/svg/gamepad.svg" });
     this.pages.push(<Page>{ link: "https://resume.nathangawith.com/", name: "Resume", svg: "http://cdn.nathangawith.com/images/svg/file-invoice.svg" });
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
   }
 
   goTo(url: string) {

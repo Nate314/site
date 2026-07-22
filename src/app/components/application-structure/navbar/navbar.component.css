@@ -66,6 +66,11 @@ https://www.youtube.com/watch?v=biOMz4puGt8
   filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg);
 }
 
+.logo-unlocked img {
+  filter: invert(.5) sepia(1) saturate(5) hue-rotate(180deg)
+    drop-shadow(0 0 6px #5b4b8a) drop-shadow(0 0 12px #5b4b8a);
+}
+
 .logo-text {
   display: inline;
   position: absolute;
