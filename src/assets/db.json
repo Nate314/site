@@ -487,7 +487,8 @@
                 {
                   "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
                   "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
-                  "title": "Typing Bot"
+                  "title": "Typing Bot",
+                  "linkedProject": "Simple JS Projects"
                 },
                 {
                   "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
