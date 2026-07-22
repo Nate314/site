@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, Cha
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 interface ContributionDay {
   date: string;
@@ -58,7 +58,8 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
     private route: ActivatedRoute,
     private db: DatabaseService,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -71,6 +72,9 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
       this.cdr.detectChanges();
     });
     this.loadWellSkyContributions();
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
   }
 
   // Switches to the linked project's category tab and schedules a scroll +
@@ -179,6 +183,7 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
 
   // Groups the flat projects list into labeled sections (personal/school/
   // hackathon), in a fixed display order, omitting any empty category.
+  // Entries marked "hidden" are excluded unless the secret unlock is active.
   // Within each category, featured/awarded projects sort first; order is
   // otherwise preserved (stable sort keyed on original index).
   get projectGroups(): { category: string; label: string; projects: any[] }[] {
@@ -188,7 +193,7 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
         category,
         label: this.projectCategoryLabels[category] || category,
         projects: this.projects
-          .filter(p => p.category === category)
+          .filter(p => p.category === category && (!p.hidden || this.unlock.unlocked))
           .map((p, i) => ({ p, i }))
           .sort((a, b) => Number(this.isFeatured(b.p)) - Number(this.isFeatured(a.p)) || a.i - b.i)
           .map(({ p }) => p)

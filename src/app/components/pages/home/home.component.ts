@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 @Component({
   standalone: false,
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private db: DatabaseService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -36,6 +37,9 @@ export class HomeComponent implements OnInit {
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
   }
 
   // A real href for the [href] binding, so right-click "Copy Link

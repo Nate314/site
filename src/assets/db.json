@@ -551,13 +551,15 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/InfixParser/master/README.md",
                   "link": "https://github.com/Nate314/InfixParser",
-                  "title": "C++ Infix Parser"
+                  "title": "C++ Infix Parser",
+                  "hidden": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/MorseCode/master/README.md",
                   "link": "https://github.com/Nate314/MorseCode",
-                  "title": "C++ Morse Code"
+                  "title": "C++ Morse Code",
+                  "hidden": true
                 },
                 {
                   "category": "personal",
@@ -611,7 +613,8 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/CS449UmpireBuddy/master/README.md",
                   "link": "https://github.com/Nate314/CS449UmpireBuddy",
-                  "title": "CS449 Umpire Buddy"
+                  "title": "CS449 Umpire Buddy",
+                  "hidden": true
                 },
                 {
                   "category": "school",

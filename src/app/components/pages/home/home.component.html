@@ -62,7 +62,7 @@
       <app-list-of-links [links]="youtubeLinks"></app-list-of-links>.
     </p>
     <mat-divider></mat-divider>
-    <div *ngIf="friendLinks">
+    <div *ngIf="friendLinks && unlock.unlocked">
       <h3>Check out Some of my Friend's websites:</h3>
       <app-list-of-links [links]="friendLinks"></app-list-of-links>
       all have websites where you can download or use software as well!
