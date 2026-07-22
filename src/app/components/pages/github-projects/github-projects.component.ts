@@ -179,15 +179,27 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
 
   // Groups the flat projects list into labeled sections (personal/school/
   // hackathon), in a fixed display order, omitting any empty category.
+  // Within each category, featured/awarded projects sort first; order is
+  // otherwise preserved (stable sort keyed on original index).
   get projectGroups(): { category: string; label: string; projects: any[] }[] {
     if (!this.projects) return [];
     return this.projectCategoryOrder
       .map(category => ({
         category,
         label: this.projectCategoryLabels[category] || category,
-        projects: this.projects.filter(p => p.category === category)
+        projects: this.projects
+          .filter(p => p.category === category)
+          .map((p, i) => ({ p, i }))
+          .sort((a, b) => Number(this.isFeatured(b.p)) - Number(this.isFeatured(a.p)) || a.i - b.i)
+          .map(({ p }) => p)
       }))
       .filter(group => group.projects.length > 0);
+  }
+
+  // A project with an award is featured-worthy even without an explicit
+  // "featured" flag.
+  isFeatured(project: any): boolean {
+    return !!(project.featured || project.award);
   }
 
   // Groups the years two-per-row so the template can lay them out side by side

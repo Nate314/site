@@ -659,12 +659,19 @@
                   "category": "hackathon",
                   "description": "https://raw.githubusercontent.com/NABSINA/TuringMessenger/master/README.md",
                   "link": "https://github.com/NABSINA/TuringMessenger",
-                  "title": "Turing Messenger"
+                  "title": "Turing Messenger",
+                  "featured": true,
+                  "award": {
+                    "ribbon": "3RD PLACE",
+                    "text": "3rd Place, Hack K-State",
+                    "link": "https://devpost.com/software/turing-messenger"
+                  }
                 },
                 {
                   "category": "hackathon",
                   "link": "https://github.com/glowing-potato/graph-theory-game",
-                  "title": "Graph Theory Game"
+                  "title": "Graph Theory Game",
+                  "featured": true
                 },
                 {
                   "category": "school",
