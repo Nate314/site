@@ -1,5 +1,9 @@
 .project-header {
   cursor: pointer;
+  /* Reserves room for the absolutely-positioned corner ribbon (the widest
+     is "🌐 nathangawith.com") so it never overlaps the project link/title
+     text — the row wraps instead of running under the ribbon. */
+  padding-right: 170px;
 }
 
 .expand-indicator {
