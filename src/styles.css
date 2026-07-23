@@ -1,5 +1,40 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+body {
+    background-color: #AAAAAA;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root[data-theme="dark"] body {
+    background-color: #1a1a1f;
+}
+
+:root[data-theme="dark"] .mat-mdc-card {
+    background-color: #2a2a33;
+    color: #e8e8e8;
+}
+
+:root[data-theme="dark"] body::-webkit-scrollbar-track {
+    background: #1a1a1f;
+}
+
+:root[data-theme="dark"] .page-tabs {
+    background-color: #2a2a33;
+    border-bottom-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .page-tab {
+    color: #cccccc;
+}
+
+:root[data-theme="dark"] .page-tab-active {
+    color: #4da3ff;
+    border-bottom-color: #4da3ff;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 /* Angular Material 15+ (MDC) dropped the default padding on mat-card itself

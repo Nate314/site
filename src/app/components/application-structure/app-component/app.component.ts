@@ -3,7 +3,7 @@ import { Router, NavigationEnd, RouterOutlet } from "@angular/router";
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 import { Constants } from "src/app/helpers/Helper";
-import { UnlockService } from "src/app/services";
+import { UnlockService, ThemeService } from "src/app/services";
 
 const KONAMI_SEQUENCE = [
   "arrowup", "arrowup", "arrowdown", "arrowdown",
@@ -110,7 +110,8 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private unlock: UnlockService
+    private unlock: UnlockService,
+    private theme: ThemeService
   ) { }
 
   ngOnInit() {
@@ -131,6 +132,13 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     window.addEventListener("resize", () => this.cdr.detectChanges());
     window.addEventListener("keydown", this.konamiListener);
+    // Applied directly to <html> (not via a template binding) so the theme
+    // attribute is present as early as possible and CSS overrides in
+    // styles.css can key off it globally, not just within this component's
+    // own template subtree.
+    this.theme.theme$.subscribe(theme => {
+      document.documentElement.setAttribute("data-theme", theme);
+    });
   }
 
   ngOnDestroy() {
