@@ -12,5 +12,11 @@
         <span class="link-text">{{ page.name }}</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="toggleTheme()" style="cursor:pointer;">
+        <span class="theme-toggle-icon">{{ theme.theme === "dark" ? "☀️" : "🌙" }}</span>
+        <span class="link-text">{{ theme.theme === "dark" ? "Light Mode" : "Dark Mode" }}</span>
+      </a>
+    </li>
   </ul>
 </nav>
