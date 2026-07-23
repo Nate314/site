@@ -510,6 +510,24 @@
                   "link": "https://www.youtube.com/embed/ma4OUp9ZN7k",
                   "title": "Minecraft Statistics Search Mod",
                   "linkedProject": "Minecraft Stats Search"
+                },
+                {
+                  "description": "A presentation of Event Scheduler, an app I built for CS456.",
+                  "link": "https://www.youtube.com/embed/jHWY1N4P_7g",
+                  "title": "CS456 Project Presentation",
+                  "linkedProject": "Event Scheduler"
+                },
+                {
+                  "description": "A demo of a script I wrote to auto-create items for the CS457 group project's WebStore.",
+                  "link": "https://www.youtube.com/embed/Mn8m6vB0_ZM",
+                  "title": "CS457 Store Auto Create Items Script Demo",
+                  "linkedProject": "CS457 Group Project (WebStore)"
+                },
+                {
+                  "description": "A presentation of my CS451 group's Commerce Bank project.",
+                  "link": "https://www.youtube.com/embed/xCZuFqqAFAE",
+                  "title": "CS451 - Group 3 Commerce Bank Project",
+                  "linkedProject": "CS451 Semester Group Project"
                 }
               ]
             },
@@ -572,7 +590,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/EZPoll/master/README.md",
                   "link": "https://github.com/Nate314/EZPoll",
-                  "title": "EZPoll"
+                  "title": "EZPoll",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -590,7 +609,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/e-ink-display/master/README.md",
                   "link": "https://github.com/Nate314/e-ink-display",
-                  "title": "E-Ink Display"
+                  "title": "E-Ink Display",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -651,19 +671,22 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/Fifteen/master/README.md",
                   "link": "https://github.com/Nate314/Fifteen",
-                  "title": "CS461 Fifteen"
+                  "title": "CS461 Fifteen",
+                  "featured": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/CS470GroupProject/master/README.md",
                   "link": "https://github.com/Nate314/CS470GroupProject",
-                  "title": "CS470 Group Project"
+                  "title": "CS470 Group Project",
+                  "featured": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/NABSINA/CS457GroupProject/master/README.md",
                   "link": "https://github.com/NABSINA/CS457GroupProject",
-                  "title": "CS457 Group Project (WebStore)"
+                  "title": "CS457 Group Project (WebStore)",
+                  "linkedVideo": "CS457 Store Auto Create Items Script Demo"
                 },
                 {
                   "category": "hackathon",
@@ -687,20 +710,31 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/semester-group-project-cs451-group3/master/README.md",
                   "link": "https://github.com/Nate314/semester-group-project-cs451-group3",
-                  "title": "CS451 Semester Group Project"
+                  "title": "CS451 Semester Group Project",
+                  "featured": true,
+                  "linkedVideo": "CS451 - Group 3 Commerce Bank Project"
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/quoridor/master/README.md",
                   "link": "https://github.com/Nate314/quoridor",
-                  "title": "Quoridor"
+                  "title": "Quoridor",
+                  "featured": true
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/minecraft-stats-search/master/README.md",
                   "link": "https://github.com/Nate314/minecraft-stats-search",
                   "title": "Minecraft Stats Search",
+                  "featured": true,
                   "linkedVideo": "Minecraft Statistics Search Mod"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/event-scheduler/master/README.md",
+                  "link": "https://github.com/Nate314/event-scheduler",
+                  "title": "Event Scheduler",
+                  "linkedVideo": "CS456 Project Presentation"
                 }
               ]
             }
