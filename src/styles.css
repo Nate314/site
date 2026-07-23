@@ -39,3 +39,23 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
     background: #23232e;
 }
+
+/* Generic shimmering placeholder block, used by any component's loading
+   state (currently Videos and Github Projects). Give it explicit
+   width/height (inline style or a component-scoped class) at each use site
+   — this class only supplies the shimmer animation and rounded corners. */
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
