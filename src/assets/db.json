@@ -527,7 +527,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/simplejsprojects/master/README.md",
                   "link": "https://github.com/Nate314/simplejsprojects",
-                  "title": "Simple JS Projects"
+                  "title": "Simple JS Projects",
+                  "linkedVideo": "Typing Bot"
                 },
                 {
                   "category": "personal",
@@ -698,7 +699,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/minecraft-stats-search/master/README.md",
                   "link": "https://github.com/Nate314/minecraft-stats-search",
-                  "title": "Minecraft Stats Search"
+                  "title": "Minecraft Stats Search",
+                  "linkedVideo": "Minecraft Statistics Search Mod"
                 }
               ]
             }
