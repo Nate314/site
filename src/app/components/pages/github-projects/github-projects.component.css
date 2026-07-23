@@ -120,7 +120,7 @@ mat-divider {
 }
 
 .ribbon-award {
-  background-color: #8a6d1a;
+  background-color: #6b530f;
 }
 
 .ribbon-site {
@@ -129,12 +129,12 @@ mat-divider {
 
 .award-detail {
   font-size: 12px;
-  color: #8a6d1a;
+  color: #6b530f;
   margin: 6px 0 0 22px;
 }
 
 .award-detail a {
-  color: #8a6d1a;
+  color: #6b530f;
   text-decoration: underline;
 }
 
