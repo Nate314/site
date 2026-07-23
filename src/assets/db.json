@@ -564,7 +564,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/c3po/master/README.md",
                   "link": "https://github.com/Nate314/c3po",
-                  "title": "C3PO"
+                  "title": "C3PO",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -734,6 +735,7 @@
                   "description": "https://raw.githubusercontent.com/Nate314/event-scheduler/master/README.md",
                   "link": "https://github.com/Nate314/event-scheduler",
                   "title": "Event Scheduler",
+                  "featured": true,
                   "linkedVideo": "CS456 Project Presentation"
                 }
               ]
