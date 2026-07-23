@@ -43,8 +43,9 @@
   <div *ngFor="let project of group.projects">
     <mat-card class="mat-elevation-z4 project-card" [id]="projectElementId(project.title)"
       [class.highlight-pulse]="project.title === highlightedProjectTitle">
-      <div class="ribbon ribbon-award" *ngIf="project.award">&#127942; {{project.award.ribbon}}</div>
-      <div class="ribbon ribbon-featured" *ngIf="!project.award && project.featured">&#9733; FEATURED</div>
+      <div class="ribbon ribbon-site" *ngIf="project.siteProject">&#127760; nathangawith.com</div>
+      <div class="ribbon ribbon-award" *ngIf="!project.siteProject && project.award">&#127942; {{project.award.ribbon}}</div>
+      <div class="ribbon ribbon-featured" *ngIf="!project.siteProject && !project.award && project.featured">&#9733; FEATURED</div>
       <div class="row project-header" (click)="toggleProject(project)" *ngIf="!isScreenSmall()">
         <div class="col-4">
           <span class="expand-indicator" [class.expand-indicator-open]="project.expanded">&#9656;</span>

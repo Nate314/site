@@ -184,8 +184,9 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
   // Groups the flat projects list into labeled sections (personal/school/
   // hackathon), in a fixed display order, omitting any empty category.
   // Entries marked "hidden" are excluded unless the secret unlock is active.
-  // Within each category, featured/awarded projects sort first; order is
-  // otherwise preserved (stable sort keyed on original index).
+  // Within each category, projects sort by rank (site-affiliated, then
+  // featured/awarded, then everything else); order is otherwise preserved
+  // (stable sort keyed on original index).
   get projectGroups(): { category: string; label: string; projects: any[] }[] {
     if (!this.projects) return [];
     return this.projectCategoryOrder
@@ -195,10 +196,19 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
         projects: this.projects
           .filter(p => p.category === category && (!p.hidden || this.unlock.unlocked))
           .map((p, i) => ({ p, i }))
-          .sort((a, b) => Number(this.isFeatured(b.p)) - Number(this.isFeatured(a.p)) || a.i - b.i)
+          .sort((a, b) => this.projectRank(b.p) - this.projectRank(a.p) || a.i - b.i)
           .map(({ p }) => p)
       }))
       .filter(group => group.projects.length > 0);
+  }
+
+  // Sort tier for a project card: projects affiliated with nathangawith.com
+  // itself sort above award/featured projects, which sort above everything
+  // else.
+  private projectRank(project: any): number {
+    if (project.siteProject) return 2;
+    if (this.isFeatured(project)) return 1;
+    return 0;
   }
 
   // A project with an award is featured-worthy even without an explicit

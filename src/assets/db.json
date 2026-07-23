@@ -552,13 +552,15 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/site/master/README.md",
                   "link": "https://github.com/Nate314/site",
-                  "title": "This Website"
+                  "title": "This Website",
+                  "siteProject": true
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/react-games/master/README.md",
                   "link": "https://github.com/Nate314/react-games",
-                  "title": "React Games"
+                  "title": "React Games",
+                  "siteProject": true
                 },
                 {
                   "category": "personal",
