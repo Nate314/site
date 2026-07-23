@@ -64,6 +64,11 @@
         {{project.award.text}} &middot;
         <a [href]="project.award.link" target="_blank" rel="noopener" (click)="$event.stopPropagation()">view details &rarr;</a>
       </div>
+      <p *ngIf="project.linkedVideo">
+        <a [routerLink]="['/videos']" [queryParams]="{ video: project.linkedVideo }" (click)="$event.stopPropagation()">
+          Watch the video &rarr;
+        </a>
+      </p>
       <markdown *ngIf="project.expanded && project.readmeContent"
         [data]="project.readmeContent" lineNumbers [start]="5"></markdown>
       <p *ngIf="project.expanded && (!project.description || project.readmeError)">
