@@ -487,7 +487,8 @@
                 {
                   "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
                   "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
-                  "title": "Typing Bot"
+                  "title": "Typing Bot",
+                  "linkedProject": "Simple JS Projects"
                 },
                 {
                   "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
@@ -503,6 +504,30 @@
                   "description": "A video demonstration of a java program I wrote to view the screen and play Tetris through an NES emulator.",
                   "link": "https://www.youtube.com/embed/zwWAG3Ii7w8",
                   "title": "TetrisBot"
+                },
+                {
+                  "description": "A demo of Stats Search, a Minecraft mod I wrote that adds a search box to the in-game Statistics screen so you can filter the General, Items, and Mobs lists by name instead of scrolling through hundreds of entries, and pins the Items tab's column headers in place so they stay visible while you scroll.",
+                  "link": "https://www.youtube.com/embed/ma4OUp9ZN7k",
+                  "title": "Minecraft Statistics Search Mod",
+                  "linkedProject": "Minecraft Stats Search"
+                },
+                {
+                  "description": "A presentation of Event Scheduler, an app I built for CS456.",
+                  "link": "https://www.youtube.com/embed/jHWY1N4P_7g",
+                  "title": "CS456 Project Presentation",
+                  "linkedProject": "Event Scheduler"
+                },
+                {
+                  "description": "A demo of a script I wrote to auto-create items for the CS457 group project's WebStore.",
+                  "link": "https://www.youtube.com/embed/Mn8m6vB0_ZM",
+                  "title": "CS457 Store Auto Create Items Script Demo",
+                  "linkedProject": "CS457 Group Project (WebStore)"
+                },
+                {
+                  "description": "A presentation of my CS451 group's Commerce Bank project.",
+                  "link": "https://www.youtube.com/embed/xCZuFqqAFAE",
+                  "title": "CS451 - Group 3 Commerce Bank Project",
+                  "linkedProject": "CS451 Semester Group Project"
                 }
               ]
             },
@@ -520,25 +545,29 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/simplejsprojects/master/README.md",
                   "link": "https://github.com/Nate314/simplejsprojects",
-                  "title": "Simple JS Projects"
+                  "title": "Simple JS Projects",
+                  "linkedVideo": "Typing Bot"
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/site/master/README.md",
                   "link": "https://github.com/Nate314/site",
-                  "title": "This Website"
+                  "title": "This Website",
+                  "siteProject": true
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/react-games/master/README.md",
                   "link": "https://github.com/Nate314/react-games",
-                  "title": "React Games"
+                  "title": "React Games",
+                  "siteProject": true
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/c3po/master/README.md",
                   "link": "https://github.com/Nate314/c3po",
-                  "title": "C3PO"
+                  "title": "C3PO",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -550,19 +579,22 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/InfixParser/master/README.md",
                   "link": "https://github.com/Nate314/InfixParser",
-                  "title": "C++ Infix Parser"
+                  "title": "C++ Infix Parser",
+                  "hidden": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/MorseCode/master/README.md",
                   "link": "https://github.com/Nate314/MorseCode",
-                  "title": "C++ Morse Code"
+                  "title": "C++ Morse Code",
+                  "hidden": true
                 },
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/EZPoll/master/README.md",
                   "link": "https://github.com/Nate314/EZPoll",
-                  "title": "EZPoll"
+                  "title": "EZPoll",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -580,7 +612,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/e-ink-display/master/README.md",
                   "link": "https://github.com/Nate314/e-ink-display",
-                  "title": "E-Ink Display"
+                  "title": "E-Ink Display",
+                  "featured": true
                 },
                 {
                   "category": "personal",
@@ -610,7 +643,8 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/CS449UmpireBuddy/master/README.md",
                   "link": "https://github.com/Nate314/CS449UmpireBuddy",
-                  "title": "CS449 Umpire Buddy"
+                  "title": "CS449 Umpire Buddy",
+                  "hidden": true
                 },
                 {
                   "category": "school",
@@ -640,36 +674,71 @@
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/Fifteen/master/README.md",
                   "link": "https://github.com/Nate314/Fifteen",
-                  "title": "CS461 Fifteen"
+                  "title": "CS461 Fifteen",
+                  "featured": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/CS470GroupProject/master/README.md",
                   "link": "https://github.com/Nate314/CS470GroupProject",
-                  "title": "CS470 Group Project"
+                  "title": "CS470 Group Project",
+                  "featured": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/NABSINA/CS457GroupProject/master/README.md",
                   "link": "https://github.com/NABSINA/CS457GroupProject",
-                  "title": "CS457 Group Project (WebStore)"
+                  "title": "CS457 Group Project (WebStore)",
+                  "linkedVideo": "CS457 Store Auto Create Items Script Demo"
                 },
                 {
                   "category": "hackathon",
                   "description": "https://raw.githubusercontent.com/NABSINA/TuringMessenger/master/README.md",
                   "link": "https://github.com/NABSINA/TuringMessenger",
-                  "title": "Turing Messenger"
+                  "title": "Turing Messenger",
+                  "featured": true,
+                  "award": {
+                    "ribbon": "3RD PLACE",
+                    "text": "3rd Place, Hack K-State",
+                    "link": "https://devpost.com/software/turing-messenger"
+                  }
                 },
                 {
                   "category": "hackathon",
                   "link": "https://github.com/glowing-potato/graph-theory-game",
-                  "title": "Graph Theory Game"
+                  "title": "Graph Theory Game",
+                  "featured": true
                 },
                 {
                   "category": "school",
                   "description": "https://raw.githubusercontent.com/Nate314/semester-group-project-cs451-group3/master/README.md",
                   "link": "https://github.com/Nate314/semester-group-project-cs451-group3",
-                  "title": "CS451 Semester Group Project"
+                  "title": "CS451 Semester Group Project",
+                  "featured": true,
+                  "linkedVideo": "CS451 - Group 3 Commerce Bank Project"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/quoridor/master/README.md",
+                  "link": "https://github.com/Nate314/quoridor",
+                  "title": "Quoridor",
+                  "featured": true
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/minecraft-stats-search/master/README.md",
+                  "link": "https://github.com/Nate314/minecraft-stats-search",
+                  "title": "Minecraft Stats Search",
+                  "featured": true,
+                  "linkedVideo": "Minecraft Statistics Search Mod"
+                },
+                {
+                  "category": "personal",
+                  "description": "https://raw.githubusercontent.com/Nate314/event-scheduler/master/README.md",
+                  "link": "https://github.com/Nate314/event-scheduler",
+                  "title": "Event Scheduler",
+                  "featured": true,
+                  "linkedVideo": "CS456 Project Presentation"
                 }
               ]
             }

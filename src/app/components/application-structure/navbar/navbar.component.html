@@ -1,6 +1,6 @@
 <nav class="navbar">
   <ul class="navbar-nav">
-    <li class="logo">
+    <li class="logo" [class.logo-unlocked]="unlock.unlocked">
       <a class="nav-link" (click)="goTo('/home')" style="cursor:pointer;">
         <img src="http://cdn.nathangawith.com/images/svg/ng_icon_cutout.svg" />
         <span class="link-text">NathanGawith</span>

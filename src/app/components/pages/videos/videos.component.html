@@ -1,5 +1,6 @@
 <div class="video-grid">
-  <mat-card class="mat-elevation-z4 video-card" *ngFor="let video of videos">
+  <mat-card class="mat-elevation-z4 video-card" *ngFor="let video of videos"
+    [id]="videoElementId(video.title)" [class.highlight-pulse]="video.title === highlightedVideoTitle">
     <h3>{{ video.title }}</h3>
     <div class="video-media">
       <img *ngIf="!video.enabled" [src]="video.preview" (click)="btnThumbnail(video)"/>
@@ -8,5 +9,10 @@
     </div>
     <p>{{ video.description }}</p>
     <p>Click <a [href]="getYoutubeLink(video.link)">here</a> to watch on Youtube.</p>
+    <p *ngIf="video.linkedProject">
+      <a [routerLink]="['/github-projects']" [queryParams]="{ project: video.linkedProject }">
+        View the code &rarr;
+      </a>
+    </p>
   </mat-card>
 </div>

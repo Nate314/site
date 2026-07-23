@@ -3,6 +3,13 @@ import { Router, NavigationEnd, RouterOutlet } from "@angular/router";
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
 import { Constants } from "src/app/helpers/Helper";
+import { UnlockService } from "src/app/services";
+
+const KONAMI_SEQUENCE = [
+  "arrowup", "arrowup", "arrowdown", "arrowdown",
+  "arrowleft", "arrowright", "arrowleft", "arrowright",
+  "b", "a"
+];
 
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI
 export function slideTo(from: number, to: number) {
@@ -97,9 +104,13 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  private konamiBuffer: string[] = [];
+  private konamiListener = (event: KeyboardEvent) => this.onKeydownForKonami(event);
+
   constructor(
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -119,10 +130,28 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
     window.addEventListener("resize", () => this.cdr.detectChanges());
+    window.addEventListener("keydown", this.konamiListener);
   }
 
   ngOnDestroy() {
     clearInterval(this.pageNameInterval);
+    window.removeEventListener("keydown", this.konamiListener);
+  }
+
+  // Tracks a rolling buffer of recent keys against the Konami sequence
+  // (case-insensitive). On a full match, toggles the secret-content unlock
+  // and resets the buffer so the same trailing keys can't immediately
+  // re-trigger a match.
+  private onKeydownForKonami(event: KeyboardEvent) {
+    this.konamiBuffer.push(event.key.toLowerCase());
+    if (this.konamiBuffer.length > KONAMI_SEQUENCE.length) {
+      this.konamiBuffer.shift();
+    }
+    if (this.konamiBuffer.length === KONAMI_SEQUENCE.length
+      && this.konamiBuffer.every((key, i) => key === KONAMI_SEQUENCE[i])) {
+      this.unlock.toggle();
+      this.konamiBuffer = [];
+    }
   }
 
   prepareRoute(outlet: RouterOutlet) {

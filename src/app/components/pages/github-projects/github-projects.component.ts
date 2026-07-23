@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 interface ContributionDay {
   date: string;
@@ -48,11 +48,18 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
   private readonly contribCellGap = 3;
   private readonly contribRowGap = 24;
 
+  // Set (from a "project" query param) when navigating in from a video's
+  // "View the code" link, and cleared after the highlight-pulse animation
+  // finishes so the CSS class can retrigger on a later visit.
+  highlightedProjectTitle: string | null = null;
+
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private db: DatabaseService,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -60,10 +67,41 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
     this.db.connection().subscribe(db => {
       const githubProjects = db.getGithubProjects();
       this.projects = githubProjects.subpages;
+      this.applyLinkedProjectHighlight();
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
     this.loadWellSkyContributions();
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
+  }
+
+  // Switches to the linked project's category tab and schedules a scroll +
+  // highlight-pulse once the tab's content has rendered. No-ops (page loads
+  // exactly as it does with no query param) if there's no "project" param or
+  // it doesn't match any known project title.
+  private applyLinkedProjectHighlight() {
+    const title = this.route.snapshot.queryParamMap.get("project");
+    if (!title) return;
+    const project = this.projects.find(p => p.title === title);
+    if (!project) return;
+    this.activeTab = project.category;
+    setTimeout(() => {
+      document.getElementById(this.projectElementId(project.title))
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      this.highlightedProjectTitle = project.title;
+      this.cdr.detectChanges();
+      setTimeout(() => {
+        this.highlightedProjectTitle = null;
+        this.cdr.detectChanges();
+      }, 2000);
+    }, 0);
+  }
+
+  // Turns a project title into a DOM-safe id for scrollIntoView targeting.
+  projectElementId(title: string): string {
+    return "gh-project-" + title.replace(/[^a-zA-Z0-9]+/g, "-");
   }
 
   ngAfterViewInit() {
@@ -145,15 +183,38 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
 
   // Groups the flat projects list into labeled sections (personal/school/
   // hackathon), in a fixed display order, omitting any empty category.
+  // Entries marked "hidden" are excluded unless the secret unlock is active.
+  // Within each category, projects sort by rank (site-affiliated, then
+  // featured/awarded, then everything else); order is otherwise preserved
+  // (stable sort keyed on original index).
   get projectGroups(): { category: string; label: string; projects: any[] }[] {
     if (!this.projects) return [];
     return this.projectCategoryOrder
       .map(category => ({
         category,
         label: this.projectCategoryLabels[category] || category,
-        projects: this.projects.filter(p => p.category === category)
+        projects: this.projects
+          .filter(p => p.category === category && (!p.hidden || this.unlock.unlocked))
+          .map((p, i) => ({ p, i }))
+          .sort((a, b) => this.projectRank(b.p) - this.projectRank(a.p) || a.i - b.i)
+          .map(({ p }) => p)
       }))
       .filter(group => group.projects.length > 0);
+  }
+
+  // Sort tier for a project card: projects affiliated with nathangawith.com
+  // itself sort above award/featured projects, which sort above everything
+  // else.
+  private projectRank(project: any): number {
+    if (project.siteProject) return 2;
+    if (this.isFeatured(project)) return 1;
+    return 0;
+  }
+
+  // A project with an award is featured-worthy even without an explicit
+  // "featured" flag.
+  isFeatured(project: any): boolean {
+    return !!(project.featured || project.award);
   }
 
   // Groups the years two-per-row so the template can lay them out side by side
