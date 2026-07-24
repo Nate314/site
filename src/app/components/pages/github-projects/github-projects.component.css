@@ -158,3 +158,13 @@ mat-divider {
     box-shadow: 0 0 0 0 rgba(91, 75, 138, 0);
   }
 }
+
+.page-tab-skeleton {
+  width: 140px;
+  height: 38px;
+  margin: 0 4px 0 0;
+}
+
+.skeleton-card {
+  margin-bottom: 16px;
+}

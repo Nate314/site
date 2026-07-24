@@ -23,6 +23,12 @@ export class VideosComponent implements OnInit {
 
   videos: Video[] = [];
 
+  // True until db.json resolves; gates the skeleton vs. real content in the
+  // template. skeletonCards exists only to give *ngFor something to repeat
+  // over for a fixed number of placeholder cards.
+  loading = true;
+  skeletonCards: unknown[] = new Array(6);
+
   // Set (from a "video" query param) when navigating in from a project's
   // "Watch the video" link, and cleared after the highlight-pulse animation
   // finishes so the CSS class can retrigger on a later visit.
@@ -58,6 +64,7 @@ export class VideosComponent implements OnInit {
         };
       });
       this.applyLinkedVideoHighlight();
+      this.loading = false;
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
