@@ -455,93 +455,110 @@
               "name": "Videos",
               "videos": [
                 {
+                  "category": "Rubik's Cube",
                   "description": "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving itself\". I accomplished this by taking a picture of the cube every quarter turn.",
                   "link": "https://www.youtube.com/embed/eBCUe4jSPQQ",
                   "title": "Timelapse - Cube"
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "This is the first timelapse video I ever made. This is also a video of a cube solving itself, but this one doesn't look as nice as the one above because I only took one picture for each turn. I also thought it would be a good idea to show the clock so that you can see how long it took.",
                   "link": "https://www.youtube.com/embed/EtycVB_mPnQ",
                   "title": "Timelapse - Rubik's"
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "I was interviewed about my puzzle cube collection and hobby while in high school, so I made this mosaic for the high school broadcasting class to use as a nice outro for the interview.",
                   "link": "https://www.youtube.com/embed/hD42xobUROM",
                   "title": "Mosaic - MVTV"
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "This was probably the easiest mosaic I made as stripes are easy for anyone to make with cubes whether or not you know how to solve a puzzle cube.",
                   "link": "https://www.youtube.com/embed/V4cVGX8jyfI",
                   "title": "Mosaic - US Flag"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the ground floor.",
                   "link": "https://www.youtube.com/embed/9rEE0PjNMA4",
                   "title": "Dream Home - Ground Floor"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the basement.",
                   "link": "https://www.youtube.com/embed/cDsXrYSNA8c",
                   "title": "Dream Home - Basement"
                 },
                 {
+                  "category": "Code",
                   "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
                   "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
                   "title": "Typing Bot",
                   "linkedProject": "Simple JS Projects"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
                   "link": "https://www.youtube.com/embed/gLKssL0FN98",
                   "title": "Clash Royale Strategy"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "This is a video demonstrating an elevator mechanism I designed and built for a project in my high school's PLTW (Project Lead The Way) class.",
                   "link": "https://www.youtube.com/embed/rmOcGzxN05U",
                   "title": "High School Vex Robotics Elevator Project"
                 },
                 {
+                  "category": "Code",
                   "description": "A video demonstration of a java program I wrote to view the screen and play Tetris through an NES emulator.",
                   "link": "https://www.youtube.com/embed/zwWAG3Ii7w8",
                   "title": "TetrisBot"
                 },
                 {
+                  "category": "Code",
                   "description": "A demo of Stats Search, a Minecraft mod I wrote that adds a search box to the in-game Statistics screen so you can filter the General, Items, and Mobs lists by name instead of scrolling through hundreds of entries, and pins the Items tab's column headers in place so they stay visible while you scroll.",
                   "link": "https://www.youtube.com/embed/ma4OUp9ZN7k",
                   "title": "Minecraft Statistics Search Mod",
                   "linkedProject": "Minecraft Stats Search"
                 },
                 {
+                  "category": "Code",
                   "description": "A presentation of Event Scheduler, an app I built for CS456.",
                   "link": "https://www.youtube.com/embed/jHWY1N4P_7g",
                   "title": "CS456 Project Presentation",
                   "linkedProject": "Event Scheduler"
                 },
                 {
+                  "category": "Code",
                   "description": "A demo of a script I wrote to auto-create items for the CS457 group project's WebStore.",
                   "link": "https://www.youtube.com/embed/Mn8m6vB0_ZM",
                   "title": "CS457 Store Auto Create Items Script Demo",
                   "linkedProject": "CS457 Group Project (WebStore)"
                 },
                 {
+                  "category": "Code",
                   "description": "A presentation of my CS451 group's Commerce Bank project.",
                   "link": "https://www.youtube.com/embed/xCZuFqqAFAE",
                   "title": "CS451 - Group 3 Commerce Bank Project",
                   "linkedProject": "CS451 Semester Group Project"
                 },
                 {
+                  "category": "Code",
                   "description": "CppConsoleAnimation currently supports drawing rectangles, ellipses, and polygons in the console.",
                   "link": "https://www.youtube.com/embed/pvdPETl0Twk",
                   "title": "Animation.exe",
                   "linkedProject": "C++ Console Animation"
                 },
                 {
+                  "category": "Code",
                   "description": "CppConsoleAnimation drawing polygons in the console.",
                   "link": "https://www.youtube.com/embed/nbBjf4tP3Bo",
                   "title": "Animation.exe triangles",
                   "linkedProject": "C++ Console Animation"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "Sweden (Minecraft) played on keyboard.",
                   "link": "https://www.youtube.com/embed/YycTH3TATh8",
                   "title": "Sweden (Minecraft)"
