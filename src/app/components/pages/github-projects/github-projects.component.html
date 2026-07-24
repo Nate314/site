@@ -76,9 +76,9 @@
         {{project.award.text}} &middot;
         <a [href]="project.award.link" target="_blank" rel="noopener" (click)="$event.stopPropagation()">view details &rarr;</a>
       </div>
-      <p *ngIf="project.linkedVideo">
-        <a [routerLink]="['/videos']" [queryParams]="{ video: project.linkedVideo }" (click)="$event.stopPropagation()">
-          Watch the video &rarr;
+      <p *ngFor="let linkedVideo of linkedVideos(project)">
+        <a [routerLink]="['/videos']" [queryParams]="{ video: linkedVideo }" (click)="$event.stopPropagation()">
+          Watch the video: {{linkedVideo}} &rarr;
         </a>
       </p>
       <markdown *ngIf="project.expanded && project.readmeContent"

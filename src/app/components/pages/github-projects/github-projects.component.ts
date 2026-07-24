@@ -112,6 +112,13 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
     return "gh-project-" + title.replace(/[^a-zA-Z0-9]+/g, "-");
   }
 
+  // project.linkedVideo is normally a single title string, but a project may
+  // cite more than one video (e.g. several demos of the same program).
+  linkedVideos(project: any): string[] {
+    if (!project.linkedVideo) return [];
+    return Array.isArray(project.linkedVideo) ? project.linkedVideo : [project.linkedVideo];
+  }
+
   ngAfterViewInit() {
     if (typeof ResizeObserver === "undefined" || !this.contribYearsRef) return;
     this.contribResizeObserver = new ResizeObserver(entries => {

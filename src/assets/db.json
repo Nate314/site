@@ -536,6 +536,12 @@
                   "linkedProject": "C++ Console Animation"
                 },
                 {
+                  "description": "CppConsoleAnimation drawing polygons in the console.",
+                  "link": "https://www.youtube.com/embed/nbBjf4tP3Bo",
+                  "title": "Animation.exe triangles",
+                  "linkedProject": "C++ Console Animation"
+                },
+                {
                   "description": "Sweden (Minecraft) played on keyboard.",
                   "link": "https://www.youtube.com/embed/YycTH3TATh8",
                   "title": "Sweden (Minecraft)"
@@ -631,7 +637,7 @@
                   "description": "https://raw.githubusercontent.com/Nate314/CppConsoleAnimation/master/README.md",
                   "link": "https://github.com/Nate314/CppConsoleAnimation",
                   "title": "C++ Console Animation",
-                  "linkedVideo": "Animation.exe"
+                  "linkedVideo": ["Animation.exe", "Animation.exe triangles"]
                 },
                 {
                   "category": "personal",
