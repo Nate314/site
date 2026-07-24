@@ -573,6 +573,12 @@
                   "description": "Sweden (Minecraft) played on keyboard.",
                   "link": "https://www.youtube.com/embed/YycTH3TATh8",
                   "title": "Sweden (Minecraft)"
+                },
+                {
+                  "category": "Other Projects",
+                  "description": "Maple Leaf Rag played on piano.",
+                  "link": "https://www.youtube.com/embed/MzouBBOcQ8s",
+                  "title": "Maple Leaf Rag"
                 }
               ]
             },
@@ -644,6 +650,7 @@
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/card-games/master/README.md",
+                  "hidden": true,
                   "link": "https://github.com/Nate314/card-games",
                   "title": "Card Games"
                 },
