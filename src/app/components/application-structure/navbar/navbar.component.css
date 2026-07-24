@@ -156,19 +156,3 @@ https://www.youtube.com/watch?v=biOMz4puGt8
   }
 }
 
-.theme-toggle-icon {
-  display: inline-block;
-  width: 2rem;
-  min-width: 2rem;
-  margin: 0 1.5rem;
-  text-align: center;
-  font-size: 1.1rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .theme-toggle-icon {
-    width: calc((100vw / 6) - 4rem);
-    min-width: 2rem;
-    margin: 0;
-  }
-}

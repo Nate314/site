@@ -62,6 +62,7 @@ const slider = trigger("routeAnimations",
   standalone: false,
   selector: "app-root",
   templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
   animations: [ slider ]
 })
 export class AppComponent implements OnInit, OnDestroy {
@@ -111,7 +112,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private unlock: UnlockService,
-    private theme: ThemeService
+    public theme: ThemeService
   ) { }
 
   ngOnInit() {
@@ -138,7 +139,13 @@ export class AppComponent implements OnInit, OnDestroy {
     // own template subtree.
     this.theme.theme$.subscribe(theme => {
       document.documentElement.setAttribute("data-theme", theme);
+      // Zoneless: the toggle button below reads theme.theme in its template.
+      this.cdr.detectChanges();
     });
+  }
+
+  toggleTheme() {
+    this.theme.toggle();
   }
 
   ngOnDestroy() {
