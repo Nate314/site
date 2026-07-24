@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Helper, PageNames } from "../../../helpers/Helper";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 class Video {
   title: string;
@@ -12,6 +12,7 @@ class Video {
   enabled: boolean;
   linkedProject?: string;
   category: string;
+  hidden?: boolean;
 }
 
 @Component({
@@ -46,7 +47,8 @@ export class VideosComponent implements OnInit {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private db: DatabaseService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
@@ -68,7 +70,8 @@ export class VideosComponent implements OnInit {
             : `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
           enabled: false,
           linkedProject: v["linkedProject"],
-          category: v["category"]
+          category: v["category"],
+          hidden: v["hidden"]
         };
       });
       this.applyLinkedVideoHighlight();
@@ -76,6 +79,9 @@ export class VideosComponent implements OnInit {
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
   }
 
   // Scrolls to and schedules a highlight-pulse on the linked video once the
@@ -128,13 +134,14 @@ export class VideosComponent implements OnInit {
   }
 
   // Groups the flat videos list into labeled sections by category, in a
-  // fixed display order, omitting any empty category. Order is otherwise
-  // preserved within each category.
+  // fixed display order, omitting any empty category. Entries marked
+  // "hidden" are excluded unless the secret unlock is active. Order is
+  // otherwise preserved within each category.
   get videoGroups(): { category: string; videos: Video[] }[] {
     return this.videoCategoryOrder
       .map(category => ({
         category,
-        videos: this.videos.filter(v => v.category === category)
+        videos: this.videos.filter(v => v.category === category && (!v.hidden || this.unlock.unlocked))
       }))
       .filter(group => group.videos.length > 0);
   }

@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Location } from "@angular/common";
 import { Helper, PageNames } from "../../../helpers/Helper";
-import { DatabaseService } from "src/app/services";
+import { DatabaseService, UnlockService } from "src/app/services";
 
 class Page {
   name: string;
@@ -16,6 +16,7 @@ class App {
   file: string;
   description: string;
   selector: string;
+  hidden?: boolean;
 }
 
 @Component({
@@ -52,10 +53,14 @@ export class ApplicationsComponent implements OnInit {
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private db: DatabaseService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public unlock: UnlockService
   ) { }
 
   ngOnInit() {
+    // Zoneless: the Konami-toggle happens outside this component's own
+    // template events, so re-render explicitly when it changes.
+    this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
     this.db.connection().subscribe(db => {
       // load information about all applications from the database
       this.javaApplications = db.getJavaApplications();
@@ -63,15 +68,15 @@ export class ApplicationsComponent implements OnInit {
       this.androidApplications = db.getAndroidApplications();
       this.subpages = [
         <Page>{
-          name: this.javaApplications["name"],
-          link: "../" + this.javaApplications["link"],
-          description: this.javaApplications["description"],
-          apps: this.javaApplications["apps"]
-        }, <Page>{
           name: this.webApplications["name"],
           link: "../" + this.webApplications["link"],
           description: this.webApplications["description"],
           apps: this.webApplications["apps"]
+        }, <Page>{
+          name: this.javaApplications["name"],
+          link: "../" + this.javaApplications["link"],
+          description: this.javaApplications["description"],
+          apps: this.javaApplications["apps"]
         }, <Page>{
           name: this.androidApplications["name"],
           link: "../" + this.androidApplications["link"],
@@ -127,6 +132,11 @@ export class ApplicationsComponent implements OnInit {
         this.cdr.detectChanges();
       });
     });
+  }
+
+  // Entries marked "hidden" are excluded unless the secret unlock is active.
+  visibleApps(apps: App[]): App[] {
+    return (apps || []).filter(app => !app.hidden || this.unlock.unlocked);
   }
 
   getApp(appList: App[], appName: string): App {

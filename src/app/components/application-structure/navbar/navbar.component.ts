@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.pages.push(<Page>{ link: "/home", name: "Home", svg: "http://cdn.nathangawith.com/images/svg/home.svg" });
-    this.pages.push(<Page>{ link: "/applications", name: "Applications", svg: "http://cdn.nathangawith.com/images/svg/laptop.svg" });
     this.pages.push(<Page>{ link: "/github-projects", name: "Github Projects", svg: "http://cdn.nathangawith.com/images/svg/github.svg" });
+    this.pages.push(<Page>{ link: "/applications", name: "Applications", svg: "http://cdn.nathangawith.com/images/svg/laptop.svg" });
     this.pages.push(<Page>{ link: "/videos", name: "Videos", svg: "http://cdn.nathangawith.com/images/svg/youtube.svg" });
     this.pages.push(<Page>{ link: "https://games.nathangawith.com/", name: "Games", svg: "http://cdn.nathangawith.com/images/svg/gamepad.svg" });
     this.pages.push(<Page>{ link: "https://resume.nathangawith.com/", name: "Resume", svg: "http://cdn.nathangawith.com/images/svg/file-invoice.svg" });
