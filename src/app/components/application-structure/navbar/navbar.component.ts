@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Constants, Helper } from "../../../helpers/Helper";
-import { UnlockService } from "src/app/services";
+import { UnlockService, ThemeService } from "src/app/services";
 
 class Page {
   link: string;
@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private location: Location,
     private cdr: ChangeDetectorRef,
-    public unlock: UnlockService
+    public unlock: UnlockService,
+    public theme: ThemeService
   ) { }
 
   ngOnInit() {
@@ -37,6 +38,11 @@ export class NavbarComponent implements OnInit {
     // Zoneless: the Konami-toggle happens outside this component's own
     // template events, so re-render explicitly when it changes.
     this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
+    this.theme.theme$.subscribe(() => this.cdr.detectChanges());
+  }
+
+  toggleTheme() {
+    this.theme.toggle();
   }
 
   goTo(url: string) {
