@@ -26,6 +26,13 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
 
   projects: any[];
 
+  // True until db.json resolves; gates the skeleton vs. the real tab
+  // strip/content in the template. skeletonTabs/skeletonCards exist only
+  // to give *ngFor something to repeat over for a fixed placeholder count.
+  loading = true;
+  skeletonTabs: unknown[] = new Array(4);
+  skeletonCards: unknown[] = new Array(4);
+
   // Order and display labels for grouping the projects list below by category.
   private readonly projectCategoryOrder = ["personal", "school", "hackathon"];
   private readonly projectCategoryLabels: Record<string, string> = {
@@ -68,6 +75,7 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
       const githubProjects = db.getGithubProjects();
       this.projects = githubProjects.subpages;
       this.applyLinkedProjectHighlight();
+      this.loading = false;
       // Zoneless: explicitly trigger change detection after async data loads.
       this.cdr.detectChanges();
     });
@@ -102,6 +110,13 @@ export class GithubProjectsComponent implements OnInit, AfterViewInit, OnDestroy
   // Turns a project title into a DOM-safe id for scrollIntoView targeting.
   projectElementId(title: string): string {
     return "gh-project-" + title.replace(/[^a-zA-Z0-9]+/g, "-");
+  }
+
+  // project.linkedVideo is normally a single title string, but a project may
+  // cite more than one video (e.g. several demos of the same program).
+  linkedVideos(project: any): string[] {
+    if (!project.linkedVideo) return [];
+    return Array.isArray(project.linkedVideo) ? project.linkedVideo : [project.linkedVideo];
   }
 
   ngAfterViewInit() {

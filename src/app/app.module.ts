@@ -14,9 +14,7 @@ import {
   BettingCalculatorComponent, DtoConvertComponent, FinalGradeCalculatorComponent,
   GroupCreatorComponent, HtmlSandboxComponent, MidiLooperComponent, MultiplicationTableComponent,
   PianoRollComponent, Say2Component, TrackListComponent, TypingTestComponent,
-  VirtualKeyboardComponent, IFrameAppComponent, ApplicationsComponent,
-  // general components
-  ListOfLinksComponent
+  VirtualKeyboardComponent, IFrameAppComponent, ApplicationsComponent
 } from "./components/index";
 import { MaterialModule } from "./material.module";
 import { DatabaseService } from "./services";
@@ -43,8 +41,7 @@ import { DatabaseService } from "./services";
     MidiLooperComponent,
     PianoRollComponent,
     TrackListComponent,
-    VirtualKeyboardComponent,
-    ListOfLinksComponent
+    VirtualKeyboardComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@
         <a class="hyperlink w3-hover-text-purple" [routerLink]="[page.link]">here</a>.
       </p>
       <ul>
-        <li *ngFor="let app of page.apps">
+        <li *ngFor="let app of visibleApps(page.apps)">
           <a *ngIf="page.name.toUpperCase().startsWith('JAVA')" (click)="openJavaApp(app)"
             class="hyperlink w3-hover-text-purple">{{ app.name }}</a>
           <a *ngIf="page.name.toUpperCase().startsWith('WEB')" (click)="openWebApp(app, true)"
@@ -25,7 +25,7 @@
 
 <!--Applications/Subpage-->
 <div *ngIf="!webAppOpen && pageName != null">
-  <div *ngFor="let app of apps">
+  <div *ngFor="let app of visibleApps(apps)">
     <mat-card class="mat-elevation-z4">
       <h3>{{ app.name }}</h3>
       <span [innerHtml]="app.description"></span>

@@ -1,0 +1,210 @@
+.hero-lede {
+  color: #555555;
+  margin: 0;
+}
+
+section {
+  margin-top: 2.5rem;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5b4b8a;
+  margin-bottom: 0.85rem;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.4rem;
+  height: 1px;
+  background: #5b4b8a;
+  opacity: 0.55;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+}
+
+/* Explore tiles */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+.tile {
+  display: block;
+  padding: 1.1rem 1.15rem 1.2rem;
+  background: #f7f5fc;
+  border: 1px solid rgba(91, 75, 138, 0.22);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.tile:hover {
+  border-color: #5b4b8a;
+  transform: translateY(-2px);
+}
+
+.tile-label {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777777;
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.tile-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Background fact strip */
+.fact-strip {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid rgba(91, 75, 138, 0.22);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fact {
+  padding: 1rem 1.15rem;
+  background: #f7f5fc;
+}
+
+.fact + .fact {
+  border-left: 1px solid rgba(91, 75, 138, 0.22);
+}
+
+.fact-k {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777777;
+  margin-bottom: 0.3rem;
+}
+
+.fact-v {
+  font-size: 0.95rem;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.skills-col h3 {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: #efe9fb;
+  color: #3f3565;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.skills-col.personal .chip {
+  background: #e7eefd;
+  color: #1f4fbd;
+}
+
+.chip:hover {
+  border-color: currentColor;
+}
+
+.strengths {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(91, 75, 138, 0.22);
+}
+
+.strengths h3 {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #777777;
+  font-weight: 600;
+  margin: 0;
+}
+
+.strengths-list {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.92rem;
+}
+
+.strengths-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.strengths-list b {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  color: #5b4b8a;
+}
+
+.elsewhere-lede {
+  color: #555555;
+  margin: 0 0 1rem;
+  max-width: 62ch;
+}
+
+@media only screen and (max-width: 600px) {
+  .tiles {
+    grid-template-columns: 1fr;
+  }
+  .fact-strip {
+    grid-template-columns: 1fr;
+  }
+  .fact + .fact {
+    border-left: none;
+    border-top: 1px solid rgba(91, 75, 138, 0.22);
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}

@@ -15,7 +15,7 @@ export class DB {
   }
 
   public getRedirects(): ResourceType[] {
-    return this.db.home.otherwebsites.redirects;
+    return this.db.home.otherwebsites.redirects || [];
   }
 
   public getHome() {

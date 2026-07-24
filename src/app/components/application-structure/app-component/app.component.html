@@ -1,4 +1,8 @@
 <div *ngIf="!webapplication">
+  <button type="button" class="theme-toggle-fab" (click)="toggleTheme()"
+    [attr.aria-label]="theme.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'">
+    {{ theme.theme === "dark" ? "☀️" : "🌙" }}
+  </button>
   <app-navbar></app-navbar>
   <div [ngStyle]="getStyle()">
     <br>

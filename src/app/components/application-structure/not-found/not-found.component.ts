@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { DatabaseService } from "src/app/services";
 
 @Component({
@@ -10,10 +10,17 @@ import { DatabaseService } from "src/app/services";
   </div>
 `
 })
-export class NotFoundComponent implements OnInit {
+export class NotFoundComponent implements OnInit, OnDestroy {
 
   loaded: boolean = false;
   content = "¯\\_(ツ)_/¯ NOT FOUND";
+
+  // Pending redirect/dots timers, so navigating away (e.g. clicking a navbar
+  // link) before the redirect fires can cancel it - otherwise the timers
+  // keep running after this component is destroyed and force-navigate the
+  // user away from wherever they just clicked.
+  private redirectTimeoutId: any;
+  private dotsTimeoutId: any;
 
   constructor(
     private db: DatabaseService,
@@ -28,7 +35,7 @@ export class NotFoundComponent implements OnInit {
         const route = redirects.find(x => x.title === path);
         this.content = `Redirecting to ${route.description}`;
         this.dots();
-        setTimeout(() => {
+        this.redirectTimeoutId = setTimeout(() => {
           window.location.href = route.link;
         }, 1200);
       }
@@ -38,8 +45,13 @@ export class NotFoundComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    clearTimeout(this.redirectTimeoutId);
+    clearTimeout(this.dotsTimeoutId);
+  }
+
   dots() {
-    setTimeout(() => {
+    this.dotsTimeoutId = setTimeout(() => {
       this.content += " .";
       this.cdr.detectChanges();
       this.dots();

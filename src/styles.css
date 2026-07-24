@@ -1,5 +1,92 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+body {
+    background-color: #AAAAAA;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+:root[data-theme="dark"] body {
+    background-color: #1a1a1f;
+    color: #e8e8e8;
+}
+
+:root[data-theme="dark"] .mat-mdc-card {
+    background-color: #2a2a33;
+    color: #e8e8e8;
+}
+
+:root[data-theme="dark"] body::-webkit-scrollbar-track {
+    background: #1a1a1f;
+}
+
+:root[data-theme="dark"] .page-tabs {
+    background-color: #2a2a33;
+    border-bottom-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .page-tab {
+    color: #cccccc;
+}
+
+:root[data-theme="dark"] .page-tab-active {
+    color: #4da3ff;
+    border-bottom-color: #4da3ff;
+}
+
+/* Home page sectioned layout (hero/tiles/fact-strip/skills chips). */
+:root[data-theme="dark"] .hero-lede,
+:root[data-theme="dark"] .elsewhere-lede {
+    color: #b7b9c2;
+}
+
+:root[data-theme="dark"] .eyebrow {
+    color: #a996e8;
+}
+
+:root[data-theme="dark"] .eyebrow::before {
+    background: #a996e8;
+}
+
+:root[data-theme="dark"] .tile,
+:root[data-theme="dark"] .fact {
+    background: #2a2a33;
+    border-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .tile:hover {
+    border-color: #a996e8;
+}
+
+:root[data-theme="dark"] .tile-label,
+:root[data-theme="dark"] .fact-k,
+:root[data-theme="dark"] .skills-col h3,
+:root[data-theme="dark"] .strengths h3 {
+    color: #9d9dab;
+}
+
+:root[data-theme="dark"] .fact-strip,
+:root[data-theme="dark"] .fact + .fact,
+:root[data-theme="dark"] .strengths {
+    border-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .chip {
+    background: #332b52;
+    color: #cabdf2;
+}
+
+:root[data-theme="dark"] .skills-col.personal .chip {
+    background: #253357;
+    color: #9dbcff;
+}
+
+:root[data-theme="dark"] .strengths-list b {
+    color: #a996e8;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 /* Angular Material 15+ (MDC) dropped the default padding on mat-card itself
@@ -38,4 +125,24 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
     background: #23232e;
+}
+
+/* Generic shimmering placeholder block, used by any component's loading
+   state (currently Videos and Github Projects). Give it explicit
+   width/height (inline style or a component-scoped class) at each use site
+   — this class only supplies the shimmer animation and rounded corners. */
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }

@@ -1,71 +1,133 @@
 <mat-card class="mat-elevation-z4">
   <div>
-    <h1>
-      Welcome!
-    </h1>
+    <div class="eyebrow">Welcome</div>
     <mat-divider></mat-divider>
-    <p>
-      This is a website I put together to feature work I have done on
-      various applications including
-      <a [href]="hrefFor('applications/java')" (click)="go($event, 'applications/java')" class="hyperlink w3-hover-text-purple">Java Applications</a>,
-      <a [href]="hrefFor('applications/web')" (click)="go($event, 'applications/web')" class="hyperlink w3-hover-text-purple">Web Applications</a>,
-      and
-      <a [href]="hrefFor('applications/android')" (click)="go($event, 'applications/android')" class="hyperlink w3-hover-text-purple">Android
-        Applications</a>.
-      I also have a few videos that I made that are featured
-      <a [href]="hrefFor('videos')" (click)="go($event, 'videos')" class="hyperlink w3-hover-text-purple">here</a>,
-      and you can check out some of my
-      <a [href]="hrefFor('github-projects')" (click)="go($event, 'github-projects')" class="hyperlink w3-hover-text-purple">Github Projects</a>
-      as well.
+    <p class="hero-lede">
+      This is a website I put together to feature work I have done, starting with some of my
+      <a [href]="hrefFor('github-projects')" (click)="go($event, 'github-projects')" class="hyperlink w3-hover-text-purple">Github Projects</a>.
+      I also have various applications including Java, Web, and Android apps,
+      plus a few
+      <a [href]="hrefFor('videos')" (click)="go($event, 'videos')" class="hyperlink w3-hover-text-purple">videos</a>
+      that I made.
     </p>
-    <mat-divider></mat-divider>
 
-    <p>
-      I love coding becuase I love learning, and enjoy thinking through logical problems.
-      Writing code can present many opportunities to dive deep into how different things work, whether that be related to sofware, mathematics, or the field that the application you are writing deals with.
-      The first programming language I learned was Java through
-      <a [href]="hrefFor('https://www.firstinspires.org/robotics/frc')" (click)="go($event, 'https://www.firstinspires.org/robotics/frc')"
-        class="hyperlink w3-hover-text-purple">FRC</a>
-      in high school. This experience in robotics was great, and made me
-      realize that Computer Science could be a possible career path that I
-      could enjoy.
-    </p>
-    <p>
-      I am a graduate of the
-      <a [href]="hrefFor('https://sce.umkc.edu/')" (click)="go($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
-        Computing and Engineering</a>
-      at <a [href]="hrefFor('https://www.umkc.edu/')" (click)="go($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
-      with a bachelor's degree in Computer Science with an emphasis in Software Engineering and a Mathematics Minor.
-      I am a former engineer at
-      <a [href]="hrefFor('https://wellsky.com/')" (click)="go($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>
-      (8 years total), and am
-      <a [href]="hrefFor('https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" (click)="go($event, 'https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" class="hyperlink w3-hover-text-purple">looking</a>
-      for a new Software Engineering position in the Kansas City area.
-    </p>
-    <p *ngIf="workLinks">
-      My work at WellSky was primarily in .NET backend and Angular frontend development, but I also had the
-      opportunity to learn a myriad of other languages and technologies including but not limited to
-      <app-list-of-links [links]="workLinks"></app-list-of-links>.
-      I've also had the privilege of guiding a few small development teams over the years at WellSky, both
-      informally and formally.
-    </p>
-    <p *ngIf="personalLinks">
-      For personal projects and daily development work, I also have experience using tools such as
-      <app-list-of-links [links]="personalLinks"></app-list-of-links>.
-      My top 5
-      <a [href]="hrefFor('https://www.gallup.com/cliftonstrengths/en/home.aspx')" (click)="go($event, 'https://www.gallup.com/cliftonstrengths/en/home.aspx')"
-        class="hyperlink w3-hover-text-purple">CliftonStrengths&reg;</a>
-      are: Harmony, Deliberative, Analytical, Consistency, and Responsibility.
-    </p>
-    <p *ngIf="youtubeLinks">
-      Some of my favorite youtube channels include
-      <app-list-of-links [links]="youtubeLinks"></app-list-of-links>.
-    </p>
-    <mat-divider></mat-divider>
-    <div *ngIf="friendLinks && unlock.unlocked">
-      <h3>Check out Some of my Friend's websites:</h3>
-      <app-list-of-links [links]="friendLinks"></app-list-of-links>
-      all have websites where you can download or use software as well!
-    </div>
+    <section aria-label="Explore">
+      <div class="eyebrow">Explore</div>
+      <div class="tiles">
+        <a class="tile" [href]="hrefFor('github-projects')" (click)="go($event, 'github-projects')">
+          <span class="tile-label">Code</span>
+          <span class="tile-name">Github Projects</span>
+        </a>
+        <a class="tile" [href]="hrefFor('applications')" (click)="go($event, 'applications')">
+          <span class="tile-label">Java / Web / Android</span>
+          <span class="tile-name">Applications</span>
+        </a>
+        <a class="tile" [href]="hrefFor('videos')" (click)="go($event, 'videos')">
+          <span class="tile-label">Rubik's Cube / Code</span>
+          <span class="tile-name">Videos</span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-label="Background">
+      <div class="eyebrow">Background</div>
+      <h2 class="section-title">How I got here</h2>
+      <p>
+        I love coding becuase I love learning, and enjoy thinking through logical problems.
+        Writing code can present many opportunities to dive deep into how different things work, whether that be related to sofware, mathematics, or the field that the application you are writing deals with.
+        The first programming language I learned was Java through
+        <a [href]="hrefFor('https://www.firstinspires.org/robotics/frc')" (click)="go($event, 'https://www.firstinspires.org/robotics/frc')"
+          class="hyperlink w3-hover-text-purple">FRC</a>
+        in high school. This experience in robotics was great, and made me
+        realize that Computer Science could be a possible career path that I
+        could enjoy.
+      </p>
+      <div class="fact-strip">
+        <div class="fact">
+          <div class="fact-k">Education</div>
+          <div class="fact-v">
+            B.S. Computer Science, Software Engineering emphasis, Math minor &middot;
+            <a [href]="hrefFor('https://sce.umkc.edu/')" (click)="go($event, 'https://sce.umkc.edu/')" class="hyperlink w3-hover-text-purple">School of
+              Computing and Engineering</a>
+            at <a [href]="hrefFor('https://www.umkc.edu/')" (click)="go($event, 'https://www.umkc.edu/')" class="hyperlink w3-hover-text-purple">UMKC</a>
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Experience</div>
+          <div class="fact-v">
+            Former Software Engineer at
+            <a [href]="hrefFor('https://wellsky.com/')" (click)="go($event, 'https://wellsky.com/')" class="hyperlink w3-hover-text-purple">WellSky</a>
+            (8 years total)
+          </div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Status</div>
+          <div class="fact-v">
+            <a [href]="hrefFor('https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" (click)="go($event, 'https://www.linkedin.com/posts/nathan-gawith-b20a65160_opentowork-ugcPost-7475213994232832000-qIT6/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAACaZhggBLn_nU8usMr9AgFc1f9tZVdXaJFM')" class="hyperlink w3-hover-text-purple">Open</a>
+            to new Software Engineering roles &middot; Kansas City area
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Skills" *ngIf="workLinks || personalLinks">
+      <div class="eyebrow">Skills</div>
+      <h2 class="section-title">What I build with</h2>
+      <div class="skills-grid">
+        <div class="skills-col work" *ngIf="workLinks">
+          <h3>At work</h3>
+          <div class="chips">
+            <a class="chip" *ngFor="let link of workLinks" [href]="hrefFor(link.url)" (click)="go($event, link.url)">{{ link.name }}</a>
+          </div>
+          <p style="margin: 0.75rem 0 0; font-size: 0.9rem;">
+            My work at WellSky was primarily in .NET backend and Angular frontend development, and I've also
+            had the privilege of guiding a few small development teams over the years, both informally and formally.
+          </p>
+        </div>
+        <div class="skills-col personal" *ngIf="personalLinks">
+          <h3>On my own time</h3>
+          <div class="chips">
+            <a class="chip" *ngFor="let link of personalLinks" [href]="hrefFor(link.url)" (click)="go($event, link.url)">{{ link.name }}</a>
+          </div>
+          <p style="margin: 0.75rem 0 0; font-size: 0.9rem;">
+            Outside of work, I like exploring different corners of the stack &mdash; Java, Python, React, Vue, and
+            others &mdash; building small self-contained things like browser games, utilities, and a few of the apps
+            and Github projects linked elsewhere on this site, usually just out of curiosity, or to try a
+            language/tool I haven't used before.
+          </p>
+        </div>
+      </div>
+      <div class="strengths">
+        <h3>
+          Top 5
+          <a [href]="hrefFor('https://www.gallup.com/cliftonstrengths/en/home.aspx')" (click)="go($event, 'https://www.gallup.com/cliftonstrengths/en/home.aspx')"
+            class="hyperlink w3-hover-text-purple">CliftonStrengths&reg;</a>
+        </h3>
+        <ul class="strengths-list">
+          <li><b>01</b>Harmony</li>
+          <li><b>02</b>Deliberative</li>
+          <li><b>03</b>Analytical</li>
+          <li><b>04</b>Consistency</li>
+          <li><b>05</b>Responsibility</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-label="Elsewhere" *ngIf="youtubeLinks">
+      <div class="eyebrow">Elsewhere</div>
+      <h2 class="section-title">Channels I watch</h2>
+      <p class="elsewhere-lede">Some of my favorite YouTube channels:</p>
+      <div class="chips">
+        <a class="chip" *ngFor="let link of youtubeLinks" [href]="hrefFor(link.url)" (click)="go($event, link.url)">{{ link.name }}</a>
+      </div>
+    </section>
+
+    <section aria-label="Friends" *ngIf="friendLinks && unlock.unlocked">
+      <div class="eyebrow">Friends</div>
+      <h2 class="section-title">Check out some of my friend's websites</h2>
+      <div class="chips">
+        <a class="chip" *ngFor="let link of friendLinks" [href]="hrefFor(link.url)" (click)="go($event, link.url)">{{ link.name }}</a>
+      </div>
+    </section>
   </div>
 </mat-card>

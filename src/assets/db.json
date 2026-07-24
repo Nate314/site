@@ -159,23 +159,13 @@
           },
           {
             "context": "both",
-            "name": "HTML",
-            "url": "https://en.wikipedia.org/wiki/HTML"
+            "name": "JavaScript",
+            "url": "https://en.wikipedia.org/wiki/JavaScript"
           },
           {
             "context": "both",
-            "name": "CSS",
-            "url": "https://en.wikipedia.org/wiki/Cascading_Style_Sheets"
-          },
-          {
-            "context": "work",
             "name": "TypeScript",
             "url": "https://en.wikipedia.org/wiki/TypeScript"
-          },
-          {
-            "context": "personal",
-            "name": "C++",
-            "url": "https://en.wikipedia.org/wiki/C%2B%2B"
           },
           {
             "context": "both",
@@ -194,11 +184,6 @@
           },
           {
             "context": "work",
-            "name": "SQL",
-            "url": "https://en.wikipedia.org/wiki/SQL"
-          },
-          {
-            "context": "work",
             "name": "VB.net",
             "url": "https://en.wikipedia.org/wiki/Visual_Basic_.NET"
           },
@@ -211,6 +196,16 @@
             "context": "work",
             "name": "TSQL",
             "url": "https://en.wikipedia.org/wiki/Transact-SQL"
+          },
+          {
+            "context": "personal",
+            "name": "MySQL",
+            "url": "https://en.wikipedia.org/wiki/MySQL"
+          },
+          {
+            "context": "personal",
+            "name": "PostgreSQL",
+            "url": "https://en.wikipedia.org/wiki/PostgreSQL"
           },
           {
             "context": "personal",
@@ -280,10 +275,22 @@
             "url": "https://en.wikipedia.org/wiki/Raspberry_Pi"
           },
           {
-            "context": "work",
+            "context": "both",
             "name": "Claude Code",
             "url": "https://claude.com/claude-code"
           }
+        ],
+        "redirects": [
+          { "title": "/redirect-1", "description": "/redirect-2", "link": "/redirect-2" },
+          { "title": "/redirect-2", "description": "/redirect-3", "link": "/redirect-3" },
+          { "title": "/redirect-3", "description": "/redirect-4", "link": "/redirect-4" },
+          { "title": "/redirect-4", "description": "/redirect-5", "link": "/redirect-5" },
+          { "title": "/redirect-5", "description": "/redirect-6", "link": "/redirect-6" },
+          { "title": "/redirect-6", "description": "/redirect-7", "link": "/redirect-7" },
+          { "title": "/redirect-7", "description": "/redirect-8", "link": "/redirect-8" },
+          { "title": "/redirect-8", "description": "/redirect-9", "link": "/redirect-9" },
+          { "title": "/redirect-9", "description": "/redirect-1", "link": "/redirect-1" },
+          { "title": "/resume", "description": "resume.nathangawith.com", "link": "https://resume.nathangawith.com" }
         ]
       },
       "pages": [
@@ -300,10 +307,11 @@
                 {
                   "description": "This is a game playing bot written in Java. This program jumps over most cacti in the Dinosaur Game that can be played in Google Chrome when you don't have an internet connection. Sadly, it only currently works on a screen resolution of 1920x1080 when Chrome is maximized in windows. It doesn't yet duck under the pterodactyls yet, so you will have to take care of that part of the game yourself.",
                   "file": "DinoGame1920x1080.jar",
-                  "name": "DinoGame1920x1080"
+                  "name": "DinoGame1920x1080",
+                  "hidden": true
                 },
                 {
-                  "description": "This is my version of Flappy Bird written in Java. Controls are listed below: <br>space: flap<br /><code>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>",
+                  "description": "This is my version of Flappy Bird written in Java. Controls are listed below: <br><code>space: flap<br>p: play/pause<br>d: toggle developer mode<br>r: restart <br>left/right: slow down/speed up game</code>",
                   "file": "FlappyBird1.1.zip",
                   "name": "FlappyBird"
                 },
@@ -313,7 +321,7 @@
                   "name": "Minesweeper"
                 },
                 {
-                  "description": "This is my \"OS\" written in Java. When you open it, the easiest way to close it is to use the Shut Down button found by clicking on the menu in the bottom left hand corner. This \"OS\" was written to run Java applications inside of it. The only application that I have included with this version of NathaNOS is my clock application. To run a java program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should be ready to go!</p> <p>Note: if you want to add one of your own java programs to NathaNOS, then you will have to make the main class extend a JFrame, and you will have to make the constructor of your main class have one parameter that is a Boolean for visibility. You can see an example below:<pre><code>package clock;\n\nimport javax.swing.JFrame;\n\npublic class Main extends JFrame\n{\n\tpublic Main(Boolean visibility)\t{\n\t\tthis.setVisible(visibility.booleanValue());\n\t}\n}\n</code></pre>",
+                  "description": "This is my \"OS\" written in Java. When you open it, the easiest way to close it is to use the Shut Down button found by clicking on the menu in the bottom left hand corner. This \"OS\" was written to run Java applications inside of it. The only application that I have included with this version of NathaNOS is my clock application. To run a java program inside of it, drag and drop the jar file into the NathaNOS1.1/assets and you should be ready to go! Note: if you want to add one of your own java programs to NathaNOS, then you will have to make the main class extend a JFrame, and you will have to make the constructor of your main class have one parameter that is a Boolean for visibility. You can see an example below:<br><code>package clock;<br><br>import javax.swing.JFrame;<br><br>public class Main extends JFrame<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;public Main(Boolean visibility) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.setVisible(visibility.booleanValue());<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}</code>",
                   "file": "NathaNOS1.1.zip",
                   "name": "NathaNOS"
                 },
@@ -455,79 +463,116 @@
               "name": "Videos",
               "videos": [
                 {
+                  "category": "Rubik's Cube",
                   "description": "This is my favorite timelapse I have made. It shows a 3x3x3 puzzle cube \"solving itself\". I accomplished this by taking a picture of the cube every quarter turn.",
                   "link": "https://www.youtube.com/embed/eBCUe4jSPQQ",
                   "title": "Timelapse - Cube"
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "This is the first timelapse video I ever made. This is also a video of a cube solving itself, but this one doesn't look as nice as the one above because I only took one picture for each turn. I also thought it would be a good idea to show the clock so that you can see how long it took.",
                   "link": "https://www.youtube.com/embed/EtycVB_mPnQ",
                   "title": "Timelapse - Rubik's"
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "I was interviewed about my puzzle cube collection and hobby while in high school, so I made this mosaic for the high school broadcasting class to use as a nice outro for the interview.",
                   "link": "https://www.youtube.com/embed/hD42xobUROM",
-                  "title": "Mosaic - MVTV"
+                  "title": "Mosaic - MVTV",
+                  "hidden": true
                 },
                 {
+                  "category": "Rubik's Cube",
                   "description": "This was probably the easiest mosaic I made as stripes are easy for anyone to make with cubes whether or not you know how to solve a puzzle cube.",
                   "link": "https://www.youtube.com/embed/V4cVGX8jyfI",
                   "title": "Mosaic - US Flag"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the ground floor.",
                   "link": "https://www.youtube.com/embed/9rEE0PjNMA4",
-                  "title": "Dream Home - Ground Floor"
+                  "title": "Dream Home - Ground Floor",
+                  "hidden": true
                 },
                 {
+                  "category": "Other Projects",
                   "description": "In my \"Architectural Design\" course in high school, we designed our dream home in autocad and then made a 3D rendering. This is a video showing walking around the basement.",
                   "link": "https://www.youtube.com/embed/cDsXrYSNA8c",
-                  "title": "Dream Home - Basement"
+                  "title": "Dream Home - Basement",
+                  "hidden": true
                 },
                 {
+                  "category": "Code",
                   "description": "As a computer science student, a friend of mine challenged me to a typing contest. I lost, so I thought it would be fun to code a bot to play for me. As you can see in this video, it isn't actually very fast.",
                   "link": "https://www.youtube.com/embed/UzCBnGSdWAE",
                   "title": "Typing Bot",
                   "linkedProject": "Simple JS Projects"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "I used to play Clash Royale a lot, and this was my favorite strategy to use in a two on two battle.",
                   "link": "https://www.youtube.com/embed/gLKssL0FN98",
                   "title": "Clash Royale Strategy"
                 },
                 {
+                  "category": "Other Projects",
                   "description": "This is a video demonstrating an elevator mechanism I designed and built for a project in my high school's PLTW (Project Lead The Way) class.",
                   "link": "https://www.youtube.com/embed/rmOcGzxN05U",
                   "title": "High School Vex Robotics Elevator Project"
                 },
                 {
+                  "category": "Code",
                   "description": "A video demonstration of a java program I wrote to view the screen and play Tetris through an NES emulator.",
                   "link": "https://www.youtube.com/embed/zwWAG3Ii7w8",
                   "title": "TetrisBot"
                 },
                 {
+                  "category": "Code",
                   "description": "A demo of Stats Search, a Minecraft mod I wrote that adds a search box to the in-game Statistics screen so you can filter the General, Items, and Mobs lists by name instead of scrolling through hundreds of entries, and pins the Items tab's column headers in place so they stay visible while you scroll.",
                   "link": "https://www.youtube.com/embed/ma4OUp9ZN7k",
                   "title": "Minecraft Statistics Search Mod",
                   "linkedProject": "Minecraft Stats Search"
                 },
                 {
+                  "category": "Code",
                   "description": "A presentation of Event Scheduler, an app I built for CS456.",
                   "link": "https://www.youtube.com/embed/jHWY1N4P_7g",
                   "title": "CS456 Project Presentation",
                   "linkedProject": "Event Scheduler"
                 },
                 {
+                  "category": "Code",
                   "description": "A demo of a script I wrote to auto-create items for the CS457 group project's WebStore.",
                   "link": "https://www.youtube.com/embed/Mn8m6vB0_ZM",
                   "title": "CS457 Store Auto Create Items Script Demo",
                   "linkedProject": "CS457 Group Project (WebStore)"
                 },
                 {
+                  "category": "Code",
                   "description": "A presentation of my CS451 group's Commerce Bank project.",
                   "link": "https://www.youtube.com/embed/xCZuFqqAFAE",
                   "title": "CS451 - Group 3 Commerce Bank Project",
                   "linkedProject": "CS451 Semester Group Project"
+                },
+                {
+                  "category": "Code",
+                  "description": "CppConsoleAnimation currently supports drawing rectangles, ellipses, and polygons in the console.",
+                  "link": "https://www.youtube.com/embed/pvdPETl0Twk",
+                  "title": "Animation.exe",
+                  "linkedProject": "C++ Console Animation"
+                },
+                {
+                  "category": "Code",
+                  "description": "CppConsoleAnimation drawing polygons in the console.",
+                  "link": "https://www.youtube.com/embed/nbBjf4tP3Bo",
+                  "title": "Animation.exe triangles",
+                  "linkedProject": "C++ Console Animation"
+                },
+                {
+                  "category": "Other Projects",
+                  "description": "Sweden (Minecraft) played on keyboard.",
+                  "link": "https://www.youtube.com/embed/YycTH3TATh8",
+                  "title": "Sweden (Minecraft)"
                 }
               ]
             },
@@ -619,7 +664,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/CppConsoleAnimation/master/README.md",
                   "link": "https://github.com/Nate314/CppConsoleAnimation",
-                  "title": "C++ Console Animation"
+                  "title": "C++ Console Animation",
+                  "linkedVideo": ["Animation.exe", "Animation.exe triangles"]
                 },
                 {
                   "category": "personal",
