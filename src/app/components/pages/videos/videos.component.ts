@@ -38,7 +38,7 @@ export class VideosComponent implements OnInit {
 
   // Order and display labels for grouping the videos list below by category,
   // mirroring GithubProjectsComponent's tab strip pattern.
-  private readonly videoCategoryOrder = ["Rubik's Cube", "Code", "Other Projects"];
+  private readonly videoCategoryOrder = ["Code", "Rubik's Cube", "Other Projects"];
   activeTab = this.videoCategoryOrder[0];
 
   constructor(
