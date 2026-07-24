@@ -36,6 +36,57 @@ body {
     border-bottom-color: #4da3ff;
 }
 
+/* Home page sectioned layout (hero/tiles/fact-strip/skills chips). */
+:root[data-theme="dark"] .hero-lede,
+:root[data-theme="dark"] .elsewhere-lede {
+    color: #b7b9c2;
+}
+
+:root[data-theme="dark"] .eyebrow {
+    color: #a996e8;
+}
+
+:root[data-theme="dark"] .eyebrow::before {
+    background: #a996e8;
+}
+
+:root[data-theme="dark"] .tile,
+:root[data-theme="dark"] .fact {
+    background: #2a2a33;
+    border-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .tile:hover {
+    border-color: #a996e8;
+}
+
+:root[data-theme="dark"] .tile-label,
+:root[data-theme="dark"] .fact-k,
+:root[data-theme="dark"] .skills-col h3,
+:root[data-theme="dark"] .strengths h3 {
+    color: #9d9dab;
+}
+
+:root[data-theme="dark"] .fact-strip,
+:root[data-theme="dark"] .fact + .fact,
+:root[data-theme="dark"] .strengths {
+    border-color: #3d3d47;
+}
+
+:root[data-theme="dark"] .chip {
+    background: #332b52;
+    color: #cabdf2;
+}
+
+:root[data-theme="dark"] .skills-col.personal .chip {
+    background: #253357;
+    color: #9dbcff;
+}
+
+:root[data-theme="dark"] .strengths-list b {
+    color: #a996e8;
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 /* Angular Material 15+ (MDC) dropped the default padding on mat-card itself
