@@ -644,6 +644,7 @@
                 {
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/card-games/master/README.md",
+                  "hidden": true,
                   "link": "https://github.com/Nate314/card-games",
                   "title": "Card Games"
                 },
