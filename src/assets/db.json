@@ -528,6 +528,17 @@
                   "link": "https://www.youtube.com/embed/xCZuFqqAFAE",
                   "title": "CS451 - Group 3 Commerce Bank Project",
                   "linkedProject": "CS451 Semester Group Project"
+                },
+                {
+                  "description": "CppConsoleAnimation currently supports drawing rectangles, ellipses, and polygons in the console.",
+                  "link": "https://www.youtube.com/embed/pvdPETl0Twk",
+                  "title": "Animation.exe",
+                  "linkedProject": "C++ Console Animation"
+                },
+                {
+                  "description": "Sweden (Minecraft) played on keyboard.",
+                  "link": "https://www.youtube.com/embed/YycTH3TATh8",
+                  "title": "Sweden (Minecraft)"
                 }
               ]
             },
@@ -619,7 +630,8 @@
                   "category": "personal",
                   "description": "https://raw.githubusercontent.com/Nate314/CppConsoleAnimation/master/README.md",
                   "link": "https://github.com/Nate314/CppConsoleAnimation",
-                  "title": "C++ Console Animation"
+                  "title": "C++ Console Animation",
+                  "linkedVideo": "Animation.exe"
                 },
                 {
                   "category": "personal",
