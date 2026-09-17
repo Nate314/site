@@ -11,6 +11,16 @@ Source for [nathangawith.com](https://nathangawith.com), my personal portfolio s
 
 Site content (bios, links, project lists, video descriptions, etc.) lives in `src/assets/db.json` and is loaded at runtime via `HttpClient`, rather than being hardcoded into the components.
 
+## Running with Docker
+
+No local Node/Angular CLI install required. From the repo root:
+
+```
+docker compose up --build
+```
+
+Then open `http://localhost:8080/`. This builds the production Angular bundle in a `node:22-alpine` stage and serves it via nginx (with SPA route fallback). Stop it with `docker compose down`.
+
 ## Development server
 
 Run `ng serve` (or `npm start`) for a dev server, then open `http://localhost:4200/`. The app reloads automatically when source files change.
