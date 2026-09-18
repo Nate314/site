@@ -19,7 +19,7 @@ No local Node/Angular CLI install required. From the repo root:
 docker compose up --build
 ```
 
-Then open `http://localhost:8080/`. This builds the production Angular bundle in a `node:22-alpine` stage and serves it via nginx (with SPA route fallback). Stop it with `docker compose down`.
+Then open `http://localhost:8080/`. This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host 8080) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. Stop it with `docker compose down`.
 
 ## Development server
 

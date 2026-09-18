@@ -13,13 +13,15 @@ COPY . .
 RUN npx ng build
 
 # --- Stage 2: serve the built app with nginx ---
-FROM nginx:alpine AS runtime
+FROM nginxinc/nginx-unprivileged:alpine AS runtime
 
 # Angular's outputPath (base: "docs", browser: "") writes static files
 # directly into docs/, so that's what gets served.
-COPY --from=build /app/docs /usr/share/nginx/html
+COPY --from=build --chown=101:101 /app/docs /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 8080
+USER 101
+HEALTHCHECK --interval=30s --timeout=3s CMD wget -qO /dev/null http://127.0.0.1:8080/ || exit 1
 CMD ["nginx", "-g", "daemon off;"]
