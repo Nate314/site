@@ -19,7 +19,29 @@ No local Node/Angular CLI install required. From the repo root:
 docker compose up --build
 ```
 
-Then open `http://localhost:8080/`. This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host 8080) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. Stop it with `docker compose down`.
+Then open `http://localhost:8080/` (or the URL printed by `./run.sh`, see below). This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host port 8080 by default, or `SITE_PORT` from `.env`) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. Stop it with `docker compose down`.
+
+## Running side by side / port selection
+
+Several projects default to host port 8080, so two of them cannot run at once with a plain `docker compose up`. Each of these repos ships a small launcher that picks free ports for you:
+
+```
+./run.sh          # macOS, Linux, Git Bash
+.un.ps1         # Windows PowerShell
+```
+
+What it does:
+
+1. If no `.env` exists it creates one (with a header comment saying it was generated). An existing `.env` is never overwritten: only the port variables (`SITE_PORT`) are added or adjusted, and every other line and comment is kept.
+2. For each port it starts at the default (or the value already in `.env`) and picks the first port that is free on this machine, scanning upward. A port counts as busy if anything, Docker or a native process, accepts a TCP connection on 127.0.0.1 (the PowerShell launcher also tries to bind it). Ports already picked in the same run are skipped.
+3. If this project's stack is already running it leaves the ports alone and does not rebuild (rebuild with `./run.sh up --build -d`). If it is stopped, the ports in `.env` are re-checked and only busy ones are reassigned, so starting a second and third project back to back just works.
+4. Runs `docker compose up --build -d` and prints the URLs using the ports it chose, for example `Site: http://localhost:8081`.
+
+Any arguments are passed straight to `docker compose` after the `.env` step, for example `./run.sh down`, `./run.sh logs -f` or `.un.ps1 ps`.
+
+Plain `docker compose up --build` still works exactly as before with the 8080 defaults (fine for a single project). `docker compose` has no pre-run hook, so only the launcher generates `.env`.
+
+To pin ports by hand, edit `.env` (see `.env.example`). To start over, run `./run.sh down` and delete `.env`; the next launcher run picks ports again. The launcher needs `docker compose` v2 and, on macOS and Linux, bash; it uses only POSIX tools (`sed`, `awk`, `grep`).
 
 ## Development server
 
