@@ -6,3 +6,5 @@ dist
 .vscode
 .idea
 *.md
+e2e
+coverage

@@ -1,5 +1,6 @@
 {
   "compileOnSave": false,
+  "exclude": ["e2e", "node_modules", "dist", "docs", "coverage"],
   "compilerOptions": {
     "ignoreDeprecations": "6.0",
     "skipLibCheck": true,

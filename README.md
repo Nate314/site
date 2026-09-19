@@ -55,9 +55,56 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` (or `npm run build`) to build the project. Output is written to `docs/`. `npm run build` also copies `index.html` to `404.html` so client-side routes resolve correctly on GitHub Pages. The contents of `docs/` are then deployed by pushing them to the `publish` branch, which is what GitHub Pages actually serves.
 
-## Running unit tests
+## Unit tests and coverage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io) and Jasmine.
+Unit tests run with [Karma](https://karma-runner.github.io) and Jasmine in headless Chrome (`ChromeHeadless`, configured in `angular.json`). Chrome must be installed.
+
+PowerShell and Git Bash (the commands are identical):
+
+```
+npm test                  # ng test: watch mode while developing
+npx ng test --no-watch    # single run, exits with a status code (use this in scripts and CI)
+npm run test:coverage     # single run plus an Istanbul coverage report
+```
+
+`npm run test:coverage` prints a statements, branches, functions and lines summary and writes the HTML report to `coverage/nathangawith/index.html` (open it in a browser for per-file numbers). `coverage/` is git-ignored. Angular's Karma builder only reports files that a spec pulls in, so a component or service with no spec does not appear in the report at all; the numbers describe the code that is tested, not the whole app.
+
+Specs sit next to the code as `*.spec.ts`. HTTP is tested with `HttpTestingController`, never the real network, and `src/app/testing/db-fixture.ts` provides a small db.json-shaped fixture for component specs.
+
+## End-to-end tests (Playwright)
+
+The `e2e/` folder is a separate npm project (its own `package.json`, lockfile and `tsconfig.json`), so Playwright is not a dependency of the site and does not affect `npm ci`, the Docker build or `npm audit` at the repo root. The tests run against an already running site in a real Chromium; they do not start Docker themselves.
+
+1. Start the site and note the URL it prints. On Windows PowerShell use `.\run.ps1`; in Git Bash, macOS or Linux use `./run.sh`. The launcher picks the first free port starting at 8080 and prints it, for example `Site: http://localhost:8081`.
+2. Install the test dependencies once:
+
+   ```
+   cd e2e
+   npm ci
+   npx playwright install chromium
+   ```
+
+3. Run the suite, pointing `BASE_URL` at the printed URL (it defaults to `http://localhost:8080`).
+
+   PowerShell:
+
+   ```
+   $env:BASE_URL = "http://localhost:8081"; npm test
+   ```
+
+   Git Bash:
+
+   ```
+   BASE_URL=http://localhost:8081 npm test
+   ```
+
+Scripts (run from `e2e/`): `npm test` (headless, all tests), `npm run test:headed`, `npm run test:smoke` (only tests tagged `@smoke`), `npm run typecheck`, and `npm run report` (opens the last HTML report). Extra Playwright flags go after `--`, for example `npm test -- --workers=1`.
+
+Third-party hosts (CDN styles and scripts, GitHub raw content and contributions API, YouTube and the sibling sites) are stubbed with `page.route`, so most tests are deterministic and work offline while the browser still enforces the real Content-Security-Policy. A small group tagged `@network` uses the real internet to prove the CSP allow-list matches reality; skip it with `SKIP_NETWORK=1` (PowerShell: `$env:SKIP_NETWORK = "1"`).
+
+The suite covers every route and deep link, navigation and responsive layout (desktop, tablet and a 400px phone), the card padding regression (`styles.css` applied and `mat-card` padding of 16px), console and CSP hygiene, security headers, content driven by `db.json`, the applications iframe component and the YouTube embeds.
+
+To point the tests at a different build, for example a hardened nginx variant, run it on another port and set `BASE_URL` to it.
 
 ## Linting
 
