@@ -106,6 +106,32 @@ The suite covers every route and deep link, navigation and responsive layout (de
 
 To point the tests at a different build, for example a hardened nginx variant, run it on another port and set `BASE_URL` to it.
 
+### Running the e2e tests in Docker
+
+Nothing but Docker is needed: the official Playwright image already contains Node and the browsers, so there is no `npm ci` or `npx playwright install` on the host. The image tag has to match the `@playwright/test` version in `e2e/package.json` (currently 1.63.0). Start the site first (step 1 above) and use the URL it printed as `BASE_URL`.
+
+The whole repository is mounted because the tests read `src/assets/db.json`. The named volume keeps the container's Linux `node_modules` apart from any `node_modules` on the host.
+
+PowerShell:
+
+```powershell
+docker run --rm --ipc=host --network host -v "${PWD}:/repo" -v site-e2e-node-modules:/repo/e2e/node_modules -w /repo/e2e -e BASE_URL=http://localhost:8080 mcr.microsoft.com/playwright:v1.63.0-noble sh -c "npm ci && npx playwright test"
+```
+
+Git Bash (`MSYS_NO_PATHCONV=1` stops Git Bash from rewriting the `/repo` paths into Windows paths):
+
+```bash
+MSYS_NO_PATHCONV=1 docker run --rm --ipc=host --network host -v "$PWD:/repo" -v site-e2e-node-modules:/repo/e2e/node_modules -w /repo/e2e -e BASE_URL=http://localhost:8080 mcr.microsoft.com/playwright:v1.63.0-noble sh -c "npm ci && npx playwright test"
+```
+
+macOS and Linux: the Git Bash command without `MSYS_NO_PATHCONV=1`.
+
+- Add Playwright arguments after `npx playwright test`, for example `--grep @smoke`, `--workers=1` or `tests/videos.spec.ts`.
+- `--network host` lets the container reach the site at `localhost`. Linux supports it out of the box. Docker Desktop needs "Enable host networking" (Settings, Resources, Network, Docker Desktop 4.34 or newer).
+- Without host networking, drop `--network host` and use `-e BASE_URL=http://host.docker.internal:8080` instead (on Linux also add `--add-host=host.docker.internal:host-gateway`). The site does not check origins, so this works too.
+- Results are written to `e2e/test-results` and `e2e/playwright-report/index.html` in the repository (open the HTML file in a browser). On Linux those files are owned by root.
+- Verified on Windows with Docker Desktop 4.41: all 150 tests pass in the container, with and without host networking. macOS and Linux were not tested.
+
 ## Linting
 
 Run `ng lint` to lint the project with ESLint.

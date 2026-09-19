@@ -1,4 +1,5 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import { PARK_MOUSE } from './fixtures';
 
 export const NAV_ITEMS = [
   { name: 'Home', path: '/home', title: 'NathanGawith | Home' },
@@ -47,7 +48,19 @@ export class Site {
   async goto(path: string) {
     const response = await this.page.goto(path);
     await expect(this.navbar).toBeVisible();
+    await this.releaseNavbarHover();
     return response;
+  }
+
+  /** Moves the pointer off the rail and waits for the hover expansion (22rem) to collapse back to the 5rem rail. */
+  private async releaseNavbarHover() {
+    await this.page.mouse.move(PARK_MOUSE.x, PARK_MOUSE.y);
+    const viewport = this.page.viewportSize();
+    if (viewport && viewport.width >= 600) {
+      await expect
+        .poll(async () => (await this.navbar.boundingBox())!.width, { message: 'navbar collapses once the pointer is away' })
+        .toBeLessThan(120);
+    }
   }
 
   async expectTitle(title: string) {
