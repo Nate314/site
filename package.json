@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build && cd docs && copy index.html 404.html && cd ..",
     "test": "ng test",
+    "test:coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint"
   },
   "dependencies": {
