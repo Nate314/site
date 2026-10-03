@@ -33,12 +33,11 @@ export class MultiplicationTableComponent implements OnInit {
     if (this.size <= 120) {
       this.multTable = [];
       for (let i = 0; i < Number(this.size) + (this.traditionalOption ? 2 : 0); i++) {
-        let tempList = [];
+        const tempList = [];
         for (let j = 0; j < Number(this.size) + (this.traditionalOption ? 2 : 0); j++) {
           if (this.traditionalOption) tempList.push(this.multTableTraditional[i][j]);
           else tempList.push(this.multTableOther[i][j]);
         }
-        tempList = tempList;
         this.multTable.push(tempList);
       }
       this.lastsize = this.size;
@@ -57,7 +56,7 @@ export class MultiplicationTableComponent implements OnInit {
     if (traditional) this.multTableTraditional = [];
     else this.multTableOther = [];
     for (let i = -1; i < 120 + 1; i++) {
-      let tempList = [];
+      const tempList = [];
       for (let j = -1; j < 120 + 1; j++) {
         if (i === -1 && j === -1) {
           if (traditional) tempList.push("asdf");
@@ -78,7 +77,6 @@ export class MultiplicationTableComponent implements OnInit {
         }
         else tempList.push(i * j);
       }
-      tempList = tempList;
       if (tempList.length !== 0) {
         if (traditional) this.multTableTraditional.push(tempList);
         else this.multTableOther.push(tempList);

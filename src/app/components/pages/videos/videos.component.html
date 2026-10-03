@@ -24,7 +24,7 @@
       [id]="videoElementId(video.title)" [class.highlight-pulse]="video.title === highlightedVideoTitle">
       <h3>{{ video.title }}</h3>
       <div class="video-media">
-        <img *ngIf="!video.enabled" [src]="video.preview" (click)="btnThumbnail(video)"/>
+        <img *ngIf="!video.enabled" [src]="video.preview" [alt]="video.title" (click)="btnThumbnail(video)"/>
         <iframe *ngIf="video.enabled" [src]="video.link" frameborder="1" allow="autoplay; encrypted-media"
           allowfullscreen></iframe>
       </div>

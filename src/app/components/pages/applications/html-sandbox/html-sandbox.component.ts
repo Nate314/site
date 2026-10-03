@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   standalone: false,
   selector: "app-html-sandbox",
   templateUrl: "./html-sandbox.component.html"
 })
-export class HtmlSandboxComponent implements OnInit {
+export class HtmlSandboxComponent {
 
   html: string = "<html>\n\t<body>\n\t\t"
     + "<h1>this is a heading</h1>\n\t\t"
@@ -13,8 +13,5 @@ export class HtmlSandboxComponent implements OnInit {
     + "<body>\n<html>";
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

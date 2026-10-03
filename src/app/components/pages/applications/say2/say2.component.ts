@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 
@@ -7,7 +7,7 @@ import { Location } from "@angular/common";
   selector: "app-say2",
   templateUrl: "./say2.component.html"
 })
-export class Say2Component implements OnInit {
+export class Say2Component {
 
   input: number;
   numberLabel: string = "";
@@ -18,10 +18,6 @@ export class Say2Component implements OnInit {
     " ninety", " hundred", "", " thousand", " million", " billion", " trillion"];
 
   constructor(private router: Router, private location: Location) { }
-
-  ngOnInit() {
-
-  }
 
   log10(val) {
     return Math.log(val) / Math.LN10;

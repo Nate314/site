@@ -12,11 +12,7 @@ const KONAMI_SEQUENCE = [
 ];
 
 // inspired by Fireship https://www.youtube.com/watch?v=7JA90VI9fAI
-export function slideTo(from: number, to: number) {
-  const dir1 = Helper.isScreenSmall() ? "right" : "bottom";
-  const dir2 = Helper.isScreenSmall() ? "left" : "top";
-  const direction = from < to ? dir1 : dir2;
-  const distance = 100 * Math.abs(from - to);
+export function slideTo() {
   const optional = { optional: true };
   const animationTime = "600ms ease";
   const enterLeaveStyle = {
@@ -28,12 +24,6 @@ export function slideTo(from: number, to: number) {
   const enterStyle = { opacity: 0 };
   const groupLeaveStyle = { opacity: 0 };
   const groupEnterStyle = { opacity: 1 };
-  if (Helper.isScreenSmall()) {
-    // enterLeaveStyle[direction] = 0;
-    // enterStyle[direction] = `-${distance}%`;
-    // groupLeaveStyle[direction] = `${distance}%`;
-    // groupEnterStyle[direction] = "0%";
-  }
   return [
     query(":enter, :leave", [
       style(enterLeaveStyle)
@@ -55,7 +45,7 @@ export function slideTo(from: number, to: number) {
 const nums = Array(4).fill(null).map((_, i) => i);
 const slider = trigger("routeAnimations",
   Helper.flatten2dArray(nums.map(from => nums.map(to =>
-    transition(`${from} => ${to}`, slideTo(from, to))
+    transition(`${from} => ${to}`, slideTo())
 ))));
 
 @Component({
