@@ -19,7 +19,7 @@ No local Node/Angular CLI install required. From the repo root:
 docker compose up --build
 ```
 
-Then open `http://localhost:8080/` (or the URL printed by `./run.sh`, see below). This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host port 8080 by default, or `SITE_PORT` from `.env`) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. Stop it with `docker compose down`.
+Then open `http://localhost:8080/` (or the URL printed by `./run.sh`, see below). This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host port 8080 by default, or `SITE_PORT` from `.env`) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. The CSP allows the two inline snippets in the built `index.html` by sha256 hash; the Docker build runs `node scripts/check-csp-hashes.js` after `ng build` and fails, printing the expected hashes, when they no longer match `nginx.conf` (run the same command locally after `npx ng build`). Stop it with `docker compose down`.
 
 ## Running side by side / port selection
 

@@ -12,6 +12,9 @@ RUN npm ci
 COPY . .
 RUN npx ng build
 
+# Fail the image build if the CSP hashes in nginx.conf no longer match the built index.html
+RUN node scripts/check-csp-hashes.js
+
 # --- Stage 2: serve the built app with nginx ---
 FROM nginxinc/nginx-unprivileged:alpine AS runtime
 
