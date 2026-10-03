@@ -21,6 +21,17 @@ test.describe('navigation', () => {
     });
   }
 
+  test('the navbar highlights only the entry for the current page', async ({ page }) => {
+    const site = new Site(page);
+    const active = page.locator('nav.navbar li.nav-item-active');
+    await site.goto('/home');
+    await expect(active).toHaveText('Home');
+    await site.navLink('Videos').click();
+    await expect(active).toHaveText('Videos');
+    await site.goto('/applications/web');
+    await expect(active).toHaveText('Applications');
+  });
+
   test('the logo returns to Home', async ({ page }) => {
     const site = new Site(page);
     await site.goto('/videos');

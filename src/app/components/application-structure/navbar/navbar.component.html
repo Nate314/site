@@ -6,7 +6,7 @@
         <span class="link-text">NathanGawith</span>
       </a>
     </li>
-    <li *ngFor="let page of pages" class="nav-item">
+    <li *ngFor="let page of pages" class="nav-item" [class.nav-item-active]="isSelected(page)">
       <a class="nav-link" (click)="goTo(page.link)" style="cursor:pointer;">
         <img [src]="page.svg" />
         <span class="link-text">{{ page.name }}</span>
