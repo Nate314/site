@@ -1,11 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   standalone: false,
   selector: "app-group-creator",
   templateUrl: "./group-creator.component.html"
 })
-export class GroupCreatorComponent implements OnInit {
+export class GroupCreatorComponent {
 
   list: string = "";
   minPeople: number = 1;
@@ -13,9 +13,6 @@ export class GroupCreatorComponent implements OnInit {
   output: string;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {

@@ -21,6 +21,11 @@ module.exports = tseslint.config(
         'error',
         { type: 'element', prefix: 'app', style: 'kebab-case' },
       ],
+      // Reported as warnings, not errors: the app is NgModule based with constructor
+      // injection and loosely typed db.json content, so each of these is a migration.
+      '@angular-eslint/prefer-standalone': 'warn',
+      '@angular-eslint/prefer-inject': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
   {
@@ -29,6 +34,13 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      '@angular-eslint/template/eqeqeq': ['error', { allowNullOrUndefined: true }],
+      // Warnings for the same reason as above: structural directives and click-only
+      // elements are used throughout the templates.
+      '@angular-eslint/template/prefer-control-flow': 'warn',
+      '@angular-eslint/template/click-events-have-key-events': 'warn',
+      '@angular-eslint/template/interactive-supports-focus': 'warn',
+    },
   }
 );
