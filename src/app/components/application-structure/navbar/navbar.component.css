@@ -32,7 +32,8 @@ https://www.youtube.com/watch?v=biOMz4puGt8
   transition: 600ms;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-item-active .nav-link {
   filter: grayscale(0%) opacity(1);
   background: #141418;
   color: #ececec !important;
