@@ -16,7 +16,7 @@ test.describe('global stylesheet and card padding', () => {
         await expect(link).toHaveAttribute('media', 'all');
       });
 
-      await test.step('the inline onload handler was not blocked by the CSP', async () => {
+      await test.step('the inline critical-CSS script was not blocked by the CSP', async () => {
         const violations = await diagnostics.cspViolations();
         expect(violations.filter((v) => v.startsWith('script-src'))).toEqual([]);
       });
