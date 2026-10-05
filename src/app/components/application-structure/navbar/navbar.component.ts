@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import { Location } from "@angular/common";
-import { Constants, Helper } from "../../../helpers/Helper";
+import { filter } from "rxjs/operators";
+import { Helper } from "../../../helpers/Helper";
 import { UnlockService } from "src/app/services";
 
 class Page {
@@ -37,6 +38,9 @@ export class NavbarComponent implements OnInit {
     // Zoneless: the Konami-toggle happens outside this component's own
     // template events, so re-render explicitly when it changes.
     this.unlock.unlocked$.subscribe(() => this.cdr.detectChanges());
+    // Same for the selected entry: it follows the router url, not a template event.
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.cdr.detectChanges());
   }
 
   goTo(url: string) {
@@ -48,7 +52,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isSelected(page: Page) {
-    if (Constants.currentPageURL.includes(page.link)) return true;
-    else return false;
+    return this.router.url.includes(page.link);
   }
 }

@@ -100,7 +100,8 @@
                 "input": "src/assets",
                 "output": "assets"
               }
-            ]
+            ],
+            "karmaConfig": "karma.conf.js"
           }
         },
         "lint": {

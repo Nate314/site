@@ -30,12 +30,11 @@ export class BettingCalculatorComponent implements OnInit {
     this.output = "";
     for (let i = 0; i < this.humans; i++) {
       this.humanIndecies.push(i + 1);
-      let tempList = [];
+      const tempList = [];
       for (let j = 0; j < this.players; j++) {
         if (i === 0) this.playerIndecies.push(j + 1);
         tempList.push(0);
       }
-      tempList = tempList;
       this.grid.push(tempList);
     }
   }
@@ -45,7 +44,7 @@ export class BettingCalculatorComponent implements OnInit {
     let totalLoot = this.houseAccount;
     let winningPot = 0;
     let loosingPot = 0;
-    let winnings = [];
+    const winnings = [];
     let totalWinnings = 0;
     for (let i = 0; i < this.humans; i++) {
       for (let j = 0; j < this.players; j++) {
@@ -63,7 +62,6 @@ export class BettingCalculatorComponent implements OnInit {
         winnings.push(parseInt(((this.grid[i][winnerID] / winningPot) * totalLoot) + "", 10));
       else winnings.push(0);
     }
-    winnings = winnings;
     this.output += `<div class="row border border-left-0 border-right-0"><div class="col-12">`;
     for (let i = 0; i < this.humans; i++) {
       if (winnings[i] !== 0) this.output += `<b>Human ${i + 1}: ${winnings[i]}</b><br />`;

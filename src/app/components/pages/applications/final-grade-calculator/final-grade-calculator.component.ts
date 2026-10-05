@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Helper } from "../../../../helpers/Helper";
 
 @Component({
@@ -6,7 +6,7 @@ import { Helper } from "../../../../helpers/Helper";
   selector: "app-final-grade-calculator",
   templateUrl: "./final-grade-calculator.component.html"
 })
-export class FinalGradeCalculatorComponent implements OnInit {
+export class FinalGradeCalculatorComponent {
 
   currentGrade: number;
   finalPercentage: number;
@@ -15,9 +15,6 @@ export class FinalGradeCalculatorComponent implements OnInit {
   error: string;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   calculate() {
     this.label = "";

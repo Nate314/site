@@ -13,11 +13,11 @@
     <table>
       <tr *ngFor="let row of multTable; let i = index;" style="white-space:nowrap; padding:0;">
         <span *ngFor="let num of row; let j = index;" style="width:100px; padding:0;">
-            <td *ngIf="num != 'asdf'" style="width:50px; padding:0;" class="border border-secondary"
+            <td *ngIf="num !== 'asdf'" style="width:50px; padding:0;" class="border border-secondary"
               [ngClass]="getClass(i, j)">
               {{ num }}
             </td>
-            <td *ngIf="num == 'asdf'" style="width:50px; padding:0;" class="border border-secondary">
+            <td *ngIf="num === 'asdf'" style="width:50px; padding:0;" class="border border-secondary">
               &nbsp;
             </td>
         </span>

@@ -1,13 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, ChangeDetectorRef } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
-import * as _ from "lodash";
 
 @Component({
   standalone: false,
   selector: "app-typing-test",
   templateUrl: "./typing-test.component.html"
 })
-export class TypingTestComponent implements OnInit {
+export class TypingTestComponent {
 
   dummyparagraph: string = "Lorem ipsum dolor sit amet, consectetur adipiscing"
     + " elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -35,11 +34,7 @@ export class TypingTestComponent implements OnInit {
 
   constructor(private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() {
-  }
-
   replaceSpaces(str: string) {
-    const typescript_non_breaking_space = String.fromCharCode(160);
     return Helper.replaceAll(str, "  ", " ");
   }
 
@@ -67,13 +62,11 @@ export class TypingTestComponent implements OnInit {
   }
 
   correctPart() {
-    let temp_typingparagraph = "";
     let temp_typedText = "";
     let temp_wrongtypedText = "";
     let wrongTextHit = false;
     this.typingparagraph = this.replaceSpaces(this.typingparagraph);
     for (let i = 0; i < this.typingparagraph.length; i++) {
-      temp_typingparagraph += this.typingparagraph[i];
       if (!wrongTextHit && this.paragraph.startsWith(temp_typedText + this.typingparagraph[i])) {
         temp_typedText += this.typingparagraph[i];
       }

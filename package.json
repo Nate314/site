@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && cd docs && copy index.html 404.html && cd ..",
+    "build": "ng build && node -e \"require('fs').copyFileSync('docs/index.html', 'docs/404.html')\"",
     "test": "ng test",
     "test:coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint"
@@ -41,6 +41,7 @@
     "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "angular-eslint": "^22.5.0",
     "eslint": "^9.0.0",
     "jasmine-core": "~5.5.0",
     "karma": "~6.4.0",
@@ -48,6 +49,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~6.0.0"
+    "typescript": "~6.0.0",
+    "typescript-eslint": "^8.71.0"
   }
 }

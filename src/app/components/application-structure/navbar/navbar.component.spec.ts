@@ -1,16 +1,16 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
+import { NavigationEnd } from "@angular/router";
 import { NavbarComponent } from "./navbar.component";
-import { Constants } from "../../../helpers/Helper";
 
 describe("NavbarComponent", () => {
 
-  let router: { navigate: jasmine.Spy };
+  let router: { navigate: jasmine.Spy; url: string; events: Subject<unknown> };
   let cdr: { detectChanges: jasmine.Spy };
   let unlock: { unlocked: boolean; unlocked$: BehaviorSubject<boolean> };
   let component: NavbarComponent;
 
   beforeEach(() => {
-    router = { navigate: jasmine.createSpy("navigate") };
+    router = { navigate: jasmine.createSpy("navigate"), url: "/", events: new Subject() };
     cdr = { detectChanges: jasmine.createSpy("detectChanges") };
     unlock = { unlocked: false, unlocked$: new BehaviorSubject(false) };
     component = new NavbarComponent(router as any, {} as any, cdr as any, unlock as any);
@@ -40,11 +40,15 @@ describe("NavbarComponent", () => {
     expect(cdr.detectChanges).toHaveBeenCalled();
   });
 
-  describe("isSelected", () => {
-    afterEach(() => Constants.currentPageURL = "");
+  it("re-renders when a navigation ends, so the selected entry follows the url", () => {
+    cdr.detectChanges.calls.reset();
+    router.events.next(new NavigationEnd(1, "/videos", "/videos"));
+    expect(cdr.detectChanges).toHaveBeenCalled();
+  });
 
+  describe("isSelected", () => {
     it("is true for the page whose link is contained in the current url", () => {
-      Constants.currentPageURL = "/applications/web/Say2";
+      router.url = "/applications/web/Say2";
       const applications = component.pages.find(p => p.name === "Applications")!;
       const videos = component.pages.find(p => p.name === "Videos")!;
       expect(component.isSelected(applications)).toBe(true);

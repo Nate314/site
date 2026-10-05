@@ -52,44 +52,8 @@ export class DB {
 
 }
 
-class ApplicationType {
-  name: string;
-  description: string;
-  link: string;
-  apps: {
-    name: string;
-    file: string;
-    selector: string;
-    description: string;
-  }[];
-}
-
 class ResourceType {
   title: string;
   link: string;
   description: string;
-}
-
-class PageType<T> {
-  title: string;
-  name: string;
-  description: string;
-  subpages: T[];
-}
-
-class DBtype {
-  nate314: {
-    home: {
-      title: string;
-      subtitle: string;
-      name: string;
-      sections: string[];
-      otherwebsites: { friends: ResourceType[], redirects: ResourceType[] };
-      JavaApplications: PageType<ApplicationType>;
-      WebApplications: PageType<ApplicationType>;
-      AndroidApplications: PageType<ApplicationType>;
-      videos: PageType<ResourceType>;
-      howitsmade: PageType<ResourceType>;
-    }
-  };
 }

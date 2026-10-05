@@ -19,7 +19,7 @@ No local Node/Angular CLI install required. From the repo root:
 docker compose up --build
 ```
 
-Then open `http://localhost:8080/` (or the URL printed by `./run.sh`, see below). This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host port 8080 by default, or `SITE_PORT` from `.env`) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. Stop it with `docker compose down`.
+Then open `http://localhost:8080/` (or the URL printed by `./run.sh`, see below). This builds the production Angular bundle in a `node:22-alpine` stage and serves it via unprivileged nginx (non-root, listening on 8080 inside the container, mapped to host port 8080 by default, or `SITE_PORT` from `.env`) with SPA route fallback, `server_tokens off`, and security headers including a Content-Security-Policy. If you add a new external origin to the site, add it to the CSP in `nginx.conf`. The CSP allows the two inline snippets in the built `index.html` by sha256 hash; the Docker build runs `node scripts/check-csp-hashes.js` after `ng build` and fails, printing the expected hashes, when they no longer match `nginx.conf` (run the same command locally after `npx ng build`). Stop it with `docker compose down`.
 
 ## Running side by side / port selection
 
@@ -67,7 +67,7 @@ npx ng test --no-watch    # single run, exits with a status code (use this in sc
 npm run test:coverage     # single run plus an Istanbul coverage report
 ```
 
-`npm run test:coverage` prints a statements, branches, functions and lines summary and writes the HTML report to `coverage/nathangawith/index.html` (open it in a browser for per-file numbers). `coverage/` is git-ignored. Angular's Karma builder only reports files that a spec pulls in, so a component or service with no spec does not appear in the report at all; the numbers describe the code that is tested, not the whole app.
+`npm run test:coverage` prints a statements, branches, functions and lines summary and writes the HTML report to `coverage/nathangawith/index.html` (open it in a browser for per-file numbers). `coverage/` is git-ignored. Angular's Karma builder only reports files that a spec pulls in, so `src/app/all-sources.spec.ts` imports the root module to put every file under `src/app` in the report, including components with no spec of their own (files with no executable code, such as barrels and interfaces, have nothing to report). The run fails when coverage drops below the thresholds in `karma.conf.js` (`coverageReporter.check`).
 
 Specs sit next to the code as `*.spec.ts`. HTTP is tested with `HttpTestingController`, never the real network, and `src/app/testing/db-fixture.ts` provides a small db.json-shaped fixture for component specs.
 

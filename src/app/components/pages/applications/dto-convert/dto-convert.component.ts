@@ -1,13 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Helper } from "src/app/helpers/Helper";
-import * as _ from "lodash";
 
 @Component({
   standalone: false,
   selector: "app-dto-convert",
   templateUrl: "./dto-convert.component.html"
 })
-export class DtoConvertComponent implements OnInit {
+export class DtoConvertComponent {
 
   dto_csharp: string = "class User {\n"
     + "\tpublic string username { get; set; }\n"
@@ -23,9 +22,6 @@ export class DtoConvertComponent implements OnInit {
   typescript_text: string;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   csharp_to_typescript() {
     let result = this.csharp_text;
