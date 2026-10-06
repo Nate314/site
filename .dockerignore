@@ -8,3 +8,4 @@ dist
 *.md
 e2e
 coverage
+compose-launcher
