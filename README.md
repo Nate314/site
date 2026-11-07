@@ -1,6 +1,6 @@
 # Nathan Gawith - Portfolio Site
 
-Source for [nathangawith.com](https://nathangawith.com), my personal portfolio site. Built with Angular 22, and deployed to GitHub Pages via the [`publish`](https://github.com/Nate314/site/tree/publish) branch.
+Source for [nathangawith.com](https://nathangawith.com), my personal portfolio site. Built with Angular 22, and deployed to GitHub Pages by the [Pages workflow](.github/workflows/pages.yml) on every push to `master`.
 
 ## What's here
 
