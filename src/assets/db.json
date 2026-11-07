@@ -290,7 +290,8 @@
           { "title": "/redirect-7", "description": "/redirect-8", "link": "/redirect-8" },
           { "title": "/redirect-8", "description": "/redirect-9", "link": "/redirect-9" },
           { "title": "/redirect-9", "description": "/redirect-1", "link": "/redirect-1" },
-          { "title": "/resume", "description": "resume.nathangawith.com", "link": "https://resume.nathangawith.com" }
+          { "title": "/resume", "description": "resume.nathangawith.com", "link": "https://resume.nathangawith.com" },
+          { "title": "/multiplayer-tabletop-games", "description": "multiplayer-tabletop-games.nathangawith.com", "link": "http://multiplayer-tabletop-games.nathangawith.com/?server=http%3A%2F%2Fhome.nathangawith.com" }
         ]
       },
       "pages": [

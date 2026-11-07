@@ -16,7 +16,7 @@ Source for [nathangawith.com](https://nathangawith.com), a personal portfolio si
 
 ## Deployment
 
-Build output (`docs/`) is pushed to the `publish` branch, which is what GitHub Pages actually serves. The `publish` branch has a **flat, built-artifact layout** entirely different from the source tree on `master` (e.g. `assets/db.json` at the root instead of `src/assets/db.json`, hashed JS bundle filenames). Do not branch `publish` off `master` or diff the two directly — branch a fix off `publish` itself, or rebuild and replace its contents. Content-only changes to `db.json` that don't require a rebuild can be applied directly to `publish`'s `assets/db.json`.
+`.github/workflows/pages.yml` runs `npm ci && npm run build` on every push to `master` and deploys `docs/` to GitHub Pages (repo Settings > Pages > Source must be "GitHub Actions"). The old `publish` branch, a hand-pushed copy of `docs/`, is no longer needed once that setting is switched.
 
 ## Architecture
 
