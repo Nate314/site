@@ -56,6 +56,8 @@ test.describe('security headers', () => {
     expect(scripts.filter((s) => s.startsWith("'sha256-"))).toHaveLength(2);
     expect(csp.get('frame-src')).toEqual(expect.arrayContaining(["'self'", 'https://www.youtube.com']));
     expect(csp.get('connect-src')).toEqual(expect.arrayContaining(["'self'", 'https://raw.githubusercontent.com']));
+    // Images only from the hosts the site uses (CDN icons, README images, YouTube thumbnails), not any https origin.
+    expect(csp.get('img-src')).not.toContain('https:');
   });
 
   test('static assets are served with nosniff and the right content type', async ({ page, request, baseURL }) => {
